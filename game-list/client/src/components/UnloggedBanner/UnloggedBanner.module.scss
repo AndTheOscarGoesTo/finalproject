@@ -1,0 +1,25 @@
+.logged_out_banner {
+    height: 8em;
+    background:linear-gradient(#9c129e, #630664);
+    border-bottom-color: #4f0450;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+.logged_out_content{
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 1em;
+    color: white;
+}
+.logged_out_content h1 {
+    display: inline-block;
+}
+.logo{
+    color: white;
+    font-size: 4em;
+
+}
+.logo a:hover{
+    text-decoration: none;
+}

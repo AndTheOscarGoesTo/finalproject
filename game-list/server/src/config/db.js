@@ -2,10 +2,10 @@ import mysql from 'mysql';
 
 let pool = mysql.createPool({
     connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: 'innovatebham',
-    database: 'Inclassexample'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 function executeQuery(sql, args = []) {
