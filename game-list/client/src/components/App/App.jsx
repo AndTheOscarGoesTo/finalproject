@@ -8,6 +8,7 @@ import AuthButton from '../auth/authButton';
 import styles from "./App.scss";
 import Home from '../Home/Home';
 
+import Profile from '../Profile/Profile'
 class Navigation extends Component {
 
     render() {
