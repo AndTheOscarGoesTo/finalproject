@@ -15,18 +15,18 @@ class Navigation extends Component {
             <Router>
                 <Fragment>
                     <div>
-                        {/* <h1>Louiji </h1>
+                        <h1>Louiji </h1>
                         
-                        <Link to="/goodbye">Goodbye</Link> */}
-                        <Profile />
+                        <Link to="/goodbye">Goodbye</Link>
+                        
                     </div>
                     
-                    {/* <AuthButton /> */}
+                    <AuthButton />
                     <Switch>
-                        {/* <Route exact path="/" component={HelloWorld} />
+                        <Route exact path="/" component={HelloWorld} />
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
-                        <PrivateRoute path="/goodbye" component={GoodbyeWorld} /> */}
+                        <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>
             </Router>
