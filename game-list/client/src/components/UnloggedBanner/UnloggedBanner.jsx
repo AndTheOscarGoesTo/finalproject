@@ -16,6 +16,7 @@ class UnloggedBanner extends Component {
             <div className={style.logged_out_banner}>
                 <div className={style.logged_out_content}>
                     <Link style={{textDecoration: 'none', color: 'white'}} to="/" className={style.logo}> vidya </Link>
+                    <Link style={{textDecoration: 'none', color: 'white'}} className={style.register}to="/newuser">Register</Link>
                     <AuthButton />
                 </div>
             </div>
