@@ -11,8 +11,19 @@ a{
 }
 
 body {
-    background-color: #212529;
-    h1{
-        color: aqua;
-    }
+    background:linear-gradient( #333536, #131618);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.root {
+    height: 100vh;
+}
+.right.carousel-control, .left.carousel-control {
+    display: none;
 }

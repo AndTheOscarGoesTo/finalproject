@@ -8,7 +8,7 @@ import { post } from '../../services/base'
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import Home from '../Home/Home';
 
-class NewUser extends Component {
+class NewUserForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -62,27 +62,14 @@ class NewUser extends Component {
     }
 
     render() {
-    
-    //    const { from } = this.props.location.state || { from: { pathname: '/' } };
-    //    const { redirectToReferrer } = this.state;
-
-    //    if (redirectToReferrer) {
-    //        return (
-    //            <Redirect to={from} />
-    //        );
-    //    }
 
        return (
             <Fragment>
-                <UnloggedBanner />
                     <div className={style.form}>
-                    <h1> Create an Account</h1>
                     <form onSubmit={(e) => this.register(e)}>
                         <div className="form-group">
-                            <input id="firstname" className={style.input} type="text" placeholder="First Name" onChange={(e) => this.handleFirstNameChange(e.target.value)} required /> 
-                        </div>
-                        <div className="form-group">
-                            <input id="lastname" className={style.input} type="text" placeholder="Last Name" onChange={(e) => this.handleLastNameChange(e.target.value)} required /> 
+                            <input id="firstname" className={style.inputName} style={{width: '10em'}} type="text" placeholder="First Name" onChange={(e) => this.handleFirstNameChange(e.target.value)} required />
+                            <input id="lastname" className={style.inputName} style={{width: '10em', marginLeft: '1em'}} type="text" placeholder="Last Name" onChange={(e) => this.handleLastNameChange(e.target.value)} required />  
                         </div>
                         <div className="form-group">
                             <input id="handle" className={style.input} type="text" placeholder="Username" onChange={(e) => this.handleHandleChange(e.target.value)} required /> 
@@ -104,4 +91,4 @@ class NewUser extends Component {
     }
 }
 
-export default NewUser;
+export default NewUserForm;

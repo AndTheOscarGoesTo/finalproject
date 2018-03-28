@@ -5,8 +5,9 @@ import { isLoggedIn, me } from '../../services/user';
 import { get } from '../../services/base';
 
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
-import LoggedBanner from '../LoggedBanner/LoggedBanner'
-
+import LoggedBanner from '../LoggedBanner/LoggedBanner';
+import ForumCarousel from '../ForumCarousel/ForumCarousel';
+import NewUserForm from '../NewUser/NewUserForm';
 
 class Home extends Component {
 
@@ -40,9 +41,17 @@ class Home extends Component {
         return (
             <Fragment>
             <UnloggedBanner />
-            <div className={style.leftsquare}>
-                <h1> yeet </h1>
-            </div>
+                <div className={style.homeBody}>
+                    <div className={style.leftsquare}>
+                        <div className={style.carouselContainer}>
+                            <ForumCarousel />
+                        </div>
+                    </div>
+                    <div className={style.rightsquare}>
+                        <h1>Join us.</h1>
+                        <NewUserForm />
+                    </div>
+                </div>
             </Fragment>
         )
     }
