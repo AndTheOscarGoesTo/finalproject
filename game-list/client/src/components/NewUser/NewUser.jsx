@@ -25,7 +25,7 @@ class Login extends Component {
 
 
     onButtonClick() {
-            console.log('making request------')
+            if (this.state.password === this.state.passwordconf) {
             post('http://localhost:3000/api/users', {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
@@ -36,6 +36,9 @@ class Login extends Component {
             .then((results) => {
                 console.log('worked maybe')
             })
+        } else {
+            alert('passwords don\'t match fam')
+        }
     }
     handleFirstNameChange(value) {
         this.setState({ firstname: value})
@@ -72,31 +75,26 @@ class Login extends Component {
        return (
             <Fragment>
                 <UnloggedBanner />
-                    <div className={style.text}>
+                    <div className={style.form}>
+                    <h1> Create an Account</h1>
                     <form onSubmit={(e) => this.register(e)}>
                         <div className="form-group">
-                            <label htmlFor="firstname">First Name</label>
-                            <input id="firstname" className="form-control" type="text" onChange={(e) => this.handleFirstNameChange(e.target.value)} required /> 
+                            <input id="firstname" className={style.input} type="text" placeholder="First Name" onChange={(e) => this.handleFirstNameChange(e.target.value)} required /> 
                         </div>
                         <div className="form-group">
-                            <label htmlFor="lastname">Last Name</label>
-                            <input id="lastname" className="form-control" type="text" onChange={(e) => this.handleLastNameChange(e.target.value)} required /> 
+                            <input id="lastname" className={style.input} type="text" placeholder="Last Name" onChange={(e) => this.handleLastNameChange(e.target.value)} required /> 
                         </div>
                         <div className="form-group">
-                            <label htmlFor="handle">Username</label>
-                            <input id="handle" className="form-control" type="text" onChange={(e) => this.handleHandleChange(e.target.value)} required /> 
+                            <input id="handle" className={style.input} type="text" placeholder="Username" onChange={(e) => this.handleHandleChange(e.target.value)} required /> 
                         </div>
                         <div className="form-group">
-                            <label htmlFor="email">Email</label>
-                            <input id="email" className="form-control" type="email" onChange={(e) => this.handleEmailChange(e.target.value)} required /> 
+                            <input id="email" className={style.input} type="email" placeholder="Email" onChange={(e) => this.handleEmailChange(e.target.value)} required /> 
                         </div>
                         <div className="form-group">
-                            <label htmlFor="password">Password</label>
-                            <input id="password" className="form-control" type="password" onChange={(e) => this.handlePasswordChange(e.target.value)} required /> 
+                            <input id="password" className={style.input} type="password" placeholder="Password" onChange={(e) => this.handlePasswordChange(e.target.value)} required />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="password">Confirm Password</label>
-                            <input id="passwordconf" className="form-control" type="password" onChange={(e) => this.handlePasswordConfChange(e.target.value)} required /> 
+                            <input id="passwordconf" className={style.input} type="password" placeholder="Confirm Password" onChange={(e) => this.handlePasswordConfChange(e.target.value)} required /> 
                         </div>
                         <button onClick= { (event) => this.onButtonClick()} value="Login" className="btn btn-primary" >Submit</button>
                     </form>
