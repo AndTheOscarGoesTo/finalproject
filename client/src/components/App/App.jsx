@@ -17,14 +17,6 @@ class Navigation extends Component {
         return (
             <Router>
                 <Fragment>
-                    <div>
-                        <h1>Louiji </h1>
-                        
-                        <Link to="/goodbye">Goodbye</Link>
-                       
-                    </div>
-                    
-                    <AuthButton />
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route path="/login" component={Login} />

@@ -1,0 +1,240 @@
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);@import url(https://fonts.googleapis.com/css?family=Playfair+Display);.UnloggedBanner-module__logged_out_banner__fHFQz {
+  height: 4em;
+  width: 100%;
+  background: linear-gradient(#9c129e, #630664);
+  color: white; }
+
+.UnloggedBanner-module__logged_out_content__1aB6u {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  color: white; }
+
+.UnloggedBanner-module__logged_out_content__1aB6u h1 {
+  display: inline-block; }
+
+.UnloggedBanner-module__logo__3__q8 {
+  color: white;
+  font-size: 3em; }
+
+.UnloggedBanner-module__link__1KlqS {
+  color: white;
+  text-decoration: none;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  margin-left: 2em;
+  font-size: 12px; }
+
+.UnloggedBanner-module__link__1KlqS :hover {
+  background: #630664; }
+.authButton-module__button__2-2HB {
+  color: white;
+  text-decoration: none;
+  text-align: center; }
+.App__linkContainer__sXnf4 {
+  padding: 1em; }
+  .App__linkContainer__sXnf4 a {
+    color: palevioletred;
+    text-transform: uppercase; }
+
+body {
+  background: linear-gradient(#333536, #131618);
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%; }
+
+.App__root__1Ko8v {
+  height: 100vh; }
+
+.App__right__3DKH6.App__carousel-control__2Oc5F, .App__left__3bJNs.App__carousel-control__2Oc5F {
+  display: none; }
+body {
+  background-color: #2b3131; }
+
+.ProfileCard__linkContainer__2AxQx {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+  .ProfileCard__linkContainer__2AxQx h1 {
+    color: white; }
+  .ProfileCard__linkContainer__2AxQx figure {
+    font-family: 'Open Sans', Arial, sans-serif;
+    position: relative;
+    float: left;
+    margin: 5% 23%;
+    min-width: 55%;
+    max-width: 55%;
+    width: 100%;
+    color: #000000;
+    text-align: center;
+    line-height: 1.4em;
+    font-size: 14px;
+    box-shadow: none !important; }
+  .ProfileCard__linkContainer__2AxQx figure div:nth-child(1) {
+    display: inline-block;
+    width: 20%;
+    z-index: 1;
+    position: relative;
+    padding: 10px;
+    border: 2px solid #6e5994;
+    border-radius: 50%;
+    transform: scale(1); }
+  .ProfileCard__linkContainer__2AxQx figure img {
+    border-radius: 50%;
+    max-width: 100%;
+    vertical-align: top; }
+  .ProfileCard__linkContainer__2AxQx figure figcaption {
+    width: 100%;
+    background-color: #F2F2F2;
+    color: #555;
+    padding: 125px 25px 25px;
+    margin-top: -100px;
+    display: inline-block; }
+  .ProfileCard__linkContainer__2AxQx figure h3,
+  .ProfileCard__linkContainer__2AxQx figure h4,
+  .ProfileCard__linkContainer__2AxQx figure p {
+    margin: 0 0 5px; }
+  .ProfileCard__linkContainer__2AxQx figure h3 {
+    font-weight: 600;
+    font-size: 2.3em;
+    font-family: 'Playfair Display', Arial, sans-serif; }
+  .ProfileCard__linkContainer__2AxQx figure h4 {
+    color: #8c8c8c;
+    font-weight: 400;
+    letter-spacing: 2\4px; }
+  .ProfileCard__linkContainer__2AxQx figure p {
+    font-size: 0.9em;
+    letter-spacing: 2px;
+    opacity: 0.9; }
+  .ProfileCard__linkContainer__2AxQx figure i {
+    padding: 10px 2px;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: normal;
+    color: purple;
+    opacity: 0.75; }
+  .ProfileCard__linkContainer__2AxQx .ProfileCard__Profileview__2AHtO div:nth-child(2) {
+    margin-left: 20%;
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1; }
+  .ProfileCard__linkContainer__2AxQx .ProfileCard__Profileview__2AHtO div a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; }
+  .ProfileCard__linkContainer__2AxQx .ProfileCard__Profileview__2AHtO div:hover div:nth-child(2) {
+    display: block; }
+  .ProfileCard__linkContainer__2AxQx .ProfileCard__Profileview__2AHtO div a:hover {
+    background-color: purple; }
+  .ProfileCard__linkContainer__2AxQx .ProfileCard__Profileview__2AHtO div:nth-child(1) {
+    border: 0px solid #691818; }
+  .ProfileCard__linkContainer__2AxQx .ProfileCard__ProfileViewPort__1F9Ls .ProfileCard__boxedDiv__2AmzF {
+    background-color: #893667;
+    margin-top: 10%;
+    border: 3px solid black;
+    width: 100%;
+    height: 500px;
+    border-radius: 50px; }
+.Forum__main__lNwqh {
+  margin-left: 20%;
+  width: 60%; }
+.Home-module__leftsquare__1BGVy {
+  height: 20em;
+  width: 50%;
+  float: left;
+  margin-top: 6em; }
+
+.Home-module__rightsquare__3uXKp {
+  height: 20em;
+  width: 50%;
+  float: right;
+  color: white;
+  margin-top: 6em;
+  padding: 4em;
+  padding-left: 2em; }
+
+.Home-module__carouselContainer__mUNhq {
+  margin: 0 auto;
+  max-width: 80%;
+  height: 630px;
+  box-shadow: -10px 10px 5px black; }
+
+.Home-module__homeBody__a-PxH {
+  background-color: white;
+  height: 100%;
+  margin: auto;
+  width: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+.LoggedBanner-module__logged_out_banner__W74XI {
+  height: 4em;
+  width: 100%;
+  background: linear-gradient(#9c129e, #630664);
+  color: white; }
+
+.LoggedBanner-module__logged_out_content__3UUDd {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  color: white; }
+
+.LoggedBanner-module__logged_out_content__3UUDd h1 {
+  display: inline-block; }
+
+.LoggedBanner-module__logo__1WYQf {
+  color: white;
+  font-size: 3em; }
+
+.LoggedBanner-module__link__3o5Kx {
+  color: white;
+  text-decoration: none;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  margin-left: 2em;
+  font-size: 12px; }
+
+.LoggedBanner-module__link__3o5Kx :hover {
+  background: #630664; }
+.ForumCarousel-module__carousel__1C0vI {
+  height: 45em; }
+
+.ForumCarousel-module__right__3ZEGO.ForumCarousel-module__carousel-control__28uug, .ForumCarousel-module__left__20-PB.ForumCarousel-module__carousel-control__28uug {
+  display: none; }
+
+.ForumCarousel-module__cardBody__17-ZC {
+  background-color: white;
+  padding: 3em;
+  border-radius: 3px; }
+.NewUser-module__form__mKZLq {
+  color: white;
+  margin: 0 auto; }
+
+.NewUser-module__form__mKZLq h1 {
+  color: white; }
+
+.NewUser-module__input__3IQ3C {
+  color: black;
+  margin: 0 auto;
+  border-radius: 5px;
+  width: 21em;
+  height: 2em;
+  font-size: 24px; }
+
+.NewUser-module__inputName__1VphM {
+  color: black;
+  margin: 0 auto;
+  border-radius: 5px;
+  width: 20em;
+  height: 2em;
+  font-size: 24px; }
