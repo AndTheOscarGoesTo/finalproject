@@ -8,6 +8,7 @@ import Logout from '../auth/logout';
 import AuthButton from '../auth/authButton';
 import styles from "./App.scss";
 import Profile from '../Profile/Profile'
+import Forum from '../Forum/Forum';
 class Navigation extends Component {
 
     render() {
@@ -18,7 +19,7 @@ class Navigation extends Component {
                         <h1>Louiji </h1>
                         
                         <Link to="/goodbye">Goodbye</Link>
-                        
+                       
                     </div>
                     
                     <AuthButton />
