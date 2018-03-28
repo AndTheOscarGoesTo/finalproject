@@ -3,6 +3,8 @@ import * as userService from '../../services/user';
 import { Redirect } from 'react-router-dom';
 import IndeterminateProgress from '../utilities/indeterminateProgress';
 
+import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -47,6 +49,7 @@ class Login extends Component {
     }
 
     render() {
+    
        const { from } = this.props.location.state || { from: { pathname: '/' } };
        const { redirectToReferrer, checkingLogin } = this.state;
 
@@ -61,6 +64,7 @@ class Login extends Component {
 
        return (
            <Fragment>
+            <UnloggedBanner />
                 <p>You must be logged in to view this page.</p>
                 <form onSubmit={(e) => this.login(e)}>
                     <div className="form-group">

@@ -15,7 +15,8 @@ function checkLogin() {
         .then((user) => {
             loggedIn = true;
             return Promise.resolve(true);
-        }).catch(() => {
+        }).catch((err) => {
+            console.log(err);
             return Promise.resolve(false);
         });
     }
@@ -42,6 +43,9 @@ function login(email, password) {
                 throw jsonResponse;
             });
         }
+    })
+    .catch((err) => {
+        console.log(err);
     });
 }
 
@@ -54,4 +58,4 @@ function me() {
     return baseService.get('/api/users/me');
 }
 
-export { isLoggedIn, checkLogin, login, logout };
+export { isLoggedIn, checkLogin, login, logout, me };
