@@ -5,6 +5,7 @@
   "main": "server/lib/index.js",
   "scripts": {
     "build:client": "webpack",
+    "build:sql": "concat-cli -f server/src/sql/procedures/*.sql -o server/src/sql/build/build.sql",
     "build:server": "babel ./server/src -d ./server/lib",
     "dev": "concurrently -k \"npm run watch:client\" \"npm run watch:server\" \"nodemon --watch server/lib --delay 1\"",
     "prepare": "npm run build:server",
@@ -44,7 +45,9 @@
     "webpack": "^3.10.0"
   },
   "devDependencies": {
+    "concat-cli": "^4.0.0",
     "concurrently": "^3.5.1",
+    "dotenv": "^5.0.1",
     "nodemon": "^1.17.2"
   }
 }

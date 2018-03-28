@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 import { join } from 'path';
 import express from 'express';
 import morgan from 'morgan';

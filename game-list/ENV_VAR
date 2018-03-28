@@ -1,4 +1,0 @@
-export DB_NAME="heroku_6204c741205379d"
-export DB_HOST="us-cdbr-iron-east-05.cleardb.net"
-export DB_USER="be5990e6d016d9"
-export DB_PASSWORD="ef074a1a"
