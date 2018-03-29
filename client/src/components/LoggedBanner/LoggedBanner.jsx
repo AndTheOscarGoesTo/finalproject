@@ -16,7 +16,7 @@ class LoggedBanner extends Component {
             <div className={style.logged_out_banner}>
                 <div className={style.logged_out_content}>
                     <nav className={`navbar navbar-expand-sm`}>
-                        <div class="navbar-header">
+                        <div className="navbar-header">
                         <Link style={{textDecoration: 'none', color: 'white'}} to="/" className={`navbar-brand ${style.logo}`}> vidya </Link>
                         </div>
                         <ul className="nav navbar-nav navbar-right">

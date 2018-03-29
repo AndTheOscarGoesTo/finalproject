@@ -17,8 +17,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = (0, _express.Router)();
 
 router.post('/login', function (req, res, next) {
+    console.log("----routing");
     _passport2.default.authenticate('local', function (err, token, info) {
         if (err) {
+            console.log("----routing err");
             console.log(err);
             return res.sendStatus(500);
         } else if (!token) {

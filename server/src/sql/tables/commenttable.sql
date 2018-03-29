@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS PostComments;
 DROP TABLE IF EXISTS Comments;
 
 CREATE TABLE Comments (
