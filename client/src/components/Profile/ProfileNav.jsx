@@ -19,7 +19,7 @@ class ProfileNav extends Component {
 
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Games</a>
+                        <a className="nav-link" href="#">Games </a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">Activity</a>

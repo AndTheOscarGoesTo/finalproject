@@ -6,12 +6,9 @@ import ProfilePic from './ProfilePic';
 import ProfileNav from './ProfileNav';
 import ProfileViewPort from './ProfileViewPort'
 import LoggedBanner from '../LoggedBanner/LoggedBanner';
-<<<<<<< HEAD
-=======
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import { isLoggedIn, me } from '../../services/user';
 
->>>>>>> 9ddaed3f0efa04800554de9593462348881beca9
 class Profile extends Component {
 
     render() {
@@ -29,13 +26,6 @@ class Profile extends Component {
             <Fragment>
                 <UnloggedBanner />
                     <div className={styles.linkContainer}>
-<<<<<<< HEAD
-                        
-                        
-                        
-                        <LoggedBanner />
-=======
->>>>>>> 9ddaed3f0efa04800554de9593462348881beca9
                         <ProfilePic />
                     </div>
             </Fragment>

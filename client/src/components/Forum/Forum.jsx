@@ -55,10 +55,10 @@ class Forum extends Component {
               <div class="card-body">
                 <h5 class="card-title">PETA protest Monster hunter</h5>
                 <p class="card-text">Ooh whoa, ooh whoa, ooh whoa
-You know you love me, I know you care
-Just shout whenever and I'll be there
-You are my love, you are my heart
-And we will never, ever, ever be apart</p>
+                                    You know you love me, I know you care
+                                    Just shout whenever and I'll be there
+                                    You are my love, you are my heart
+                                    And we will never, ever, ever be apart</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -67,12 +67,12 @@ And we will never, ever, ever be apart</p>
               <div class="card-body">
                 <h5 class="card-title">Nipples, cool or for fools?</h5>
                 <p class="card-text">Uh huh, uh huh
-Yeah, Rihanna
-Uh huh, uh huh 
-Good girl gone bad
-Uh huh, uh huh 
-Take three, action
-Uh huh, uh huh, ho</p>
+                                    Yeah, Rihanna
+                                    Uh huh, uh huh 
+                                  Good girl gone bad
+                                  Uh huh, uh huh 
+                                  Take three, action
+                                  Uh huh, uh huh, ho</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -81,9 +81,9 @@ Uh huh, uh huh, ho</p>
               <div class="card-body">
                 <h5 class="card-title">Shoot a man 3 revealed</h5>
                 <p class="card-text">Somebody once told me the world is gonna roll me
-I ain't the sharpest tool in the shed
-She was looking kind of dumb with her finger and her thumb
-In the shape of an "L" on her forehead</p>
+                                    I ain't the sharpest tool in the shed
+                                    She was looking kind of dumb with her finger and her thumb
+                                    In the shape of an "L" on her forehead</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -95,10 +95,10 @@ In the shape of an "L" on her forehead</p>
               <div class="card-body">
                 <h5 class="card-title">PETA protest Monster hunter</h5>
                 <p class="card-text">Ooh whoa, ooh whoa, ooh whoa
-You know you love me, I know you care
-Just shout whenever and I'll be there
-You are my love, you are my heart
-And we will never, ever, ever be apart</p>
+                                    You know you love me, I know you care
+                                    Just shout whenever and I'll be there
+                                    You are my love, you are my heart
+                                    And we will never, ever, ever be apart</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -107,12 +107,12 @@ And we will never, ever, ever be apart</p>
               <div class="card-body">
                 <h5 class="card-title">Nipples, cool or for fools?</h5>
                 <p class="card-text">Uh huh, uh huh
-Yeah, Rihanna
-Uh huh, uh huh 
-Good girl gone bad
-Uh huh, uh huh 
-Take three, action
-Uh huh, uh huh, ho</p>
+                                    Yeah, Rihanna
+                                    Uh huh, uh huh 
+                                    Good girl gone bad
+                                    Uh huh, uh huh 
+                                    Take three, action
+                                    Uh huh, uh huh, ho</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -121,9 +121,9 @@ Uh huh, uh huh, ho</p>
               <div class="card-body">
                 <h5 class="card-title">Shoot a man 3 revealed</h5>
                 <p class="card-text">Somebody once told me the world is gonna roll me
-I ain't the sharpest tool in the shed
-She was looking kind of dumb with her finger and her thumb
-In the shape of an "L" on her forehead</p>
+                                    I ain't the sharpest tool in the shed
+                                    She was looking kind of dumb with her finger and her thumb
+                                    In the shape of an "L" on her forehead</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
