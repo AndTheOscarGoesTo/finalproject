@@ -1,4 +1,4 @@
-@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);@import url(https://fonts.googleapis.com/css?family=Playfair+Display);.UnloggedBanner-module__logged_out_banner__fHFQz {
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);@import url(https://fonts.googleapis.com/css?family=Playfair+Display);@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);.UnloggedBanner-module__logged_out_banner__fHFQz {
   height: 4em;
   width: 100%;
   background: linear-gradient(#9c129e, #630664);
@@ -144,38 +144,6 @@ body {
     width: 100%;
     height: 500px;
     border-radius: 50px; }
-.Forum__main__lNwqh {
-  margin-left: 20%;
-  width: 60%; }
-.Home-module__leftsquare__1BGVy {
-  height: 20em;
-  width: 50%;
-  float: left;
-  margin-top: 6em; }
-
-.Home-module__rightsquare__3uXKp {
-  height: 20em;
-  width: 50%;
-  float: right;
-  color: white;
-  margin-top: 6em;
-  padding: 4em;
-  padding-left: 2em; }
-
-.Home-module__carouselContainer__mUNhq {
-  margin: 0 auto;
-  max-width: 80%;
-  height: 630px;
-  box-shadow: -10px 10px 5px black; }
-
-.Home-module__homeBody__a-PxH {
-  background-color: white;
-  height: 100%;
-  margin: auto;
-  width: 80%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; }
 .LoggedBanner-module__logged_out_banner__W74XI {
   height: 4em;
   width: 100%;
@@ -206,6 +174,52 @@ body {
 
 .LoggedBanner-module__link__3o5Kx :hover {
   background: #630664; }
+.Forum__main__lNwqh {
+  margin-left: 20%;
+  width: 60%; }
+
+.Forum__Scroll__toiaQ {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background: linear-gradient(#9c129e, #630664);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px; }
+.Home-module__leftsquare__1BGVy {
+  height: 20em;
+  width: 50%;
+  float: left;
+  margin-top: 6em; }
+
+.Home-module__rightsquare__3uXKp {
+  height: 20em;
+  width: 50%;
+  float: right;
+  color: white;
+  margin-top: 6em;
+  padding: 4em;
+  padding-left: 2em; }
+
+.Home-module__carouselContainer__mUNhq {
+  margin: 0 auto;
+  max-width: 80%;
+  height: 630px;
+  box-shadow: -10px 10px 5px black; }
+
+.Home-module__homeBody__a-PxH {
+  background-color: white;
+  height: 100%;
+  margin: auto;
+  width: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
 .ForumCarousel-module__carousel__1C0vI {
   height: 45em; }
 

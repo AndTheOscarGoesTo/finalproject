@@ -10,15 +10,16 @@ import styles from "./ProfileCard.scss";
 import ProfilePic from './ProfilePic';
 import ProfileNav from './ProfileNav';
 import ProfileViewPort from './ProfileViewPort'
+import LoggedBanner from '../LoggedBanner/LoggedBanner';
 class Profile extends Component {
 
     render() {
         return (
                     <div className={styles.linkContainer}>
-                        <h1>Vidya</h1>
                         
                         
                         
+                        <LoggedBanner />
                         <ProfilePic />
                         
                         

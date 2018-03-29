@@ -3,23 +3,22 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import style from './Forum.scss'
 import ForumHead from './ForumHead';
 import Scroll from './scroll';
-
+import LoggedBanner from '../LoggedBanner/LoggedBanner'
 class Forum extends Component {
 
     render() {
         return (
+          <Fragment>
+            <LoggedBanner />
             <div className ={ style.main }>
+              
             <ForumHead />
-            <div class="card-group">
+            <div class="card-group" >
             <div class="card">
-              <img class="card-img-top" src="https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg" alt="Card image cap" />
+              <img class="card-img-top" src="https://via.placeholder.com/450x300" alt="Card image cap" />
               <div class="card-body">
-                <h5 class="card-title">PETA protest Monster hunter.</h5>
-                <p class="card-text">Ooh whoa, ooh whoa, ooh whoa
-                                    You know you love me, I know you care
-                                    Just shout whenever and I'll be there
-                                    You are my love, you are my heart
-                                    And we will never, ever, ever be apart</p>
+                <h5 class="card-title">submit Post<i className="ion-plus-circled"></i></h5>
+                <p class="card-text">Add a post </p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -131,7 +130,7 @@ In the shape of an "L" on her forehead</p>
           </div>
           <Scroll />
           </div>
-            
+            </Fragment>
 
          
         )

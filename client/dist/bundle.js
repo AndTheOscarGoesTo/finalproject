@@ -5853,7 +5853,7 @@ TabContent.childContextTypes = childContextTypes;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"main":"Forum__main__lNwqh"};
+module.exports = {"main":"Forum__main__lNwqh","Scroll":"Forum__Scroll__toiaQ"};
 
 /***/ }),
 /* 105 */
@@ -28967,6 +28967,8 @@ var Navigation = function (_Component) {
                         _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _login2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: '/logout', component: _logout2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: '/newuser', component: _NewUser2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { path: '/profile', component: _Profile2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { path: '/forum', component: _Forum2.default }),
                         _react2.default.createElement(_privateRoute2.default, { path: '/goodbye', component: _goodbye2.default })
                     )
                 )
@@ -44687,6 +44689,10 @@ var _ProfileViewPort = __webpack_require__(68);
 
 var _ProfileViewPort2 = _interopRequireDefault(_ProfileViewPort);
 
+var _LoggedBanner = __webpack_require__(372);
+
+var _LoggedBanner2 = _interopRequireDefault(_LoggedBanner);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44710,11 +44716,7 @@ var Profile = function (_Component) {
             return _react2.default.createElement(
                 'div',
                 { className: _ProfileCard2.default.linkContainer },
-                _react2.default.createElement(
-                    'h1',
-                    null,
-                    'Vidya'
-                ),
+                _react2.default.createElement(_LoggedBanner2.default, null),
                 _react2.default.createElement(_ProfilePic2.default, null)
             );
         }
@@ -45116,6 +45118,10 @@ var _scroll = __webpack_require__(370);
 
 var _scroll2 = _interopRequireDefault(_scroll);
 
+var _LoggedBanner = __webpack_require__(372);
+
+var _LoggedBanner2 = _interopRequireDefault(_LoggedBanner);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -45137,274 +45143,280 @@ var Forum = function (_Component) {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'div',
-        { className: _Forum2.default.main },
-        _react2.default.createElement(_ForumHead2.default, null),
+        _react.Fragment,
+        null,
+        _react2.default.createElement(_LoggedBanner2.default, null),
         _react2.default.createElement(
           'div',
-          { 'class': 'card-group' },
+          { className: _Forum2.default.main },
+          _react2.default.createElement(_ForumHead2.default, null),
           _react2.default.createElement(
             'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
+            { 'class': 'card-group' },
             _react2.default.createElement(
               'div',
-              { 'class': 'card-body' },
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://via.placeholder.com/450x300', alt: 'Card image cap' }),
               _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'PETA protest Monster hunter.'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Ooh whoa, ooh whoa, ooh whoa You know you love me, I know you care Just shout whenever and I\'ll be there You are my love, you are my heart And we will never, ever, ever be apart'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
+                'div',
+                { 'class': 'card-body' },
                 _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
+                  'h5',
+                  { 'class': 'card-title' },
+                  'submit Post',
+                  _react2.default.createElement('i', { className: 'ion-plus-circled' })
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  'Add a post '
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
+              _react2.default.createElement(
+                'div',
+                { 'class': 'card-body' },
+                _react2.default.createElement(
+                  'h5',
+                  { 'class': 'card-title' },
+                  'Nipples, cool or for fools?'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
+              _react2.default.createElement(
+                'div',
+                { 'class': 'card-body' },
+                _react2.default.createElement(
+                  'h5',
+                  { 'class': 'card-title' },
+                  'Shoot a man 3 revealed!'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
                 )
               )
             )
           ),
           _react2.default.createElement(
             'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
+            { 'class': 'card-group' },
             _react2.default.createElement(
               'div',
-              { 'class': 'card-body' },
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
               _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'Nipples, cool or for fools?'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
+                'div',
+                { 'class': 'card-body' },
                 _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
+                  'h5',
+                  { 'class': 'card-title' },
+                  'PETA protest Monster hunter'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  'Ooh whoa, ooh whoa, ooh whoa You know you love me, I know you care Just shout whenever and I\'ll be there You are my love, you are my heart And we will never, ever, ever be apart'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
+              _react2.default.createElement(
+                'div',
+                { 'class': 'card-body' },
+                _react2.default.createElement(
+                  'h5',
+                  { 'class': 'card-title' },
+                  'Nipples, cool or for fools?'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
+              _react2.default.createElement(
+                'div',
+                { 'class': 'card-body' },
+                _react2.default.createElement(
+                  'h5',
+                  { 'class': 'card-title' },
+                  'Shoot a man 3 revealed'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
                 )
               )
             )
           ),
           _react2.default.createElement(
             'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
+            { 'class': 'card-group' },
             _react2.default.createElement(
               'div',
-              { 'class': 'card-body' },
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
               _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'Shoot a man 3 revealed!'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
+                'div',
+                { 'class': 'card-body' },
                 _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
+                  'h5',
+                  { 'class': 'card-title' },
+                  'PETA protest Monster hunter'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  'Ooh whoa, ooh whoa, ooh whoa You know you love me, I know you care Just shout whenever and I\'ll be there You are my love, you are my heart And we will never, ever, ever be apart'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
                 )
               )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { 'class': 'card-group' },
-          _react2.default.createElement(
-            'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
+            ),
             _react2.default.createElement(
               'div',
-              { 'class': 'card-body' },
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
               _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'PETA protest Monster hunter'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Ooh whoa, ooh whoa, ooh whoa You know you love me, I know you care Just shout whenever and I\'ll be there You are my love, you are my heart And we will never, ever, ever be apart'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
+                'div',
+                { 'class': 'card-body' },
                 _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
+                  'h5',
+                  { 'class': 'card-title' },
+                  'Nipples, cool or for fools?'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
                 )
               )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
+            ),
             _react2.default.createElement(
               'div',
-              { 'class': 'card-body' },
+              { 'class': 'card' },
+              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
               _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'Nipples, cool or for fools?'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
+                'div',
+                { 'class': 'card-body' },
                 _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
-                )
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
-            _react2.default.createElement(
-              'div',
-              { 'class': 'card-body' },
-              _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'Shoot a man 3 revealed'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
+                  'h5',
+                  { 'class': 'card-title' },
+                  'Shoot a man 3 revealed'
+                ),
                 _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
-                )
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(
-          'div',
-          { 'class': 'card-group' },
-          _react2.default.createElement(
-            'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
-            _react2.default.createElement(
-              'div',
-              { 'class': 'card-body' },
-              _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'PETA protest Monster hunter'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Ooh whoa, ooh whoa, ooh whoa You know you love me, I know you care Just shout whenever and I\'ll be there You are my love, you are my heart And we will never, ever, ever be apart'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
+                  'p',
+                  { 'class': 'card-text' },
+                  'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
+                ),
                 _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
+                  'p',
+                  { 'class': 'card-text' },
+                  _react2.default.createElement(
+                    'small',
+                    { 'class': 'text-muted' },
+                    'Timestamp here'
+                  )
                 )
               )
             )
           ),
-          _react2.default.createElement(
-            'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
-            _react2.default.createElement(
-              'div',
-              { 'class': 'card-body' },
-              _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'Nipples, cool or for fools?'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
-                )
-              )
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { 'class': 'card' },
-            _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
-            _react2.default.createElement(
-              'div',
-              { 'class': 'card-body' },
-              _react2.default.createElement(
-                'h5',
-                { 'class': 'card-title' },
-                'Shoot a man 3 revealed'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
-              ),
-              _react2.default.createElement(
-                'p',
-                { 'class': 'card-text' },
-                _react2.default.createElement(
-                  'small',
-                  { 'class': 'text-muted' },
-                  'Timestamp here'
-                )
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(_scroll2.default, null)
+          _react2.default.createElement(_scroll2.default, null)
+        )
       );
     }
   }]);
@@ -45608,7 +45620,11 @@ var Forum = function (_Component) {
     }, {
         key: 'render',
         value: function render() {
-            return _react2.default.createElement('button', { className: _Forum2.default.Scroll, onClick: this.topFunction });
+            return _react2.default.createElement(
+                'button',
+                { className: _Forum2.default.Scroll, onClick: this.topFunction },
+                _react2.default.createElement('i', { className: 'ion-chevron-up' })
+            );
         }
     }]);
 
