@@ -24,7 +24,9 @@ var _passport2 = _interopRequireDefault(_passport);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// require("dotenv").config();
 require("dotenv").config();
+console.log(process.env.DB_HOST);
 
 
 var CLIENT_PATH = (0, _path.join)(__dirname, '../../client');

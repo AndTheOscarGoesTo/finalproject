@@ -1,4 +1,6 @@
+// require("dotenv").config();
 require("dotenv").config();
+console.log(process.env.DB_HOST);
 import { join } from 'path';
 import express from 'express';
 import morgan from 'morgan';

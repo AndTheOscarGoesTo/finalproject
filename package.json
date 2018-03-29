@@ -47,7 +47,6 @@
   "devDependencies": {
     "concat-cli": "^4.0.0",
     "concurrently": "^3.5.1",
-    "dotenv": "^5.0.1",
     "nodemon": "^1.17.2"
   }
 }
