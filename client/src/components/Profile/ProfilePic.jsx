@@ -21,7 +21,7 @@ class ProfilePic extends Component {
                 </p>
                 
               <div className="icons">
-              <a href="#"><i class="ion-social-reddit"></i></a>
+              <a href="#"><i className="ion-social-reddit"></i></a>
                 <a href="#"> <i className="ion-social-twitter"></i></a>
                 <a href="#"> <i className="ion-social-vimeo"></i></a>
                 <a href="#"> <i className="ion-social-instagram"></i></a>
