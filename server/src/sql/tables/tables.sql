@@ -1,11 +1,3 @@
-DROP TABLE IF EXISTS Tokens;
-
-CREATE TABLE Tokens (
-  id int NOT NULL AUTO_INCREMENT,
-  userid int NOT NULL,
-  PRIMARY KEY (id, userid)
-);
-
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users (
@@ -18,6 +10,16 @@ CREATE TABLE Users (
   _created datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ); 
+
+DROP TABLE IF EXISTS Tokens;
+
+CREATE TABLE Tokens (
+  id int NOT NULL AUTO_INCREMENT,
+  userid int NOT NULL,
+  PRIMARY KEY (id, userid),
+  KEY usersFK_idx (userid),
+  CONSTRAINT usersFK FOREIGN KEY (userid) REFERENCES Users(id) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
 
 DROP TABLE IF EXISTS Status;
 
@@ -94,7 +96,7 @@ CREATE TABLE Forums (
     _created datetime default current_timestamp
 );
 
-DROP TABLE IF EXISTS PostList;
+
 DROP TABLE IF EXISTS CommentList;
 
 CREATE TABLE CommentList (
@@ -102,7 +104,7 @@ CREATE TABLE CommentList (
     commentid int not null
 );
 
-DROP TABLE IF EXISTS PostComments;
+
 DROP TABLE IF EXISTS Comments;
 
 CREATE TABLE Comments (
@@ -112,11 +114,3 @@ CREATE TABLE Comments (
     _created datetime default current_timestamp
 );
 
-DROP TABLE IF EXISTS Chat;
-
-CREATE TABLE Chat (
-    id int not null auto_increment primary key,
-    body text,
-    userto int not null,
-    userfrom int not null
-);

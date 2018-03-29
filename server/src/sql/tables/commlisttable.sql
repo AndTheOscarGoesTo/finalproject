@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS PostList;
 DROP TABLE IF EXISTS CommentList;
 
 CREATE TABLE CommentList (
