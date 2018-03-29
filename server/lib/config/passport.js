@@ -20,8 +20,8 @@ var _tokens = require('../utils/tokens');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var usersTable = new _table2.default('Users');
-var tokensTable = new _table2.default('Tokens');
+var usersTable = new _table2.default('users');
+var tokensTable = new _table2.default('tokens');
 
 function configurePassport(app) {
     _passport2.default.use(new _passportLocal.Strategy({

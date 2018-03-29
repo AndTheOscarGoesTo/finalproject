@@ -11,6 +11,12 @@ var _mysql2 = _interopRequireDefault(_mysql);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+require("dotenv").config();
+
+
+console.log(process.env.DB_HOST);
+console.log(process.env.DB_PASSWORD);
+
 var pool = _mysql2.default.createPool({
     connectionLimit: 10,
     host: process.env.DB_HOST,
