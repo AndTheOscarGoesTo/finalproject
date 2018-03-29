@@ -144,6 +144,36 @@ body {
     width: 100%;
     height: 500px;
     border-radius: 50px; }
+.LoggedBanner-module__logged_out_banner__W74XI {
+  height: 4em;
+  width: 100%;
+  background: linear-gradient(#9c129e, #630664);
+  color: white; }
+
+.LoggedBanner-module__logged_out_content__3UUDd {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  color: white; }
+
+.LoggedBanner-module__logged_out_content__3UUDd h1 {
+  display: inline-block; }
+
+.LoggedBanner-module__logo__1WYQf {
+  color: white;
+  font-size: 3em; }
+
+.LoggedBanner-module__link__3o5Kx {
+  color: white;
+  text-decoration: none;
+  border-style: solid;
+  border-color: white;
+  border-width: 1px;
+  margin-left: 2em;
+  font-size: 12px; }
+
+.LoggedBanner-module__link__3o5Kx :hover {
+  background: #630664; }
 .Forum__main__lNwqh {
   margin-left: 20%;
   width: 60%; }
@@ -176,36 +206,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
-.LoggedBanner-module__logged_out_banner__W74XI {
-  height: 4em;
-  width: 100%;
-  background: linear-gradient(#9c129e, #630664);
-  color: white; }
-
-.LoggedBanner-module__logged_out_content__3UUDd {
-  width: 80%;
-  height: 100%;
-  margin: 0 auto;
-  color: white; }
-
-.LoggedBanner-module__logged_out_content__3UUDd h1 {
-  display: inline-block; }
-
-.LoggedBanner-module__logo__1WYQf {
-  color: white;
-  font-size: 3em; }
-
-.LoggedBanner-module__link__3o5Kx {
-  color: white;
-  text-decoration: none;
-  border-style: solid;
-  border-color: white;
-  border-width: 1px;
-  margin-left: 2em;
-  font-size: 12px; }
-
-.LoggedBanner-module__link__3o5Kx :hover {
-  background: #630664; }
 .ForumCarousel-module__carousel__1C0vI {
   height: 45em; }
 
