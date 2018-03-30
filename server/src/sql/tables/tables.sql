@@ -16,7 +16,7 @@ DROP TABLE IF EXISTS Tokens;
 CREATE TABLE Tokens (
   id int NOT NULL AUTO_INCREMENT,
   userid int NOT NULL,
-   _created datetime default current_timestamp
+   _created datetime default current_timestamp,
   PRIMARY KEY (id, userid),
   KEY usersFK_idx (userid),
   CONSTRAINT usersFK FOREIGN KEY (userid) REFERENCES Users(id) ON DELETE NO ACTION ON UPDATE NO ACTION
