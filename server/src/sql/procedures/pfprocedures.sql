@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetPlatformFamily;
+DROP PROCEDURE IF EXISTS spSelectPlatformFamily;
 
 delimiter $$
-CREATE PROCEDURE spGetPlatformFamily()
+CREATE PROCEDURE spSelectPlatformFamily()
 begin 
 
 	select * from PlatformFamily;
@@ -9,10 +9,10 @@ begin
 end $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetAPlatformFamily;
+DROP PROCEDURE IF EXISTS spSelectAPlatformFamily;
 
 delimiter $$
-CREATE PROCEDURE spGetAPlatformFamily(
+CREATE PROCEDURE spSelectAPlatformFamily(
 	p_famid int
 )
 begin 
@@ -22,10 +22,10 @@ begin
 end $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreatePlatformFamily;
+DROP PROCEDURE IF EXISTS spInsertPlatformFamily;
 
 delimiter $$
-CREATE PROCEDURE spCreatePlatformFamily(
+CREATE PROCEDURE spInsertPlatformFamily(
 	p_coname varchar(75)
 )
 BEGIN
@@ -54,6 +54,21 @@ BEGIN
     id = coalesce(pf_id, id),
     companyName = coalesce(pf_company, companyName)
     
+    where id = pf_id;
+
+END $$
+delimiter ;
+
+DROP PROCEDURE IF EXISTS spDeletePlatformFamily;
+
+delimiter $$
+CREATE PROCEDURE spDeletePlatformFamily (
+    pf_id int
+)
+
+BEGIN 
+
+    delete from PlatformFamily
     where id = pf_id;
 
 END $$

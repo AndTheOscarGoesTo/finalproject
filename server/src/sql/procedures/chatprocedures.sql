@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetAllChat;
+DROP PROCEDURE IF EXISTS spSelectAllChat;
 
 delimiter $$
-CREATE PROCEDURE spGetAllChat (
+CREATE PROCEDURE spSelectAllChat (
 
 )
 
@@ -12,10 +12,10 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetOneChat;
+DROP PROCEDURE IF EXISTS spSelectOneChat;
 
 delimiter $$
-CREATE PROCEDURE spGetOneChat (
+CREATE PROCEDURE spSelectOneChat (
     c_id int
 )
 
@@ -27,10 +27,10 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreateChat;
+DROP PROCEDURE IF EXISTS spInsertChat;
 
 delimiter $$
-CREATE PROCEDURE spCreateChat (
+CREATE PROCEDURE spInsertChat (
     c_body text,
     c_to int,
     c_from int
@@ -39,7 +39,7 @@ CREATE PROCEDURE spCreateChat (
 BEGIN
 
     insert into Chat (body, userto, userfrom)
-    values (c_body, c_to, c_from)
+    values (c_body, c_to, c_from);
 
 END $$
 delimiter ;

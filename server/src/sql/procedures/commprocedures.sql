@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetComments;
+DROP PROCEDURE IF EXISTS spSelectComments;
 
 delimiter $$
-CREATE PROCEDURE spGetComments(
+CREATE PROCEDURE spSelectComments(
 	
 )
 BEGIN
@@ -11,10 +11,10 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetOneComment;
+DROP PROCEDURE IF EXISTS spSelectOneComment;
 
 delimiter $$
-CREATE PROCEDURE spGetOneComment(
+CREATE PROCEDURE spSelectOneComment(
 	c_id int
 )
 BEGIN
@@ -24,10 +24,10 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreateComment;
+DROP PROCEDURE IF EXISTS spInsertComment;
 
 delimiter $$
-CREATE PROCEDURE spCreateComment(
+CREATE PROCEDURE spInsertComment(
 	c_userid int,
     c_newcomment text
 )
@@ -59,6 +59,21 @@ BEGIN
     userid = coalesce(c_userid, userid),
     newcomment = coalesce(c_comment, newcomment)
     
+    where id = c_id;
+
+END $$
+delimiter ;
+
+DROP PROCEDURE IF EXISTS spDeleteComment;
+
+delimiter $$
+CREATE PROCEDURE spDeleteComment (
+    c_id int
+)
+
+BEGIN   
+
+    delete from Comments
     where id = c_id;
 
 END $$
