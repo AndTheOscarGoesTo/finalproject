@@ -3,23 +3,22 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import style from './Forum.scss'
 import ForumHead from './ForumHead';
 import Scroll from './scroll';
-
+import LoggedBanner from '../LoggedBanner/LoggedBanner'
 class Forum extends Component {
 
     render() {
         return (
+          <Fragment>
+            <LoggedBanner />
             <div className ={ style.main }>
+              
             <ForumHead />
-            <div class="card-group">
+            <div class="card-group" >
             <div class="card">
-              <img class="card-img-top" src="https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg" alt="Card image cap" />
+              <img class="card-img-top" src="https://via.placeholder.com/450x300" alt="Card image cap" />
               <div class="card-body">
-                <h5 class="card-title">PETA protest Monster hunter.</h5>
-                <p class="card-text">Ooh whoa, ooh whoa, ooh whoa
-                                    You know you love me, I know you care
-                                    Just shout whenever and I'll be there
-                                    You are my love, you are my heart
-                                    And we will never, ever, ever be apart</p>
+                <h5 class="card-title">submit Post<i className="ion-plus-circled"></i></h5>
+                <p class="card-text">Add a post </p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -56,10 +55,10 @@ class Forum extends Component {
               <div class="card-body">
                 <h5 class="card-title">PETA protest Monster hunter</h5>
                 <p class="card-text">Ooh whoa, ooh whoa, ooh whoa
-You know you love me, I know you care
-Just shout whenever and I'll be there
-You are my love, you are my heart
-And we will never, ever, ever be apart</p>
+                                    You know you love me, I know you care
+                                    Just shout whenever and I'll be there
+                                    You are my love, you are my heart
+                                    And we will never, ever, ever be apart</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -68,12 +67,12 @@ And we will never, ever, ever be apart</p>
               <div class="card-body">
                 <h5 class="card-title">Nipples, cool or for fools?</h5>
                 <p class="card-text">Uh huh, uh huh
-Yeah, Rihanna
-Uh huh, uh huh 
-Good girl gone bad
-Uh huh, uh huh 
-Take three, action
-Uh huh, uh huh, ho</p>
+                                    Yeah, Rihanna
+                                    Uh huh, uh huh 
+                                  Good girl gone bad
+                                  Uh huh, uh huh 
+                                  Take three, action
+                                  Uh huh, uh huh, ho</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -82,9 +81,9 @@ Uh huh, uh huh, ho</p>
               <div class="card-body">
                 <h5 class="card-title">Shoot a man 3 revealed</h5>
                 <p class="card-text">Somebody once told me the world is gonna roll me
-I ain't the sharpest tool in the shed
-She was looking kind of dumb with her finger and her thumb
-In the shape of an "L" on her forehead</p>
+                                    I ain't the sharpest tool in the shed
+                                    She was looking kind of dumb with her finger and her thumb
+                                    In the shape of an "L" on her forehead</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -96,10 +95,10 @@ In the shape of an "L" on her forehead</p>
               <div class="card-body">
                 <h5 class="card-title">PETA protest Monster hunter</h5>
                 <p class="card-text">Ooh whoa, ooh whoa, ooh whoa
-You know you love me, I know you care
-Just shout whenever and I'll be there
-You are my love, you are my heart
-And we will never, ever, ever be apart</p>
+                                    You know you love me, I know you care
+                                    Just shout whenever and I'll be there
+                                    You are my love, you are my heart
+                                    And we will never, ever, ever be apart</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -108,12 +107,12 @@ And we will never, ever, ever be apart</p>
               <div class="card-body">
                 <h5 class="card-title">Nipples, cool or for fools?</h5>
                 <p class="card-text">Uh huh, uh huh
-Yeah, Rihanna
-Uh huh, uh huh 
-Good girl gone bad
-Uh huh, uh huh 
-Take three, action
-Uh huh, uh huh, ho</p>
+                                    Yeah, Rihanna
+                                    Uh huh, uh huh 
+                                    Good girl gone bad
+                                    Uh huh, uh huh 
+                                    Take three, action
+                                    Uh huh, uh huh, ho</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
@@ -122,16 +121,16 @@ Uh huh, uh huh, ho</p>
               <div class="card-body">
                 <h5 class="card-title">Shoot a man 3 revealed</h5>
                 <p class="card-text">Somebody once told me the world is gonna roll me
-I ain't the sharpest tool in the shed
-She was looking kind of dumb with her finger and her thumb
-In the shape of an "L" on her forehead</p>
+                                    I ain't the sharpest tool in the shed
+                                    She was looking kind of dumb with her finger and her thumb
+                                    In the shape of an "L" on her forehead</p>
                 <p class="card-text"><small class="text-muted">Timestamp here</small></p>
               </div>
             </div>
           </div>
           <Scroll />
           </div>
-            
+            </Fragment>
 
          
         )

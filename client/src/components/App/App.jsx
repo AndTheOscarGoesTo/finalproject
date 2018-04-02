@@ -23,6 +23,7 @@ class Navigation extends Component {
                         <Route path="/logout" component={Logout} />
                         <Route path="/newuser" component={NewUser} />
                         <Route path="/profile" component={Profile} />
+                        <Route path="/forum" component={Forum} />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>

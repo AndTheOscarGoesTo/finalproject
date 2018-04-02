@@ -73,6 +73,18 @@ var Table = function () {
             var sql = 'DELETE FROM ' + this.tableName + ' WHERE id = ' + id;
             return (0, _db.executeQuery)(sql);
         }
+    }, {
+        key: 'postProcedure',
+        value: function postProcedure(procedureName, params) {
+            console.log("--params--", params);
+            return (0, _db.row)(procedureName, params);
+        }
+    }, {
+        key: 'putOrDeleteProcedure',
+        value: function putOrDeleteProcedure(procedureName, params) {
+            console.log("--params--", params);
+            return (0, _db.rows)(procedureName, params);
+        }
     }]);
 
     return Table;

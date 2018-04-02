@@ -9,7 +9,7 @@ class Forum extends Component {
     
             
         
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -17,14 +17,14 @@ class Forum extends Component {
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Siemens-PC-D.jpg/1200px-Siemens-PC-D.jpg" alt="First slide" />
+                <img class="d-block w-100" className={ style.forumhead } src="http://cdn.makeuseof.com/wp-content/uploads/2017/06/xbox-one-x-s-670x335.jpg?x59455" alt="First slide" />
                 <div class="carousel-caption d-none d-md-block">
                 <h5>PC Catagory</h5>
                 <p>Check what the master race is up to</p>
                 </div>
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="https://i.ytimg.com/vi/_0elt4qOnEI/maxresdefault.jpg" alt="Second slide" />
+                <img class="d-block w-100" src="https://img.purch.com/o/aHR0cDovL3d3dy5sYXB0b3BtYWcuY29tL2ltYWdlcy93cC9wdXJjaC1hcGkvaW5jb250ZW50LzIwMTYvMTAvcGRwX2ZlYXR1cmVfMDZfMTI4MC02NzB4MzM1XzI5OTYyNTE0NzY5NjgzNjQuanBn" alt="Second slide" />
                 <div class="carousel-caption d-none d-md-block">
                 <h5>XBOX/PS4 Catagory</h5>
                 <p>These games are probably really good or bad</p>
