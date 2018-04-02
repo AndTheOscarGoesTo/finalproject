@@ -12,11 +12,20 @@ function getGames(){
 }
 
 function getGame(gameString){
-    console.log(gameString);
+    console.log("--server params--", gameString);
     return gameDbClient.games({
-        fields: "*",
-        search: gameString,
-        limit: 20
+        fields: [
+            "name",
+            "release_dates.date",
+            "rating",
+            "hypes",
+            "cover",
+            "summary"
+        ],
+        limit: 20,
+        offset: 0,
+        order: 'release_dates.date:desc',
+        search: gameString
     })
 }
 

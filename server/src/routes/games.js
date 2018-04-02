@@ -15,7 +15,8 @@ router.get("/", (req, res, body) => {
 });
 
 router.get("/:gameString", (req, res, body) => {
-    gamesDbController.getGames(req.params.gameString)
+    console.log("--params--", req.params.gameString)
+    gamesDbController.getGame(req.params.gameString)
     .then((response) => {
         res.send(response);
     })

@@ -24,7 +24,8 @@ router.get("/", function (req, res, body) {
 });
 
 router.get("/:gameString", function (req, res, body) {
-    gamesDbController.getGames(req.params.gameString).then(function (response) {
+    console.log("--params--", req.params.gameString);
+    gamesDbController.getGame(req.params.gameString).then(function (response) {
         res.send(response);
     }).catch(function (err) {
         res.sendStatus(403);
