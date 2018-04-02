@@ -85,3 +85,28 @@ BEGIN
 
 END $$
 delimiter ;
+
+drop procedure if exists spSelectForumInfo;
+
+delimiter $$
+create procedure spSelectForumInfo (
+
+)
+
+begin
+
+    select
+        title,
+        forumImg as image,
+        forumText as text,
+        handle as handle,
+        avatar as avatar
+    from 
+        Forums f
+    join
+        Users u
+    where 
+        u.id = f.creatorid;
+
+end $$
+delimiter ;

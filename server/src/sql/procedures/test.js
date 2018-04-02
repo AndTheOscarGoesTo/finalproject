@@ -82,3 +82,59 @@ delimiter ;
     FOREIGN KEY (postid) REFERENCES PostList(id)
 
     FOREIGN KEY (commentid) REFERENCES PostComments(id)
+
+
+    select
+	gt.*,
+    pf.companyName as company,
+    pt.platform,
+    pt.systemName as system
+from 
+	gamertags gt
+join
+	PlatformFamily pf
+inner join 
+	Platform p 
+on 
+	pf.id = p.platfamilyid
+inner join 
+	PlatformType pt 
+on 
+	p.systemid = pt.id
+where
+	gt.userid = 301;
+    
+drop procedure if exists spSelectGamerTagAndPlatform;    
+    
+
+// here is the one we need to work
+ delimiter $$ 
+ create procedure spSelectGamerTagAndPlatform (
+ )
+ 
+ begin 
+ 
+	select
+	gt.*,
+    pf.companyName as company,
+    pt.platform,
+    pt.systemName as system
+from 
+	gamertags gt
+join
+	PlatformFamily pf
+inner join 
+	Platform p 
+on 
+	pf.id = p.platfamilyid
+inner join 
+	PlatformType pt 
+on 
+	p.systemid = pt.id
+where
+	gt.userid = userid;
+ 
+ end $$
+ delimiter ;
+ 
+ call spSelectGamerTagAndPlatform();

@@ -89,6 +89,7 @@ CREATE TABLE Forums (
     title varchar(100),
 	forumImg text,
     forumText text,
+    creatorid int,
     _created datetime default current_timestamp
 );
 

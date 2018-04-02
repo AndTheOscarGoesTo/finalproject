@@ -81,3 +81,24 @@ BEGIN
 
 END $$
 delimiter ;
+
+drop procedure if exists spSelectStatusInfo;
+
+delimiter $$
+create procedure spSelectStatusInfo (
+)
+
+begin
+	select
+		status s,
+        handle h,
+        avatar a
+	from 
+		Status s
+	join 
+		Users u
+	where
+		u.id = s.userid;
+        
+end $$
+delimiter ;
