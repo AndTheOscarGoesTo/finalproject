@@ -24,6 +24,33 @@ BEGIN
 END $$
 delimiter ;
 
+DROP PROCEDURE spSelectGamerTagAndPlatform;
+
+DELIMITER $$ 
+ 
+ CREATE PROCEDURE `spSelectGamerTagAndPlatform`(
+	u_id int
+ )
+ 
+BEGIN
+ 
+	SELECT 
+			u.id as userid,
+			gt.gamertag as gamertag,
+			pf.companyName as company,
+			pt.systemName as system,
+			pt.platform as platformType
+	FROM gamertags gt
+	INNER JOIN users u ON gt.userid = u.id
+	INNER JOIN platform p ON p.id = gt.platformid
+	INNER JOIN platformfamily pf ON pf.id = p.platfamilyid
+	INNER JOIN platformtype pt ON pt.id = p.systemid
+	WHERE userid = u_id;
+ 
+ END $$
+ 
+DELIMITER ;
+
 DROP PROCEDURE IF EXISTS spInsertGamerTag;
 
 delimiter $$
