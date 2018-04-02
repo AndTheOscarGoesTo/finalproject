@@ -19,9 +19,14 @@ function deleteUser(userId){
     return usersTable.putOrDeleteProcedure("spDeleteUser", userId);
 }
 
+function getGamerTagAndPlatform(userId){
+    return usersTable.putOrDeleteProcedure("spSelectGamerTagAndPlatform", userId);
+}
+
 export {
     getUsers,
     getUser,
     addUser,
-    deleteUser
+    deleteUser,
+    getGamerTagAndPlatform
 }

@@ -51,6 +51,15 @@ router.post("/newuser", function (req, res, body) {
     });
 });
 
+router.get("/gamertagandplat/:id", function (req, res, body) {
+    userController.getGamerTagAndPlatform(req.params.id).then(function (response) {
+        res.send(response);
+    }).catch(function (err) {
+        console.log(err);
+        res.sendStatus(404);
+    });
+});
+
 router.delete("/:id", function (req, res, body) {
     userController.deleteUser(req.params.id).then(function (response) {
         res.send(response);
