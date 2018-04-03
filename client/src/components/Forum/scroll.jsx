@@ -17,7 +17,7 @@ topFunction() {
     render() {
         return (
        
-         <button className={ style.Scroll } onClick= {this.topFunction}></button>
+         <button className={ style.Scroll } onClick= {this.topFunction}><i className="ion-chevron-up"></i></button>
         )
     }
 }

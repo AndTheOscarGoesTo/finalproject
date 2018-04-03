@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetGamerTag;
+DROP PROCEDURE IF EXISTS spSelectGamerTag;
 
 delimiter $$
-CREATE PROCEDURE spGetGamerTag(
+CREATE PROCEDURE spSelectGamerTag(
 
 )
 BEGIN
@@ -11,31 +11,58 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetOneGamerTag;
+DROP PROCEDURE IF EXISTS spSelectOneGamerTag;
 
 delimiter $$
-CREATE PROCEDURE spGetOneGamerTag(
-	g_id int
+CREATE PROCEDURE spSelectOneGamerTag(
+	gt_id int
 )
 BEGIN
 
-	select * from GamerTags where id = g_id;
+	select * from GamerTags where id = gt_id;
 
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreateGamerTag;
+DROP PROCEDURE spSelectGamerTagAndPlatform;
+
+DELIMITER $$ 
+ 
+ CREATE PROCEDURE `spSelectGamerTagAndPlatform`(
+	u_id int
+ )
+ 
+BEGIN
+ 
+	SELECT 
+			u.id as userid,
+			gt.gamertag as gamertag,
+			pf.companyName as company,
+			pt.systemName as system,
+			pt.platform as platformType
+	FROM gamertags gt
+	INNER JOIN users u ON gt.userid = u.id
+	INNER JOIN platform p ON p.id = gt.platformid
+	INNER JOIN platformfamily pf ON pf.id = p.platfamilyid
+	INNER JOIN platformtype pt ON pt.id = p.systemid
+	WHERE userid = u_id;
+ 
+ END $$
+ 
+DELIMITER ;
+
+DROP PROCEDURE IF EXISTS spInsertGamerTag;
 
 delimiter $$
-CREATE PROCEDURE spCreateGamerTag(
-	g_userid int,
-    g_gtag varchar(70),
-    g_platformid int
+CREATE PROCEDURE spInsertGamerTag(
+	gt_userid int,
+    gt_gtag varchar(70),
+    gt_platformid int
 )
 BEGIN
 
 	insert into GamerTags (userid, gamertag, platformid)
-    values (g_userid, g_gtag, g_platformid);
+    values (gt_userid, gt_gtag, gt_platformid);
     
     select last_insert_id();
 
@@ -62,6 +89,21 @@ BEGIN
     gamertag = coalesce(gt_gamertag, gamertag),
     platformid = coalesce(gt_platformid, platformid)
     
+    where id = gt_id;
+
+END $$
+delimiter ;
+
+DROP PROCEDURE IF EXISTS spDeleteGamerTag;
+
+delimiter $$
+CREATE PROCEDURE spDeleteGamerTag (
+    gt_id int
+)
+
+BEGIN 
+
+    delete from GamerTags
     where id = gt_id;
 
 END $$

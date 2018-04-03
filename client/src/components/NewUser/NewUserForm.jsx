@@ -83,7 +83,7 @@ class NewUserForm extends Component {
                         <div className="form-group">
                             <input id="passwordconf" className={style.input} type="password" placeholder="Confirm Password" onChange={(e) => this.handlePasswordConfChange(e.target.value)} required /> 
                         </div>
-                        <button onClick= { (event) => this.onButtonClick()} value="Login" className="btn btn-primary" >Submit</button>
+                        <button onClick= { (event) => this.onButtonClick()} value="Login" className="btn btn-success" >Submit</button>
                     </form>
                 </div>
             </Fragment>

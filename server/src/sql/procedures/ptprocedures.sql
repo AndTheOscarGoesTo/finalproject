@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetPlatformType;
+DROP PROCEDURE IF EXISTS spSelectPlatformType;
 
 delimiter $$
-CREATE PROCEDURE spGetPlatformType()
+CREATE PROCEDURE spSelectPlatformType()
 begin 
 
 	select * from PlatformType;
@@ -9,10 +9,10 @@ begin
 end $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetAPlatformType;
+DROP PROCEDURE IF EXISTS spSelectAPlatformType;
 
 delimiter $$
-CREATE PROCEDURE spGetAPlatformType(
+CREATE PROCEDURE spSelectAPlatformType(
 	p_typeid int
 )
 begin 
@@ -22,10 +22,10 @@ begin
 end $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreatePlatformType;
+DROP PROCEDURE IF EXISTS spInsertPlatformType;
 
 delimiter $$
-CREATE PROCEDURE spCreatePlatformType(
+CREATE PROCEDURE spInsertPlatformType(
 	p_name varchar(75),
     p_systemName varchar(75)
 )
@@ -60,4 +60,20 @@ BEGIN
     where id = pt_id;
 
 END $$
+delimiter ;
+
+DROP PROCEDURE IF EXISTS spDeletePlatformType;
+
+delimiter $$
+CREATE PROCEDURE spDeletePlatformType (
+    pt_id int
+)
+
+BEGIN
+
+
+    delete from PlatformType
+    where id = pt_id;
+
+END $$  
 delimiter ;

@@ -1,4 +1,4 @@
-import { executeQuery, generatePlaceholders } from './config/db';
+import { executeQuery, generatePlaceholders, row, rows } from './config/db';
 
 class Table {
     constructor(tableName) {
@@ -51,6 +51,16 @@ class Table {
     delete(id) {
         let sql = `DELETE FROM ${this.tableName} WHERE id = ${id}`;
         return executeQuery(sql);
+    }
+
+    postProcedure(procedureName, params){
+        console.log("--params--", params);
+        return row(procedureName, params)
+    }
+
+    putOrDeleteProcedure(procedureName, params){
+        console.log("--params--", params);
+        return rows(procedureName, params)
     }
 }
 

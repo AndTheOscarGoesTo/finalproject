@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetEveryStatus;
+DROP PROCEDURE IF EXISTS spSelectEveryStatus;
 
 delimiter $$
-CREATE PROCEDURE spGetEveryStatus (
+CREATE PROCEDURE spSelectEveryStatus (
 
 )
 
@@ -12,10 +12,10 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetAStatus;
+DROP PROCEDURE IF EXISTS spSelectAStatus;
 
 delimiter $$
-CREATE PROCEDURE spGetAStatus(
+CREATE PROCEDURE spSelectAStatus(
     s_id int
 )
 
@@ -26,17 +26,18 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreateStatus;
+DROP PROCEDURE IF EXISTS spInsertStatus;
 
 delimiter $$
-CREATE PROCEDURE spCreateStatus (
+CREATE PROCEDURE spInsertStatus (
+    s_userid int,
     s_status varchar(280)
 )
 
 BEGIN
 
-    insert into Status (status) 
-    values (s_status);
+    insert into Status (userid, status) 
+    values (s_userid, s_status);
 
     select last_insert_id();
 
@@ -48,6 +49,7 @@ DROP PROCEDURE IF EXISTS spUpdateStatus;
 delimiter $$
 CREATE PROCEDURE spUpdateStatus (
     s_id int,
+    s_userid int,
     s_status varchar(280)
 )
 
@@ -58,6 +60,7 @@ BEGIN
     set 
 
     id = coalesce(s_id, id),
+    userid = coalesce(s_userid, userid),
     status = coalesce(s_status, status)
 
     where id = s_id;
@@ -77,4 +80,26 @@ BEGIN
     delete from Status where id = s_id;
 
 END $$
+delimiter ;
+
+drop procedure if exists spSelectStatusInfo;
+
+delimiter $$
+create procedure spSelectStatusInfo (
+    s_userid int
+)
+
+begin
+	select
+		status s,
+        handle h,
+        avatar a
+	from 
+		Status s
+	join 
+		Users u
+	where
+		u.id = s_userid;
+        
+end $$
 delimiter ;
