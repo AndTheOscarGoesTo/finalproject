@@ -253,6 +253,31 @@ BEGIN
 
 END $$
 delimiter ;
+
+drop procedure if exists spSelectForumInfo;
+
+delimiter $$
+create procedure spSelectForumInfo (
+    f_creatorid int
+)
+
+begin
+
+    select
+        title,
+        forumImg as image,
+        forumText as text,
+        handle as handle,
+        avatar as avatar
+    from 
+        Forums f
+    join
+        Users u
+    where 
+        u.id = f_creatorid;
+
+end $$
+delimiter ;
 DROP PROCEDURE IF EXISTS spSelectGames;
 
 delimiter $$
@@ -361,6 +386,33 @@ BEGIN
 
 END $$
 delimiter ;
+
+DROP PROCEDURE spSelectGamerTagAndPlatform;
+
+DELIMITER $$ 
+ 
+ CREATE PROCEDURE `spSelectGamerTagAndPlatform`(
+	u_id int
+ )
+ 
+BEGIN
+ 
+	SELECT 
+			u.id as userid,
+			gt.gamertag as gamertag,
+			pf.companyName as company,
+			pt.systemName as system,
+			pt.platform as platformType
+	FROM gamertags gt
+	INNER JOIN users u ON gt.userid = u.id
+	INNER JOIN platform p ON p.id = gt.platformid
+	INNER JOIN platformfamily pf ON pf.id = p.platfamilyid
+	INNER JOIN platformtype pt ON pt.id = p.systemid
+	WHERE userid = u_id;
+ 
+ END $$
+ 
+DELIMITER ;
 
 DROP PROCEDURE IF EXISTS spInsertGamerTag;
 
@@ -613,6 +665,62 @@ BEGIN
 
 END $$  
 delimiter ;
+drop procedure if exists spSelectFriends;
+delimiter $$
+
+create procedure spSelectFriends(
+	IN p_userid int
+)
+
+BEGIN 
+
+select 
+	r.id as 'relationshipid',
+    r.user_one_id,
+    r.user_two_id,
+    r.status_interaction,
+    r._created as '_relationship_created',
+	u.*
+from 
+	relationships r
+join 
+	users u
+on 
+	u.id != p_userid AND 
+    (u.id = r.user_one_id OR 
+	u.id = r.user_two_id)
+where 
+	user_one_id = p_userid OR 
+    user_two_id = p_userid AND 
+    status_interaction = 1 OR
+    status_interaction = 2 OR
+    status_interaction = 0;
+
+END $$
+delimiter ;
+
+drop procedure if exists spDeleteFriend;
+
+delimiter $$
+create procedure spDeleteFriend (
+	idtodelete int
+)
+
+begin 
+
+	SET SQL_SAFE_UPDATES = 0;
+	
+	delete from
+		Relationships
+	where
+		user_one_id != idtodelete and
+        user_two_id = idtodelete or
+        user_two_id != idtodelete and 
+        user_one_id = idtodelete;
+
+end $$
+delimiter ;
+
 DROP PROCEDURE IF EXISTS spSelectAllSocialMedia;
 
 delimiter $$
@@ -789,6 +897,28 @@ BEGIN
     delete from Status where id = s_id;
 
 END $$
+delimiter ;
+
+drop procedure if exists spSelectStatusInfo;
+
+delimiter $$
+create procedure spSelectStatusInfo (
+    s_userid int
+)
+
+begin
+	select
+		status s,
+        handle h,
+        avatar a
+	from 
+		Status s
+	join 
+		Users u
+	where
+		u.id = s_userid;
+        
+end $$
 delimiter ;
 DROP PROCEDURE IF EXISTS spSelectUsers;
 

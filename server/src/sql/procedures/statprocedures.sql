@@ -86,6 +86,7 @@ drop procedure if exists spSelectStatusInfo;
 
 delimiter $$
 create procedure spSelectStatusInfo (
+    s_userid int
 )
 
 begin
@@ -98,7 +99,7 @@ begin
 	join 
 		Users u
 	where
-		u.id = s.userid;
+		u.id = s_userid;
         
 end $$
 delimiter ;
