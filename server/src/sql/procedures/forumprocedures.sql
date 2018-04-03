@@ -90,7 +90,7 @@ drop procedure if exists spSelectForumInfo;
 
 delimiter $$
 create procedure spSelectForumInfo (
-
+    f_creatorid int
 )
 
 begin
@@ -106,7 +106,7 @@ begin
     join
         Users u
     where 
-        u.id = f.creatorid;
+        u.id = f_creatorid;
 
 end $$
 delimiter ;
