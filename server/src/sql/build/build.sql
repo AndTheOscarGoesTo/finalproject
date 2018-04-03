@@ -721,6 +721,22 @@ begin
 end $$
 delimiter ;
 
+drop procedure if exists spSelectUserFromRelationship;
+
+delimiter $$
+create procedure spSelectUserFromRelationship (
+	in u_id int
+)
+
+begin 
+
+	select * from 
+		Relationships
+	where
+		user_two_id = u_id;
+        
+end $$
+delimiter ;
 DROP PROCEDURE IF EXISTS spSelectAllSocialMedia;
 
 delimiter $$
