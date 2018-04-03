@@ -8,6 +8,8 @@ import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import LoggedBanner from '../LoggedBanner/LoggedBanner';
 import ForumCarousel from '../ForumCarousel/ForumCarousel';
 import NewUserForm from '../NewUser/NewUserForm';
+import Post from '../Post/Post';
+import NewPost from '../NewPost/NewPost';
 
 class Home extends Component {
 
@@ -32,9 +34,8 @@ class Home extends Component {
             return (
                 <Fragment>
                 <LoggedBanner id={this.state.id} handle={this.state.handle} firstname={this.state.firstname} />
-                <div>
-                    <h1> double yeet </h1>
-                </div>
+                <NewPost id={this.state.id}/>
+                <Post />
                 </Fragment>
             )
         } 
@@ -51,7 +52,7 @@ class Home extends Component {
                         <h1>Join us.</h1>
                         <NewUserForm />
                     </div>
-                </div>
+                </div>  
             </Fragment>
         )
     }

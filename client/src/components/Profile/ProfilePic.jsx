@@ -12,7 +12,7 @@ class ProfilePic extends Component {
             <figure className="snip">
             <div className="profile-image"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png" alt="sample47" /></div>
             <figcaption>
-              <h3>John Cena</h3>
+              <h3>{this.props.firstname} {this.props.lastname}</h3>
              <ProfileView />
               <p>Your time is up, my time is now
                 You can't see me, my time is now.

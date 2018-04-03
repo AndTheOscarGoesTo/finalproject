@@ -21,7 +21,7 @@ router.get('/me', _auth.tokenMiddleware, _auth.isLoggedIn, function (req, res) {
     res.json(req.user);
 });
 
-var usersTable = new _table2.default('Users');
+var usersTable = new _table2.default('Status');
 
 router.get('/', function (req, res) {
     console.log(req.user);
