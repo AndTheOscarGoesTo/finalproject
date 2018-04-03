@@ -1,8 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetPostList;
-DROP PROCEDURE IF EXISTS spGetCommentList;
+DROP PROCEDURE IF EXISTS spSelectCommentList;
 
 delimiter $$
-CREATE PROCEDURE spGetCommentList(
+CREATE PROCEDURE spSelectCommentList(
 
 )
 begin 
@@ -12,11 +11,10 @@ begin
 end $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetOnePost;
-DROP PROCEDURE IF EXISTS spGetListComment;
+DROP PROCEDURE IF EXISTS spSelectListComment;
 
 delimiter $$
-CREATE PROCEDURE spGetListComment(
+CREATE PROCEDURE spSelectListComment(
 	c_id int
 )
 begin 

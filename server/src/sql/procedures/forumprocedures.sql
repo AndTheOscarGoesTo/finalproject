@@ -1,8 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetForms;
-DROP PROCEDURE IF EXISTS spGetForums;
+DROP PROCEDURE IF EXISTS spSelectForums;
 
 delimiter $$
-CREATE PROCEDURE spGetForums(
+CREATE PROCEDURE spSelectForums(
 
 )
 BEGIN
@@ -12,47 +11,45 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetOneForm;
-DROP PROCEDURE IF EXISTS spGetOneForum;
+DROP PROCEDURE IF EXISTS spSelectOneForum;
 
 delimiter $$
-CREATE PROCEDURE spGetForums(
-
+CREATE PROCEDURE spSelectOneForum(
+    f_id int
 )
 BEGIN
 
-	select * from Forums;
+	select * from Forums
+    where id = f_id;
 
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreateForm;
-DROP PROCEDURE IF EXISTS spCreateForum;
+DROP PROCEDURE IF EXISTS spInsertForum;
 
 delimiter $$
-CREATE PROCEDURE spCreateForum(
-	f_postid int,
+CREATE PROCEDURE spInsertForum(
+	f_commentid int,
     f_title varchar(100),
     f_img text,
     f_text text
 )
 begin 
 
-	insert into Forums (postid, title, forumImg, forumText)
-    values (f_postid, f_title, f_img, f_text);
+	insert into Forums (commentid, title, forumImg, forumText)
+    values (f_commentid, f_title, f_img, f_text);
     
     select last_insert_id();
     
 end $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spUpdateForm;
 DROP PROCEDURE IF EXISTS spUpdateForum;
 
 delimiter $$
-CREATE PROCEDURE spUpdateForm(
+CREATE PROCEDURE spUpdateForum(
 	f_id int,
-    f_postid int,
+    f_commentid int,
     f_title varchar(100),
     f_img text,
     f_text text
@@ -64,7 +61,7 @@ BEGIN
     set
     
     id = coalesce(f_id, id),
-    postid = coalesce(f_postid, postid),
+    commentid = coalesce(f_commentid, commentid),
     title = coalesce(f_title, title),
     forumImg = coalesce(f_img, forumImg),
     forumText = coalesce(f_text, forumText)
@@ -72,4 +69,44 @@ BEGIN
     where id = f_id;
 
 END $$
+delimiter ;
+
+DROP PROCEDURE IF EXISTS spDeleteForum;
+
+delimiter $$
+CREATE PROCEDURE spDeleteForum (
+    f_id int
+)
+
+BEGIN
+
+    delete from Forums
+    where id = f_id;
+
+END $$
+delimiter ;
+
+drop procedure if exists spSelectForumInfo;
+
+delimiter $$
+create procedure spSelectForumInfo (
+
+)
+
+begin
+
+    select
+        title,
+        forumImg as image,
+        forumText as text,
+        handle as handle,
+        avatar as avatar
+    from 
+        Forums f
+    join
+        Users u
+    where 
+        u.id = f.creatorid;
+
+end $$
 delimiter ;

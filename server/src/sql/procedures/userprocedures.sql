@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetUsers;
+DROP PROCEDURE IF EXISTS spSelectUsers;
 
 delimiter $$
-CREATE PROCEDURE spGetUsers(
+CREATE PROCEDURE spSelectUsers(
 	
 )
 BEGIN
@@ -11,10 +11,10 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetOneUser;
+DROP PROCEDURE IF EXISTS spSelectOneUser;
 
 delimiter $$
-CREATE PROCEDURE spGetOneUser(
+CREATE PROCEDURE spSelectOneUser(
 	u_id int
 )
 BEGIN
@@ -24,21 +24,22 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreateUser;
+DROP PROCEDURE IF EXISTS spInsertUser;
 
 delimiter $$
-CREATE PROCEDURE spCreateUser(
+CREATE PROCEDURE spInsertUser(
 	u_fname varchar(60),
     u_lname varchar(60),
     u_email varchar(80),
     u_password varchar(256),
-    u_handle varchar(70)
+    u_handle varchar(70),
+    u_avatar text
     
 )
 BEGIN
 
-	insert into Users (firstname, lastname, email, password, handle)
-    values (u_fname, u_lname, u_email, u_password, u_handle);
+	insert into Users (firstname, lastname, email, password, handle, avatar)
+    values (u_fname, u_lname, u_email, u_password, u_handle, u_avatar);
     
     select last_insert_id();
 
@@ -54,7 +55,8 @@ CREATE PROCEDURE spUpdateUser(
     u_lastname varchar(60),
     u_email varchar(80),
     u_password varchar(256),
-    u_handle varchar(70)
+    u_handle varchar(70),
+    u_avatar text
 )
 BEGIN
 
@@ -67,7 +69,8 @@ BEGIN
     lastname = coalesce(u_lastname, lastname),
     email = coalesce(u_email, email),
     password = coalesce(u_password, password),
-    handle = coalesce(u_handle, password)
+    handle = coalesce(u_handle, password),
+    avatar = coalesce(u_avatar, avatar)
     
     where id = u_id;
 

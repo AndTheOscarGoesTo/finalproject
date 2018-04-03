@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.deleteUser = exports.addUser = exports.getUser = exports.getUsers = undefined;
+exports.getGamerTagAndPlatform = exports.deleteUser = exports.addUser = exports.getUser = exports.getUsers = undefined;
 
 var _express = require("express");
 
@@ -33,7 +33,12 @@ function deleteUser(userId) {
     return usersTable.putOrDeleteProcedure("spDeleteUser", userId);
 }
 
+function getGamerTagAndPlatform(userId) {
+    return usersTable.postProcedure("spSelectGamerTagAndPlatform", userId);
+}
+
 exports.getUsers = getUsers;
 exports.getUser = getUser;
 exports.addUser = addUser;
 exports.deleteUser = deleteUser;
+exports.getGamerTagAndPlatform = getGamerTagAndPlatform;

@@ -1,7 +1,7 @@
-DROP PROCEDURE IF EXISTS spGetGames;
+DROP PROCEDURE IF EXISTS spSelectGames;
 
 delimiter $$
-CREATE PROCEDURE spGetGames(
+CREATE PROCEDURE spSelectGames(
 	
 )
 BEGIN
@@ -11,10 +11,10 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spGetSingleGame;
+DROP PROCEDURE IF EXISTS spSelectSingleGame;
 
 delimiter $$ 
-CREATE PROCEDURE spGetSingleGame(
+CREATE PROCEDURE spSelectSingleGame(
 	g_id int
 )
 begin
@@ -24,10 +24,10 @@ begin
 end $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spCreateGameData;
+DROP PROCEDURE IF EXISTS spInsertGameData;
 
 delimiter $$
-CREATE PROCEDURE spCreateGameData(
+CREATE PROCEDURE spInsertGameData(
 	g_hours int,
     g_games text,
     g_img text
@@ -62,6 +62,21 @@ BEGIN
     gameList = coalesce(g_game, gameList),
     gameImage = coalesce(g_image, gameImage)
     
+    where id = g_id;
+
+END $$
+delimiter ;
+
+DROP PROCEDURE IF EXISTS spDeleteGame;
+
+delimiter $$
+CREATE PROCEDURE spDeleteGame (
+    g_id int
+)
+
+BEGIN
+
+    delete from Games
     where id = g_id;
 
 END $$

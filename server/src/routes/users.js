@@ -45,8 +45,19 @@ router.post("/newuser", (req, res, body) => {
     })
 })
 
+router.get("/gamertagandplat/:id", (req, res, body) => {
+    userController.getGamerTagAndPlatform([req.params.id])
+    .then((response) => {
+        res.send(response);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(404);
+    })
+})
+
 router.delete("/:id", (req, res, body) => {
-    userController.deleteUser(req.params.id)
+    userController.deleteUser([req.params.id])
     .then((response) => {
         res.send(response);
     })

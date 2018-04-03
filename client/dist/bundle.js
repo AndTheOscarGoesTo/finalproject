@@ -1845,7 +1845,7 @@ module.exports = exports['default'];
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"linkContainer":"ProfileCard__linkContainer__3wuzv","Profileview":"ProfileCard__Profileview__fDC0S","ProfileViewPort":"ProfileCard__ProfileViewPort__2XK-0","boxedDiv":"ProfileCard__boxedDiv__JaFB-"};
+module.exports = {"linkContainer":"ProfileCard__linkContainer__2AxQx","Profileview":"ProfileCard__Profileview__2AHtO","ProfileViewPort":"ProfileCard__ProfileViewPort__1F9Ls","boxedDiv":"ProfileCard__boxedDiv__2AmzF"};
 
 /***/ }),
 /* 39 */
@@ -5940,7 +5940,7 @@ exports.default = LoggedBanner;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"main":"Forum__main__QL1oC","Scroll":"Forum__Scroll__11R9e","split":"Forum__split__1onPX"};
+module.exports = {"main":"Forum__main__lNwqh","Scroll":"Forum__Scroll__toiaQ","split":"Forum__split__319z9"};
 
 /***/ }),
 /* 106 */
@@ -11388,7 +11388,7 @@ exports.default = ProfileNav;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"form":"NewUser-module__form__2e3oA","input":"NewUser-module__input__XRjDZ","inputName":"NewUser-module__inputName__2c6jm"};
+module.exports = {"form":"NewUser-module__form__mKZLq","input":"NewUser-module__input__3IQ3C","inputName":"NewUser-module__inputName__1VphM"};
 
 /***/ }),
 /* 169 */
@@ -44628,14 +44628,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"logged_out_banner":"UnloggedBanner-module__logged_out_banner__9PBH1","logged_out_content":"UnloggedBanner-module__logged_out_content__jquZP","logo":"UnloggedBanner-module__logo__3LnaG","link":"UnloggedBanner-module__link__2vaoF"};
+module.exports = {"logged_out_banner":"UnloggedBanner-module__logged_out_banner__fHFQz","logged_out_content":"UnloggedBanner-module__logged_out_content__1aB6u","logo":"UnloggedBanner-module__logo__3__q8","link":"UnloggedBanner-module__link__1KlqS"};
 
 /***/ }),
 /* 361 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"button":"authButton-module__button__3a6j1"};
+module.exports = {"button":"authButton-module__button__2-2HB"};
 
 /***/ }),
 /* 362 */
@@ -44715,7 +44715,7 @@ exports.default = Logout;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"linkContainer":"App__linkContainer__2U_pU","root":"App__root__1qjB-","right":"App__right__1eBOq","carousel-control":"App__carousel-control__3w01w","left":"App__left__3HQVc"};
+module.exports = {"linkContainer":"App__linkContainer__sXnf4","root":"App__root__1Ko8v","right":"App__right__3DKH6","carousel-control":"App__carousel-control__2Oc5F","left":"App__left__3bJNs"};
 
 /***/ }),
 /* 364 */
@@ -45129,7 +45129,7 @@ exports.default = ProfileView;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"logged_out_banner":"LoggedBanner-module__logged_out_banner__2dXbO","logged_out_content":"LoggedBanner-module__logged_out_content__12v2c","logo":"LoggedBanner-module__logo__3njB0","link":"LoggedBanner-module__link__3rBcp"};
+module.exports = {"logged_out_banner":"LoggedBanner-module__logged_out_banner__W74XI","logged_out_content":"LoggedBanner-module__logged_out_content__3UUDd","logo":"LoggedBanner-module__logo__1WYQf","link":"LoggedBanner-module__link__3o5Kx"};
 
 /***/ }),
 /* 369 */
@@ -45682,7 +45682,7 @@ exports.default = Forum;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"leftsquare":"Home-module__leftsquare__39KTF","rightsquare":"Home-module__rightsquare__2yVA-","carouselContainer":"Home-module__carouselContainer__3Xr1D","homeBody":"Home-module__homeBody__37_dI"};
+module.exports = {"leftsquare":"Home-module__leftsquare__1BGVy","rightsquare":"Home-module__rightsquare__3uXKp","carouselContainer":"Home-module__carouselContainer__mUNhq","homeBody":"Home-module__homeBody__a-PxH"};
 
 /***/ }),
 /* 373 */
@@ -45889,7 +45889,7 @@ exports.default = ForumCarousel;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"carousel":"ForumCarousel-module__carousel__1OXEc","right":"ForumCarousel-module__right__32_hv","carousel-control":"ForumCarousel-module__carousel-control__2wgJd","left":"ForumCarousel-module__left__1xdwG","cardBody":"ForumCarousel-module__cardBody__2WYft","images":"ForumCarousel-module__images__2fohu","arrow":"ForumCarousel-module__arrow__1trbO"};
+module.exports = {"carousel":"ForumCarousel-module__carousel__1C0vI","right":"ForumCarousel-module__right__3ZEGO","carousel-control":"ForumCarousel-module__carousel-control__28uug","left":"ForumCarousel-module__left__20-PB","cardBody":"ForumCarousel-module__cardBody__17-ZC","images":"ForumCarousel-module__images__7Lcpu","arrow":"ForumCarousel-module__arrow__3XbL4"};
 
 /***/ }),
 /* 375 */
