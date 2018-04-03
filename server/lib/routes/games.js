@@ -16,6 +16,8 @@ var router = (0, _express.Router)();
 
 router.get("/", function (req, res, body) {
     gamesDbController.getGames().then(function (response) {
+        return response.json();
+    }).then(function (response) {
         res.send(response);
     }).catch(function (err) {
         console.log(err);
@@ -34,10 +36,19 @@ router.get("/:gameString", function (req, res, body) {
 
 router.get("/genre/:genreString", function (req, res, body) {
     console.log("--params--", req.params.genreString);
-    gamesDbController.getGameByGenre(req.params.genreString).then(function (response) {
+    // gamesDbController.getGameByGenre(req.params.genreString)
+    gamesDbController.getScrollGamesByGenre(req.params.genreString).then(function (response) {
         res.send(response);
     }).catch(function (err) {
         console.log(err);
+        res.sendStatus(403);
+    });
+});
+
+router.get("/test", function (req, res, body) {
+    gamesDbController.test().then(function (response) {
+        res.send(response);
+    }).catch(function (err) {
         res.sendStatus(403);
     });
 });
