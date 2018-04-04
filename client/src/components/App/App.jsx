@@ -6,7 +6,7 @@ import Login from '../auth/login';
 import Logout from '../auth/logout';
 import AuthButton from '../auth/authButton';
 import styles from "./App.scss";
-import Profile from '../Profile/Profile'
+import Profile from '../Profile/Profile';
 import Forum from '../Forum/Forum';
 import Home from '../Home/Home';
 import NewUser from '../NewUser/NewUser';
@@ -23,7 +23,8 @@ class Navigation extends Component {
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
                         <Route path="/newuser" component={NewUser} />
-                        <Route path="/profile" component={Profile} />
+                        <Route exact path="/profile/:id" render={routeProps => <Profile {...routeProps} yeet={'yeet'} />} />
+                        {/* <Route exact path="/profile/:id" component={Profile} /> */}
                         <Route path="/forum" component={Forum} />
                         <Route path="/forumpage" component={Forumpage} />
                         <Route path="/postforum" component={PostForum} />

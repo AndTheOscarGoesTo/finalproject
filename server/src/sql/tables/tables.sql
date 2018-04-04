@@ -90,6 +90,7 @@ CREATE TABLE Forums (
 	forumImg text,
     forumText text,
     creatorid int,
+    upvotes int,
     _created datetime default current_timestamp
 );
 
@@ -109,6 +110,7 @@ CREATE TABLE Comments (
 	id int not null auto_increment primary key,
     userid int not null,
     newcomment text,
+    likes int,
     _created datetime default current_timestamp
 );
 
@@ -118,6 +120,16 @@ CREATE TABLE Status (
     id int not null auto_increment primary key,
     userid int,
     status varchar(280),
+    likes int,
     _created datetime default current_timestamp
 );
 
+drop table if exists Relationships;
+
+create table Relationships (
+    user_one_id unsigned int not null,
+    user_two_id unsigned int not null,
+    status_interaction int not null,
+    _created datetime default current_timestamp
+    PRIMARY KEY (user_one_id, user_two_id)
+);

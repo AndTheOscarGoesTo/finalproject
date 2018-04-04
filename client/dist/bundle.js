@@ -5873,6 +5873,10 @@ var _LoggedBannerModule2 = _interopRequireDefault(_LoggedBannerModule);
 
 var _reactRouterDom = __webpack_require__(13);
 
+var _user = __webpack_require__(22);
+
+var _base = __webpack_require__(43);
+
 var _authButton = __webpack_require__(103);
 
 var _authButton2 = _interopRequireDefault(_authButton);
@@ -5891,12 +5895,76 @@ var LoggedBanner = function (_Component) {
     function LoggedBanner(props) {
         _classCallCheck(this, LoggedBanner);
 
-        return _possibleConstructorReturn(this, (LoggedBanner.__proto__ || Object.getPrototypeOf(LoggedBanner)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (LoggedBanner.__proto__ || Object.getPrototypeOf(LoggedBanner)).call(this, props));
+
+        _this.state = {
+            id: '',
+            requests: []
+        };
+        return _this;
     }
 
     _createClass(LoggedBanner, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            (0, _user.me)().then(function (res) {
+                _this2.setState({ id: res.id });
+                return (0, _base.post)('http://localhost:3000/api/relationships/requests', {
+                    id: res.id
+                });
+            }).then(function (results) {
+                console.log('this is the results from posting: ', results);
+                _this2.setState({ requests: results });
+            });
+        }
+    }, {
+        key: 'onAccept',
+        value: function onAccept(requestid) {
+            (0, _base.post)('http://localhost:3000/api/relationships/requests/accept', {
+                id: requestid
+            });
+        }
+    }, {
+        key: 'onBlock',
+        value: function onBlock(requestid) {
+            (0, _base.post)('http://localhost:3000/api/relationships/requests/block', {
+                id: requestid
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this3 = this;
+
+            var requests = this.state.requests.map(function (request) {
+                return _react2.default.createElement(
+                    'li',
+                    { key: request.id },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        request.user_one_id,
+                        ' wants to be your friend!'
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: function onClick(event) {
+                                return _this3.onAccept(request.id);
+                            } },
+                        ' ACCEPT '
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: function onClick(event) {
+                                return _this3.onBlock(request.id);
+                            } },
+                        ' DECLINE '
+                    )
+                );
+            });
+            console.log('yeet');
             return _react2.default.createElement(
                 'div',
                 { className: _LoggedBannerModule2.default.logged_out_banner },
@@ -5922,6 +5990,34 @@ var LoggedBanner = function (_Component) {
                                 'li',
                                 { className: 'yeet' },
                                 _react2.default.createElement(_authButton2.default, null)
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                null,
+                                _react2.default.createElement(
+                                    _reactRouterDom.Link,
+                                    { style: { textDecoration: 'none', color: 'white' }, to: '/profile/' + this.state.id, className: _LoggedBannerModule2.default.register },
+                                    ' My Profile '
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'li',
+                                { className: 'btn-group' },
+                                _react2.default.createElement(
+                                    'a',
+                                    { type: 'button', style: { textDecoration: 'none', color: 'white' }, className: 'dropdown-toggle', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+                                    _react2.default.createElement(
+                                        'span',
+                                        { style: { backgroundColor: 'red' }, className: 'badge' },
+                                        this.state.requests.length
+                                    ),
+                                    _react2.default.createElement('span', { className: 'caret' })
+                                ),
+                                _react2.default.createElement(
+                                    'ul',
+                                    { className: 'dropdown-menu' },
+                                    requests
+                                )
                             )
                         )
                     )
@@ -5985,6 +6081,18 @@ var _NewUserForm = __webpack_require__(375);
 
 var _NewUserForm2 = _interopRequireDefault(_NewUserForm);
 
+var _Post = __webpack_require__(377);
+
+var _Post2 = _interopRequireDefault(_Post);
+
+var _NewPost = __webpack_require__(379);
+
+var _NewPost2 = _interopRequireDefault(_NewPost);
+
+var _FriendsPanel = __webpack_require__(381);
+
+var _FriendsPanel2 = _interopRequireDefault(_FriendsPanel);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -6028,15 +6136,9 @@ var Home = function (_Component) {
                     _react.Fragment,
                     null,
                     _react2.default.createElement(_LoggedBanner2.default, { id: this.state.id, handle: this.state.handle, firstname: this.state.firstname }),
-                    _react2.default.createElement(
-                        'div',
-                        null,
-                        _react2.default.createElement(
-                            'h1',
-                            null,
-                            ' double yeet '
-                        )
-                    )
+                    _react2.default.createElement(_NewPost2.default, { id: this.state.id }),
+                    _react2.default.createElement(_Post2.default, null),
+                    _react2.default.createElement(_FriendsPanel2.default, { loggedId: this.state.id })
                 );
             }
             return _react2.default.createElement(
@@ -11363,7 +11465,6 @@ var ProfileNav = function (_Component) {
                                 'a',
                                 { className: 'nav-link', href: '#', onClick: function onClick(event) {
                                         event.preventDefault();
-
                                         _this2.setState({
                                             conditionalComponent: _react2.default.createElement(_ProfileStatus2.default, null)
                                         });
@@ -28667,6 +28768,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(0);
@@ -28748,7 +28851,9 @@ var Navigation = function (_Component) {
                         _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _login2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: '/logout', component: _logout2.default }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: '/newuser', component: _NewUser2.default }),
-                        _react2.default.createElement(_reactRouterDom.Route, { path: '/profile', component: _Profile2.default }),
+                        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/profile/:id', render: function render(routeProps) {
+                                return _react2.default.createElement(_Profile2.default, _extends({}, routeProps, { yeet: 'yeet' }));
+                            } }),
                         _react2.default.createElement(_reactRouterDom.Route, { path: '/forum', component: _Forum2.default }),
                         _react2.default.createElement(_privateRoute2.default, { path: '/goodbye', component: _goodbye2.default })
                     )
@@ -44766,6 +44871,8 @@ var _UnloggedBanner2 = _interopRequireDefault(_UnloggedBanner);
 
 var _user = __webpack_require__(22);
 
+var _base = __webpack_require__(43);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -44777,20 +44884,83 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Profile = function (_Component) {
     _inherits(Profile, _Component);
 
-    function Profile() {
+    function Profile(props) {
         _classCallCheck(this, Profile);
 
-        return _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Profile.__proto__ || Object.getPrototypeOf(Profile)).call(this, props));
+
+        _this.state = {
+            id: '',
+            loggedId: '',
+            handle: '',
+            firstname: '',
+            lastname: ''
+        };
+        return _this;
     }
 
     _createClass(Profile, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            (0, _base.get)('http://localhost:3000/api/users/' + this.props.match.params.id).then(function (res) {
+                return _this2.setState({ id: res.id, firstname: res.firstname, lastname: res.lastname, handle: res.handle });
+            });
+            (0, _user.me)().then(function (res) {
+                return _this2.setState({ loggedId: res.id });
+            });
+        }
+    }, {
+        key: 'addFriend',
+        value: function addFriend() {
+            (0, _base.post)('http://localhost:3000/api/relationships', {
+                user_one_id: this.state.loggedId,
+                user_two_id: this.state.id,
+                status_interaction: 0
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this3 = this;
+
             if ((0, _user.isLoggedIn)()) {
+                if (this.state.loggedId === this.state.id) {
+                    return _react2.default.createElement(
+                        _react.Fragment,
+                        null,
+                        _react2.default.createElement(_LoggedBanner2.default, null),
+                        _react2.default.createElement(
+                            'div',
+                            { className: _ProfileCard2.default.linkContainer },
+                            _react2.default.createElement(_ProfilePic2.default, { id: this.state.id, firstname: this.state.firstname, lastname: this.state.lastname })
+                        )
+                    );
+                } else {
+                    return _react2.default.createElement(
+                        _react.Fragment,
+                        null,
+                        _react2.default.createElement(_LoggedBanner2.default, null),
+                        _react2.default.createElement(
+                            'button',
+                            { onClick: function onClick() {
+                                    _this3.addFriend();
+                                } },
+                            'ADD FRIEND'
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: _ProfileCard2.default.linkContainer },
+                            _react2.default.createElement(_ProfilePic2.default, { id: this.state.id, firstname: this.state.firstname, lastname: this.state.lastname })
+                        )
+                    );
+                }
+            } else {
                 return _react2.default.createElement(
                     _react.Fragment,
                     null,
-                    _react2.default.createElement(_LoggedBanner2.default, null),
+                    _react2.default.createElement(_UnloggedBanner2.default, null),
                     _react2.default.createElement(
                         'div',
                         { className: _ProfileCard2.default.linkContainer },
@@ -44798,16 +44968,6 @@ var Profile = function (_Component) {
                     )
                 );
             }
-            return _react2.default.createElement(
-                _react.Fragment,
-                null,
-                _react2.default.createElement(_UnloggedBanner2.default, null),
-                _react2.default.createElement(
-                    'div',
-                    { className: _ProfileCard2.default.linkContainer },
-                    _react2.default.createElement(_ProfilePic2.default, null)
-                )
-            );
         }
     }]);
 
@@ -44885,7 +45045,9 @@ var ProfilePic = function (_Component) {
           _react2.default.createElement(
             'h3',
             null,
-            'John Cena'
+            this.props.firstname,
+            ' ',
+            this.props.lastname
           ),
           _react2.default.createElement(_ProfileView2.default, null),
           _react2.default.createElement(
@@ -45129,7 +45291,7 @@ exports.default = ProfileView;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"logged_out_banner":"LoggedBanner-module__logged_out_banner__W74XI","logged_out_content":"LoggedBanner-module__logged_out_content__3UUDd","logo":"LoggedBanner-module__logo__1WYQf","link":"LoggedBanner-module__link__3o5Kx"};
+module.exports = {"logged_out_banner":"LoggedBanner-module__logged_out_banner__W74XI","logged_out_content":"LoggedBanner-module__logged_out_content__3UUDd","logo":"LoggedBanner-module__logo__1WYQf","link":"LoggedBanner-module__link__3o5Kx","dropdown":"LoggedBanner-module__dropdown__1kkW6","button":"LoggedBanner-module__button__kFZTd"};
 
 /***/ }),
 /* 369 */
@@ -45196,31 +45358,31 @@ var Forum = function (_Component) {
           _react2.default.createElement(_ForumHead2.default, null),
           _react2.default.createElement(
             'div',
-            { 'class': 'card-group' },
+            { className: 'card-group' },
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://via.placeholder.com/450x300', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://via.placeholder.com/450x300', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'submit Post',
                   _react2.default.createElement('i', { className: 'ion-plus-circled' })
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Add a post '
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45228,27 +45390,27 @@ var Forum = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'Nipples, cool or for fools?'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45256,27 +45418,27 @@ var Forum = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'Shoot a man 3 revealed!'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45285,30 +45447,30 @@ var Forum = function (_Component) {
           ),
           _react2.default.createElement(
             'div',
-            { 'class': 'card-group' },
+            { className: 'card-group' },
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'PETA protest Monster hunter'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Ooh whoa, ooh whoa, ooh whoa You know you love me, I know you care Just shout whenever and I\'ll be there You are my love, you are my heart And we will never, ever, ever be apart'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45316,27 +45478,27 @@ var Forum = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'Nipples, cool or for fools?'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45344,27 +45506,27 @@ var Forum = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'Shoot a man 3 revealed'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45373,30 +45535,30 @@ var Forum = function (_Component) {
           ),
           _react2.default.createElement(
             'div',
-            { 'class': 'card-group' },
+            { className: 'card-group' },
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'PETA protest Monster hunter'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Ooh whoa, ooh whoa, ooh whoa You know you love me, I know you care Just shout whenever and I\'ll be there You are my love, you are my heart And we will never, ever, ever be apart'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45404,27 +45566,27 @@ var Forum = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'Nipples, cool or for fools?'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Uh huh, uh huh Yeah, Rihanna Uh huh, uh huh Good girl gone bad Uh huh, uh huh Take three, action Uh huh, uh huh, ho'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45432,27 +45594,27 @@ var Forum = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { 'class': 'card' },
-              _react2.default.createElement('img', { 'class': 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
+              { className: 'card' },
+              _react2.default.createElement('img', { className: 'card-img-top', src: 'https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg', alt: 'Card image cap' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'card-body' },
+                { className: 'card-body' },
                 _react2.default.createElement(
                   'h5',
-                  { 'class': 'card-title' },
+                  { className: 'card-title' },
                   'Shoot a man 3 revealed'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   'Somebody once told me the world is gonna roll me I ain\'t the sharpest tool in the shed She was looking kind of dumb with her finger and her thumb In the shape of an "L" on her forehead'
                 ),
                 _react2.default.createElement(
                   'p',
-                  { 'class': 'card-text' },
+                  { className: 'card-text' },
                   _react2.default.createElement(
                     'small',
-                    { 'class': 'text-muted' },
+                    { className: 'text-muted' },
                     'Timestamp here'
                   )
                 )
@@ -45682,7 +45844,7 @@ exports.default = Forum;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"leftsquare":"Home-module__leftsquare__1BGVy","rightsquare":"Home-module__rightsquare__3uXKp","carouselContainer":"Home-module__carouselContainer__mUNhq","homeBody":"Home-module__homeBody__a-PxH"};
+module.exports = {"leftsquare":"Home-module__leftsquare__1BGVy","rightsquare":"Home-module__rightsquare__3uXKp","carouselContainer":"Home-module__carouselContainer__mUNhq","homeBody":"Home-module__homeBody__a-PxH","post":"Home-module__post__syeSc"};
 
 /***/ }),
 /* 373 */
@@ -45708,6 +45870,8 @@ var _ForumCarouselModule = __webpack_require__(374);
 var _ForumCarouselModule2 = _interopRequireDefault(_ForumCarouselModule);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -45770,24 +45934,24 @@ var ForumCarousel = function (_Component) {
 
         _react2.default.createElement(
           'div',
-          { id: 'carouselExampleIndicators', 'class': 'carousel slide', 'data-ride': 'carousel', className: _ForumCarouselModule2.default.containment },
+          _defineProperty({ id: 'carouselExampleIndicators', className: 'carousel slide', 'data-ride': 'carousel' }, 'className', _ForumCarouselModule2.default.containment),
           _react2.default.createElement(
             'ol',
-            { 'class': 'carousel-indicators' },
-            _react2.default.createElement('li', { 'data-target': '#carouselExampleIndicators', 'data-slide-to': '0', 'class': 'active' }),
+            { className: 'carousel-indicators' },
+            _react2.default.createElement('li', { 'data-target': '#carouselExampleIndicators', 'data-slide-to': '0', className: 'active' }),
             _react2.default.createElement('li', { 'data-target': '#carouselExampleIndicators', 'data-slide-to': '1' }),
             _react2.default.createElement('li', { 'data-target': '#carouselExampleIndicators', 'data-slide-to': '2' })
           ),
           _react2.default.createElement(
             'div',
-            { 'class': 'carousel-inner' },
+            { className: 'carousel-inner' },
             _react2.default.createElement(
               'div',
-              { 'class': 'carousel-item active' },
+              { className: 'carousel-item active' },
               _react2.default.createElement('img', { className: 'd-block w-100 ' + _ForumCarouselModule2.default.images, src: 'https://www.ssbwiki.com/images/b/b6/Super_Smash_Bros._for_Nintendo_Switch.svg', alt: 'First slide' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'carousel-caption d-none d-md-block', className: _ForumCarouselModule2.default.cardBody },
+                _defineProperty({ className: 'carousel-caption d-none d-md-block' }, 'className', _ForumCarouselModule2.default.cardBody),
                 _react2.default.createElement(
                   'h5',
                   { className: 'card-title' },
@@ -45807,11 +45971,11 @@ var ForumCarousel = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { 'class': 'carousel-item' },
-              _react2.default.createElement('img', { className: 'd-block w-100 ' + _ForumCarouselModule2.default.images, 'w-100': true, src: 'http://nintendoenthusiast.com/wp-content/uploads/2018/02/smash-bros-coming-to-switch.jpg', alt: 'Second slide' }),
+              { className: 'carousel-item' },
+              _react2.default.createElement('img', { className: 'd-block w-100 ' + _ForumCarouselModule2.default.images, src: 'http://nintendoenthusiast.com/wp-content/uploads/2018/02/smash-bros-coming-to-switch.jpg', alt: 'Second slide' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'carousel-caption d-none d-md-block', className: _ForumCarouselModule2.default.cardBody },
+                _defineProperty({ className: 'carousel-caption d-none d-md-block' }, 'className', _ForumCarouselModule2.default.cardBody),
                 _react2.default.createElement(
                   'h5',
                   { className: 'card-title' },
@@ -45831,11 +45995,11 @@ var ForumCarousel = function (_Component) {
             ),
             _react2.default.createElement(
               'div',
-              { 'class': 'carousel-item' },
+              { className: 'carousel-item' },
               _react2.default.createElement('img', { className: 'd-block w-100 ' + _ForumCarouselModule2.default.images, src: 'https://www.ssbwiki.com/images/b/b6/Super_Smash_Bros._for_Nintendo_Switch.svg', alt: 'Third slide' }),
               _react2.default.createElement(
                 'div',
-                { 'class': 'carousel-caption d-none d-md-block', className: _ForumCarouselModule2.default.cardBody },
+                _defineProperty({ className: 'carousel-caption d-none d-md-block' }, 'className', _ForumCarouselModule2.default.cardBody),
                 _react2.default.createElement(
                   'h5',
                   { className: 'card-title' },
@@ -45856,21 +46020,21 @@ var ForumCarousel = function (_Component) {
           ),
           _react2.default.createElement(
             'a',
-            { 'class': 'carousel-control-prev', href: '#carouselExampleIndicators', role: 'button', 'data-slide': 'prev', className: _ForumCarouselModule2.default.arrow },
-            _react2.default.createElement('span', { 'class': 'carousel-control-prev-icon', 'aria-hidden': 'true' }),
+            _defineProperty({ className: 'carousel-control-prev', href: '#carouselExampleIndicators', role: 'button', 'data-slide': 'prev' }, 'className', _ForumCarouselModule2.default.arrow),
+            _react2.default.createElement('span', { className: 'carousel-control-prev-icon', 'aria-hidden': 'true' }),
             _react2.default.createElement(
               'span',
-              { 'class': 'sr-only' },
+              { className: 'sr-only' },
               'Previous'
             )
           ),
           _react2.default.createElement(
             'a',
-            { 'class': 'carousel-control-next', href: '#carouselExampleIndicators', role: 'button', 'data-slide': 'next', className: _ForumCarouselModule2.default.arrow },
-            _react2.default.createElement('span', { 'class': 'carousel-control-next-icon', 'aria-hidden': 'true' }),
+            _defineProperty({ className: 'carousel-control-next', href: '#carouselExampleIndicators', role: 'button', 'data-slide': 'next' }, 'className', _ForumCarouselModule2.default.arrow),
+            _react2.default.createElement('span', { className: 'carousel-control-next-icon', 'aria-hidden': 'true' }),
             _react2.default.createElement(
               'span',
-              { 'class': 'sr-only' },
+              { className: 'sr-only' },
               'Next'
             )
           )
@@ -46291,6 +46455,377 @@ var NewUser = function (_Component) {
 }(_react.Component);
 
 exports.default = NewUser;
+
+/***/ }),
+/* 377 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _PostModule = __webpack_require__(378);
+
+var _PostModule2 = _interopRequireDefault(_PostModule);
+
+var _base = __webpack_require__(43);
+
+var _reactRouterDom = __webpack_require__(13);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Post = function (_Component) {
+    _inherits(Post, _Component);
+
+    function Post(props) {
+        _classCallCheck(this, Post);
+
+        var _this = _possibleConstructorReturn(this, (Post.__proto__ || Object.getPrototypeOf(Post)).call(this, props));
+
+        _this.state = {
+            posts: []
+        };
+        return _this;
+    }
+
+    _createClass(Post, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            (0, _base.get)('http://localhost:3000/api/status').then(function (result) {
+                return _this2.setState({ posts: result });
+            }).then(function (log) {
+                return console.log(_this2.state.posts);
+            });
+        }
+    }, {
+        key: 'handleLike',
+        value: function handleLike(id) {
+            (0, _base.post)('http://localhost:3000/api/status', {}).then();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            var posts = this.state.posts.map(function (posts) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'media ' + _PostModule2.default.postDiv, key: posts.id },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'media-left' },
+                        _react2.default.createElement('img', { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png', className: 'media-object', style: { width: '50px' } })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'media-body' },
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: '/profile/' + posts.userid, className: 'media-heading' },
+                            'UserID ',
+                            posts.userid
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            posts.status
+                        ),
+                        _react2.default.createElement('i', { className: 'glyphicon glyphicon-heart-empty', onClick: function onClick() {
+                                _this3.handleLike(posts.id);
+                            } })
+                    )
+                );
+            });
+            return _react2.default.createElement(
+                _react.Fragment,
+                null,
+                posts
+            );
+        }
+    }]);
+
+    return Post;
+}(_react.Component);
+
+exports.default = Post;
+
+/***/ }),
+/* 378 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"avatar":"Post-module__avatar__tTIxe","postDiv":"Post-module__postDiv__hCRav"};
+
+/***/ }),
+/* 379 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _user = __webpack_require__(22);
+
+var userService = _interopRequireWildcard(_user);
+
+var _reactRouterDom = __webpack_require__(13);
+
+var _indeterminateProgress = __webpack_require__(55);
+
+var _indeterminateProgress2 = _interopRequireDefault(_indeterminateProgress);
+
+var _NewPostModule = __webpack_require__(380);
+
+var _NewPostModule2 = _interopRequireDefault(_NewPostModule);
+
+var _base = __webpack_require__(43);
+
+var _UnloggedBanner = __webpack_require__(44);
+
+var _UnloggedBanner2 = _interopRequireDefault(_UnloggedBanner);
+
+var _Home = __webpack_require__(106);
+
+var _Home2 = _interopRequireDefault(_Home);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NewUserForm = function (_Component) {
+    _inherits(NewUserForm, _Component);
+
+    function NewUserForm(props) {
+        _classCallCheck(this, NewUserForm);
+
+        var _this = _possibleConstructorReturn(this, (NewUserForm.__proto__ || Object.getPrototypeOf(NewUserForm)).call(this, props));
+
+        _this.state = {
+            redirectToReferrer: false,
+            userid: '',
+            status: '',
+            feedbackMessage: ''
+        };
+        return _this;
+    }
+
+    _createClass(NewUserForm, [{
+        key: 'onButtonClick',
+        value: function onButtonClick() {
+            (0, _base.post)('http://localhost:3000/api/status', {
+                userid: this.props.id,
+                status: this.state.status
+            }).then(function (results) {
+                console.log('worked maybe');
+            });
+        }
+    }, {
+        key: 'handleTextChange',
+        value: function handleTextChange(value) {
+            this.setState({ status: value });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this2 = this;
+
+            return _react2.default.createElement(
+                _react.Fragment,
+                null,
+                _react2.default.createElement(
+                    'div',
+                    { className: 'media ' + _NewPostModule2.default.form },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'media-left' },
+                        _react2.default.createElement('img', { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png', className: 'media-object', style: { width: '50px' } })
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'media-body' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'form-group' },
+                            _react2.default.createElement('textarea', { id: 'text', className: _NewPostModule2.default.input, type: 'text', placeholder: 'What\'s up?', onChange: function onChange(e) {
+                                    return _this2.handleTextChange(e.target.value);
+                                }, required: true })
+                        ),
+                        _react2.default.createElement(
+                            'button',
+                            { onClick: function onClick(event) {
+                                    return _this2.onButtonClick();
+                                }, value: 'Login', className: 'btn btn-primary' },
+                            'Submit'
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return NewUserForm;
+}(_react.Component);
+
+exports.default = NewUserForm;
+
+/***/ }),
+/* 380 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"form":"NewPost-module__form__LnlVx","input":"NewPost-module__input__1CREX"};
+
+/***/ }),
+/* 381 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _FriendsPanelModule = __webpack_require__(382);
+
+var _FriendsPanelModule2 = _interopRequireDefault(_FriendsPanelModule);
+
+var _base = __webpack_require__(43);
+
+var _user = __webpack_require__(22);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var FriendsPanel = function (_Component) {
+    _inherits(FriendsPanel, _Component);
+
+    function FriendsPanel(props) {
+        _classCallCheck(this, FriendsPanel);
+
+        var _this = _possibleConstructorReturn(this, (FriendsPanel.__proto__ || Object.getPrototypeOf(FriendsPanel)).call(this, props));
+
+        _this.state = {
+            loggedId: '',
+            friends: []
+        };
+        return _this;
+    }
+
+    _createClass(FriendsPanel, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            (0, _user.me)().then(function (res) {
+                _this2.setState({ id: res.id });
+                return (0, _base.post)('http://localhost:3000/api/relationships/friends', {
+                    id: res.id
+                }).then(function (res) {
+                    return _this2.setState({ friends: res });
+                });
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            var friends = this.state.friends.map(function (friend) {
+                if (friend.user_one_id === _this3.state.loggedId) {
+                    return _react2.default.createElement(
+                        'li',
+                        null,
+                        _react2.default.createElement(
+                            'a',
+                            { href: '#' },
+                            friend.user_two_id
+                        )
+                    );
+                } else {
+                    return _react2.default.createElement(
+                        'li',
+                        null,
+                        _react2.default.createElement(
+                            'a',
+                            { href: '#' },
+                            friend.user_one_id
+                        )
+                    );
+                }
+            });
+            return _react2.default.createElement(
+                'div',
+                { className: 'dropup ' + _FriendsPanelModule2.default.position },
+                _react2.default.createElement(
+                    'button',
+                    { className: 'btn btn-default dropdown-toggle', type: 'button', id: 'dropdownMenu2', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+                    'Friends',
+                    _react2.default.createElement('span', { className: 'caret' })
+                ),
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'dropdown-menu', 'aria-labelledby': 'dropdownMenu2' },
+                    friends
+                )
+            );
+        }
+    }]);
+
+    return FriendsPanel;
+}(_react.Component);
+
+exports.default = FriendsPanel;
+
+/***/ }),
+/* 382 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"position":"FriendsPanel-module__position__3uqjE"};
 
 /***/ })
 /******/ ]);

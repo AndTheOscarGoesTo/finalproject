@@ -41,7 +41,7 @@
     text-transform: uppercase; }
 
 body {
-  background: linear-gradient(#333536, #131618);
+  background: #121212;
   margin: 0;
   padding: 0;
   height: 100%; }
@@ -56,9 +56,6 @@ html {
 
 .App__right__3DKH6.App__carousel-control__2Oc5F, .App__left__3bJNs.App__carousel-control__2Oc5F {
   display: none; }
-body {
-  background-color: #2b3131; }
-
 .ProfileCard__linkContainer__2AxQx {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
@@ -175,6 +172,19 @@ body {
 
 .LoggedBanner-module__link__3o5Kx :hover {
   background: #630664; }
+
+.LoggedBanner-module__dropdown__1kkW6 {
+  color: black; }
+
+.LoggedBanner-module__button__kFZTd {
+  background-color: none;
+  color: white;
+  text-decoration: none;
+  margin-left: 2em;
+  font-size: 12px; }
+
+.LoggedBanner-module__button__kFZTd :hover {
+  background-color: black; }
 .Forum__main__lNwqh {
   margin-left: 20%;
   width: 60%; }
@@ -224,6 +234,12 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
+
+.Home-module__post__syeSc {
+  margin: 0 auto;
+  background-color: white;
+  color: black;
+  width: 50%; }
 .ForumCarousel-module__carousel__1C0vI {
   height: 45em; }
 
@@ -263,3 +279,29 @@ body {
   width: 20em;
   height: 2em;
   font-size: 24px; }
+.Post-module__avatar__tTIxe {
+  height: 50px;
+  width: 50px;
+  border-radius: 100px; }
+
+.Post-module__postDiv__hCRav {
+  width: 50%;
+  color: #f5f5f5;
+  background-color: #181818;
+  padding: 1em;
+  margin: 0 auto; }
+.NewPost-module__form__LnlVx {
+  width: 50%;
+  color: #f5f5f5;
+  background-color: #181818;
+  padding: 1em;
+  margin: 0 auto; }
+
+.NewPost-module__input__1CREX {
+  width: 100%;
+  height: 4em;
+  color: black; }
+.FriendsPanel-module__position__3uqjE {
+  position: fixed;
+  bottom: 0;
+  right: 0; }

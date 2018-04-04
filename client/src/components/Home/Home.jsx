@@ -8,6 +8,9 @@ import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import LoggedBanner from '../LoggedBanner/LoggedBanner';
 import ForumCarousel from '../ForumCarousel/ForumCarousel';
 import NewUserForm from '../NewUser/NewUserForm';
+import Post from '../Post/Post';
+import NewPost from '../NewPost/NewPost';
+import FriendsPanel from '../FriendsPanel/FriendsPanel';
 
 class Home extends Component {
 
@@ -23,7 +26,7 @@ class Home extends Component {
         if(isLoggedIn()){
             me()
             .then((res) => {
-                this.setState({id: res.id, handle: res.handle, firstname: res.firstname})
+                this.setState({id: res.id, handle: res.handle, firstname: res.firstname});
             })
         }
     }
@@ -32,9 +35,9 @@ class Home extends Component {
             return (
                 <Fragment>
                 <LoggedBanner id={this.state.id} handle={this.state.handle} firstname={this.state.firstname} />
-                <div>
-                    <h1> double yeet </h1>
-                </div>
+                <NewPost id={this.state.id}/>
+                <Post />
+                <FriendsPanel loggedId={this.state.id} />
                 </Fragment>
             )
         } 
@@ -52,8 +55,12 @@ class Home extends Component {
                         <h1>Join us.</h1>
                         <NewUserForm />
                     </div>
+<<<<<<< HEAD
                 </div>
                 
+=======
+                </div>  
+>>>>>>> 74a2dcfa7c84c26d5b86d5c22614300fa659745c
             </Fragment>
         )
     }
