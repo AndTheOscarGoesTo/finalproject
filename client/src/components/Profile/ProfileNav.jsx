@@ -16,7 +16,6 @@ class ProfileNav extends Component {
         return (
             <Fragment>
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-
                 <ul className="navbar-nav">
                     <li className="nav-item">
                         <a className="nav-link" href="#">Games </a>
@@ -30,7 +29,6 @@ class ProfileNav extends Component {
                     <li className="nav-item navbar-right">
                         <a className="nav-link" href="#" onClick={(event) => {
                             event.preventDefault()
-
                             this.setState({
                                 conditionalComponent: <ProfileStatus />
                             })

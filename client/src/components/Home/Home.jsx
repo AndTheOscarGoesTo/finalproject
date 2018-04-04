@@ -10,6 +10,7 @@ import ForumCarousel from '../ForumCarousel/ForumCarousel';
 import NewUserForm from '../NewUser/NewUserForm';
 import Post from '../Post/Post';
 import NewPost from '../NewPost/NewPost';
+import FriendsPanel from '../FriendsPanel/FriendsPanel';
 
 class Home extends Component {
 
@@ -25,7 +26,7 @@ class Home extends Component {
         if(isLoggedIn()){
             me()
             .then((res) => {
-                this.setState({id: res.id, handle: res.handle, firstname: res.firstname})
+                this.setState({id: res.id, handle: res.handle, firstname: res.firstname});
             })
         }
     }
@@ -36,6 +37,7 @@ class Home extends Component {
                 <LoggedBanner id={this.state.id} handle={this.state.handle} firstname={this.state.firstname} />
                 <NewPost id={this.state.id}/>
                 <Post />
+                <FriendsPanel loggedId={this.state.id} />
                 </Fragment>
             )
         } 

@@ -58,6 +58,7 @@ class Table {
         return row(procedureName, params)
     }
 
+    // works for put, delete, and select procedures
     putOrDeleteProcedure(procedureName, params){
         console.log("--params--", params);
         return rows(procedureName, params)

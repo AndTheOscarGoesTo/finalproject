@@ -8,7 +8,7 @@ import ProfileViewPort from './ProfileViewPort'
 import LoggedBanner from '../LoggedBanner/LoggedBanner';
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import { isLoggedIn, me } from '../../services/user';
-import { get } from '../../services/base';
+import { get, post } from '../../services/base';
 
 
 class Profile extends Component {
@@ -25,7 +25,8 @@ class Profile extends Component {
     componentDidMount(){
         get(`http://localhost:3000/api/users/${this.props.match.params.id}`)
         .then(res => this.setState( {id: res.id, firstname: res.firstname, lastname: res.lastname, handle: res.handle} ))
-        
+        me()
+            .then(res => this.setState( {loggedId: res.id} ))
     }
     addFriend(){
         post('http://localhost:3000/api/relationships', {
@@ -36,8 +37,6 @@ class Profile extends Component {
     }
     render() {
         if(isLoggedIn()){
-            me()
-            .then(res => this.setState( {loggedId: res.id} ))
             if(this.state.loggedId === this.state.id) {
                 return (
                     <Fragment>
@@ -51,7 +50,7 @@ class Profile extends Component {
                 return(
                     <Fragment>
                         <LoggedBanner />
-                            <button onClick={ () => { this.addFriend(posts.id) } }>ADD FRIEND</button>
+                            <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
                             <div className={styles.linkContainer}>
                                 <ProfilePic id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
                             </div>

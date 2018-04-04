@@ -22,7 +22,8 @@ class Navigation extends Component {
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
                         <Route path="/newuser" component={NewUser} />
-                        <Route exact path="/profile/:id" render={routeProps => <Profile {...routeProps} id={req.params.id}/>} />
+                        <Route exact path="/profile/:id" render={routeProps => <Profile {...routeProps} yeet={'yeet'} />} />
+                        {/* <Route exact path="/profile/:id" component={Profile} /> */}
                         <Route path="/forum" component={Forum} />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
