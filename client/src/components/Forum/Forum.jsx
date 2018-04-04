@@ -10,7 +10,7 @@ class Forum extends Component {
         return (
           <Fragment>
             <LoggedBanner />
-            <div className ={ style.main }>
+            <div class="container">
               
             <ForumHead />
             <div className="card-group" >

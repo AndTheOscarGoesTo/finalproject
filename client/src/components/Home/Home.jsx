@@ -44,17 +44,23 @@ class Home extends Component {
         return (
             <Fragment>
             <UnloggedBanner />
+            
                 <div className={style.homeBody}>
                     <div className={style.leftsquare}>
-                        <div className={style.carouselContainer}>
+                        <div class="col-sm-12" className={style.carouselContainer}>
                             <ForumCarousel />
                         </div>
                     </div>
-                    <div className={style.rightsquare}>
+                    <div class="col-sm-12" className={style.rightsquare}>
                         <h1>Join us.</h1>
                         <NewUserForm />
                     </div>
+<<<<<<< HEAD
+                </div>
+                
+=======
                 </div>  
+>>>>>>> 74a2dcfa7c84c26d5b86d5c22614300fa659745c
             </Fragment>
         )
     }
