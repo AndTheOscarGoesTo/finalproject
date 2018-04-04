@@ -4,6 +4,7 @@ import usersRouter from './users';
 import statusRouter from './status';
 import igdbRouter from "./games"; 
 import relationshipsRouter from './relationships';
+import profileRouter from "./profiles"
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 
 
@@ -13,6 +14,7 @@ router.use('/users', usersRouter);
 router.use('/status', statusRouter);
 router.use("/games", igdbRouter);
 router.use('/relationships', relationshipsRouter);
+router.use("/profile", profileRouter);
 
 router.route('*')
     .post(tokenMiddleware, isLoggedIn)

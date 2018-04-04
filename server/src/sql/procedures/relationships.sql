@@ -66,7 +66,9 @@ begin
 	select * from 
 		Relationships
 	where
-		user_two_id = u_id;
+		user_two_id = u_id
+	and 
+		status_interaction = 0;
         
 end $$
 delimiter ;

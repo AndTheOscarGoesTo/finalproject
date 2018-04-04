@@ -29,7 +29,9 @@ function executeQuery(sql, args = []) {
 }
 
 function callProcedure(procedureName, args = []) {
-    let placeholders = generatePlaceholders(args);
+    // let placeholders = (args.length === 1 && !isNaN(args[0])) ? args[0] : generatePlaceholders(args);
+    let placeholders = !args.some(isNaN) ? args : generatePlaceholders(args);
+    console.log("--procedure args--", placeholders);
     let callString = `CALL ${procedureName}(${placeholders});`; // CALL GetChirps();, or CALL InsertChirp(?,?,?);
     return executeQuery(callString, args);
 }
@@ -42,6 +44,7 @@ function rows(procedureName, args = []) {
 }
 
 function row(procedureName, args = []) {
+    console.log("--row args--", args);
     return callProcedure(procedureName, args)
     .then((resultsets) => {
         return resultsets[0][0];
@@ -56,9 +59,11 @@ function empty(procedureName, args = []) {
 }
 
 function generatePlaceholders(args = []) {
+    console.log("--placeholders before--", args);
     let placeholders = '';
     if (args.length > 0) {
         for (let i = 0; i < args.length; i++) {
+            console.log(`--placeholder-${i}--`, placeholders);
             if (i === args.length - 1) { // if we are on the last argument in the array
                 placeholders += '?';
             } else {
@@ -66,6 +71,8 @@ function generatePlaceholders(args = []) {
             }
         }
     }
+
+    console.log("--placeholders after--", placeholders);
     return placeholders;
 }
 

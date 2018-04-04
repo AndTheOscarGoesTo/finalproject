@@ -1,7 +1,6 @@
 drop table if exists Relationships;
 
 create table Relationships (
-    id int not null auto_increment,
     user_one_id unsigned int not null,
     user_two_id unsigned int not null,
     status_interaction int(1) not null,
