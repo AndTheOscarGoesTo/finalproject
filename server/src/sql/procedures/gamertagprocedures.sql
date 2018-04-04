@@ -28,7 +28,7 @@ DROP PROCEDURE spSelectGamerTagAndPlatform;
 
 DELIMITER $$ 
  
- CREATE PROCEDURE `spSelectGamerTagAndPlatform`(
+ CREATE PROCEDURE spSelectGamerTagAndPlatform(
 	u_id int
  )
  
@@ -113,7 +113,7 @@ DROP PROCEDURE spSelectGamerTagByPlatform;
 
 DELIMITER $$ 
  
- CREATE PROCEDURE `spSelectGamerTagByPlatform`(
+ CREATE PROCEDURE spSelectGamerTagByPlatform(
 	u_id int,
     p_id int
  )
