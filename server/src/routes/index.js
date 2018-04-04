@@ -4,15 +4,16 @@ import peopleRouter from './people';
 import authRouter from './auth';
 import usersRouter from './users';
 import igdbRouter from "./games"; 
+import ImageUploadRouter from './ImageUploaded';
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 
 let router = Router();
 router.use('/auth', authRouter);
 router.use('/users', usersRouter);
 router.use("/games", igdbRouter);
-
+router.use("/ImageUploaded", ImageUploadRouter);
 router.route('*')
-    .post(tokenMiddleware, isLoggedIn)
+    // .post(tokenMiddleware, isLoggedIn)
     .put(tokenMiddleware, isLoggedIn)
     .delete(tokenMiddleware, isLoggedIn);
 

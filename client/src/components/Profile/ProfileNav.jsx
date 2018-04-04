@@ -34,8 +34,7 @@ class ProfileNav extends Component {
                             this.setState({
                                 conditionalComponent: <ProfileStatus />
                             })
-
-                        }} >Status</a>
+                            }} >Status</a>
                     </li>
                 </ul>
             </nav>

@@ -10,7 +10,8 @@ import Profile from '../Profile/Profile'
 import Forum from '../Forum/Forum';
 import Home from '../Home/Home';
 import NewUser from '../NewUser/NewUser';
-
+import Forumpage from '../Forumpage/Forumpage';
+import PostForum from '../PostForum/PostForum'
 class Navigation extends Component {
 
     render() {
@@ -24,6 +25,8 @@ class Navigation extends Component {
                         <Route path="/newuser" component={NewUser} />
                         <Route path="/profile" component={Profile} />
                         <Route path="/forum" component={Forum} />
+                        <Route path="/forumpage" component={Forumpage} />
+                        <Route path="/postforum" component={PostForum} />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>

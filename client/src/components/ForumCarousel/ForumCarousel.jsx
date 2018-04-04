@@ -43,7 +43,7 @@ class ForumCarousel extends Component{
         //     </Carousel>
         // </Fragment>
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" className={style.containment}>
+<div class id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" className={style.containment}>
 <ol class="carousel-indicators">
   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -59,7 +59,7 @@ class ForumCarousel extends Component{
   </div>
   </div>
   <div class="carousel-item">
-    <img className={`d-block w-100 ${style.images}`} w-100 src="http://nintendoenthusiast.com/wp-content/uploads/2018/02/smash-bros-coming-to-switch.jpg" alt="Second slide" />
+    <img className={`d-block w-100 ${style.images}`}  src="http://nintendoenthusiast.com/wp-content/uploads/2018/02/smash-bros-coming-to-switch.jpg" alt="Second slide" />
     <div class="carousel-caption d-none d-md-block" className={style.cardBody}>
     <h5 className="card-title">Forum Name</h5>
     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
