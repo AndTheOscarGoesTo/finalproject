@@ -391,7 +391,7 @@ DROP PROCEDURE spSelectGamerTagAndPlatform;
 
 DELIMITER $$ 
  
- CREATE PROCEDURE `spSelectGamerTagAndPlatform`(
+ CREATE PROCEDURE spSelectGamerTagAndPlatform(
 	u_id int
  )
  
