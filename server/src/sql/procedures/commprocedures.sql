@@ -78,3 +78,35 @@ BEGIN
 
 END $$
 delimiter ;
+
+DROP PROCEDURE spSelectForumComments;
+
+DELIMITER $$
+
+	CREATE PROCEDURE spSelectForumComments(
+		f_id int
+    )
+
+BEGIN
+    
+	SELECT 
+			f.title as forumTitle,
+			f.forumImg as forumImg,
+			f.forumText as forumDescription,
+			c.userid as userid,
+			u.handle as handle,
+			u.avatar as avatar,
+			c.newcomment as comment,
+			c._created as commentTimeStamp
+	FROM forums f
+	INNER JOIN commentlist cl 
+	ON cl.forumid = f.id
+	INNER JOIN comments c 
+	ON c.id = cl.commentid
+	INNER JOIN users u
+	ON u.id = c.userid
+	WHERE f.id = f_id;
+
+END $$
+
+DELIMITER ;
