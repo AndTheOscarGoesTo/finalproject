@@ -28,7 +28,7 @@ function getFriends(userId) {
 }
 
 function getAllFriends(userId) {
-    var sql = "SELECT * FROM RELATIONSHIPS WHERE user_one_id = " + userId + " or user_two_id = " + userId + " and status_interaction = 1;";
+    var sql = "SELECT * FROM RELATIONSHIPS WHERE (user_one_id = " + userId + " or user_two_id = " + userId + ") and status_interaction = 1;";
     return (0, _db.executeQuery)(sql);
 }
 function getPending(userId) {

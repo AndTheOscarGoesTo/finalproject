@@ -26,6 +26,10 @@ var _relationships = require('./relationships');
 
 var _relationships2 = _interopRequireDefault(_relationships);
 
+var _profiles = require('./profiles');
+
+var _profiles2 = _interopRequireDefault(_profiles);
+
 var _auth3 = require('../middleware/auth.mw');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -36,6 +40,7 @@ router.use('/users', _users2.default);
 router.use('/status', _status2.default);
 router.use("/games", _games2.default);
 router.use('/relationships', _relationships2.default);
+router.use("/profile", _profiles2.default);
 
 router.route('*').post(_auth3.tokenMiddleware, _auth3.isLoggedIn).put(_auth3.tokenMiddleware, _auth3.isLoggedIn).delete(_auth3.tokenMiddleware, _auth3.isLoggedIn);
 

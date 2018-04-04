@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.generatePlaceholders = exports.executeQuery = exports.empty = exports.rows = exports.row = undefined;
 
-var _mysql = require('mysql');
+var _mysql = require("mysql");
 
 var _mysql2 = _interopRequireDefault(_mysql);
 
@@ -45,8 +45,10 @@ function executeQuery(sql) {
 function callProcedure(procedureName) {
     var args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
-    var placeholders = generatePlaceholders(args);
-    var callString = 'CALL ' + procedureName + '(' + placeholders + ');'; // CALL GetChirps();, or CALL InsertChirp(?,?,?);
+    // let placeholders = (args.length === 1 && !isNaN(args[0])) ? args[0] : generatePlaceholders(args);
+    var placeholders = !args.some(isNaN) ? args : generatePlaceholders(args);
+    console.log("--procedure args--", placeholders);
+    var callString = "CALL " + procedureName + "(" + placeholders + ");"; // CALL GetChirps();, or CALL InsertChirp(?,?,?);
     return executeQuery(callString, args);
 }
 
@@ -61,6 +63,7 @@ function rows(procedureName) {
 function row(procedureName) {
     var args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
+    console.log("--row args--", args);
     return callProcedure(procedureName, args).then(function (resultsets) {
         return resultsets[0][0];
     });
@@ -77,9 +80,11 @@ function empty(procedureName) {
 function generatePlaceholders() {
     var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 
+    console.log("--placeholders before--", args);
     var placeholders = '';
     if (args.length > 0) {
         for (var i = 0; i < args.length; i++) {
+            console.log("--placeholder-" + i + "--", placeholders);
             if (i === args.length - 1) {
                 // if we are on the last argument in the array
                 placeholders += '?';
@@ -88,6 +93,8 @@ function generatePlaceholders() {
             }
         }
     }
+
+    console.log("--placeholders after--", placeholders);
     return placeholders;
 }
 

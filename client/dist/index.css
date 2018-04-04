@@ -285,13 +285,13 @@ html {
   border-radius: 100px; }
 
 .Post-module__postDiv__hCRav {
-  width: 50%;
+  width: 30%;
   color: #f5f5f5;
   background-color: #181818;
   padding: 1em;
   margin: 0 auto; }
 .NewPost-module__form__LnlVx {
-  width: 50%;
+  width: 30%;
   color: #f5f5f5;
   background-color: #181818;
   padding: 1em;
@@ -305,3 +305,32 @@ html {
   position: fixed;
   bottom: 0;
   right: 0; }
+
+.FriendsPanel-module__menu__2zFJs {
+  background-color: #181818; }
+
+.FriendsPanel-module__friendList__-U4_j {
+  position: relative;
+  width: 20em;
+  padding-left: none; }
+
+.FriendsPanel-module__friendsButton__D_aaS {
+  width: 18em;
+  background: linear-gradient(#9c129e, #630664);
+  border: none;
+  color: white; }
+
+.FriendsPanel-module__nobullet__1wOat {
+  list-style-type: none; }
+
+.FriendsPanel-module__friendname__36agz {
+  display: inline-block;
+  font-size: 1.2em;
+  padding-left: 1em; }
+
+.FriendsPanel-module__list__Lsb5v {
+  border-style: solid;
+  border-width: 1px;
+  border-color: gray;
+  border-left: none;
+  border-right: none; }
