@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
 import style from './LoggedBanner.module.scss';
 import { Link } from 'react-router-dom';
 import { isLoggedIn, me } from '../../services/user';
+import { post } from '../../services/base'
 
 import AuthButton from '../auth/authButton';
 
@@ -12,13 +13,43 @@ class LoggedBanner extends Component {
         super(props);
         this.state = {
             id: '',
+            requests: []
         }
     }
     componentDidMount(){
         me()
-        .then(res => this.setState( {id: res.id} ))
+        .then(res => { 
+            this.setState({ id: res.id});
+            return post('http://localhost:3000/api/relationships/requests', {
+                id: res.id
+            });
+        })
+        .then(results => {
+            console.log('this is the results from posting: ', results);
+            this.setState( {requests: results} )
+        });
+    }
+    onAccept(requestid){
+        post('http://localhost:3000/api/relationships/requests/accept', {
+            id: requestid,
+        })
+    }
+    onBlock(requestid){
+        post('http://localhost:3000/api/relationships/requests/block', {
+            id: requestid,
+        })
     }
     render() {
+        let requests = this.state.requests.map((request) => {
+                return(
+                <li key={request.id}>
+                    <p>{request.user_one_id} wants to be your friend!</p>
+                    <button onClick= { (event) => this.onAccept(request.id)}> ACCEPT </button>
+                    <button onClick={ (event) => this.onBlock(request.id)}> DECLINE </button>
+                </li>
+                )
+        })
+        console.log('yeet')
         return (
             <div className={style.logged_out_banner}>
                 <div className={style.logged_out_content}>
@@ -33,6 +64,13 @@ class LoggedBanner extends Component {
                             <li>
                             <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
                             </li>
+                            <li className='btn-group'>                            
+                                <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>
+                                <ul className="dropdown-menu">
+                                    { requests }
+                                </ul>
+                            </li>
+                            
                         </ul>
                     </nav>
                 </div>

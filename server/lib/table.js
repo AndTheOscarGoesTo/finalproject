@@ -79,6 +79,9 @@ var Table = function () {
             console.log("--params--", params);
             return (0, _db.row)(procedureName, params);
         }
+
+        // works for put, delete, and select procedures
+
     }, {
         key: 'putOrDeleteProcedure',
         value: function putOrDeleteProcedure(procedureName, params) {

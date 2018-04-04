@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { tokenMiddleware, isLoggedIn } from '../middleware/auth.mw';
 import Table from '../table'
 import * as userController from "../controllers/userController";
+import * as relationshipsController from "../controllers/friendController";
 
 let router = Router();
 
@@ -33,6 +34,46 @@ router.post('/', (req, res) => {
     });
 });
 
+router.post('/requests', (req, res) => {
+    // RelationshipsTable.post('spSelectUserFromRelationship', req.body.id)
+    relationshipsController.getPending(req.body.id)
+    .then((results) => {
+        res.json(results);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+
+router.post('/friends', (req, res) => {
+    relationshipsController.getAllFriends(req.body.id)
+    .then((results) => {
+        res.json(results);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+
+router.post('/requests/accept', (req, res) => {
+    relationshipsController.acceptRequest(req.body.id)
+    .then((results) => {
+        res.json(results);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+router.post('/requests/block', (req, res) => {
+    relationshipsController.blockRequest(req.body.id)
+    .then((results) => {
+        res.json(results);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+
 router.get('/:id', (req, res) => {
     RelationshipsTable.getOne(req.params.id)
     .then((results) => {
@@ -52,3 +93,5 @@ router.put('/:id', (req, res) => {
         res.sendStatus(500);
     });
 });
+
+export default router;
