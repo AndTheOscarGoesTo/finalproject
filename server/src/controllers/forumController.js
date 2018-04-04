@@ -3,8 +3,18 @@ import ForumTable from "../table";
 
 const forumTable = new ForumTable("forums");
 
-function getForums(){
+function selectForums(){
     return forumTable.getAll();
+}
+
+// function selectForumInfo(forumId){
+//     console.log("selectForumInfo");
+//     return forumTable.putOrDeleteProcedure("spSelectForumInfo", [forumId]);
+// }
+
+function selectForumInfo(forumId){
+    console.log("selectForumInfo");
+    return forumTable.getOne(forumId);
 }
 
 function selectForumComments(forumId){
@@ -12,6 +22,7 @@ function selectForumComments(forumId){
 }
 
 export {
-    getForums,
+    selectForums,
+    selectForumInfo,
     selectForumComments
 }
