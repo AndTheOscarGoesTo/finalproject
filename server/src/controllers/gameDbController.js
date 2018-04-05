@@ -40,6 +40,20 @@ function getGamesByPlatformId(platformId){
         });
 }
 
+function getGamesByGenre(){
+    return new Promise((resolve, reject) => {
+        request(`http://thegamesdb.net/api/GetPlatformGames.php?platform=${platformId}`,{
+            method: "GET",
+            mode: "cors",
+            gzip: true
+        }, (err, response, body) => {
+            if (err) reject(err);
+
+            resolve(body);
+        });
+    });
+}
+
 export {
     getGames,
     getGamesByPlatformId
