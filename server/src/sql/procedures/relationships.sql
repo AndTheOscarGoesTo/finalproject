@@ -7,27 +7,47 @@ create procedure spSelectFriends(
 
 BEGIN 
 
+-- select 
+-- 	r.id as 'relationshipid',
+--     r.user_one_id,
+--     r.user_two_id,
+--     r.status_interaction,
+--     r._created as '_relationship_created',
+-- 	u.*
+-- from 
+-- 	relationships r
+-- join 
+-- 	users u
+-- on 
+-- 	u.id != p_userid AND 
+--     (u.id = r.user_one_id OR 
+-- 	u.id = r.user_two_id)
+-- where 
+-- 	user_one_id = p_userid OR 
+--     user_two_id = p_userid AND 
+--     status_interaction = 1 OR
+--     status_interaction = 2 OR
+--     status_interaction = 0;
+
 select 
 	r.id as 'relationshipid',
-    r.user_one_id,
-    r.user_two_id,
     r.status_interaction,
     r._created as '_relationship_created',
-	u.*
+	u.*,
+    CASE WHEN r.user_two_id = 1 THEN r.user_one_id ELSE r.user_two_id END as 'friendid'
 from 
 	relationships r
 join 
 	users u
 on 
-	u.id != p_userid AND 
+	u.id != 1 AND 
     (u.id = r.user_one_id OR 
 	u.id = r.user_two_id)
 where 
-	user_one_id = p_userid OR 
-    user_two_id = p_userid AND 
+	user_one_id = 1 OR 
+    user_two_id = 1 AND 
     status_interaction = 1 OR
-    status_interaction = 2 OR
-    status_interaction = 0;
+    status_interaction = 2;
 
 END $$
 delimiter ;

@@ -166,6 +166,38 @@ BEGIN
 
 END $$
 delimiter ;
+
+DROP PROCEDURE spSelectForumComments;
+
+DELIMITER $$
+
+	CREATE PROCEDURE spSelectForumComments(
+		f_id int
+    )
+
+BEGIN
+    
+	SELECT 
+			f.title as forumTitle,
+			f.forumImg as forumImg,
+			f.forumText as forumDescription,
+			c.userid as userid,
+			u.handle as handle,
+			u.avatar as avatar,
+			c.newcomment as comment,
+			c._created as commentTimeStamp
+	FROM forums f
+	INNER JOIN commentlist cl 
+	ON cl.forumid = f.id
+	INNER JOIN comments c 
+	ON c.id = cl.commentid
+	INNER JOIN users u
+	ON u.id = c.userid
+	WHERE f.id = f_id;
+
+END $$
+
+DELIMITER ;
 DROP PROCEDURE IF EXISTS spSelectForums;
 
 delimiter $$
@@ -276,6 +308,39 @@ begin
     where 
         u.id = f_creatorid;
 
+end $$
+delimiter ;
+drop procedure if exists spSelectGameAndConsole;
+
+delimiter $$
+create procedure spSelectGameAndConsole (
+)
+
+begin
+
+	select 
+		gameCoverImage as cover,
+		gameTitle as title,
+		companyName as company,
+		systemName as system,
+		platform,
+		gameSummary as summary,
+		genre
+	from 
+		GameDirectory gd
+	join 
+		Platform p
+	on 
+		p.id = gd.platformid
+	join
+		PlatformType pt 
+	on
+		pt.id = p.systemid
+	join 
+		PlatformFamily pf
+	on
+		pf.id = p.platfamilyid;
+        
 end $$
 delimiter ;
 DROP PROCEDURE IF EXISTS spSelectGames;
@@ -471,6 +536,35 @@ BEGIN
 
 END $$
 delimiter ;
+
+DROP PROCEDURE spSelectGamerTagByPlatform;
+
+DELIMITER $$ 
+ 
+ CREATE PROCEDURE spSelectGamerTagByPlatform(
+	u_id int,
+    p_id int
+ )
+ 
+BEGIN
+ 
+	SELECT 
+			u.id as userid,
+			gt.gamertag as gamertag,
+			pf.companyName as company,
+			pt.systemName as system,
+			pt.platform as platformType,
+            p.id as platformId
+	FROM gamertags gt
+	INNER JOIN users u ON gt.userid = u.id
+	INNER JOIN platform p ON p.id = gt.platformid
+	INNER JOIN platformfamily pf ON pf.id = p.platfamilyid
+	INNER JOIN platformtype pt ON pt.id = p.systemid
+	WHERE userid = u_id AND p.id = p_id;
+ 
+ END $$
+ 
+DELIMITER ;
 DROP PROCEDURE IF EXISTS spSelectPlatformFamily;
 
 delimiter $$
