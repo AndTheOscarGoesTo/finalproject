@@ -16,13 +16,13 @@ class Comment extends Component {
 <div class="card-body">
   <h5 class="card-title" className={style.comment}>{this.props.author}</h5>
   <p class="card-text" className={style.comment}>{this.props.children}</p>
-  <button onClick={(event) => {
+  <i onClick={(event) => {
                             event.preventDefault()
 
                             this.setState({
                                 edit: <EditComment />
                             })
-                            }}>Boop</button>
+                            }} className="ion-wrench"></i>
 </div>
 </div>
 

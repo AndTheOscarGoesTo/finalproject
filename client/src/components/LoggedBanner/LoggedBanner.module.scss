@@ -1,18 +1,25 @@
+@import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+
 .logged_out_banner {
     height: 4em;
     width: 100%;
     background:linear-gradient(#9c129e, #630664);
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5em; 
 }
-.logged_out_content{
-    width: 80%;
-    height: 100%;
-    margin: 0 auto;
-    color: white;
-}
-.logged_out_content h1 {
-    display: inline-block;
-}
+
+// .logged_out_content h1 {
+//     display: inline-block;
+// }
+
+// .space{
+//     // margin: 5%; 
+
+// }
+
 .logo{
     color: white;
     font-size: 3em;
@@ -24,15 +31,18 @@
     border-style: solid;
     border-color: white;
     border-width: 1px;
-    margin-left: 2em;
+    // margin-left: 3em;
     font-size: 12px;
 }
+
 .link :hover {
     background: #630664;
 }
+
 .dropdown{
     color: black;
 }
+
 .button {
     background-color: none;
     color: white;
@@ -40,6 +50,44 @@
     margin-left: 2em;
     font-size: 12px;
 }
+
 .button :hover{
     background-color: black;
 }
+
+// .register{
+//     margin-right: 30%;
+// }
+
+.holder{
+    position: relative;
+    display: inline-block;
+    margin-left: 5%;
+    
+}
+    .holds{
+        margin-left: 20%;
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+  }
+  
+  .holds a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .holder:hover .holds {
+    display: block;
+  }
+  
+  
+  
+  
+  
+  

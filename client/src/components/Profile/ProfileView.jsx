@@ -17,7 +17,7 @@ class ProfileView extends Component {
                         </div>
 
                         </div>
-                        {/* <Link to="/goodbye">Goodbye</Link> */}
+                       
                     </div>
 
          
