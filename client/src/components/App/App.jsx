@@ -12,6 +12,8 @@ import Home from '../Home/Home';
 import NewUser from '../NewUser/NewUser';
 import Forumpage from '../Forumpage/Forumpage';
 import PostForum from '../PostForum/PostForum'
+import ImgUpload from "../ImgUploader/ImgUploader";
+
 class Navigation extends Component {
 
     render() {
@@ -28,6 +30,7 @@ class Navigation extends Component {
                         <Route path="/forum" component={Forum} />
                         <Route path="/forumpage" component={Forumpage} />
                         <Route path="/postforum" component={PostForum} />
+                        <Route exact path="/uploads" component={ImgUpload} />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>

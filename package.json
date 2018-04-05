@@ -7,7 +7,7 @@
     "build:client": "webpack",
     "build:sql": "concat-cli -f server/src/sql/procedures/*.sql -o server/src/sql/build/build.sql",
     "build:server": "babel ./server/src -d ./server/lib",
-    "dev": "concurrently -k \"npm run watch:client\" \"npm run watch:server\" \"nodemon --watch server/lib --delay 1\"",
+    "dev": "concurrently -k \"npm run watch:client\" \"npm run watch:server\" \"nodemon --watch server/lib --delay 2\"",
     "prepare": "npm run build:server",
     "start": "npm run build:client && npm run build:server && npm run start:server",
     "start:server": "node server/lib/index.js",
@@ -44,9 +44,12 @@
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
+    "react-dropzone-s3-uploader": "^1.1.0",
+    "react-images-uploader": "^1.2.0-rc1",
+    "react-progress-button": "^5.1.0",
     "react-router-dom": "^4.2.2",
-    "request": "^2.85.0",
     "react-toggle-display": "^2.2.0",
+    "request": "^2.85.0",
     "sass-loader": "^6.0.7",
     "socket.io": "^2.1.0",
     "style-loader": "^0.20.2",
@@ -56,6 +59,8 @@
     "zlib": "^1.0.5"
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "concat-cli": "^4.0.0",
     "concurrently": "^3.5.1",
     "nodemon": "^1.17.3"
