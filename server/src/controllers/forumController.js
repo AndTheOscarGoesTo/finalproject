@@ -25,9 +25,14 @@ function postNewForumComment(userId, forumId, commentText){
     return forumTable.postProcedure("spInsertForumComment", [userId, forumId, commentText]);
 }
 
+function postNewForum(commentId, forumTitle, forumImg, forumText){
+    return forumTable.postProcedure("spInsertForum", [commentId, forumTitle, forumImg, forumText]);
+}
+
 export {
     selectForums,
     selectForumInfo,
     selectForumComments,
+    postNewForum,
     postNewForumComment
 }

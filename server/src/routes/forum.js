@@ -38,7 +38,18 @@ router.get("/:id", (req, res, body) => {
     }
 })
 
-router.post("/", (req, res, body) => {
+router.get("/forum", (req, res, body) => {
+    forumController.postNewForum(req.body.commentId, req.body.forumTitle, req.body.forumImg, req.body.forumText)
+    .then((response) => {
+        res.send(response);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(403);
+    })
+})
+
+router.post("/comment", (req, res, body) => {
     forumController.postNewForumComment(req.body.userId, req.body.forumId, req.body.commentText)
     .then((response) => {
         res.send(response);
