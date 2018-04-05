@@ -21,8 +21,13 @@ function selectForumComments(forumId){
     return forumTable.putOrDeleteProcedure("spSelectForumComments", [forumId]);
 }
 
+function postNewForumComment(userId, forumId, commentText){
+    return forumTable.postProcedure("spInsertForumComment", [userId, forumId, commentText]);
+}
+
 export {
     selectForums,
     selectForumInfo,
-    selectForumComments
+    selectForumComments,
+    postNewForumComment
 }

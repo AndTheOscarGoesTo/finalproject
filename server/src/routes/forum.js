@@ -38,4 +38,15 @@ router.get("/:id", (req, res, body) => {
     }
 })
 
+router.post("/", (req, res, body) => {
+    forumController.postNewForumComment(req.body.userId, req.body.forumId, req.body.commentText)
+    .then((response) => {
+        res.send(response);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(403);
+    })
+})
+
 export default router;

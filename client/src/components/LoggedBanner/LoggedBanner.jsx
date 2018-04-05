@@ -13,7 +13,9 @@ class LoggedBanner extends Component {
         super(props);
         this.state = {
             id: '',
-            requests: []
+            requests: [],
+            notifBg: 'white',
+            notifColor: '#9c129e'
         }
     }
     componentDidMount(){
@@ -27,6 +29,9 @@ class LoggedBanner extends Component {
         .then(results => {
             console.log('this is the results from posting: ', results);
             this.setState( {requests: results} )
+            if(results.length >= 1 ){
+                this.setState({notifBg: 'red', notifColor:'white'})
+            }
         });
     }
     onAccept(requestid){
@@ -65,7 +70,7 @@ class LoggedBanner extends Component {
                             <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
                             </li>
                             <li className='btn-group'>                            
-                                <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>
+                                <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: this.state.notifBg, color: this.state.notifColor }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>
                                 <ul className="dropdown-menu">
                                     { requests }
                                 </ul>
