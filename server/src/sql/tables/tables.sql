@@ -66,8 +66,7 @@ DROP TABLE IF EXISTS Games;
 CREATE TABLE Games (
 	id int not null auto_increment primary key,
     hoursLogged int not null,
-    gameList varchar(200),
-    gameImage text,
+    gameList int,
     _current datetime default current_timestamp
 );
 
@@ -133,3 +132,17 @@ create table Relationships (
     _created datetime default current_timestamp
     PRIMARY KEY (user_one_id, user_two_id)
 );
+
+drop table if exists GameDirectory;
+
+create table GameDirectory (
+	id int not null auto_increment primary key,
+    gameCoverImage text,
+    gameTitle varchar(100),
+    platformid int,
+    gameSummary text,
+    genre varchar(60),
+    _created datetime default current_timestamp
+);
+
+foreign key (platformid) references Platform (id)
