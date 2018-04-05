@@ -40,7 +40,59 @@ function getGamesByPlatformId(platformId){
         });
 }
 
+/*
+    Gets games from the game api by their genre.
+        role - rpg
+        action
+        shooter
+*/
+
+function getGamesByGenre(genreString){
+    return new Promise((resolve, reject) => {
+        request(`http://thegamesdb.net/api/GetGamesList.php?genre=${genreString}`,{
+            method: "GET",
+            mode: "cors",
+            gzip: true
+        }, (err, response, body) => {
+            if (err) reject(err);
+
+            resolve(body);
+        });
+    });
+}
+
+function getGameById(gameId){
+    return new Promise((resolve, reject) => {
+        request(`http://thegamesdb.net/api/GetGame.php?id=${gameId}`,{
+            method: "GET",
+            mode: "cors",
+            gzip: true
+        }, (err, response, body) => {
+            if (err) reject(err);
+
+            resolve(body);
+        });
+    });
+}
+
+function getGameByString(gameString){
+    return new Promise((resolve, reject) => {
+        request(`http://thegamesdb.net/api/GetGamesList.php?name=${gameString}`,{
+            method: "GET",
+            mode: "cors",
+            gzip: true
+        }, (err, response, body) => {
+            if (err) reject(err);
+
+            resolve(body);
+        });
+    });
+}
+
 export {
     getGames,
-    getGamesByPlatformId
+    getGamesByPlatformId,
+    getGamesByGenre,
+    getGameById,
+    getGameByString
 }

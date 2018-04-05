@@ -55,12 +55,7 @@ class Home extends Component {
                         <h1>Join us.</h1>
                         <NewUserForm />
                     </div>
-<<<<<<< HEAD
-                </div>
-                
-=======
                 </div>  
->>>>>>> 74a2dcfa7c84c26d5b86d5c22614300fa659745c
             </Fragment>
         )
     }
