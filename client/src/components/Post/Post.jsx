@@ -14,7 +14,6 @@ class Post extends Component {
         get('http://localhost:3000/api/status')
         .then(result => this.setState({posts: result}))
         .then(log => console.log(this.state.posts))
-        
     }
     handleLike(id){
         post('http://localhost:3000/api/status', {

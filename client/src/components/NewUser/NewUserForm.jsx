@@ -68,8 +68,8 @@ class NewUserForm extends Component {
                     <div className={style.form}>
                     <form onSubmit={(e) => this.register(e)}>
                         <div className="form-group">
-                            <input id="firstname" className={style.inputName} style={{width: '10em'}} type="text" placeholder="First Name" onChange={(e) => this.handleFirstNameChange(e.target.value)} required />
-                            <input id="lastname" className={style.inputName} style={{width: '10em', marginLeft: '1em'}} type="text" placeholder="Last Name" onChange={(e) => this.handleLastNameChange(e.target.value)} required />  
+                            <input id="firstname" className={style.inputName} style={{marginRight: "3%"}} type="text" placeholder="First Name" onChange={(e) => this.handleFirstNameChange(e.target.value)} required />
+                            <input id="lastname" className={style.inputName}  type="text" placeholder="Last Name" onChange={(e) => this.handleLastNameChange(e.target.value)} required />  
                         </div>
                         <div className="form-group">
                             <input id="handle" className={style.input} type="text" placeholder="Username" onChange={(e) => this.handleHandleChange(e.target.value)} required /> 
@@ -90,5 +90,6 @@ class NewUserForm extends Component {
        );
     }
 }
-
+// style={{width: '10em'}}
+// style={{width: '10em', marginLeft: '1em'}}
 export default NewUserForm;

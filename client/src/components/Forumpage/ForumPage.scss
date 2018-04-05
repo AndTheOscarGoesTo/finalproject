@@ -1,0 +1,65 @@
+.containment{
+    padding-left: 5%;
+   padding-top: 5%;
+    background-color: white;
+    width: 60%;
+    margin-left: 20%;
+    height: 1300px;
+}
+
+
+
+.space{
+    margin-top: 10%;
+    
+    textarea{
+   
+        width: 50%;
+        height: 7em;
+    }
+
+    input{
+        margin-bottom: 3.5%;
+    }
+
+}
+
+.post{
+    width: 70%;
+    height: 25em;
+    border: 1px black solid;
+    position: relative;
+    -moz-border-radius:    10px;
+    -webkit-border-radius: 10px;
+    border-radius:         10px;
+    overflow: scroll;
+
+}
+
+.post:before{
+    
+    position: absolute;
+    right: 100%;
+    top: 100px;
+    width: 0;
+    height: 0;
+    border-top: 13px solid transparent;
+    border-right: 26px solid violet;
+    border-bottom: 13px solid transparent;
+}
+
+.userImage{
+    
+    height: auto;
+    width: 8%;
+    float: left;
+}
+
+// .comment{
+//     margin-left: 5% 
+
+// }
+
+hr{
+    margin-left: -10%;
+}

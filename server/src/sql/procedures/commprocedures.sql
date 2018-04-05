@@ -110,3 +110,27 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+DROP PROCEDURE spInsertForumComment;
+
+DELIMITER $$
+	
+    CREATE PROCEDURE spInsertForumComment(
+		u_id int,
+        f_id int,
+        c_text text
+    )
+    
+	BEGIN
+
+		INSERT INTO comments (userid, newcomment) VALUES (u_id, c_text);
+
+		SET @newCommentId = LAST_INSERT_ID();
+        
+        INSERT INTO commentlist (forumid, commentid) VALUES (f_id, @newCommentId);
+        
+        SELECT LAST_INSERT_ID();
+
+	END $$
+
+DELIMITER ;
