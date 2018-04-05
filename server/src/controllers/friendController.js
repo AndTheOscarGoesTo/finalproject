@@ -10,7 +10,7 @@ function getFriends(userId) {
 }
 
 function getAllFriends(userId){
-    let sql = `SELECT * FROM RELATIONSHIPS WHERE user_one_id = ${userId} or user_two_id = ${userId} and status_interaction = 1;`;
+    let sql = `SELECT * FROM RELATIONSHIPS WHERE (user_one_id = ${userId} or user_two_id = ${userId}) and status_interaction = 1;`;
     return executeQuery(sql);
 }
 function getPending(userId) {

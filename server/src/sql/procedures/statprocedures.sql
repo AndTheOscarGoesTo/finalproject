@@ -82,6 +82,7 @@ BEGIN
 END $$
 delimiter ;
 
+
 drop procedure if exists spSelectStatusInfo;
 
 delimiter $$
@@ -98,8 +99,10 @@ begin
 		Status s
 	join 
 		Users u
+	on
+		u.id = s.userid
 	where
-		u.id = s_userid;
+		s.userid = s_userid;
         
 end $$
 delimiter ;

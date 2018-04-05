@@ -52,6 +52,8 @@ CREATE TABLE Platform (
     platfamilyid int not null, 
     _created datetime default current_timestamp
 );
+foreign key (systemid) references PlatformType (id),
+foreign key (platfamilyid) references PlatformFamily(id)
 
 DROP TABLE IF EXISTS PlatformFamily;
 
@@ -66,8 +68,7 @@ DROP TABLE IF EXISTS Games;
 CREATE TABLE Games (
 	id int not null auto_increment primary key,
     hoursLogged int not null,
-    gameList varchar(200),
-    gameImage text,
+    gameList int,
     _current datetime default current_timestamp
 );
 
@@ -80,6 +81,8 @@ CREATE TABLE GamerTags (
     platformid int not null,
     _created datetime default current_timestamp
 );
+foreign key (userid) references Users (id),
+foreign key (platformid) references Platform (id)
 
 DROP TABLE IF EXISTS Forums;
 
@@ -93,6 +96,7 @@ CREATE TABLE Forums (
     upvotes int,
     _created datetime default current_timestamp
 );
+foreign key (creatorid) references Users (id)
 
 
 DROP TABLE IF EXISTS CommentList;
@@ -102,7 +106,7 @@ CREATE TABLE CommentList (
     commentid int not null,
      _created datetime default current_timestamp
 );
-
+foreign key (commentid) references Comments (id)
 
 DROP TABLE IF EXISTS Comments;
 
@@ -123,6 +127,7 @@ CREATE TABLE Status (
     likes int,
     _created datetime default current_timestamp
 );
+foreign key (userid) references Users (id)
 
 drop table if exists Relationships;
 
@@ -133,3 +138,19 @@ create table Relationships (
     _created datetime default current_timestamp
     PRIMARY KEY (user_one_id, user_two_id)
 );
+foreign key (user_one_id) references Users (id),
+foreign key (user_two_id) references Users (id)
+
+drop table if exists GameDirectory;
+
+create table GameDirectory (
+	id int not null auto_increment primary key,
+    gameCoverImage text,
+    gameTitle varchar(100),
+    platformid int,
+    gameSummary text,
+    genre varchar(60),
+    _created datetime default current_timestamp
+);
+
+foreign key (platformid) references Platform (id)
