@@ -22,11 +22,11 @@ class ImgUploader extends Component{
 
     render(){
         const uploadOptions = {
-            server: 'http://localhost:4000',
+            // server: 'http://localhost:3000',
             signingUrlQueryParams: {uploadType: 'avatar'},
         }
 
-        const s3Url = 'https://my-bucket.s3.amazonaws.com'
+        const s3Url = 'http://myvidyabucket.s3.us-east-2.amazonaws.com/'
 
         return (
             <div className={MyStyles.mainDiv}>
@@ -49,7 +49,7 @@ class ImgUploader extends Component{
                     onFinish={this.handleFinishedUpload}
                     s3Url={s3Url}
                     maxSize={1024 * 1024 * 5}
-                    upload={uploadOptions}
+                    // upload={uploadOptions}
                 />
             </div>
         );
