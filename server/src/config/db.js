@@ -31,6 +31,22 @@ function executeQuery(sql, args = []) {
     });
 }
 
+function createQueryPromise(sql, args=[]) {
+    return new Promise((resolve, reject) => {
+        console.log(sql);
+        console.log(args);
+
+        connection.query(sql, args, (err, result) => {
+            connection.release();
+            if(err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        })
+    })
+}
+
 function callProcedure(procedureName, args = []) {
     // let placeholders = (args.length === 1 && !isNaN(args[0])) ? args[0] : generatePlaceholders(args);
     let placeholders = !args.some(isNaN) ? args : generatePlaceholders(args);

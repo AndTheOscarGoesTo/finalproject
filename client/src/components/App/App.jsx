@@ -11,7 +11,9 @@ import Forum from '../Forum/Forum';
 import Home from '../Home/Home';
 import NewUser from '../NewUser/NewUser';
 import Forumpage from '../Forumpage/Forumpage';
-import PostForum from '../PostForum/PostForum'
+import PostForum from '../PostForum/PostForum';
+import GameListContainer from "../GameListContainer/GameListContainer";
+
 class Navigation extends Component {
 
     render() {
@@ -26,7 +28,7 @@ class Navigation extends Component {
                         <Route exact path="/profile/:id" render={routeProps => <Profile {...routeProps} yeet={'yeet'} />} />
                         {/* <Route exact path="/profile/:id" component={Profile} /> */}
                         <Route path="/forum" component={Forum} />
-                        
+                        <Route path="/GameListing" component={GameListContainer}/>
                         <Route path="/forumpage" component={Forumpage} />
                         <Route path="/postforum" component={PostForum} />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />

@@ -63,6 +63,8 @@ function getGamesByGenre(genreString){
 
 function getGameById(gameId){
     return new Promise((resolve, reject) => {
+        // http://thegamesdb.net/api/GetGame.php?name=${gameId}
+        // http://thegamesdb.net/api/GetGame.php?id=${gameId}
         request(`http://thegamesdb.net/api/GetGame.php?id=${gameId}`,{
             method: "GET",
             mode: "cors",
@@ -77,7 +79,9 @@ function getGameById(gameId){
 
 function getGameByString(gameString){
     return new Promise((resolve, reject) => {
-        request(`http://thegamesdb.net/api/GetGamesList.php?name=${gameString}`,{
+        // http://thegamesdb.net/api/GetGame.php?name=
+        // http://thegamesdb.net/api/GetGamesList.php?name=
+        request(`http://thegamesdb.net/api/GetGame.php?name=${gameString}`,{
             method: "GET",
             mode: "cors",
             gzip: true
