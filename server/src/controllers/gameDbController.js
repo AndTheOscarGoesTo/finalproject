@@ -93,9 +93,33 @@ function getGameByString(gameString){
     });
 }
 
+function getGamesByPlatformName(platformName){
+
+    const fixString = platformName.split(" ").join("+");
+
+    return new Promise((resolve, reject) => {
+        request(`http://thegamesdb.net/api/PlatformGames.php?platform=${fixString}`, {
+            method: "GET",
+            mode: "cors",
+            gzip: true
+        }, (err, response, body) => {
+            if(err) reject(err);
+
+            resolve(body);
+        });
+    })
+
+    // return new Promise((resolve, reject) => {
+    //     // if(err) reject(err);
+
+    //     resolve(fixString);
+    // })
+}
+
 export {
     getGames,
     getGamesByPlatformId,
+    getGamesByPlatformName,
     getGamesByGenre,
     getGameById,
     getGameByString
