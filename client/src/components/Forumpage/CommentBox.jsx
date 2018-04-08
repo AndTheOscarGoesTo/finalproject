@@ -6,11 +6,7 @@ import CommentForm from './CommentForm'
 
 import LoggedBanner from '../LoggedBanner/LoggedBanner'
 
-var data = [
-    {id: 1, author: "Pete Hunt", text: "This is one comment"},
-    {id: 2, author: "Jordan Walke", text: "This is *another* comment"},
-    {id: 3, author: "Tham Kench", text: "Water Water Water"}
-  ];
+
 class CommentBox extends Component {
 
     render() {
@@ -19,7 +15,7 @@ class CommentBox extends Component {
               <h2>Discuss </h2>
               <hr />
               <CommentForm />
-              <CommentList data={ data } />
+              <CommentList />
               
         </div>
 
