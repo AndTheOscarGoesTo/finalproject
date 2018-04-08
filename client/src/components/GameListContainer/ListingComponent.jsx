@@ -44,34 +44,35 @@ class ListingComponent extends Component{
                 console.error(err);
             })
         } else {
-            console.log("--search string--", searchString)
-            // get(`http://localhost:3000/api/games?byGenre=${searchString}`)
-            // .then((response) => {
-            //     console.log("--response--", response);
-            //     // this.setState({ games: response });
-            //     let games = [];
+            get(`http://localhost:3000/api/games?byGameName=${searchString}`)
+            .then((response) => {
+                // console.log(response);
 
-            //     response.map((item, index) => {
-            //         // console.log("item", index, ": ", item);
-            //         if(item.hasOwnProperty("thumb") && item.hasOwnProperty("ReleaseDate")){
-            //             // console.log("--Checked--");
-            //             games.push({ gameId: item.id, title: item.GameTitle, releaseDate: item.ReleaseDate, thumbnail: item.thumb});
-            //         }
+                let games = [];
+
+                response.map((item) => {
+                    // console.log("--item--", item);
+                    // console.log("--item--", item);
+                    // console.dir(item.Images.boxart.thumb);
+                    if(item.Images && item.Images.boxart.hasOwnProperty("thumb")){
+                        games.push({ gameId: item.id, title: item.GameTitle, releaseDate: item.ReleaseDate, thumbnail: item.Images.boxart.thumb});
+                    }
                     
-            //     })
+                })
 
-            //     console.log("--games here--", games);
+                // console.log("--games here--", games);
 
-            //     this.setState({ games });
-            // })
+                this.setState({ games });
+            })
+            .catch((err) => {
+                console.error(err);
+            })
             // console.log("--Search String--", searchString);
-
         }
     }
 
     render(){
         return(
-            // <h1>Hi Again {this.props.location.state.searchQuery}</h1>
             <GameListing currentList={this.state.games}/>
         );
     }

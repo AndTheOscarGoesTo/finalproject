@@ -79,7 +79,7 @@ function GameListNav(props) {
                             </ul>
                         </li>
                     </ul>
-                        <SearchBar onSearchNameSubmit={props.onSearchNameSubmit}/>
+                        <SearchBar onSearchNameSubmit={props.onSearchNameSubmit} textChange={props.textChange} />
                         {/* <ul className="nav navbar-nav navbar-right">
                             <li className="dropdown">
                                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">Genres<b className="caret"></b></a>

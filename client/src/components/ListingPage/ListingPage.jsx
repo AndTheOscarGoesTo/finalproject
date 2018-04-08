@@ -1,4 +1,6 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+
 import ListingStyle from "./ListingPage.scss";
 
 function ListingPage (props){
@@ -14,11 +16,11 @@ function ListingPage (props){
                     {/* <p>{item.Overview}</p> */}
                     <div className="media">
                         <div className="media-left">
-                            <a
-                                
+                            <Link
+                                to={`/GameCatalogue/Game/${item.gameId}`}
                             >
                             <img src={`http://thegamesdb.net/banners/${item.thumbnail}`} alt=""/>
-                            </a>
+                            </Link>
                         </div>
                         <div className="media-body">
                             <h1 className="media-heading">{item.title}</h1>
