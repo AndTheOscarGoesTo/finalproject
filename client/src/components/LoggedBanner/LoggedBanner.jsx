@@ -54,7 +54,9 @@ class LoggedBanner extends Component {
                 </li>
                 )
         })
-        console.log('yeet')
+
+        console.log('yeet');
+
         return (
             <div className={style.logged_out_banner}>
                 <div className={style.logged_out_content}>
@@ -68,6 +70,9 @@ class LoggedBanner extends Component {
                             </li>
                             <li>
                             <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
+                            </li>
+                            <li>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={"/GameCatalogue"}>Game Catalogue</Link>
                             </li>
                             <li className='btn-group'>                            
                                 <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: this.state.notifBg, color: this.state.notifColor }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>

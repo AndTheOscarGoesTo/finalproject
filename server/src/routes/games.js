@@ -24,17 +24,6 @@ router.get("/", (req, res, body) => {
             // let parsed = JSON.parse(parser.toJson(response)).Data.Game;
             let parsed = JSON.parse(parser.toJson(response)).Data.Game;
 
-            // let arrToSend = [];
-
-            // parsed.map((item, index) => {
-            //     if(item.ReleaseDate && (new Date(item.ReleaseDate) >= new Date("11/15/2013"))){
-            //         console.log("--server--", "index", index, "date", item.ReleaseDate);
-            //         arrToSend.push(item);
-            //     }
-                
-            // })
-
-            // // console.log(parsed);
             res.send(parsed);
             // res.send(arrToSend);
         })
@@ -46,10 +35,6 @@ router.get("/", (req, res, body) => {
         gameDbController.getGamesByPlatformName(req.query.byPlatformName)
         .then((response) => {
             let parsed = JSON.parse(parser.toJson(response)).Data.Game;
-            // let parsed = JSON.parse(parser.toJson(response)).Data.Game;
-            // console.log(parsed);
-            // res.send(parsed);
-            // res.send(response);
 
             let arrToSend = [];
 
@@ -72,8 +57,6 @@ router.get("/", (req, res, body) => {
         gameDbController.getGamesByGenre(req.query.byGenre)
         .then((response) => {
             let parsed = JSON.parse(parser.toJson(response)).Data.Game;
-            // console.log(parsed);
-            // res.send(parsed);
 
             let arrToSend = [];
 
@@ -96,8 +79,6 @@ router.get("/", (req, res, body) => {
         gameDbController.getGameByString(req.query.byGameName)
         .then((response) => {
             let parsed = JSON.parse(parser.toJson(response)).Data.Game;
-            // console.log(parsed);
-            // res.send(parsed);
 
             let arrToSend = [];
 

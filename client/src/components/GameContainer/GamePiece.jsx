@@ -19,7 +19,7 @@ function GamePiece(props) {
                         <Link 
                         to={{
                                 pathname: `/GameCatalogue/GameAdd/${props.infoObj.gameId}`,
-                                state: { gameTitle: props.infoObj.gameTitle, gameId: props.infoObj.gameId }
+                                state: { gameTitle: props.infoObj.gameTitle, gameId: props.infoObj.gameId, gameThumbnail: imgBaseUrl + props.infoObj.thumbnail, gamePlatform: props.infoObj.platform, gameDescription: props.infoObj.description }
                             }} 
                         >
                             <i className="ml-3 glyphicon glyphicon-pencil"></i>

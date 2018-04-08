@@ -81,3 +81,94 @@ BEGIN
 
 END $$
 delimiter ;
+
+DROP PROCEDURE spSelectGameList;
+
+DELIMITER $$
+
+		CREATE PROCEDURE spSelectGameList(
+			u_id INT
+        )
+        
+	BEGIN
+    
+		SELECT 
+			userId,
+            gameId,
+            systemId as platformId,
+            gameTitle,
+            gameImg,
+            hoursLogged,
+            gameCompleted
+		FROM 
+			games
+		WHERE
+			userId = u_id;
+    
+    END $$
+
+DELIMITER 
+
+DROP PROCEDURE spInsertGameList;
+
+DELIMITER $$
+
+		CREATE PROCEDURE spInsertGameList(
+			u_id INT,
+            g_gameId INT,
+            g_systemId INT,
+            g_gameTitle VARCHAR(80),
+            g_gameImg TEXT,
+            g_hoursLogged INT,
+            g_gameCompleted INT(1)
+        )
+        
+	BEGIN
+    
+		INSERT INTO
+			games (
+				userId, 
+                gameId, 
+                systemId, 
+                gameTitle, 
+                gameImg, 
+                hoursLogged, 
+                gameCompleted
+                )
+                
+			VALUES
+				(
+					u_id,
+                    g_gameId,
+                    g_systemId,
+                    g_gameTitle,
+                    g_gameImg,
+                    g_hoursLogged,
+                    g_gameCompleted
+                );
+                
+		SELECT LAST_INSERT_ID();
+    
+    END $$
+
+DELIMITER ;
+
+DROP PROCEDURE spDeleteGameList;
+
+DELIMITER $$
+
+		CREATE PROCEDURE spDeleteGameList(
+			u_id INT,
+            g_gameId INT
+        )
+        
+	BEGIN
+    
+		DELETE FROM
+			games
+		WHERE
+			userId = u_id AND gameId = g_gameId;
+    
+    END $$
+
+DELIMITER ;
