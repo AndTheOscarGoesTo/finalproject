@@ -13,20 +13,20 @@ class CarouselContainer extends Component {
 
     render(){
         return (
-            <div id="myCarousel" className={`carousel slide`} dataRide="carousel">
+            <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
                 <CarousleIndicators />
                 
-                <div class="carousel-inner">
-                    <div class="item active">
+                <div className="carousel-inner">
+                    <div className="item active">
                         <img src="https://thenextdoor.org/wp-content/uploads/2016/11/placeholder-815x458.png" alt="Los Angeles" />
                     </div>
 
-                    <div class="item">
+                    <div className="item">
                         <img src="https://www.crownplumbing.co/wp-content/uploads/2015/07/placeholder.gif" alt="Chicago" />
                     </div>
 
-                    <div class="item">
+                    <div className="item">
                         <img src="https://www.placebear.com/g/200/300" alt="New York" />
                     </div>
                 </div>

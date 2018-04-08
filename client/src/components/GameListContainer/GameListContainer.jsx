@@ -7,6 +7,7 @@ import NavComponent from "./GameListNav";
 // import GameListings from "./ListingPage";
 import ListingComponent from "./ListingComponent";
 import GameContainer from "../GameContainer/GameContainer";
+import GameAddContainer from "../GameAddContainer/GameAddContainer";
 
 class GameListContainer extends Component{
     constructor(props){
@@ -51,11 +52,6 @@ class GameListContainer extends Component{
         })
     }
 
-    // onInputChange(event){
-    //     console.log("target", event.currentTarget.value);
-    //     this.setState({searchString: event.currentTarget.value})
-    // }
-
     render(){
         // console.log("--Game List--", this.state.games);
         return(
@@ -63,13 +59,11 @@ class GameListContainer extends Component{
 
                 <h1>Sup world</h1>
                 <NavComponent onSearchNameSubmit={this.onSearchNameSubmit} textChange={this.onInputChange} onDropSearch={this.onDropSearch}/>
-                {/* <Route path="/DisplayList" currentList={this.state.games}/> */}
-                {/* <GameListings currentList={this.state.games}/> */}
 
                 <Route exact path="/GameCatalogue/gameSearch" component={ListingComponent} />
                 <Route exact path="/GameCatalogue/Game/:id" component={GameContainer} />
+                <Route exact path="/GameCatalogue/GameAdd/:id" component={GameAddContainer} />
 
-                {/* <ListingComponent/> */}
             </div>
         );
     }
