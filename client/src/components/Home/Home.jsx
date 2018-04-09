@@ -35,8 +35,7 @@ class Home extends Component {
             return (
                 <Fragment>
                 <LoggedBanner id={this.state.id} handle={this.state.handle} firstname={this.state.firstname} />
-                <NewPost id={this.state.id}/>
-                <Post />
+                <Post loggedId={this.state.id}/>
                 <FriendsPanel loggedId={this.state.id} />
                 </Fragment>
             )
@@ -44,23 +43,19 @@ class Home extends Component {
         return (
             <Fragment>
             <UnloggedBanner />
-            
+
                 <div className={style.homeBody}>
                     <div className={style.leftsquare}>
-                        <div class="col-sm-12" className={style.carouselContainer}>
+                        <div className="col-sm-12" className={style.carouselContainer}>
                             <ForumCarousel />
                         </div>
                     </div>
-                    <div class="col-sm-12" className={style.rightsquare}>
+                    <div className="col-sm-12" className={style.rightsquare}>
                         <h1>Join us.</h1>
                         <NewUserForm />
                     </div>
-<<<<<<< HEAD
                 </div>
                 
-=======
-                </div>  
->>>>>>> 74a2dcfa7c84c26d5b86d5c22614300fa659745c
             </Fragment>
         )
     }

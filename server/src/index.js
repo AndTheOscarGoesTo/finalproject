@@ -7,8 +7,11 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from "cors";
 import routes from './routes';
-import stateRouting from './middleware/routing.mw';
 import configurePassport from './config/passport';
+import stateRouting from "./middleware/routing.mw";
+
+const http = require('http')
+let socketList = [];
 
 const CLIENT_PATH = join(__dirname, '../../client');
 

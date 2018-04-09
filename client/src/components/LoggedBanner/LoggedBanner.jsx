@@ -30,7 +30,7 @@ class LoggedBanner extends Component {
             console.log('this is the results from posting: ', results);
             this.setState( {requests: results} )
             if(results.length >= 1 ){
-                this.setState({notifBg: 'red', notifColor:'white'})
+                this.setState({notifBg: 'red', notifColor: 'white'})
             }
         });
     }
