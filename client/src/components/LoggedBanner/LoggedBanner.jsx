@@ -65,24 +65,9 @@ class LoggedBanner extends Component {
                         <Link style={{textDecoration: 'none', color: 'white'}} to="/" className={`navbar-brand ${style.logo}`}> vidya </Link>
                         </div>
                         <ul className="nav navbar-nav navbar-right">
-                            <li className="yeet">
-                            <AuthButton />
-                            </li>
                             <li>
                             {/* <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link> */}
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
-                            </li>
-                            <li className='btn-group'>
-                                <div className={style.holder}>
-                                    <div className={style.hovorHolder}>
-                                        <span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span>
-                                        <div className={style.holds}>
-                                            <a href="#">{ requests }</a>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                
                             </li>
                             <li>
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={"/GameCatalogue"}>Game Catalogue</Link>
@@ -95,6 +80,9 @@ class LoggedBanner extends Component {
                                 <ul className="dropdown-menu">
                                     { requests }
                                 </ul>
+                            </li>
+                            <li className="yeet">
+                            <AuthButton />
                             </li>
                             
                         </ul>

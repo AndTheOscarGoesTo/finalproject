@@ -25,10 +25,8 @@ class Post extends Component {
         })
         .then()
     }
-    updatePosts(){
-        get('http://localhost:3000/api/status')
-        .then(result => this.setState({posts: result}))
-        .then(log => console.log(this.state.posts))
+    updatePosts(newPost){
+        this.forceUpdate();
     }
     render(){
         let posts = this.state.posts.map((posts) => {
@@ -48,7 +46,7 @@ class Post extends Component {
         }).reverse()
         return(
             <Fragment>
-            <NewPost updatePosts={this.updatePosts}/>
+            <NewPost id={this.props.loggedId} updatePosts={this.updatePosts}/>
             <div className={style.allpost}>
                 { posts }
             </div>

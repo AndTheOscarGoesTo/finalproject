@@ -37,12 +37,13 @@ class Profile extends Component {
     render() {
         if(isLoggedIn()){
             if(this.state.loggedId === this.state.id) {
+                console.log('this is ur acc')
                 return (
                     <Fragment>
                         <LoggedBanner />
                             <div className={`${styles.banner}`} style={{width: '100%', height: '30em'}}></div>
                             <div className={styles.wrapper}>
-                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
+                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle}/>
                                 <UserPosts />
                             </div>
                     </Fragment>
@@ -53,7 +54,7 @@ class Profile extends Component {
                         <LoggedBanner />
                         <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                             <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
-                            <div className={styles.profileBody}>
+                            <div className={styles.wrapper}>
                                 <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
                                 <UserPosts />
                             </div>
