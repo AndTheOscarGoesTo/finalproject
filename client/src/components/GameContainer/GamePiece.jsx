@@ -22,7 +22,7 @@ function GamePiece(props) {
                                 state: { gameTitle: props.infoObj.gameTitle, gameId: props.infoObj.gameId, gameThumbnail: imgBaseUrl + props.infoObj.thumbnail, gamePlatform: props.infoObj.platform, gameDescription: props.infoObj.description }
                             }} 
                         >
-                            <i className="ml-3 glyphicon glyphicon-pencil"></i>
+                            <i className="ml-3 glyphicon glyphicon-check"></i>
                         </Link>
                     </h1>
                     <h2>{props.infoObj.platform}</h2>

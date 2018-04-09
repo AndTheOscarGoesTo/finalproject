@@ -7,8 +7,8 @@ function selectGameList(userId){
     return gameListTable.putOrDeleteProcedure("spSelectGameList", [userId]);
 }
 
-function deleteFromGameList(userId){
-    return gameListTable.putOrDeleteProcedure("spDeleteGameList", [userId]);
+function deleteFromGameList(userId, gameId){
+    return gameListTable.putOrDeleteProcedure("spDeleteGameList", [userId, gameId]);
 }
 
 function insertGameToList(userId, gameId, systemId, gameTitle, gameImg, hoursLogged, gameCompleted){

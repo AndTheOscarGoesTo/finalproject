@@ -1,0 +1,26 @@
+.mainPiece{
+    .transparentBackground{
+        background-color: transparent;
+        color: white;
+    }
+
+    .borderedDiv{
+
+        // background-color: purple;
+        margin: 2em;
+    }
+
+    // .listingContainer{
+    //     margin: 2em;
+    // }
+    
+    .removeIcon{
+        font-size: 2em;
+        cursor: pointer;
+    }
+    
+    .removeIcon:hover{
+        color: purple;
+    }
+
+}

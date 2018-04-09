@@ -24,11 +24,7 @@ class NewUserForm extends Component {
             userid: this.props.id,
             status: this.state.status
         })
-        .then((results) => {
-            console.log('worked maybe')
-        })
-        this.props.updatePosts()
-        // this.props.history.push("/");
+        this.props.updatePosts;
     }
 
     handleTextChange(value) {
@@ -46,7 +42,7 @@ class NewUserForm extends Component {
                         <div className="form-group">
                             <textarea id="text" className={style.input} type="text" placeholder="What's up?" onChange={(e) => this.handleTextChange(e.target.value)} required /> 
                             </div>
-                            <button onClick= { (event) => {this.onButtonClick()}} value="Login" className="btn btn-primary" >Submit</button>
+                            <button onClick= { (event) => {this.onButtonClick()}} className="btn btn-primary" >Submit</button>
                         </div>
                         </div>
             </Fragment>
