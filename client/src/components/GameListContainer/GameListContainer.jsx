@@ -26,9 +26,6 @@ class GameListContainer extends Component{
         const inputElement = event.currentTarget.parentNode.parentNode.querySelector("input");
         const searchName = inputElement.value;
 
-        // this.loading = this.working = true;
-        // console.log("Setting");
-
         get(`http://localhost:3000/api/games?byGameName=${searchName}`)
         .then((response) => {
 
@@ -41,61 +38,24 @@ class GameListContainer extends Component{
                 }
                 
             })
-            // console.log("Setting again");
 
-            // this.loading = this.working = false;
         })
         .catch((err) => {
-            console.error(err);
-
-            // this.loading = this.working = false;
-            
+            console.error(err); 
     
         })
     }
 
     render(){
 
-        // if(this.state.loading){
-        //     console.log("--Loading--");
-        //     this.currentComponent = (
-        //                             <div className='sweet-loading'>
-        //                                 <PacmanLoader
-        //                                 color={'#123abc'} 
-        //                                 loading={this.state.loading} 
-        //                                 />
-        //                             </div>
-        //                             );
-        // } else {
-        //     console.log("--Loaded--");
-        //     this.currentComponent = (
-        //         <Fragment>
-        //             <Route exact path="/GameCatalogue/gameSearch" component={ListingComponent} />
-        //             <Route exact path="/GameCatalogue/Game/:id" component={GameContainer} />
-        //             <Route exact path="/GameCatalogue/GameAdd/:id" component={GameAddContainer} />
-        //         </Fragment>
-        //     );
-        // }
-
-        // console.log("--loading--", this.state.loading);
-
         return(
             <Fragment>
 
                 <HomeNav />
 
-                {/* <div className='sweet-loading'>
-                    <PacmanLoader
-                    color={'#123abc'} 
-                    loading={this.state.loading} 
-                    />
-                </div> */}
-
                 <div className={`container`}>
 
                     <NavComponent onSearchNameSubmit={this.onSearchNameSubmit} textChange={this.onInputChange} onDropSearch={this.onDropSearch}/>
-
-                    {/* {this.currentComponent} */}
 
                     <Route exact path="/GameCatalogue/gameSearch" component={ListingComponent} />
                     <Route exact path="/GameCatalogue/Game/:id" component={GameContainer} />

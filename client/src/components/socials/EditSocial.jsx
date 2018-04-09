@@ -44,7 +44,7 @@ class EditSocial extends Component {
             }
         )
         .then(() => {
-            this.props.history.push('/social');
+            this.props.history.push('/');
         })
     }
 
