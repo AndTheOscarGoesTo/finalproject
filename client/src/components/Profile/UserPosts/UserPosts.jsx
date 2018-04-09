@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import style from './Post.module.scss'
-import { get, post } from '../../services/base'
+import style from './UserPosts.module.scss'
+import { get, post } from '../../../services/base'
 import { Link } from 'react-router-dom';
-import NewPost from '../NewPost/NewPost';
 
 class Post extends Component {
     constructor(props){
@@ -11,8 +10,6 @@ class Post extends Component {
             posts: [],
             loggedId: this.props.loggedId,
         }
-
-        this.updatePosts = this.updatePosts.bind(this);
     }
     componentDidMount(){
         get('http://localhost:3000/api/status')
@@ -21,18 +18,12 @@ class Post extends Component {
     }
     handleLike(id){
         post('http://localhost:3000/api/status/like', {
-
+            
         })
         .then()
     }
-    updatePosts(){
-        get('http://localhost:3000/api/status')
-        .then(result => this.setState({posts: result}))
-        .then(log => console.log(this.state.posts))
-    }
     render(){
         let posts = this.state.posts.map((posts) => {
-            console.log(posts);
             return(
                     <div className={`media ${style.postDiv}`}key={posts.id}>
                         <div className="media-left">
@@ -45,14 +36,11 @@ class Post extends Component {
                         </div>
                     </div>
             )
-        }).reverse()
+        })
         return(
-            <Fragment>
-            <NewPost updatePosts={this.updatePosts}/>
             <div className={style.allpost}>
                 { posts }
             </div>
-            </Fragment>
         )
     }
 }

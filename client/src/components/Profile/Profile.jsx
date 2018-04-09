@@ -2,9 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import PrivateRoute from '../auth/privateRoute';
 import styles from "./ProfileCard.scss";
-import ProfilePic from './ProfilePic';
-import ProfileNav from './ProfileNav';
-import ProfileViewPort from './ProfileViewPort'
+import ProfilePanel from './ProfileTop';
+import UserPosts from './UserPosts/UserPosts';
 import LoggedBanner from '../LoggedBanner/LoggedBanner';
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import { isLoggedIn, me } from '../../services/user';
@@ -41,8 +40,10 @@ class Profile extends Component {
                 return (
                     <Fragment>
                         <LoggedBanner />
-                            <div className={styles.linkContainer}>
-                                <ProfilePic id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
+                            <div className={`${styles.banner}`} style={{width: '100%', height: '30em'}}></div>
+                            <div className={styles.wrapper}>
+                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
+                                <UserPosts />
                             </div>
                     </Fragment>
                 )
@@ -50,9 +51,11 @@ class Profile extends Component {
                 return(
                     <Fragment>
                         <LoggedBanner />
+                        <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                             <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
-                            <div className={styles.linkContainer}>
-                                <ProfilePic id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
+                            <div className={styles.profileBody}>
+                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
+                                <UserPosts />
                             </div>
                     </Fragment>
                 )
@@ -61,8 +64,10 @@ class Profile extends Component {
             return (
                 <Fragment>
                     <UnloggedBanner />
-                        <div className={styles.linkContainer}>
-                            <ProfilePic />
+                        <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
+                        <div className={styles.wrapper}>
+                            <ProfilePanel />
+                            <UserPosts />
                         </div>
                 </Fragment>
             )

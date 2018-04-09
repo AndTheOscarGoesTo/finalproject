@@ -11,7 +11,6 @@ class ListSearchComponent extends Component {
     }
 
     onInputChange(event){
-        // console.log("target", event.currentTarget.value);
         this.setState({searchString: event.currentTarget.value})
     }
 
@@ -24,13 +23,6 @@ class ListSearchComponent extends Component {
                             onChange={event => this.onInputChange(event)}
                         />
                             <div className="input-group-btn">
-                                {/* <button 
-                                    className="btn btn-default" 
-                                    type="submit"
-                                    onClick={(event) => {props.onSearchNameSubmit(event)}}
-                                >
-                                    <i className="glyphicon glyphicon-search"></i>
-                                </button> */}
                                 <Link 
                                     className="btn btn-default"
                                     to={{
@@ -38,8 +30,6 @@ class ListSearchComponent extends Component {
                                         state: { searchString: this.state.searchString}
                                     }} 
                                 ><i className="glyphicon glyphicon-search"></i></Link>
-                                {/* {console.log("--function--", props.textChange)} */}
-                                {console.log("--text--", this.state.searchString)}
                             </div>
                     </div>
                 </form>

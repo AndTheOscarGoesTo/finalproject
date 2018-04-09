@@ -30,7 +30,7 @@ class LoggedBanner extends Component {
             console.log('this is the results from posting: ', results);
             this.setState( {requests: results} )
             if(results.length >= 1 ){
-                this.setState({notifBg: 'red', notifColor:'white'})
+                this.setState({notifBg: 'red', notifColor: 'white'})
             }
         });
     }
@@ -73,6 +73,9 @@ class LoggedBanner extends Component {
                             </li>
                             <li>
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={"/GameCatalogue"}>Game Catalogue</Link>
+                            </li>
+                            <li>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={"/MyGameList"}>Game List</Link>
                             </li>
                             <li className='btn-group'>                            
                                 <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: this.state.notifBg, color: this.state.notifColor }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>

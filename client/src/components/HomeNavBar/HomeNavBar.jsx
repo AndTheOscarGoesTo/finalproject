@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-import style from './Home.module.scss';
+import style from './HomeNavBar.scss';
 import { isLoggedIn, me } from '../../services/user';
 import { get } from '../../services/base';
 
@@ -12,7 +12,7 @@ import Post from '../Post/Post';
 import NewPost from '../NewPost/NewPost';
 import FriendsPanel from '../FriendsPanel/FriendsPanel';
 
-class Home extends Component {
+class HomeNavBar extends Component {
 
     constructor(props) {
         super(props);
@@ -35,7 +35,6 @@ class Home extends Component {
             return (
                 <Fragment>
                 <LoggedBanner id={this.state.id} handle={this.state.handle} firstname={this.state.firstname} />
-                <Post loggedId={this.state.id}/>
                 <FriendsPanel loggedId={this.state.id} />
                 </Fragment>
             )
@@ -43,14 +42,14 @@ class Home extends Component {
         return (
             <Fragment>
             <UnloggedBanner />
-
+            
                 <div className={style.homeBody}>
                     <div className={style.leftsquare}>
-                        <div className="col-sm-12" className={style.carouselContainer}>
+                        <div class="col-sm-12" className={style.carouselContainer}>
                             <ForumCarousel />
                         </div>
                     </div>
-                    <div className="col-sm-12" className={style.rightsquare}>
+                    <div class="col-sm-12" className={style.rightsquare}>
                         <h1>Join us.</h1>
                         <NewUserForm />
                     </div>
@@ -60,4 +59,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default HomeNavBar;
