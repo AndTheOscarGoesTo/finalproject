@@ -1,5 +1,5 @@
 import { Router } from "express";
-import * as gamesDbController from "../controllers/igdbController";
+// import * as gamesDbController from "../controllers/igdbController";
 import * as gameDbController from "../controllers/gameDbController";
 import zlib from 'zlib';
 import parser from 'xml2json';
@@ -147,14 +147,14 @@ router.get("/genre/:genreString", (req, res, body) => {
     })
 })
 
-router.get("/test", (req, res, body) => {
-    gamesDbController.test()
-    .then((response) => {
-        res.send(response);
-    })
-    .catch((err) => {
-        res.sendStatus(403);
-    })
-})
+// router.get("/test", (req, res, body) => {
+//     gamesDbController.test()
+//     .then((response) => {
+//         res.send(response);
+//     })
+//     .catch((err) => {
+//         res.sendStatus(403);
+//     })
+// })
 
 export default router;
