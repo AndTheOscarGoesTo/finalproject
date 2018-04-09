@@ -54,7 +54,9 @@ class LoggedBanner extends Component {
                 </li>
                 )
         })
-        console.log('yeet')
+
+        console.log('yeet');
+
         return (
             <div className={style.logged_out_banner}>
                 <div className={style.logged_out_content}>
@@ -69,6 +71,12 @@ class LoggedBanner extends Component {
                             <li>
                             <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
                             </li>
+                            <li>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={"/GameCatalogue"}>Game Catalogue</Link>
+                            </li>
+                            <li>
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={"/MyGameList"}>Game List</Link>
+                            </li>
                             <li className='btn-group'>                            
                                 <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: this.state.notifBg, color: this.state.notifColor }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>
                                 <ul className="dropdown-menu">
@@ -79,6 +87,52 @@ class LoggedBanner extends Component {
                         </ul>
                     </nav>
                 </div>
+                <nav className={`navbar navbar-expand-sm ${style.logged_out_content}`}>
+                    <ul className="nav navbar-nav navbar-right">
+                        <li className="yeet">
+                        <AuthButton />
+                        </li>
+                        <li>
+                        <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
+                        </li>
+                        <li className='btn-group'>
+                        {/* boos */}
+                            {/* <button type="button" className="btn btn-danger"> <span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span><span className="caret"></span></button>
+                            <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span className="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a className="dropdown-item" href="#">{ requests }</a>
+                               
+                            </div> */}
+
+                                          <div className={style.holder}>
+                                            <div className={style.hovorHolder}>
+                                            {/* <i className="ion-chevron-down"></i> */}
+                                              <span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span>
+                                            <div className={style.holds}>
+                                                <a href="#">{ requests }</a>
+                                                
+                                            </div>
+
+                                            </div>
+                                        
+                                        </div>
+                                
+                                {/* nana */}
+
+                            {/* <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle ${style.space}`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span>grhgrh<span className="caret"></span></a> */}
+                            {/* <ul className="dropdown-menu">
+                                { requests }
+                            </ul> */}
+                            
+                            {/* nana */}
+
+                            {/* boos */}
+                        </li>
+                        
+                    </ul>
+                </nav>
             </div>
         );
     }

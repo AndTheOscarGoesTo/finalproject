@@ -54,8 +54,7 @@ class Home extends Component {
                         <h1>Join us.</h1>
                         <NewUserForm />
                     </div>
-                </div>
-                
+                </div>  
             </Fragment>
         )
     }

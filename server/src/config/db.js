@@ -9,13 +9,16 @@ let pool = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+    database: process.env.DB_NAME,
+    multipleStatements: true
 });
 
 function executeQuery(sql, args = []) {
     return getConnection()
     .then((connection) => {
         return new Promise((resolve, reject) => {
+            console.log(sql);
+            console.log(args);
             connection.query(sql, args, (err, result) => {
                 connection.release();
                 if (err) {
@@ -26,6 +29,22 @@ function executeQuery(sql, args = []) {
             });
         });
     });
+}
+
+function createQueryPromise(sql, args=[]) {
+    return new Promise((resolve, reject) => {
+        console.log(sql);
+        console.log(args);
+
+        connection.query(sql, args, (err, result) => {
+            connection.release();
+            if(err) {
+                reject(err);
+            } else {
+                resolve(result);
+            }
+        })
+    })
 }
 
 function callProcedure(procedureName, args = []) {

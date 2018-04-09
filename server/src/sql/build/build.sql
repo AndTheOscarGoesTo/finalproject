@@ -166,6 +166,62 @@ BEGIN
 
 END $$
 delimiter ;
+
+DROP PROCEDURE spSelectForumComments;
+
+DELIMITER $$
+
+	CREATE PROCEDURE spSelectForumComments(
+		f_id int
+    )
+
+BEGIN
+    
+	SELECT 
+			f.title as forumTitle,
+			f.forumImg as forumImg,
+			f.forumText as forumDescription,
+			c.userid as userid,
+			u.handle as handle,
+			u.avatar as avatar,
+			c.newcomment as comment,
+			c._created as commentTimeStamp
+	FROM forums f
+	INNER JOIN commentlist cl 
+	ON cl.forumid = f.id
+	INNER JOIN comments c 
+	ON c.id = cl.commentid
+	INNER JOIN users u
+	ON u.id = c.userid
+	WHERE f.id = f_id;
+
+END $$
+
+DELIMITER ;
+
+DROP PROCEDURE spInsertForumComment;
+
+DELIMITER $$
+	
+    CREATE PROCEDURE spInsertForumComment(
+		u_id int,
+        f_id int,
+        c_text text
+    )
+    
+	BEGIN
+
+		INSERT INTO comments (userid, newcomment) VALUES (u_id, c_text);
+
+		SET @newCommentId = LAST_INSERT_ID();
+        
+        INSERT INTO commentlist (forumid, commentid) VALUES (f_id, @newCommentId);
+        
+        SELECT LAST_INSERT_ID();
+
+	END $$
+
+DELIMITER ;
 DROP PROCEDURE IF EXISTS spSelectForums;
 
 delimiter $$
@@ -276,6 +332,41 @@ begin
     where 
         u.id = f_creatorid;
 
+end $$
+delimiter ;
+drop procedure if exists spSelectGameAndConsole;
+
+delimiter $$
+create procedure spSelectGameAndConsole (
+	gd_id int
+)
+
+begin
+
+	select 
+		gameCoverImage as cover,
+		gameTitle as title,
+		companyName as company,
+		systemName as system,
+		platform,
+		gameSummary as summary,
+		genre
+	from 
+		GameDirectory gd
+	join 
+		Platform p
+	on 
+		p.id = gd.platformid
+	join
+		PlatformType pt 
+	on
+		pt.id = p.systemid
+	join 
+		PlatformFamily pf
+	on
+		pf.id = p.platfamilyid
+	where gd_id = gd.id;
+        
 end $$
 delimiter ;
 DROP PROCEDURE IF EXISTS spSelectGames;
@@ -391,7 +482,7 @@ DROP PROCEDURE spSelectGamerTagAndPlatform;
 
 DELIMITER $$ 
  
- CREATE PROCEDURE `spSelectGamerTagAndPlatform`(
+ CREATE PROCEDURE spSelectGamerTagAndPlatform(
 	u_id int
  )
  
@@ -471,6 +562,35 @@ BEGIN
 
 END $$
 delimiter ;
+
+DROP PROCEDURE spSelectGamerTagByPlatform;
+
+DELIMITER $$ 
+ 
+ CREATE PROCEDURE spSelectGamerTagByPlatform(
+	u_id int,
+    p_id int
+ )
+ 
+BEGIN
+ 
+	SELECT 
+			u.id as userid,
+			gt.gamertag as gamertag,
+			pf.companyName as company,
+			pt.systemName as system,
+			pt.platform as platformType,
+            p.id as platformId
+	FROM gamertags gt
+	INNER JOIN users u ON gt.userid = u.id
+	INNER JOIN platform p ON p.id = gt.platformid
+	INNER JOIN platformfamily pf ON pf.id = p.platfamilyid
+	INNER JOIN platformtype pt ON pt.id = p.systemid
+	WHERE userid = u_id AND p.id = p_id;
+ 
+ END $$
+ 
+DELIMITER ;
 DROP PROCEDURE IF EXISTS spSelectPlatformFamily;
 
 delimiter $$
@@ -676,25 +796,23 @@ BEGIN
 
 select 
 	r.id as 'relationshipid',
-    r.user_one_id,
-    r.user_two_id,
     r.status_interaction,
     r._created as '_relationship_created',
-	u.*
+	u.*,
+    CASE WHEN r.user_two_id = 1 THEN r.user_one_id ELSE r.user_two_id END as 'friendid'
 from 
 	relationships r
 join 
 	users u
 on 
-	u.id != p_userid AND 
+	u.id != 1 AND 
     (u.id = r.user_one_id OR 
 	u.id = r.user_two_id)
 where 
-	user_one_id = p_userid OR 
-    user_two_id = p_userid AND 
+	user_one_id = 1 OR 
+    user_two_id = 1 AND 
     status_interaction = 1 OR
-    status_interaction = 2 OR
-    status_interaction = 0;
+    status_interaction = 2;
 
 END $$
 delimiter ;
@@ -753,17 +871,29 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spSelectOneSocialMedia;
+DROP PROCEDURE IF EXISTS spSelectAUsersSocialMedia;
 
 delimiter $$
-CREATE PROCEDURE spSelectOneSocialMedia (
-    sm_id int
+CREATE PROCEDURE spSelectAUsersSocialMedia (
+    u_id int
 )
 
 BEGIN
 
-    select * from SocialMedia 
-    where id = sm_id;
+    select
+		twitter,
+        instagram,
+        twitch,
+        discord,
+        youtube
+    from 
+		SocialMedia sm
+    join
+		Users u
+	on
+		u.id = sm.userid
+    where 
+		sm.userid = u_id;
 
 END $$
 delimiter ;
@@ -772,6 +902,7 @@ DROP PROCEDURE IF EXISTS spInsertSocialMedia;
 
 delimiter $$
 CREATE PROCEDURE spInsertSocialMedia (
+	sm_userid int,
     sm_twitter varchar(50),
     sm_instagram varchar(50),
     sm_twitch varchar(50),
@@ -781,8 +912,8 @@ CREATE PROCEDURE spInsertSocialMedia (
 
 BEGIN
 
-    insert into SocialMedia (twitter, instagram, twitch, discord, youtube)
-    values (sm_twitter, sm_instagram, sm_twitch, sm_discord, sm_youtube);
+    insert into SocialMedia (userid, twitter, instagram, twitch, discord, youtube)
+    values (sm_userid, sm_twitter, sm_instagram, sm_twitch, sm_discord, sm_youtube);
 
     select last_insert_id();
 
@@ -793,7 +924,7 @@ DROP PROCEDURE IF EXISTS spUpdateSocialMedia;
 
 delimiter $$
 CREATE PROCEDURE spUpdateSocialMedia (
-    sm_id int,
+    sm_userid int,
     sm_twitter varchar(50),
     sm_instagram varchar(50),
     sm_twitch varchar(50),
@@ -807,17 +938,19 @@ BEGIN
 
     set
 
-    id = coalesce(sm_id, id),
+    userid = coalesce(sm_userid, userid),
     twitter = coalesce(sm_twitter, twitter),
     instagram = coalesce(sm_instagram, instagram),
     twitch = coalesce(sm_twitch, twitch),
     discord = coalesce(sm_discord, discord),
     youtube = coalesce(sm_youtube, youtube)
 
-    where id = sm_id;
+    where userid = sm_userid;
 
 END $$
 delimiter ;
+
+
 
 DROP PROCEDURE IF EXISTS spDeleteSocialMedia;
 
@@ -829,10 +962,11 @@ CREATE PROCEDURE spDeleteSocialMedia (
 BEGIN
 
     delete from SocialMedia
-    where id = sm_id;
+    where userid = sm_id;
 
 END $$
 delimiter ;
+
 DROP PROCEDURE IF EXISTS spSelectEveryStatus;
 
 delimiter $$
@@ -917,6 +1051,7 @@ BEGIN
 END $$
 delimiter ;
 
+
 drop procedure if exists spSelectStatusInfo;
 
 delimiter $$
@@ -933,11 +1068,14 @@ begin
 		Status s
 	join 
 		Users u
+	on
+		u.id = s.userid
 	where
-		u.id = s_userid;
+		s.userid = s_userid;
         
 end $$
 delimiter ;
+
 DROP PROCEDURE IF EXISTS spSelectUsers;
 
 delimiter $$

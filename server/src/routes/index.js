@@ -7,6 +7,8 @@ import ImageUploadRouter from './ImageUploaded';
 import relationshipsRouter from './relationships';
 import profileRouter from "./profiles";
 import forumsRouter from "./forum";
+import gameListRouter from "./userGameList";
+import smRouter from './socialmedia';
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 
 
@@ -19,6 +21,8 @@ router.use("/ImageUploaded", ImageUploadRouter);
 router.use('/relationships', relationshipsRouter);
 router.use("/profile", profileRouter);
 router.use("/forums", forumsRouter);
+router.use("/gameList", gameListRouter);
+router.use('/social', smRouter);
 
 router.route('*')
     // .post(tokenMiddleware, isLoggedIn)
