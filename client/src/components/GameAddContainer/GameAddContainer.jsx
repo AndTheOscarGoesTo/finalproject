@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import GameAddPiece from "./GameAddPiece";
 
 import { me } from "../../services/user";
+import { post } from '../../services/base'
 
 class GameAddContainer extends Component {
 
@@ -65,7 +66,7 @@ class GameAddContainer extends Component {
                 break;
         }
 
-        console.log("--Clicked event--", currentParent, "--info--", gameInfoObj, "--input text--", inputText, "completed?", completedBool);
+        // console.log("--Clicked event--", currentParent, "--info--", gameInfoObj, "--input text--", inputText, "completed?", completedBool);
         const requestObj = Object.assign({},
              { 
                  userId: this.state.userId, 
@@ -76,6 +77,12 @@ class GameAddContainer extends Component {
                  hoursLogged: inputText,
                  gameCompleted: completedBool
                 } )
+
+        console.log("--request obj--", requestObj);
+
+        if(requestObj){
+            post(`http://localhost:3000/api/gameList/`, requestObj)
+        }
     }
 
     render(){

@@ -30,9 +30,10 @@ router.delete("/:id", (req, res, body) => {
 })
 
 router.post("/", (req, res, body) => {
+    console.log("--req body--", req.body)
     gameListController.insertGameToList(req.body.userId, req.body.gameId, req.body.systemId, req.body.gameTitle, req.body.gameImg, req.body.hoursLogged, req.body.gameCompleted)
     .then((response) => {
-        console.log(resposne);
+        console.log(response);
         res.sendStatus(202);
     })
     .catch((err) => {

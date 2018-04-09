@@ -43,15 +43,9 @@ class ForumCarousel extends Component{
         //     </Carousel>
         // </Fragment>
 
-<<<<<<< HEAD
-<div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" className={style.containment}>
-<ol className="carousel-indicators">
-  <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-=======
 <div class id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" className={style.containment}>
 <ol class="carousel-indicators">
   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
->>>>>>> 25bcce7932c9831ce0e320c25051a2d756f942cd
   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 </ol>
@@ -64,15 +58,9 @@ class ForumCarousel extends Component{
     <a href="#" className="btn btn-primary">Go somewhere</a>
   </div>
   </div>
-<<<<<<< HEAD
-  <div className="carousel-item">
-    <img className={`d-block w-100 ${style.images}`} src="http://nintendoenthusiast.com/wp-content/uploads/2018/02/smash-bros-coming-to-switch.jpg" alt="Second slide" />
-    <div className="carousel-caption d-none d-md-block" className={style.cardBody}>
-=======
   <div class="carousel-item">
     <img className={`d-block w-100 ${style.images}`}  src="http://nintendoenthusiast.com/wp-content/uploads/2018/02/smash-bros-coming-to-switch.jpg" alt="Second slide" />
     <div class="carousel-caption d-none d-md-block" className={style.cardBody}>
->>>>>>> 25bcce7932c9831ce0e320c25051a2d756f942cd
     <h5 className="card-title">Forum Name</h5>
     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" className="btn btn-primary">Go somewhere</a>

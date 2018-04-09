@@ -4,10 +4,10 @@ import { get } from '../../services/base';
 
 
 import NavComponent from "./GameListNav";
-// import GameListings from "./ListingPage";
 import ListingComponent from "./ListingComponent";
 import GameContainer from "../GameContainer/GameContainer";
 import GameAddContainer from "../GameAddContainer/GameAddContainer";
+import HomeNav from "../HomeNavBar/HomeNavBar";
 
 class GameListContainer extends Component{
     constructor(props){
@@ -55,16 +55,21 @@ class GameListContainer extends Component{
     render(){
         // console.log("--Game List--", this.state.games);
         return(
-            <div className={`container`}>
+            <Fragment>
 
-                <h1>Sup world</h1>
-                <NavComponent onSearchNameSubmit={this.onSearchNameSubmit} textChange={this.onInputChange} onDropSearch={this.onDropSearch}/>
+                <HomeNav />
+                <div className={`container`}>
 
-                <Route exact path="/GameCatalogue/gameSearch" component={ListingComponent} />
-                <Route exact path="/GameCatalogue/Game/:id" component={GameContainer} />
-                <Route exact path="/GameCatalogue/GameAdd/:id" component={GameAddContainer} />
+                    <NavComponent onSearchNameSubmit={this.onSearchNameSubmit} textChange={this.onInputChange} onDropSearch={this.onDropSearch}/>
 
-            </div>
+                    <Route exact path="/GameCatalogue/gameSearch" component={ListingComponent} />
+                    <Route exact path="/GameCatalogue/Game/:id" component={GameContainer} />
+                    <Route exact path="/GameCatalogue/GameAdd/:id" component={GameAddContainer} />
+
+                </div>
+
+            </Fragment>
+            
         );
     }
 }

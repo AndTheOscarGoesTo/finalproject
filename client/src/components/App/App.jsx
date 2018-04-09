@@ -39,6 +39,7 @@ class Navigation extends Component {
                         <Route path="/postforum" component={PostForum} />
                         <Route path="/social/:id" component={ Social } />
                         <Route path="/edit/:id" component={ EditSocial } />
+                        {/* <Route path="/MyGameList" component={} /> */}
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>
