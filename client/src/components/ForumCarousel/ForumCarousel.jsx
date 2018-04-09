@@ -43,9 +43,9 @@ class ForumCarousel extends Component{
         //     </Carousel>
         // </Fragment>
 
-<div id="carouselExampleIndicators" class={`carousel slide ${style.containment}`} data-ride="carousel">
+<div id="carouselExampleIndicators" className={`carousel slide ${style.containment}`} data-ride="carousel">
 <ol className="carousel-indicators">
-  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+  <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 </ol>
@@ -60,7 +60,7 @@ class ForumCarousel extends Component{
   </div>
   <div className="carousel-item">
     <img className={`d-block w-100 ${style.images}`}  src="http://nintendoenthusiast.com/wp-content/uploads/2018/02/smash-bros-coming-to-switch.jpg" alt="Second slide" />
-    <div class={`carousel-caption d-none d-md-block ${style.cardBody}`}>
+    <div className={`carousel-caption d-none d-md-block ${style.cardBody}`}>
     <h5 className="card-title">Forum Name</h5>
     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <a href="#" className="btn btn-primary">Go somewhere</a>
