@@ -17,7 +17,7 @@ class GameContainer extends Component {
         const imgBaseUrl = `http://thegamesdb.net/banners/`;
         get(`http://localhost:3000/api/games?byGameId=${this.props.match.params.id}`)
         .then((response) => {
-            console.log("--resposne--", response);
+            
             this.setState({
                 game: {
                     gameId: response.id,
@@ -40,10 +40,9 @@ class GameContainer extends Component {
     }
 
     render(){
-        // console.log("--props--", this.props.match.params.id);
+        
         return(
             <Fragment>
-                {/* <h1>Games here!</h1> */}
                 <GameSingle infoObj={this.state.game} />
             </Fragment>
             

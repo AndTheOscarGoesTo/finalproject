@@ -2,7 +2,6 @@ import React, { Fragment, Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import { get } from '../../services/base';
 
-
 import NavComponent from "./GameListNav";
 import ListingComponent from "./ListingComponent";
 import GameContainer from "../GameContainer/GameContainer";
@@ -24,26 +23,18 @@ class GameListContainer extends Component{
         const inputElement = event.currentTarget.parentNode.parentNode.querySelector("input");
         const searchName = inputElement.value;
 
-        // console.log("--Target--", event.target.parentNode);
-        // console.log("--Current Target--", searchName);
-
         get(`http://localhost:3000/api/games?byGameName=${searchName}`)
         .then((response) => {
-            // console.log(response);
 
             let games = [];
 
             response.map((item) => {
-                // console.log("--item--", item);
-                // console.log("--item--", item);
-                // console.dir(item.Images.boxart.thumb);
+
                 if(item.Images && item.Images.boxart.hasOwnProperty("thumb")){
                     games.push({ gameId: item.id, title: item.GameTitle, releaseDate: item.ReleaseDate, thumbnail: item.Images.boxart.thumb});
                 }
                 
             })
-
-            // console.log("--games here--", games);
 
             this.setState({ games });
         })
@@ -53,7 +44,7 @@ class GameListContainer extends Component{
     }
 
     render(){
-        // console.log("--Game List--", this.state.games);
+
         return(
             <Fragment>
 

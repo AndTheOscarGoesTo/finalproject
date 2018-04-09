@@ -9,8 +9,6 @@ class GameAddContainer extends Component {
     constructor(props){
         super(props);
 
-        console.log("--props in game container--", this.props.location.state);
-
         this.state = {
             gameInfo: this.props.location.state,
             currentGameId: this.props.match.params.id,
@@ -23,7 +21,7 @@ class GameAddContainer extends Component {
     componentDidMount(){
         me()
         .then((response) => {
-            // console.log("--me response--", response);
+
             this.setState({ userId: response.id })
         })
         .catch((err) => {
@@ -66,7 +64,6 @@ class GameAddContainer extends Component {
                 break;
         }
 
-        // console.log("--Clicked event--", currentParent, "--info--", gameInfoObj, "--input text--", inputText, "completed?", completedBool);
         const requestObj = Object.assign({},
              { 
                  userId: this.state.userId, 
@@ -78,19 +75,22 @@ class GameAddContainer extends Component {
                  gameCompleted: completedBool
                 } )
 
-        console.log("--request obj--", requestObj);
-
         if(requestObj){
             post(`http://localhost:3000/api/gameList/`, requestObj)
+            .then((response) => {
+                // console.log(response);
+                this.props.history.push("/");
+            })
+            .catch((err) => {
+                console.log(err);
+            })
         }
     }
 
     render(){
-        console.log(`Your game id is: ${this.state.currentGameId}`)
-        // console.log("--new obj--", Object.assign({}, { currentGameId: this.state.currentGameId }, this.state.gameInfo) );
 
         return(
-            // <h1>Your game id is: {this.state.currentGameId}</h1>
+
             <GameAddPiece infoObj={ Object.assign({}, { currentGameId: this.state.currentGameId }, this.state.gameInfo) } handleSubmission={this.handleSubmission} />
         )
     }

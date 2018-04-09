@@ -6,8 +6,7 @@ function DropDownList(props){
     return(
             <Fragment>
                 {props.listings.map((listing, index) => {
-                    // console.log("mapping");
-                    // console.log("listing", listing);
+
                     let divider;
 
                     {if(index < props.listings.length-1){

@@ -2,10 +2,6 @@ import React, { Fragment } from "react";
 
 function GameAddPiece(props) {
 
-    console.log("--Game Edit--", props);
-
-    // const baseUrl = `http://thegamesdb.net/banners/`;
-
     return(
         <div className={`jumbotron`}>
             <div className="container">

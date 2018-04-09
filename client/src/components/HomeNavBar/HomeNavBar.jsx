@@ -35,8 +35,6 @@ class HomeNavBar extends Component {
             return (
                 <Fragment>
                 <LoggedBanner id={this.state.id} handle={this.state.handle} firstname={this.state.firstname} />
-                {/* <NewPost id={this.state.id}/> */}
-                {/* <Post /> */}
                 <FriendsPanel loggedId={this.state.id} />
                 </Fragment>
             )

@@ -7,7 +7,7 @@ router.get("/:id", (req, res, body) => {
     console.log("--params--", req.params.id);
 
     gameListController.selectGameList(req.params.id)
-    .then((resposne) => {
+    .then((response) => {
         res.send(response);
     })
     .catch((err) => {
