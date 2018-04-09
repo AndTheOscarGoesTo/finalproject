@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-import style from './HomeNavBar.scss';
+import style from './HomeNavBar.module.scss';
 import { isLoggedIn, me } from '../../services/user';
 import { get } from '../../services/base';
 

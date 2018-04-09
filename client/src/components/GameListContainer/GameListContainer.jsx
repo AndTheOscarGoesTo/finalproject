@@ -8,6 +8,8 @@ import GameContainer from "../GameContainer/GameContainer";
 import GameAddContainer from "../GameAddContainer/GameAddContainer";
 import HomeNav from "../HomeNavBar/HomeNavBar";
 
+import { PacmanLoader } from "react-spinners";
+
 class GameListContainer extends Component{
     constructor(props){
         super(props);
@@ -17,6 +19,7 @@ class GameListContainer extends Component{
         }
         this.onSearchNameSubmit = this.onSearchNameSubmit.bind(this);
     }
+
 
     onSearchNameSubmit(event){
         event.preventDefault();
@@ -36,10 +39,10 @@ class GameListContainer extends Component{
                 
             })
 
-            this.setState({ games });
         })
         .catch((err) => {
-            console.error(err);
+            console.error(err); 
+    
         })
     }
 
@@ -49,6 +52,7 @@ class GameListContainer extends Component{
             <Fragment>
 
                 <HomeNav />
+
                 <div className={`container`}>
 
                     <NavComponent onSearchNameSubmit={this.onSearchNameSubmit} textChange={this.onInputChange} onDropSearch={this.onDropSearch}/>

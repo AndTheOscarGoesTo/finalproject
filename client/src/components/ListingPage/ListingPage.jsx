@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-import ListingStyle from "./ListingPage.scss";
+import ListingStyle from "./ListingPage.module.scss";
 
 function ListingPage (props){
     return (
