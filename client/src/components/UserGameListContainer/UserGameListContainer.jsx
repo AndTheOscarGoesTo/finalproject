@@ -51,7 +51,6 @@ class UserGameListContainer extends Component{
         .catch((err) => {
             console.log(err);
         })
-        // this.props.history.push("/MyGameList");
     }
 
     render(){
