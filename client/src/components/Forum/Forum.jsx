@@ -1,16 +1,43 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { get, post } from '../../services/base'
 import style from './Forum.scss'
 import ForumHead from './ForumHead';
 import Scroll from './scroll';
 import LoggedBanner from '../LoggedBanner/LoggedBanner'
 class Forum extends Component {
 
+    constructor(props){
+      super(props);
+      this.state = {
+        forumz: [],
+      }
+    }
+
+    componentDidMount(){
+      get('http://localhost:3000/api/forums')
+      .then(result => this.setState({forumz: result}))
+      .then(log => console.log(this.state.forumz))
+    }
+    
+
     render() {
+      let forumz = this.state.forumz.map((forumz) => {
+        return(
+          <div className="card">
+          <img className="card-img-top" src={forumz.forumImg} alt="Card image cap" />
+          <div className="card-body">
+            <h5 className="card-title"><Link to={ `/forumpage/${forumz.id}` }>{forumz.title}</Link></h5>
+            <p className="card-text">{ forumz.forumText }</p>
+            <p className="card-text"><small className="text-muted">{forumz._created}</small></p>
+          </div>
+        </div>
+        )
+      })
         return (
           <Fragment>
             <LoggedBanner />
-            <div class="container">
+            <div className="container">
               
             <ForumHead />
             <div className={ `card-group ${ style.space}`} >
@@ -19,36 +46,12 @@ class Forum extends Component {
               <div className="card-body">
                 <h5 className="card-title">submit Post<i className="ion-plus-circled"></i></h5>
                 <p className="card-text">Add a post </p>
-                <p className="card-text"><small className="text-muted">Timestamp here</small></p>
+                
               </div>
             </div>
-            <div className="card">
-              <img className="card-img-top" src="https://media.gq.com/photos/59bac9496f3a7b240df4084d/master/w_696/mario-nip-slip.jpeg" alt="Card image cap" />
-              <div className="card-body">
-                <h5 className="card-title">Nipples, cool or for fools?</h5>
-                <p className="card-text">Uh huh, uh huh
-                                    Yeah, Rihanna
-                                    Uh huh, uh huh 
-                                    Good girl gone bad
-                                    Uh huh, uh huh 
-                                    Take three, action
-                                    Uh huh, uh huh, ho</p>
-                <p className="card-text"><small className="text-muted">Timestamp here</small></p>
-              </div>
-            </div>
-            <div className="card">
-              <img className="card-img-top" src="https://www.callofduty.com/content/dam/atvi/callofduty/wwii/home/Stronghold_Metadata_Image.jpg" alt="Card image cap" />
-              <div className="card-body">
-                <h5 className="card-title">Shoot a man 3 revealed!</h5>
-                <p className="card-text">Somebody once told me the world is gonna roll me
-                                    I ain't the sharpest tool in the shed
-                                    She was looking kind of dumb with her finger and her thumb
-                                    In the shape of an "L" on her forehead</p>
-                <p className="card-text"><small className="text-muted">Timestamp here</small></p>
-              </div>
-            </div>
+           
           </div>
-
+{ forumz }
           {/* <div className="card-group">
             <div className={ `card ${ style.space }`}>
               <img className="card-img-top" src="https://i.ytimg.com/vi/wL5NiOc64ag/maxresdefault.jpg" alt="Card image cap" />

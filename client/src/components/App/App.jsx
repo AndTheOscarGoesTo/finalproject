@@ -13,6 +13,9 @@ import NewUser from '../NewUser/NewUser';
 import Forumpage from '../Forumpage/Forumpage';
 import PostForum from '../PostForum/PostForum';
 import GameListContainer from "../GameListContainer/GameListContainer";
+import Social from '../socials/Social';
+import EditSocial from '../socials/EditSocial';
+
 
 class Navigation extends Component {
 
@@ -31,7 +34,11 @@ class Navigation extends Component {
                         <Route path="/GameCatalogue" component={GameListContainer}/>
                         {/* <Route path="/GameList" component={} /> */}
                         <Route path="/forumpage" component={Forumpage} />
+                        
+                        <Route path="/forumpage/:id" component={Forumpage} />
                         <Route path="/postforum" component={PostForum} />
+                        <Route path="/social/:id" component={ Social } />
+                        <Route path="/edit/:id" component={ EditSocial } />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>
