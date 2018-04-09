@@ -15,10 +15,6 @@ class ListingComponent extends Component{
         }
     }
 
-    loading = false;
-    working = false;
-    currentComponent = null;
-
     componentDidMount(){
 
         const alias = (this.props.location.state.alias) ? this.props.location.state.alias : null;
@@ -45,7 +41,11 @@ class ListingComponent extends Component{
                     
                 })
 
-                this.setState({ games });
+                this.setState({ 
+                    games,
+                    loading: !this.state.loading,
+                    working: !this.state.working
+                 });
             })
             .catch((err) => {
                 console.error(err);

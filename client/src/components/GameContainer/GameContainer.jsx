@@ -2,19 +2,28 @@ import React, { Component, Fragment } from "react"
 import GameSingle from "./GamePiece";
 
 import { get } from '../../services/base';
+import { PacmanLoader } from "react-spinners";
 
 class GameContainer extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            game: {}
+            game: {},
+            loading: false,
+            working: false
         }
 
     }
 
     componentDidMount() {
         const imgBaseUrl = `http://thegamesdb.net/banners/`;
+
+        this.setState({
+            loading: !this.state.loading,
+            working: !this.state.working
+        })
+
         get(`http://localhost:3000/api/games?byGameId=${this.props.match.params.id}`)
         .then((response) => {
             
@@ -29,13 +38,19 @@ class GameContainer extends Component {
                     images: {boxart: response.Images.boxart, banners: response.Images.banner, screens: response.Images.screenshot},
                     developer: response.Developer,
                     genres: response.Genres,
-                    description: response.Overview ? response.Overview : `Sorry, this game lacks a description :(`
+                    description: response.Overview ? response.Overview : `Sorry, this game lacks a description :(`,
+                    loading: !this.state.loading,
+                    working: !this.state.working
                 }
             })
         })
         .catch((err) => {
             console.log(err);
             throw err;
+            this.setState({
+                loading: !this.state.loading,
+                working: !this.state.working
+            });
         })
     }
 
@@ -43,6 +58,15 @@ class GameContainer extends Component {
         
         return(
             <Fragment>
+
+                
+                <div className='sweet-loading container mx-auto'>
+                    <PacmanLoader
+                    color={'#123abc'} 
+                    loading={this.state.loading} 
+                    />
+                </div>
+
                 <GameSingle infoObj={this.state.game} />
             </Fragment>
             
