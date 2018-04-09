@@ -871,17 +871,29 @@ BEGIN
 END $$
 delimiter ;
 
-DROP PROCEDURE IF EXISTS spSelectOneSocialMedia;
+DROP PROCEDURE IF EXISTS spSelectAUsersSocialMedia;
 
 delimiter $$
-CREATE PROCEDURE spSelectOneSocialMedia (
-    sm_id int
+CREATE PROCEDURE spSelectAUsersSocialMedia (
+    u_id int
 )
 
 BEGIN
 
-    select * from SocialMedia 
-    where id = sm_id;
+    select
+		twitter,
+        instagram,
+        twitch,
+        discord,
+        youtube
+    from 
+		SocialMedia sm
+    join
+		Users u
+	on
+		u.id = sm.userid
+    where 
+		sm.userid = u_id;
 
 END $$
 delimiter ;
@@ -890,6 +902,7 @@ DROP PROCEDURE IF EXISTS spInsertSocialMedia;
 
 delimiter $$
 CREATE PROCEDURE spInsertSocialMedia (
+	sm_userid int,
     sm_twitter varchar(50),
     sm_instagram varchar(50),
     sm_twitch varchar(50),
@@ -899,8 +912,8 @@ CREATE PROCEDURE spInsertSocialMedia (
 
 BEGIN
 
-    insert into SocialMedia (twitter, instagram, twitch, discord, youtube)
-    values (sm_twitter, sm_instagram, sm_twitch, sm_discord, sm_youtube);
+    insert into SocialMedia (userid, twitter, instagram, twitch, discord, youtube)
+    values (sm_userid, sm_twitter, sm_instagram, sm_twitch, sm_discord, sm_youtube);
 
     select last_insert_id();
 
@@ -911,7 +924,7 @@ DROP PROCEDURE IF EXISTS spUpdateSocialMedia;
 
 delimiter $$
 CREATE PROCEDURE spUpdateSocialMedia (
-    sm_id int,
+    sm_userid int,
     sm_twitter varchar(50),
     sm_instagram varchar(50),
     sm_twitch varchar(50),
@@ -925,17 +938,19 @@ BEGIN
 
     set
 
-    id = coalesce(sm_id, id),
+    userid = coalesce(sm_userid, userid),
     twitter = coalesce(sm_twitter, twitter),
     instagram = coalesce(sm_instagram, instagram),
     twitch = coalesce(sm_twitch, twitch),
     discord = coalesce(sm_discord, discord),
     youtube = coalesce(sm_youtube, youtube)
 
-    where id = sm_id;
+    where userid = sm_userid;
 
 END $$
 delimiter ;
+
+
 
 DROP PROCEDURE IF EXISTS spDeleteSocialMedia;
 
@@ -947,10 +962,11 @@ CREATE PROCEDURE spDeleteSocialMedia (
 BEGIN
 
     delete from SocialMedia
-    where id = sm_id;
+    where userid = sm_id;
 
 END $$
 delimiter ;
+
 DROP PROCEDURE IF EXISTS spSelectEveryStatus;
 
 delimiter $$
@@ -1035,6 +1051,7 @@ BEGIN
 END $$
 delimiter ;
 
+
 drop procedure if exists spSelectStatusInfo;
 
 delimiter $$
@@ -1051,11 +1068,14 @@ begin
 		Status s
 	join 
 		Users u
+	on
+		u.id = s.userid
 	where
-		u.id = s_userid;
+		s.userid = s_userid;
         
 end $$
 delimiter ;
+
 DROP PROCEDURE IF EXISTS spSelectUsers;
 
 delimiter $$

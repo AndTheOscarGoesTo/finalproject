@@ -11,7 +11,11 @@ import Forum from '../Forum/Forum';
 import Home from '../Home/Home';
 import NewUser from '../NewUser/NewUser';
 import Forumpage from '../Forumpage/Forumpage';
-import PostForum from '../PostForum/PostForum'
+import PostForum from '../PostForum/PostForum';
+import Social from '../socials/Social';
+import EditSocial from '../socials/EditSocial';
+
+
 class Navigation extends Component {
 
     render() {
@@ -29,6 +33,8 @@ class Navigation extends Component {
                         
                         <Route path="/forumpage" component={Forumpage} />
                         <Route path="/postforum" component={PostForum} />
+                        <Route path="/social/:id" component={ Social } />
+                        <Route path="/edit/:id" component={ EditSocial } />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>

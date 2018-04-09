@@ -27,6 +27,7 @@ DROP TABLE IF EXISTS SocialMedia;
 
 CREATE TABLE SocialMedia (
     id int not null auto_increment primary key,
+    userid int not null,
     twitter varchar(50),
     instagram varchar(50),
     twitch varchar(50),
