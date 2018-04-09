@@ -41,8 +41,18 @@ router.post('/friends', (req, res) => {
     });
 });
 
+// router.get('/:id', (req, res) => {
+//     usersTable.getOne(req.params.id)
+//     .then((results) => {
+//         res.json(results);
+//     }).catch((err) => {
+//         console.log(err);
+//         res.sendStatus(500);
+//     });
+// });
+
 router.get('/:id', (req, res) => {
-    usersTable.getOne(req.params.id)
+    usersTable.putOrDeleteProcedure("spSelectStatusInfo", [req.params.id])
     .then((results) => {
         res.json(results);
     }).catch((err) => {
