@@ -69,7 +69,20 @@ class LoggedBanner extends Component {
                             <AuthButton />
                             </li>
                             <li>
-                            <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
+                            {/* <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link> */}
+                                <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
+                            </li>
+                            <li className='btn-group'>
+                                <div className={style.holder}>
+                                    <div className={style.hovorHolder}>
+                                        <span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span>
+                                        <div className={style.holds}>
+                                            <a href="#">{ requests }</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                
                             </li>
                             <li>
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={"/GameCatalogue"}>Game Catalogue</Link>
@@ -87,15 +100,17 @@ class LoggedBanner extends Component {
                         </ul>
                     </nav>
                 </div>
-                <nav className={`navbar navbar-expand-sm ${style.logged_out_content}`}>
+
+                {/* What does all of this do?????? */}
+                {/* <nav className={`navbar navbar-expand-sm ${style.logged_out_content}`}>
                     <ul className="nav navbar-nav navbar-right">
-                        <li className="yeet">
-                        <AuthButton />
-                        </li>
-                        <li>
-                        <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
-                        </li>
-                        <li className='btn-group'>
+                        <li className="yeet"> */}
+                        {/* <AuthButton /> */}
+                        {/* </li>
+                        <li> */}
+                        {/* <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link> */}
+                        {/* </li>
+                        <li className='btn-group'> */}
                         {/* boos */}
                             {/* <button type="button" className="btn btn-danger"> <span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span><span className="caret"></span></button>
                             <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -106,10 +121,10 @@ class LoggedBanner extends Component {
                                
                             </div> */}
 
-                                          <div className={style.holder}>
-                                            <div className={style.hovorHolder}>
+                                          {/* <div className={style.holder}>
+                                            <div className={style.hovorHolder}> */}
                                             {/* <i className="ion-chevron-down"></i> */}
-                                              <span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span>
+                                              {/* <span style={{backgroundColor: 'red' }}className="badge">{this.state.requests.length}</span>
                                             <div className={style.holds}>
                                                 <a href="#">{ requests }</a>
                                                 
@@ -117,7 +132,7 @@ class LoggedBanner extends Component {
 
                                             </div>
                                         
-                                        </div>
+                                        </div> */}
                                 
                                 {/* nana */}
 
@@ -129,10 +144,10 @@ class LoggedBanner extends Component {
                             {/* nana */}
 
                             {/* boos */}
-                        </li>
+                        {/* </li>
                         
                     </ul>
-                </nav>
+                </nav> */}
             </div>
         );
     }
