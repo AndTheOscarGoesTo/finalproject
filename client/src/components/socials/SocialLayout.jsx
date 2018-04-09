@@ -26,10 +26,6 @@ function SocialLayout(props) {
                 <td>{ props.social.twitch }</td>
             </tr>
             <tr>
-                <td>Discord</td>
-                <td>{ props.social.discord }</td>
-            </tr>
-            <tr>
                 <td>Youtube</td>
                 <td>{ props.social.youtube }</td>
             </tr>

@@ -16,6 +16,7 @@ import GameListContainer from "../GameListContainer/GameListContainer";
 import Social from '../socials/Social';
 import EditSocial from '../socials/EditSocial';
 import UserGameList from "../UserGameListContainer/UserGameListContainer";
+import AddSocial from '../socials/AddSocial';
 
 
 class Navigation extends Component {
@@ -39,6 +40,8 @@ class Navigation extends Component {
                         <Route path="/postforum" component={PostForum} />
                         <Route path="/social/:id" component={ Social } />
                         <Route path="/edit/:id" component={ EditSocial } />
+                        <Route path="/add/social" component={ AddSocial } />
+
                         <Route path="/MyGameList" component={UserGameList} />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
