@@ -26,9 +26,9 @@ router.get('/:id?', (req, res, next) => {
     })
 })
 
-router.post('/', (req, res, next) => {
+router.post('/:id', (req, res, next) => {
     let social = {
-        userid: req.body.userid,
+        userid: req.params.id,
         twitter: req.body.twitter,
         instagram: req.body.instagram,
         twitch: req.body.twitch,
