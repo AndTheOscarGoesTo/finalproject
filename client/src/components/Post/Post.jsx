@@ -15,18 +15,23 @@ class Post extends Component {
         this.updatePosts = this.updatePosts.bind(this);
     }
     componentDidMount(){
+        this.gatherPosts();
+    }
+
+    gatherPosts() {
         get('http://localhost:3000/api/status')
         .then(result => this.setState({posts: result}))
-        .then(log => console.log(this.state.posts))
+        .then(log => console.log("--posts--", this.state.posts))
     }
+
     handleLike(id){
         post('http://localhost:3000/api/status/like', {
 
         })
         .then()
     }
-    updatePosts(newPost){
-        this.forceUpdate();
+    updatePosts(){
+        this.gatherPosts();
     }
     render(){
         let posts = this.state.posts.map((posts) => {
