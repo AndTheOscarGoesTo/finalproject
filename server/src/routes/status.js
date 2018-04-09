@@ -31,6 +31,16 @@ router.post('/', (req, res) => {
     });
 });
 
+router.post('/friends', (req, res) => {
+    usersTable.insert(req.body)
+    .then((results) => {
+        res.json(results);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+
 router.get('/:id', (req, res) => {
     usersTable.getOne(req.params.id)
     .then((results) => {

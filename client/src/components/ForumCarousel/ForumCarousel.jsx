@@ -43,9 +43,15 @@ class ForumCarousel extends Component{
         //     </Carousel>
         // </Fragment>
 
+<<<<<<< HEAD
+<div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" className={style.containment}>
+<ol className="carousel-indicators">
+  <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+=======
 <div class id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" className={style.containment}>
 <ol class="carousel-indicators">
   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+>>>>>>> 3336a5c3bd12c4b19870f6f0ed055742fe8a3ecd
   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 </ol>
