@@ -10,7 +10,9 @@ class EditSocial extends Component {
             twitter: null,
             instagram: null,
             twitch: null,
-            youtube: null
+            youtube: null,
+            avatar: null,
+            handle: null
         }
     }
 
@@ -28,6 +30,30 @@ class EditSocial extends Component {
 
     handleYoutubeChange(youtube) {
         this.setState({ youtube });
+    }
+
+    handleAvatarChange(avatar) {
+        this.setState({ avatar });
+    }
+
+    handleNameChange(handle) {
+        this.setState({ handle });
+    }
+
+    editUserInfo(e) {
+
+        e.preventDefault();
+
+        put(
+            `http://localhost:3000/api/users/${this.props.match.params.id}`,
+            {
+                avatar: this.state.avatar,
+                handle: this.state.handle
+            }
+        )
+        .then(() => {
+            this.props.history.push('/')
+        })
     }
 
     editSocialMedia(e) {
@@ -51,27 +77,42 @@ class EditSocial extends Component {
     render() {
         return (
             <div>
-                <input 
-                    placeholder="twitter"
-                    value={ this.state.twitter } 
-                    onChange={ (event) => this.handleTwitterChange(event.target.value)}
-                />
-                <input 
-                    placeholder="instagram"
-                    value={ this.state.instagram } 
-                    onChange={ (event) => this.handleInstagramChange(event.target.value)}
-                />
-                <input 
-                    placeholder="twitch" 
-                    value={ this.state.twitch } 
-                    onChange={ (event) => this.handleTwitchChange(event.target.value)}
-                />
-                <input 
-                    placeholder="youtube"
-                    value={ this.state.youtube } 
-                    onChange={ (event) => this.handleYoutubeChange(event.target.value)}
-                />
-                <button onClick={ (e) => {this.editSocialMedia(e)} }>submit</button>
+                <div>
+                    <input 
+                        placeholder="twitter"
+                        value={ this.state.twitter } 
+                        onChange={ (event) => this.handleTwitterChange(event.target.value)}
+                    />
+                    <input 
+                        placeholder="instagram"
+                        value={ this.state.instagram } 
+                        onChange={ (event) => this.handleInstagramChange(event.target.value)}
+                    />
+                    <input 
+                        placeholder="twitch" 
+                        value={ this.state.twitch } 
+                        onChange={ (event) => this.handleTwitchChange(event.target.value)}
+                    />
+                    <input 
+                        placeholder="youtube"
+                        value={ this.state.youtube } 
+                        onChange={ (event) => this.handleYoutubeChange(event.target.value)}
+                    />
+                    <button onClick={ (e) => {this.editSocialMedia(e)} }>submit</button>
+                </div>
+                <div>
+                    <input 
+                        placeholder="avatar" 
+                        value={ this.state.avatar } 
+                        onChange={ (event) => this.handleAvatarChange(event.target.value)}
+                    />
+                    <input 
+                        placeholder="handle" 
+                        value={ this.state.handle } 
+                        onChange={ (event) => this.handleNameChange(event.target.value)}
+                    />
+                    <button onClick={ (e) => {this.editUserInfo(e)} }>update user</button>
+                </div>
             </div>
         );
     }
