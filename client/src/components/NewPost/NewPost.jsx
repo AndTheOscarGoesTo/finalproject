@@ -24,7 +24,9 @@ class NewUserForm extends Component {
             userid: this.props.id,
             status: this.state.status
         })
-        this.props.updatePosts;
+        .then(() => {
+            this.props.updatePosts();
+        });
     }
 
     handleTextChange(value) {
