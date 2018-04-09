@@ -16,10 +16,11 @@ router.get("/:id", (req, res, body) => {
     })
 })
 
-router.delete("/:id", (req, res, body) => {
-    console.log("--params--", req.params.id);
+router.delete("/", (req, res, body) => {
+    // console.log("--params--", req.params.id);
 
-    gameListController.deleteFromGameList(req.params.id)
+    
+    gameListController.deleteFromGameList(req.body.userId, req.body.gameId)
     .then((resposne) => {
         res.sendStatus(202);
     })

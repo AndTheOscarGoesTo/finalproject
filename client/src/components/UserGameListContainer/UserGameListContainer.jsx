@@ -4,6 +4,9 @@ import GameListing from "./GameList";
 
 import { me } from "../../services/user";
 import { get } from "../../services/base";
+import { destroy } from "../../services/base";
+
+import MyStyle from "./UserGameListContainer.scss";
 
 class UserGameListContainer extends Component{
     constructor(props){
@@ -13,6 +16,8 @@ class UserGameListContainer extends Component{
             currentUserId: null,
             gameListInfo: []
         }
+
+        this.onDeleteHandler = this.onDeleteHandler.bind(this);
     }
 
     componentDidMount(){
@@ -33,13 +38,29 @@ class UserGameListContainer extends Component{
         })
     }
 
+    onDeleteHandler(event, gameId) {
+        console.log("--ids to delete--", this.state.currentUserId, gameId);
+
+        destroy("http://localhost:3000/api/gameList/", {userId: this.state.currentUserId, gameId})
+        .then((response) => {
+            console.log(response);
+
+            this.props.history.push("/MyGameList");
+
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        // this.props.history.push("/MyGameList");
+    }
+
     render(){
 
         return(
-            <Fragment>
+            <div className={`${MyStyle.mainPiece}`}>
                 <HomeNav />
-                <GameListing myGames={this.state.gameListInfo} />
-            </Fragment>
+                <GameListing myGames={this.state.gameListInfo} onDeleteHandler={this.onDeleteHandler} />
+            </div>
         );
     }
 
