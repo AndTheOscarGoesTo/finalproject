@@ -6,7 +6,7 @@ import { me } from "../../services/user";
 import { get } from "../../services/base";
 import { destroy } from "../../services/base";
 
-import MyStyle from "./UserGameListContainer.scss";
+import MyStyle from "./UserGameListContainer.module.scss";
 
 class UserGameListContainer extends Component{
     constructor(props){

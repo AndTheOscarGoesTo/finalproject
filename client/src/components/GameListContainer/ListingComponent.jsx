@@ -2,19 +2,32 @@ import React, { Fragment, Component } from "react";
 import GameListing from "../ListingPage/ListingPage";
 import { get } from "../../services/base";
 
+import { PacmanLoader } from "react-spinners";
+
 class ListingComponent extends Component{
     constructor(props){
         super(props);
 
         this.state = {
-            games: []
+            games: [],
+            loading: false,
+            working: false
         }
     }
+
+    loading = false;
+    working = false;
+    currentComponent = null;
 
     componentDidMount(){
 
         const alias = (this.props.location.state.alias) ? this.props.location.state.alias : null;
         const searchString = (this.props.location.state.searchString) ? this.props.location.state.searchString : null;
+
+        this.setState({
+            loading: !this.state.loading,
+            working: !this.state.working
+        })
 
         if(alias){
             console.log("--alias--", alias);
@@ -51,18 +64,41 @@ class ListingComponent extends Component{
                     
                 })
 
-                this.setState({ games });
+                this.setState({ 
+                        games,
+                        loading: !this.state.loading,
+                        working: !this.state.working
+                    });
             })
             .catch((err) => {
                 console.error(err);
+
+                this.setState({
+                    loading: !this.state.loading,
+                    working: !this.state.working
+                })
             })
 
         }
     }
 
     render(){
+
+        console.log("--Rendering--");
+
         return(
-            <GameListing currentList={this.state.games}/>
+            <Fragment>
+
+                <div className='sweet-loading'>
+                    <PacmanLoader
+                    color={'#123abc'} 
+                    loading={this.state.loading} 
+                    />
+                </div>
+
+                <GameListing currentList={this.state.games}/>
+
+            </Fragment>
         );
     }
 }

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-import MyStyle from "./UserGameListContainer.scss";
+import MyStyle from "./UserGameListContainer.module.scss";
 
 function GameList(props) {
 
