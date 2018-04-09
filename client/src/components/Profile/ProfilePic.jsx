@@ -4,6 +4,7 @@ import styles from "./ProfileCard.scss";
 import ProfileNav from './ProfileNav';
 import ProfileView from './ProfileView';
 import ProfileViewPort from './ProfileViewPort';
+import img from './Discord-Logo-Black.svg';
 
 class ProfilePic extends Component {
 
@@ -21,15 +22,14 @@ class ProfilePic extends Component {
                 </p>
                 
               <div className="icons">
-              <a href="#"><i className="ion-social-reddit"></i></a>
-                <a href="#"> <i className="ion-social-twitter"></i></a>
-                <a href="#"> <i className="ion-social-vimeo"></i></a>
-                <a href="#"> <i className="ion-social-instagram"></i></a>
-                <a href="#"> <i className="ion-social-snapchat"></i></a>
-                <a href="#"> <i className="ion-social-facebook"></i></a>
-                <a href="#"> <i className="ion-social-twitch-outline"></i></a>
-                <a href="#"> <i className="ion-social-youtube"></i></a>
-                <a href="#"> <i className="ion-social-tumblr"></i></a>
+                <a href="#"><i className="ion-playstation"></i></a>
+                  <a href="#"> <i className="ion-xbox"></i></a>
+                  <a href="#"> <i className="ion-mouse"></i></a>
+                  <a href="#"> <i className="ion-social-instagram-outline"></i></a>
+                  <a href="#"> <i className="ion-social-twitter-outline"></i></a>
+                  <a href="#"> <i className="ion-social-twitch-outline"></i></a>
+                  <a href="#"> <i className="ion-social-youtube"></i></a>
+                  {/* <a href="#"> <i className=""><img src={ img } alt="" srcset=""/></i></a> */}
               </div>
               <ProfileNav />
             </figcaption>
