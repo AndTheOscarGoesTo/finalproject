@@ -12,9 +12,9 @@ class ForumTop extends Component {
         <Fragment>
             <img className={ style.userImage } src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png" alt="profile image" />
         <div className={ style.post }>
-          <h1>Title</h1>
+          <h1>{this.props.title}</h1>
           <hr />
-            <p>User input</p>
+            <p>{this.props.forumText}</p>
         </div>
         </Fragment>
          

@@ -23,8 +23,11 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "bbcode-parser": "^1.0.10",
+<<<<<<< HEAD
     "body-parser": "^1.18.2",
     "body-parser-xml": "^1.1.0",
+=======
+>>>>>>> 722ad11048287f8790f9cf95651234ea772bc049
     "cors": "^2.8.4",
     "css-loader": "^0.28.10",
     "dotenv": "^5.0.1",

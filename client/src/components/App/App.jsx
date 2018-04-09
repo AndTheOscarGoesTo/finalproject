@@ -31,7 +31,7 @@ class Navigation extends Component {
                         {/* <Route exact path="/profile/:id" component={Profile} /> */}
                         <Route path="/forum" component={Forum} />
                         
-                        <Route path="/forumpage" component={Forumpage} />
+                        <Route path="/forumpage/:id" component={Forumpage} />
                         <Route path="/postforum" component={PostForum} />
                         <Route path="/social/:id" component={ Social } />
                         <Route path="/edit/:id" component={ EditSocial } />
