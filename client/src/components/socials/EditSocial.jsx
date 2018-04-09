@@ -10,7 +10,6 @@ class EditSocial extends Component {
             twitter: null,
             instagram: null,
             twitch: null,
-            discord: null,
             youtube: null
         }
     }
@@ -27,10 +26,6 @@ class EditSocial extends Component {
         this.setState({ twitch });
     }
 
-    handleDiscordChange(discord) {
-        this.setState({ discord });
-    }
-
     handleYoutubeChange(youtube) {
         this.setState({ youtube });
     }
@@ -45,7 +40,6 @@ class EditSocial extends Component {
                 twitter: this.state.twitter,
                 instagram: this.state.instagram,
                 twitch: this.state.twitch,
-                discord: this.state.discord,
                 youtube: this.state.youtube
             }
         )
@@ -58,22 +52,22 @@ class EditSocial extends Component {
         return (
             <div>
                 <input 
+                    placeholder="twitter"
                     value={ this.state.twitter } 
                     onChange={ (event) => this.handleTwitterChange(event.target.value)}
                 />
                 <input 
+                    placeholder="instagram"
                     value={ this.state.instagram } 
                     onChange={ (event) => this.handleInstagramChange(event.target.value)}
                 />
                 <input 
+                    placeholder="twitch" 
                     value={ this.state.twitch } 
                     onChange={ (event) => this.handleTwitchChange(event.target.value)}
                 />
                 <input 
-                    value={ this.state.discord } 
-                    onChange={ (event) => this.handleDiscordChange(event.target.value)}
-                />
-                <input 
+                    placeholder="youtube"
                     value={ this.state.youtube } 
                     onChange={ (event) => this.handleYoutubeChange(event.target.value)}
                 />
