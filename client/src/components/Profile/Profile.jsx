@@ -8,6 +8,7 @@ import LoggedBanner from '../LoggedBanner/LoggedBanner';
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import { isLoggedIn, me } from '../../services/user';
 import { get, post } from '../../services/base';
+import Particles from 'react-particles-js';
 
 
 
@@ -49,7 +50,28 @@ class Profile extends Component {
                 return (
                     <Fragment>
                         <LoggedBanner />
-                            <div className={`${styles.banner}`} style={{width: '100%', height: '30em'}}></div>
+                            <Particles 
+                                className={styles.bg} 
+                                width="100%" height="100%" 
+                                params={ {
+                                    particles: {
+                                        line_linked: {
+                                            shadow: {
+                                                enable: true,
+                                                color: "whitesmoke",
+                                                blur: 5,
+                                            }
+                                        },
+                                        number: {
+                                            value: 100,
+                                            density: {
+                                                enable: true,
+                                                value_area: 1200
+                                            }
+                                        }
+                                    }
+                                } } 
+                            />
                             <div className={styles.wrapper}>
                                 <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={true} avatar={this.state.avatar}/>
                                 <UserPosts />
@@ -60,6 +82,7 @@ class Profile extends Component {
                 return(
                     <Fragment>
                         <LoggedBanner />
+                            <Particles className={styles.bg} width="100%" height="100%"/>
                         <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                             <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
                             <div className={styles.wrapper}>
@@ -73,6 +96,7 @@ class Profile extends Component {
             return (
                 <Fragment>
                     <UnloggedBanner />
+
                         <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                         <div className={styles.wrapper}>
                             <ProfilePanel />
@@ -85,3 +109,4 @@ class Profile extends Component {
 }
 
 export default Profile;
+
