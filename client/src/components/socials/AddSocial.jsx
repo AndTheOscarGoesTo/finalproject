@@ -6,10 +6,10 @@ class AddSocial extends Component {
         super(props);
 
         this.state = {
-            twitter: null,
-            instagram: null, 
-            twitch: null,
-            youtube: null
+            twitter: '',
+            instagram: '', 
+            twitch: '',
+            youtube: ''
         }
     }
 
@@ -32,9 +32,9 @@ class AddSocial extends Component {
     addSocialMedia(e) {
 
         e.preventDefault();
-
+        console.log(this.props.match.params.id);
         post(
-            `http://localhost:3000/api/add/social/${this.props.match.params.id}`,
+            `http://localhost:3000/api/social/${this.props.match.params.id}`,
             {
                 twitter: this.state.twitter,
                 instagram: this.state.instagram,
@@ -42,8 +42,10 @@ class AddSocial extends Component {
                 youtube: this.state.youtube
             }
         )
+
         .then(() => {
-            this.props.history.push(`/profile/${this.props.match.params.id}`)
+            alert('social media added');
+            this.props.history.push('/');
         })
     }
 
