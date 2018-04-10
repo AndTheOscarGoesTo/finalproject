@@ -32,7 +32,7 @@ class Navigation extends Component {
                         <Route path="/logout" component={Logout} />
                         <Route path="/newuser" component={NewUser} />
                         <Route exact path="/profile/:id" render={routeProps => <Profile {...routeProps} yeet={'yeet'} />} />
-                        <Route exact path="/profiles/:searchString" component={ProfileSearchComponent} />
+                        <PrivateRoute exact path="/profiles/:searchString" component={ProfileSearchComponent} />
                         {/* <Route exact path="/profile/:id" component={Profile} /> */}
                         <PrivateRoute path="/forum" component={Forum} />
                         <PrivateRoute path="/GameCatalogue" component={GameListContainer}/>

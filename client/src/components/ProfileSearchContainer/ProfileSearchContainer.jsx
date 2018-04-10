@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Fragment, Component } from "react";
 import { get } from "../../services/base";
 
 import ProfileSearchListing from "./ProfileSearchListing";
+import MainNav from "../HomeNavBar/HomeNavBar";
 
 class ProfileSearchContainer extends Component{
     constructor(props){
@@ -38,8 +39,11 @@ class ProfileSearchContainer extends Component{
     render(){
         // console.log("--profiles--", this.state.profiles);
         return(
-            // <h1>String you gave {this.props.match.params.searchString}</h1>
-            <ProfileSearchListing listingInfo={this.state.profiles} />
+            <Fragment>
+                {/* <h1>String you gave {this.props.match.params.searchString}</h1> */}
+                <MainNav />
+                <ProfileSearchListing listingInfo={this.state.profiles} />
+            </Fragment>
         )
     }
 }

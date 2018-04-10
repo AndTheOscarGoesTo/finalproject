@@ -29,10 +29,15 @@ function postNewForum(commentId, forumTitle, forumImg, forumText){
     return forumTable.postProcedure("spInsertForum", [commentId, forumTitle, forumImg, forumText]);
 }
 
+function updateForum(forumId, commentId, forumTitle, forumImg, forumText) {
+    return forumTable.putOrDeleteProcedure("spUpdateForum", [forumId, commentId, forumTitle, forumImg, forumText])
+}
+
 export {
     selectForums,
     selectForumInfo,
     selectForumComments,
+    updateForum,
     postNewForum,
     postNewForumComment
 }
