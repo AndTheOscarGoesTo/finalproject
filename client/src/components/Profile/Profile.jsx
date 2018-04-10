@@ -21,11 +21,12 @@ class Profile extends Component {
             firstname: '',
             lastname: '',
             avatar: '',
+            profileid: '',
         }
     }
     componentDidMount(){
         get(`http://localhost:3000/api/users/${this.props.match.params.id}`)
-        .then(res => this.setState( {id: res.id, firstname: res.firstname, lastname: res.lastname, handle: res.handle, avatar: res.avatar} ))
+        .then(res => this.setState( {id: res.id, firstname: res.firstname, lastname: res.lastname, handle: res.handle, avatar: res.avatar, profileid: this.props.match.params.id} ))
         this.defaultAvi();
         me()
             .then(res => this.setState( {loggedId: res.id} ))
@@ -52,7 +53,7 @@ class Profile extends Component {
                             <div className={`${styles.banner}`} style={{width: '100%', height: '30em'}}></div>
                             <div className={styles.wrapper}>
                                 <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={true} avatar={this.state.avatar}/>
-                                <UserPosts />
+                                <UserPosts profileid={this.state.profileid}/>
                             </div>
                     </Fragment>
                 )
@@ -64,7 +65,7 @@ class Profile extends Component {
                             <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
                             <div className={styles.wrapper}>
                                 <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
-                                <UserPosts />
+                                <UserPosts profileid={this.state.profileid}/>
                             </div>
                     </Fragment>
                 )

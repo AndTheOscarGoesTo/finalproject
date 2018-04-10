@@ -14,7 +14,7 @@ let usersTable = new Table('Users');
 
 router.get('/', (req, res) => {
     console.log(req.user);
-    usersTable.getAll()
+    usersTable.getAllProcedure()
     .then((results) => {
         res.json(results);
     }).catch((err) => {

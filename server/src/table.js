@@ -8,6 +8,10 @@ class Table {
         this.tableName = tableName;
     }
 
+    getAllProcedure(procedureName, args) {
+        return rows(procedureName, args);
+    }
+
     getOne(id) {
         let sql = `SELECT * FROM ${this.tableName} WHERE id = ${id};`;
         return executeQuery(sql, [id])

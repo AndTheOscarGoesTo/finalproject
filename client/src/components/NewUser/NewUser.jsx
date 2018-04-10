@@ -31,7 +31,8 @@ class NewUser extends Component {
             lastname: this.state.lastname,
             handle: this.state.handle,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png"
             })
             .then((results) => {
                 console.log('worked maybe')

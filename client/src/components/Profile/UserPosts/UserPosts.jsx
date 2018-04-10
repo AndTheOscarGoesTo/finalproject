@@ -12,7 +12,7 @@ class Post extends Component {
         }
     }
     componentDidMount(){
-        get('http://localhost:3000/api/status')
+        get(`http://localhost:3000/api/status/${this.props.profileid}`)
         .then(result => this.setState({posts: result}))
         .then(log => console.log(this.state.posts))
     }
@@ -27,16 +27,16 @@ class Post extends Component {
             return(
                     <div className={`media ${style.postDiv}`}key={posts.id}>
                         <div className="media-left">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png" className="media-object" style={{width: '50px'}} />
+                            <img src={posts.a} className="media-object" style={{width: '50px'}} />
                         </div>
                         <div className="media-body">
-                            <Link to={`/profile/${posts.userid}`} className="media-heading">UserID {posts.userid}</Link>
-                            <p>{posts.status}</p>
+                            <Link to={`/profile/${posts.userid}`} className="media-heading">{posts.h}</Link>
+                            <p>{posts.s}</p>
                             <i className="glyphicon glyphicon-heart-empty" onMouseOver={() => this.setState({ likes: posts.likes + 1 })} onClick={ () => { this.handleLike(posts.id, this.state.loggedId) }}></i>
                         </div>
                     </div>
             )
-        })
+        }).reverse()
         return(
             <div className={style.allpost}>
                 { posts }
