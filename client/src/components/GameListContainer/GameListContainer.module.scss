@@ -1,0 +1,16 @@
+@import "../variables";
+
+.pageNumber{
+    position: relative;
+    left: 50%;
+}
+
+.maskedTextLogo{
+    color: transparent !important;
+    background: $logoBackground;
+    background-size: cover;
+    background-clip: text;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    font-size: 3em;
+}

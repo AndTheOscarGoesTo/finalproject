@@ -4,6 +4,7 @@ import { get } from "../../services/base";
 
 import LoadingComponent from "../LoadingViewContainer/LoadingViewContainer";
 import Paginator from "../Paginator/Paginator";
+import Style from "./GameListContainer.module.scss";
 
 class ListingComponent extends Component{
     constructor(props){
@@ -142,7 +143,7 @@ class ListingComponent extends Component{
         console.log("--rendering--", this.state.pageNumber);
 
         let pageNumberComponent = this.state.loading ? null : <Fragment>
-            <h1>{this.state.pageNumber}</h1>
+            <h1 className={`${Style.pageNumber}`}>{this.state.pageNumber}</h1>
         </Fragment>;
 
         let gamePaginationComponent = this.state.loading ? null : <Paginator getNextGames={this.onGetNextGames} getPreviosGames={this.onGetPreviosGames} />;

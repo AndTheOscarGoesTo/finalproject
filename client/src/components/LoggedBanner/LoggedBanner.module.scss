@@ -1,4 +1,5 @@
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
+@import "../variables";
 
 .logged_out_banner {
     height: 4em;
@@ -22,9 +23,26 @@
 // }
 
 .logo{
-    color: white;
+    // color: white;
+    // font-size: 3em;
+    color: transparent !important;
+    background: $logoBackground;
+    background-size: cover;
+    background-clip: text;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
     font-size: 3em;
 }
+
+// .maskedTextLogo{
+//     color: transparent !important;
+//     background: $logoBackground;
+//     background-size: cover;
+//     background-clip: text;
+//     -moz-background-clip: text;
+//     -webkit-background-clip: text;
+//     font-size: 3em;
+// }
 
 .link{
     color: white;

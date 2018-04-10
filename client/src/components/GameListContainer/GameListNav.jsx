@@ -2,6 +2,8 @@ import React from "react";
 import SearchBar from "./ListSearchComponent";
 import DropDownList from "./DropDownList";
 
+import Style from "./GameListContainer.module.scss";
+
 const platformList= [
     {
         name: "PlayStation 4",
@@ -67,7 +69,7 @@ function GameListNav(props) {
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
-                    <span className="navbar-brand" href="#">Brand</span>
+                    <span className={`navbar-brand ${Style.maskedTextLogo}`} href="#">Vidya</span>
                 </div>
 
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
