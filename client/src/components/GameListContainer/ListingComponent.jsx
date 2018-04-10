@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import GameListing from "../ListingPage/ListingPage";
 import { get } from "../../services/base";
+import LoadingComponent from "../LoadingViewContainer/LoadingViewContainer";
 
 import { PacmanLoader } from "react-spinners";
 
@@ -96,12 +97,13 @@ class ListingComponent extends Component{
         return(
             <Fragment>
 
-                <div className='sweet-loading'>
+                {/* <div className='sweet-loading'>
                     <PacmanLoader
                     color={'#123abc'} 
                     loading={this.state.loading} 
                     />
-                </div>
+                </div> */}
+                <LoadingComponent loading={this.state.loading} />
 
                 <GameListing currentList={this.state.games}/>
 
