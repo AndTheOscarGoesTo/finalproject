@@ -21,6 +21,7 @@ class ListingComponent extends Component{
         const searchString = (this.props.location.state.searchString) ? this.props.location.state.searchString : null;
 
         this.setState({
+            games: [],
             loading: !this.state.loading,
             working: !this.state.working
         })
@@ -36,7 +37,11 @@ class ListingComponent extends Component{
 
                     if(item.hasOwnProperty("thumb") && item.hasOwnProperty("ReleaseDate")){
 
-                        games.push({ gameId: item.id, title: item.GameTitle, releaseDate: item.ReleaseDate, thumbnail: item.thumb});
+                        games.push({ 
+                            gameId: item.id,
+                            title: item.GameTitle, 
+                            releaseDate: item.ReleaseDate, 
+                            thumbnail: item.thumb});
                     }
                     
                 })
@@ -59,7 +64,11 @@ class ListingComponent extends Component{
                 response.map((item) => {
 
                     if(item.Images && item.Images.boxart.hasOwnProperty("thumb")){
-                        games.push({ gameId: item.id, title: item.GameTitle, releaseDate: item.ReleaseDate, thumbnail: item.Images.boxart.thumb});
+                        games.push({ 
+                            gameId: item.id, 
+                            title: item.GameTitle, 
+                            releaseDate: item.ReleaseDate, 
+                            thumbnail: item.Images.boxart.thumb});
                     }
                     
                 })
@@ -83,8 +92,6 @@ class ListingComponent extends Component{
     }
 
     render(){
-
-        console.log("--Rendering--");
 
         return(
             <Fragment>

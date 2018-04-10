@@ -4,14 +4,23 @@ import { Link } from "react-router-dom";
 
 function GamePiece(props) {
     const imgBaseUrl = `http://thegamesdb.net/banners/`;
+    let gameThumbnail = null;
 
-    console.log("--props--", props);
+
+    if(props.infoObj.images){
+        gameThumbnail = (props.infoObj.thumbnail == undefined) ?  props.infoObj.images.boxart[1].thumb : props.infoObj.thumbnail;
+    } else {
+        gameThumbnail = props.infoObj.thumbnail
+    }
+
+    const gameImgUrl = imgBaseUrl + gameThumbnail;
+
     return(
         // <h1>Stuff</h1>
         <div className={`jumbotron`}>
             <div className={`container`}>
                 <section  className={`gameHeadline panel`}>
-                    <img src={imgBaseUrl + props.infoObj.thumbnail} alt="" className="center-block"/>
+                    <img src={imgBaseUrl + gameThumbnail} alt="" className="center-block"/>
 
                     <div className={`panel-footer`}>
                     <h1>
@@ -19,7 +28,12 @@ function GamePiece(props) {
                         <Link 
                         to={{
                                 pathname: `/GameCatalogue/GameAdd/${props.infoObj.gameId}`,
-                                state: { gameTitle: props.infoObj.gameTitle, gameId: props.infoObj.gameId, gameThumbnail: imgBaseUrl + props.infoObj.thumbnail, gamePlatform: props.infoObj.platform, gameDescription: props.infoObj.description }
+                                state: { 
+                                    gameTitle: props.infoObj.gameTitle, 
+                                    gameId: props.infoObj.gameId, 
+                                    gameThumbnail: imgBaseUrl + gameThumbnail, 
+                                    gamePlatform: props.infoObj.platform, 
+                                    gameDescription: props.infoObj.description }
                             }} 
                         >
                             <i className="ml-3 glyphicon glyphicon-check"></i>

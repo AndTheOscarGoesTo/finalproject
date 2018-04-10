@@ -79,7 +79,7 @@ function GameListNav(props) {
                             </ul>
                         </li>
                     </ul>
-                        <SearchBar onSearchNameSubmit={props.onSearchNameSubmit} textChange={props.textChange} />
+                        <SearchBar textChange={props.textChange} />
                     </div>
             </nav>
             )

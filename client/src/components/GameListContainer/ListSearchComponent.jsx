@@ -26,7 +26,7 @@ class ListSearchComponent extends Component {
                                 <Link 
                                     className="btn btn-default"
                                     to={{
-                                        pathname: "/GameCatalogue/gameSearch",
+                                        pathname: `/GameCatalogue/gameSearch/search/${this.state.searchString}`,
                                         state: { searchString: this.state.searchString}
                                     }} 
                                 ><i className="glyphicon glyphicon-search"></i></Link>

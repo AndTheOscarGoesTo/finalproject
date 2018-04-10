@@ -55,14 +55,13 @@ class GameContainer extends Component {
     }
 
     render(){
-        
         return(
             <Fragment>
 
                 
                 <div className='sweet-loading container mx-auto'>
                     <PacmanLoader
-                    color={'#123abc'} 
+                    color={'#EEE8AA'} 
                     loading={this.state.loading} 
                     />
                 </div>
