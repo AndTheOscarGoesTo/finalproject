@@ -6,67 +6,55 @@ import LoggedBanner from '../LoggedBanner/LoggedBanner';
 import { get, post } from '../../services/base';
 class PostForum extends Component {
 
-
   constructor(props) {
     super(props);
-    this.state = { 
-      forum: {},
-      title: "",
-      forumText: ""
- };
-    this.onSubmit = this.handleSubmit.bind(this);
-    this.handleChange.bind(this);
-    this.handleTextChange.bind(this);
+    this.state = {
+        title: '',
+        forumText: '',
+        id: '',
+        forumImg: null
+    };
+
+}
+
+onButtonClick(event) {
+  event.preventDefault();
+
+  console.log('--on click--', this.state.id, this.state.title, this.state.forumText);
+
+    post('http://localhost:3000/api/forums/forum', {
+        id: this.state.id,
+        title: this.state.title,
+        forumText: this.state.forumText,
+    })
+    this.props.updateforums;
+    console.log("yes")
+}
+
+handleTextChange(value) {
+    this.setState({ 
+      title: value,
+});
+      console.log("yes")
+}
+
+handleTextChangeTwo(value) {
+  this.setState({ 
+    forumText: value});
+    console.log("yes")
+}
+
+  render() {
+    return (
+      <form>
+        <input type="text" placeholder="title"  onChange={(e) => this.handleTextChange(e.target.value)}/>
+        <input id="text" placeholder="forumText"  onChange={(e) => this.handleTextChangeTwo(e.target.value)} />
+        <input type="submit" onClick= { (event) => {this.onButtonClick(event)}} />
+      </form>
+    );
   }
-  handleSubmit(e) {
-    e.preventDefault();
-    post('/forums', {title: this.state.title, forumText: this.state.forumText})
-      .then(function(response) {
-        console.log(response)
-        alert("posted")
         
-      })
-  }
-
-  handleChange(title){
-    this.setState=(
-      title
-    )
-  }
-
-  handleTextChange(forumText){
-    this.setState=(
-      forumText
-    )
-  }
-
-    render() {
-      
-        return (
-           <Fragment>
-            <LoggedBanner />
-            <div className={style.formDiv}>
-            
-            
-              <form onSubmit={ (e) => this.onSubmit(e)}>
-              <p className={style.title}>
-                  <input onChange={ (event) => {this.handleChange(event.target.value)} } value={this.state.title}  name="title" type="text"placeholder="Title"  />
-                </p>
-
-                
-
-                <p className="text">
-                  <textarea onChange={ (event) => {this.handleTextChange(event.target.value)} } value={this.state.forumText}  name="text" className={style.comment} placeholder="Comment"></textarea>
-                </p>
-
-                  <input type="submit" className="btn btn-primary"/>
-                  
-                
-              </form>
-            </div>
-          </Fragment>
-        )
-    }
+    
 }
 
 export default PostForum;

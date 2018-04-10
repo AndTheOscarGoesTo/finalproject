@@ -60,7 +60,7 @@ router.post("/comment", (req, res, body) => {
     })
 })
 
-router.post(`/forum`, (req, res, body) => {
+router.post('/forum', (req, res, body) => {
     forumController.postNewForum(req.body.commentId, req.body.forumTitle, req.body.forumImg, req.body.forumText)
     .then((response) => {
         res.send(response);
