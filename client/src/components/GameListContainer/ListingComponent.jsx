@@ -3,8 +3,6 @@ import GameListing from "../ListingPage/ListingPage";
 import { get } from "../../services/base";
 import LoadingComponent from "../LoadingViewContainer/LoadingViewContainer";
 
-import { PacmanLoader } from "react-spinners";
-
 class ListingComponent extends Component{
     constructor(props){
         super(props);

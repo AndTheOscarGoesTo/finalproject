@@ -8,8 +8,6 @@ import GameContainer from "../GameContainer/GameContainer";
 import GameAddContainer from "../GameAddContainer/GameAddContainer";
 import HomeNav from "../HomeNavBar/HomeNavBar";
 
-import { PacmanLoader } from "react-spinners";
-
 class GameListContainer extends Component{
     constructor(props){
         super(props);
@@ -17,38 +15,8 @@ class GameListContainer extends Component{
         this.state = {
             games: []
         }
-        // this.onSearchNameSubmit = this.onSearchNameSubmit.bind(this);
+
     }
-
-
-    // onSearchNameSubmit(event){
-    //     event.preventDefault();
-    //     const inputElement = event.currentTarget.parentNode.parentNode.querySelector("input");
-    //     const searchName = inputElement.value;
-
-    //     get(`http://localhost:3000/api/games?byGameName=${searchName}`)
-    //     .then((response) => {
-
-    //         let games = [];
-
-    //         response.map((item) => {
-
-    //             if(item.Images && item.Images.boxart.hasOwnProperty("thumb")){
-    //                 games.push({ 
-    //                     gameId: item.id, 
-    //                     title: item.GameTitle, 
-    //                     releaseDate: item.ReleaseDate, 
-    //                     thumbnail: item.Images.boxart.thumb});
-    //             }
-                
-    //         })
-
-    //     })
-    //     .catch((err) => {
-    //         console.error(err); 
-    
-    //     })
-    // }
 
     render(){
 

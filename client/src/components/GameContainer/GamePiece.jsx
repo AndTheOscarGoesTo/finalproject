@@ -15,6 +15,8 @@ function GamePiece(props) {
 
     const gameImgUrl = imgBaseUrl + gameThumbnail;
 
+    console.log("--img url--", gameImgUrl, "--thumb--", gameThumbnail);
+
     return(
         // <h1>Stuff</h1>
         <div className={`jumbotron`}>

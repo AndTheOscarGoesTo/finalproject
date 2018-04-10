@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { get, post } from '../../services/base'
-import style from './Forum.scss'
+import style from './Forum.module.scss'
 import ForumHead from './ForumHead';
 import Scroll from './scroll';
 import LoggedBanner from '../LoggedBanner/LoggedBanner'

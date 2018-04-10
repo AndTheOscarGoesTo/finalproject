@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react"
 import GameSingle from "./GamePiece";
+import LoadingComponent from "../LoadingViewContainer/LoadingViewContainer";
 
 import { get } from '../../services/base';
-import { PacmanLoader } from "react-spinners";
 
 class GameContainer extends Component {
     constructor(props){
@@ -38,10 +38,10 @@ class GameContainer extends Component {
                     images: {boxart: response.Images.boxart, banners: response.Images.banner, screens: response.Images.screenshot},
                     developer: response.Developer,
                     genres: response.Genres,
-                    description: response.Overview ? response.Overview : `Sorry, this game lacks a description :(`,
-                    loading: !this.state.loading,
-                    working: !this.state.working
-                }
+                    description: response.Overview ? response.Overview : `Sorry, this game lacks a description :(`
+                },
+                loading: !this.state.loading,
+                working: !this.state.working
             })
         })
         .catch((err) => {
@@ -59,12 +59,14 @@ class GameContainer extends Component {
             <Fragment>
 
                 
-                <div className='sweet-loading container mx-auto'>
+                {/* <div className='sweet-loading container mx-auto'>
                     <PacmanLoader
                     color={'#EEE8AA'} 
                     loading={this.state.loading} 
                     />
-                </div>
+                </div> */}
+
+                <LoadingComponent loading={this.state.loading} />
 
                 <GameSingle infoObj={this.state.game} />
             </Fragment>
