@@ -12,6 +12,7 @@ import Post from '../Post/Post';
 import NewPost from '../NewPost/NewPost';
 import FriendsPanel from '../FriendsPanel/FriendsPanel';
 
+
 class Home extends Component {
 
     constructor(props) {

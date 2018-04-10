@@ -27,10 +27,13 @@ class Comment extends Component {
     render() {
         let commentz = this.state.commentz.map((commentz) => {
             return(
-            <div className="card-body">
-                <h5 className="card-title" className={style.comment}>{commentz.handle}</h5>
-  <p className="card-text" className={style.comment}>{commentz.comment}</p>
-            </div>
+                <section id="comments">
+                <div class="comment">
+                  <div class="username">{commentz.handle}</div>
+                  <img src="https://www.une.edu.au/__data/assets/image/0005/97178/blank-avatar.png" class="avatar" alt="user image" />
+                    <p>{commentz.comment}</p>
+                </div>
+              </section>
             )
           })
         return (
@@ -41,13 +44,13 @@ class Comment extends Component {
   
   { commentz }
 
-  <i onClick={(event) => {
+  {/* <i onClick={(event) => {
                             event.preventDefault()
 
                             this.setState({
                                 edit: <EditComment />
                             })
-                            }} className="ion-wrench"></i>
+                            }} className="ion-wrench"></i> */}
 </div>
 </div>
 

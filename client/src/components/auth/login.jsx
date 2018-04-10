@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import * as userService from '../../services/user';
 import { Redirect } from 'react-router-dom';
 import IndeterminateProgress from '../utilities/indeterminateProgress';
+import style from './login.module.scss';
 
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 
@@ -65,7 +66,8 @@ class Login extends Component {
        return (
            <Fragment>
             <UnloggedBanner />
-                <p>You must be logged in to view this page.</p>
+                <div className={style.loginBody}> 
+                <h1> Welcome Back! </h1>
                 <form onSubmit={(e) => this.login(e)}>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
@@ -80,6 +82,7 @@ class Login extends Component {
                     ): null}
                     <input type="submit" value="Login" className="btn btn-primary" />
                 </form>
+                </div>
             </Fragment>
        );
     }
