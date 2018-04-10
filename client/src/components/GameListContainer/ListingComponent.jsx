@@ -15,7 +15,8 @@ class ListingComponent extends Component{
             working: false,
             limit: 10,
             offset: 0,
-            listLimit: 0
+            listLimit: 0,
+            pageNumber: 0
         }
 
         this.onGetNextGames = this.onGetNextGames.bind(this);
@@ -25,12 +26,12 @@ class ListingComponent extends Component{
 
     componentDidMount(){
 
-        this.requestGames();
+        this.requestGames(this.state.offset, 1);
     }
 
-    requestGames(){
+    requestGames(offset, pageNumber){
 
-        console.log("--requesting--");
+        console.log("--requesting--", pageNumber);
 
         const alias = (this.props.location.state.alias) ? this.props.location.state.alias : null;
         const searchString = (this.props.location.state.searchString) ? this.props.location.state.searchString : null;
@@ -44,7 +45,7 @@ class ListingComponent extends Component{
         if(alias){
             // console.log("--alias--", alias);
             // get(`http://localhost:3000/api/games?byPlatformName=${alias}`)
-            get(`http://localhost:3000/api/games?byPlatformName=${alias}&limit=${this.state.limit}&offset=${this.state.offset}`)
+            get(`http://localhost:3000/api/games?byPlatformName=${alias}&limit=${this.state.limit}&offset=${offset}`)
             .then((response) => {
 
                 let games = [];
@@ -61,14 +62,21 @@ class ListingComponent extends Component{
                     games,
                     listLimit: response.listSize,
                     loading: !this.state.loading,
-                    working: !this.state.working
+                    working: !this.state.working,
+                    offset,
+                    pageNumber
                  });
             })
             .catch((err) => {
                 console.error(err);
+
+                this.setState({
+                    loading: !this.state.loading,
+                    working: !this.state.working
+                })
             })
         } else {
-            get(`http://localhost:3000/api/games?byGameName=${searchString}&limit=${this.state.limit}&offset=${this.state.offset}`)
+            get(`http://localhost:3000/api/games?byGameName=${searchString}&limit=${this.state.limit}&offset=${offset}`)
             .then((response) => {
 
                 let games = [];
@@ -85,7 +93,9 @@ class ListingComponent extends Component{
                     games,
                     listLimit: response.listSize,
                     loading: !this.state.loading,
-                    working: !this.state.working
+                    working: !this.state.working,
+                    offset,
+                    pageNumber
                     });
             })
             .catch((err) => {
@@ -104,29 +114,40 @@ class ListingComponent extends Component{
         
         if(this.state.offset - this.state.limit >= 0){
             console.log("--previous--");
-            this.setState({
-                offset: this.state.offset - 10
-            })
-
-            this.requestGames();
+            // this.setState({
+            //     offset: this.state.offset - 10,
+            //     scroll: true
+            // })
+            this.requestGames(this.state.offset - this.state.limit, this.state.pageNumber-1);
         }
+
+
     }
 
     onGetNextGames(event){
         
         if(this.state.offset + this.state.limit <= this.state.listLimit){
             console.log("--next--");
-            this.setState({
-                offset: this.state.offset + 10
-            })
+            // this.setState({
+            //     offset: this.state.offset + 10,
+            //     scroll: true
+            // })
 
-            this.requestGames();
+            this.requestGames(this.state.offset + this.state.limit, this.state.pageNumber+1);
         }
     }
 
     render(){
 
-        console.log("--rendering--");
+        console.log("--rendering--", this.state.pageNumber);
+
+        let pageNumberComponent = this.state.loading ? null : <Fragment>
+            <h1>{this.state.pageNumber}</h1>
+        </Fragment>;
+
+        let gamePaginationComponent = this.state.loading ? null : <Paginator getNextGames={this.onGetNextGames} getPreviosGames={this.onGetPreviosGames} />;
+
+
 
         return(
             <Fragment>
@@ -138,10 +159,13 @@ class ListingComponent extends Component{
                     />
                 </div> */}
                 <LoadingComponent loading={this.state.loading} />
+                
+                {pageNumberComponent}
 
                 <GameListing currentList={this.state.games}/>
 
-                <Paginator getNextGames={this.onGetNextGames} getPreviosGames={this.onGetPreviosGames} />
+                {/* <Paginator getNextGames={this.onGetNextGames} getPreviosGames={this.onGetPreviosGames} /> */}
+                {gamePaginationComponent}
 
             </Fragment>
         );
