@@ -41,6 +41,8 @@ class Profile extends Component {
     defaultAvi(){
         if(this.state.avatar === null) {
             this.setState({avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png'})
+        } else {
+            return;
         }
     }
     render() {
@@ -64,7 +66,7 @@ class Profile extends Component {
                         <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                             <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
                             <div className={styles.wrapper}>
-                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname}/>
+                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
                                 <UserPosts profileid={this.state.profileid}/>
                             </div>
                     </Fragment>
@@ -76,7 +78,7 @@ class Profile extends Component {
                     <UnloggedBanner />
                         <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                         <div className={styles.wrapper}>
-                            <ProfilePanel />
+                            <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
                             <UserPosts />
                         </div>
                 </Fragment>

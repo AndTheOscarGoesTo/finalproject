@@ -4,6 +4,7 @@ import { get, post } from '../../services/base'
 import { Link } from 'react-router-dom';
 import NewPost from '../NewPost/NewPost';
 import { me } from '../../services/user';
+import LikeButton from './LikeButton'
 
 class Post extends Component {
     constructor(props){
@@ -61,11 +62,12 @@ class Post extends Component {
             return(
                     <div className={`media ${style.postDiv}`}key={posts.id}>
                         <div className="media-left">
-                            <img src={posts.avatar} className="media-object" style={{width: '50px'}} />
+                            <img src={posts.avatar} className={`media-object ${style.avatar}`} style={{width: '50px'}} />
                         </div>
                         <div className="media-body">
                             <Link to={`/profile/${posts.userid}`} className="media-heading">{posts.handle}</Link>
                             <p>{posts.status}</p>
+                            <LikeButton liked={false}/>
                             <i className="glyphicon glyphicon-heart-empty" onMouseOver={() => this.setState({ likes: posts.likes + 1 })} onClick={ () => { this.handleLike(posts.id, this.state.loggedId) }}></i>
                         </div>
                     </div>
