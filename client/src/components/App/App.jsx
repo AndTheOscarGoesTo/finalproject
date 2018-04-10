@@ -17,6 +17,7 @@ import Social from '../socials/Social';
 import EditSocial from '../socials/EditSocial';
 import UserGameList from "../UserGameListContainer/UserGameListContainer";
 import AddSocial from '../socials/AddSocial';
+import ProfileSearchComponent from "../ProfileSearchContainer/ProfileSearchContainer";
 
 
 class Navigation extends Component {
@@ -31,6 +32,7 @@ class Navigation extends Component {
                         <Route path="/logout" component={Logout} />
                         <Route path="/newuser" component={NewUser} />
                         <Route exact path="/profile/:id" render={routeProps => <Profile {...routeProps} yeet={'yeet'} />} />
+                        <Route exact path="/profiles/:searchString" component={ProfileSearchComponent} />
                         {/* <Route exact path="/profile/:id" component={Profile} /> */}
                         <PrivateRoute path="/forum" component={Forum} />
                         <PrivateRoute path="/GameCatalogue" component={GameListContainer}/>
