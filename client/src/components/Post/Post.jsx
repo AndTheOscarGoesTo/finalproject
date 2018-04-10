@@ -3,6 +3,8 @@ import style from './Post.module.scss'
 import { get, post } from '../../services/base'
 import { Link } from 'react-router-dom';
 import NewPost from '../NewPost/NewPost';
+import { me } from '../../services/user';
+import LikeButton from './LikeButton'
 
 class Post extends Component {
     constructor(props){
@@ -14,14 +16,35 @@ class Post extends Component {
 
         this.updatePosts = this.updatePosts.bind(this);
     }
+
+    userId;
+
     componentDidMount(){
         this.gatherPosts();
     }
 
     gatherPosts() {
-        get('http://localhost:3000/api/status')
-        .then(result => this.setState({posts: result}))
-        .then(log => console.log("--posts--", this.state.posts))
+        me()
+        .then(res => { 
+            this.userId = res.id;
+
+            return post('http://localhost:3000/api/relationships/friends', {
+                id: res.id
+            });
+        })
+        .then((friends) => {
+            let friendIds = friends.map(friend => friend.id);
+            friendIds.unshift(this.userId);
+            return post('http://localhost:3000/api/status/friends', {
+                ids: friendIds
+            })
+        })
+        .then((statuses) => {
+            this.setState({posts: statuses[0]});
+        })
+        .catch((err) => {
+            console.error(err);
+        });
     }
 
     handleLike(id){
@@ -39,11 +62,12 @@ class Post extends Component {
             return(
                     <div className={`media ${style.postDiv}`}key={posts.id}>
                         <div className="media-left">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png" className="media-object" style={{width: '50px'}} />
+                            <img src={posts.avatar} className={`media-object ${style.avatar}`} style={{width: '50px'}} />
                         </div>
                         <div className="media-body">
-                            <Link to={`/profile/${posts.userid}`} className="media-heading">UserID {posts.userid}</Link>
+                            <Link to={`/profile/${posts.userid}`} className="media-heading">{posts.handle}</Link>
                             <p>{posts.status}</p>
+                            <LikeButton liked={false}/>
                             <i className="glyphicon glyphicon-heart-empty" onMouseOver={() => this.setState({ likes: posts.likes + 1 })} onClick={ () => { this.handleLike(posts.id, this.state.loggedId) }}></i>
                         </div>
                     </div>

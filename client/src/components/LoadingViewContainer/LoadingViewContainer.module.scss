@@ -14,7 +14,10 @@ $transparentBackgroundColor: rgba(black, 0.5);
         position: absolute;
         top: 40%;
         left: 50%;
-        margin-top: -50px;
-        margin-left: -50px;
+        // margin-top: -50px;
+        // margin-left: -50px;
+        h1{
+            padding-top: 0.5em;
+        }
     }
 }

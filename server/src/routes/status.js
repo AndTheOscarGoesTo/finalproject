@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { tokenMiddleware, isLoggedIn } from '../middleware/auth.mw';
 import Table from '../table'
 let router = Router();
+import { getStatuses } from '../controllers/statusController';
 
 router.get('/me', tokenMiddleware, isLoggedIn, (req, res) => {
     console.log("routing")
@@ -10,9 +11,12 @@ router.get('/me', tokenMiddleware, isLoggedIn, (req, res) => {
 
 let usersTable = new Table('Status');
 
-router.get('/', (req, res) => {
-    console.log(req.user);
-    usersTable.getAll()
+router.post('/friends', (req, res) => {
+    let ids = req.body.ids || [];
+    let limit = req.query.limit || 100;
+    let offset = req.query.offset || 0;
+
+    getStatuses(ids, limit, offset)
     .then((results) => {
         res.json(results);
     }).catch((err) => {

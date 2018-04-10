@@ -8,7 +8,7 @@ function ProfileSearchListing(props){
     console.log("--props--", props.listingInfo)
 
     return(
-        <div className={`jumbotron`}>
+        <div className={`jumbotron ${Style.panelContainer}`}>
 
             <div className="container">
             {

@@ -13,8 +13,6 @@ class CommentForm extends Component {
       inputText: ""
     }
 
-    this.textChange = this.textChange.bind(this);
-    this.addComment = this.addComment.bind(this);
   }
 
   componentDidMount(){
