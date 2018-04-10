@@ -76,22 +76,21 @@ router.get("/", (req, res, body) => {
                 console.log(err);
                 res.sendStatus(403);
             })
-        } else if(req.query.byGameId && !isNaN(req.query.byGameId)){
-            // res.send(`Game Id: ${req.query.byGameId}`);
-            gameDbController.getGameById(req.query.byGameId)
-            .then((response) => {
-                let parsed = JSON.parse(parser.toJson(response)).Data.Game;
-                console.log(parsed);
-                res.send(parsed);
-            })
-            .catch((err) => {
-                console.log(err);
-                res.sendStatus(403);
-            })
-        } 
+        }
         
-    }
-    else {
+    } else if(req.query.byGameId && !isNaN(req.query.byGameId)){
+        // res.send(`Game Id: ${req.query.byGameId}`);
+        gameDbController.getGameById(req.query.byGameId)
+        .then((response) => {
+            let parsed = JSON.parse(parser.toJson(response)).Data.Game;
+            console.log(parsed);
+            res.send(parsed);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.sendStatus(403);
+        })
+    } else {
         res.sendStatus(403);
     }
 })
