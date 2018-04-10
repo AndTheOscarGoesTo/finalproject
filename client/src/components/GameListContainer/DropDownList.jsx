@@ -19,7 +19,7 @@ function DropDownList(props){
                                 <li>
                                     <Link 
                                         to={{
-                                            pathname: "/GameCatalogue/gameSearch",
+                                            pathname: `/GameCatalogue/gameSearch/${listing.alias}`,
                                             state: { searchQuery: listing.name, alias: listing.alias }
                                         }} 
                                     >{listing.name}</Link>

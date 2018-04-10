@@ -30,7 +30,6 @@ function SocialLayout(props) {
                 <td>{ props.social.youtube }</td>
             </tr>
         </tbody>
-        <Link to={ `/edit/${ props.currentUserId }` }><button>update</button></Link>
     </Table>
     );
 }

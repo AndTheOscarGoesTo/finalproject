@@ -106,3 +106,31 @@ begin
         
 end $$
 delimiter ;
+
+DROP PROCEDURE spSelectStatusInfoWithId;
+    
+DELIMITER $$
+
+	CREATE PROCEDURE spSelectStatusInfoWithId(
+    s_userid INT
+    )
+
+	BEGIN
+		
+        SELECT 
+			s.id as statusId,
+            status,
+            handle,
+            avatar
+		FROM
+			status s
+		JOIN
+			users u
+		ON
+			u.id = s.userid
+		WHERE
+			s.userid = s_userid;
+        
+    END $$
+
+DELIMITER ;

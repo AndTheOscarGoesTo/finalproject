@@ -20,11 +20,13 @@ class Profile extends Component {
             handle: '',
             firstname: '',
             lastname: '',
+            avatar: '',
         }
     }
     componentDidMount(){
         get(`http://localhost:3000/api/users/${this.props.match.params.id}`)
-        .then(res => this.setState( {id: res.id, firstname: res.firstname, lastname: res.lastname, handle: res.handle} ))
+        .then(res => this.setState( {id: res.id, firstname: res.firstname, lastname: res.lastname, handle: res.handle, avatar: res.avatar} ))
+        this.defaultAvi();
         me()
             .then(res => this.setState( {loggedId: res.id} ))
     }
@@ -35,6 +37,11 @@ class Profile extends Component {
             status_interaction: 0,
         })
     }
+    defaultAvi(){
+        if(this.state.avatar === null) {
+            this.setState({avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png'})
+        }
+    }
     render() {
         if(isLoggedIn()){
             if(this.state.loggedId === this.state.id) {
@@ -44,7 +51,7 @@ class Profile extends Component {
                         <LoggedBanner />
                             <div className={`${styles.banner}`} style={{width: '100%', height: '30em'}}></div>
                             <div className={styles.wrapper}>
-                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle}/>
+                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={true} avatar={this.state.avatar}/>
                                 <UserPosts />
                             </div>
                     </Fragment>

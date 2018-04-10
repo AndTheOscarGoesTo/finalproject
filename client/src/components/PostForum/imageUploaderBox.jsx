@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import style from './PostForum.scss'
+import style from './PostForum.module.scss'
 import MainImageUploader from './MainImageUploader';
 class imageUploaderBox extends Component {
 

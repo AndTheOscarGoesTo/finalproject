@@ -6,6 +6,7 @@ import { isLoggedIn, me } from '../../services/user';
 import { post } from '../../services/base'
 
 import AuthButton from '../auth/authButton';
+import SearchComponent from "./ProfileSearchComponent";
 
 class LoggedBanner extends Component {
 
@@ -66,6 +67,9 @@ class LoggedBanner extends Component {
                         </div>
                         <ul className="nav navbar-nav navbar-right">
                             <li>
+                                <SearchComponent  />
+                            </li>
+                            <li>
                             {/* <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link> */}
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>
                             </li>
@@ -74,6 +78,12 @@ class LoggedBanner extends Component {
                             </li>
                             <li>
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={"/MyGameList"}>Game List</Link>
+                            </li>
+                            <li>
+                            <Link style={{textDecoration: 'none', color: 'white'}} to = "/add/social/:id"><button>Social Media</button></Link>
+                            </li>
+                            <li>
+                                <Link to={ {pathname: `/edit/${ this.props.currentUserId }`, state: { currentUserId: 0 }} }></Link>
                             </li>
                             <li className='btn-group'>                            
                                 <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: this.state.notifBg, color: this.state.notifColor }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>
