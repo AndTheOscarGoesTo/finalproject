@@ -1,10 +1,12 @@
-.imgThumb{
-    max-width: 30em;
-    max-height: 30em;
-}
+.panelParent{
+    .imgThumb{
+        max-width: 30em;
+        max-height: 30em;
+    }
 
-div{
-    h1{
-        display: inline;
+    div{
+        h1{
+            display: inline;
+        }
     }
 }
