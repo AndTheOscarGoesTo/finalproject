@@ -23,9 +23,10 @@ onButtonClick(event) {
   console.log('--on click--', this.state.id, this.state.title, this.state.forumText);
 
     post('http://localhost:3000/api/forums/forum', {
-        id: this.state.id,
-        title: this.state.title,
+        forumTitle: this.state.title,
+        forumImg: this.state.forumImg,
         forumText: this.state.forumText,
+        creatorId: 0
     })
     this.props.updateforums;
     console.log("yes")
@@ -48,7 +49,7 @@ handleTextChangeTwo(value) {
     return (
       <form>
         <input type="text" placeholder="title"  onChange={(e) => this.handleTextChange(e.target.value)}/>
-        <input id="text" placeholder="forumText"  onChange={(e) => this.handleTextChangeTwo(e.target.value)} />
+        <textarea id="text" placeholder="forumText"  onChange={(e) => this.handleTextChangeTwo(e.target.value)} />
         <input type="submit" onClick= { (event) => {this.onButtonClick(event)}} />
       </form>
     );
