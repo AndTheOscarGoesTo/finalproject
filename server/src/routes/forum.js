@@ -71,8 +71,11 @@ router.post("/comment", (req, res, body) => {
     })
 })
 
-router.post(`/forum`, (req, res, body) => {
-    forumController.postNewForum(req.body.commentId, req.body.forumTitle, req.body.forumImg, req.body.forumText)
+// title, forumImg, forumText, creatorId
+
+router.post('/forum', (req, res, body) => {
+    console.log("--parameterws--", req.body.forumTitle, req.body.forumImg, req.body.forumText, req.body.creatorId)
+    forumController.postNewForum(req.body.forumTitle, req.body.forumImg, req.body.forumText, req.body.creatorId)
     .then((response) => {
         res.send(response);
     })

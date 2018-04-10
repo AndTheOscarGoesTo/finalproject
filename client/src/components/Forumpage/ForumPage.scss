@@ -60,6 +60,40 @@
 
 // }
 
-hr{
-    margin-left: -10%;
-}
+
+
+  #comments {
+    background-color:#FFF;
+    padding:1rem 2rem;
+  }
+  .comment {
+    position:relative; 
+    margin:2rem 0 0 0;
+    background-color:#EEE; 
+    border:2px solid #AAA; 
+    -webkit-border-radius:0.25rem; 
+    -moz-border-radius:0.25rem; 
+    border-radius:0.25rem; 
+    font-size:10pt;
+  }
+  .username {
+    position:absolute;
+    top:-1.5em;
+    left:0;
+    margin-left:2rem;
+    font-weight:bold;
+  }
+  .comment p {
+    margin:0.5rem 0.5rem 0.5rem 2rem;
+  }
+  .avatar {
+    position:absolute; 
+    max-width:3rem; 
+    max-height:3rem; 
+    border:2px solid #AAA; 
+    -webkit-border-radius:1.5rem; 
+    -moz-border-radius:1.5rem; 
+    border-radius:1.5rem; 
+    top:-1.5rem; 
+    left:-1.5rem;
+  }
