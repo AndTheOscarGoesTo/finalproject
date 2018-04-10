@@ -1,0 +1,23 @@
+$transparentBackgroundColor: rgba(black, 0.5);
+
+.loadingPanel{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // margin: auto;
+    z-index: 1000;
+    background-color: $transparentBackgroundColor;
+
+    .ringLoader{
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        // margin-top: -50px;
+        // margin-left: -50px;
+        h1{
+            padding-top: 0.5em;
+        }
+    }
+}

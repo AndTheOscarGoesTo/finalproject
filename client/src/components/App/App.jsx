@@ -17,6 +17,7 @@ import Social from '../socials/Social';
 import EditSocial from '../socials/EditSocial';
 import UserGameList from "../UserGameListContainer/UserGameListContainer";
 import AddSocial from '../socials/AddSocial';
+import ProfileSearchComponent from "../ProfileSearchContainer/ProfileSearchContainer";
 
 
 class Navigation extends Component {
@@ -31,18 +32,19 @@ class Navigation extends Component {
                         <Route path="/logout" component={Logout} />
                         <Route path="/newuser" component={NewUser} />
                         <Route exact path="/profile/:id" render={routeProps => <Profile {...routeProps} yeet={'yeet'} />} />
+                        <PrivateRoute exact path="/profiles/:searchString" component={ProfileSearchComponent} />
                         {/* <Route exact path="/profile/:id" component={Profile} /> */}
-                        <Route path="/forum" component={Forum} />
-                        <Route path="/GameCatalogue" component={GameListContainer}/>
-                        <Route path="/forumpage" component={Forumpage} />
+                        <PrivateRoute path="/forum" component={Forum} />
+                        <PrivateRoute path="/GameCatalogue" component={GameListContainer}/>
+                        <PrivateRoute path="/forumpage" component={Forumpage} />
                         
-                        <Route path="/forumpage/:id" component={Forumpage} />
-                        <Route path="/postforum" component={PostForum} />
-                        <Route path="/social/:id" component={ Social } />
-                        <Route path="/edit/:id" component={ EditSocial } />
-                        <Route path="/add/social/:id" component={ AddSocial } />
+                        <PrivateRoute path="/forumpage/:id" component={Forumpage} />
+                        <PrivateRoute path="/postforum" component={PostForum} />
+                        <PrivateRoute path="/social/:id" component={ Social } />
+                        <PrivateRoute path="/edit/:id" component={ EditSocial } />
+                        <PrivateRoute path="/add/social/:id" component={ AddSocial } />
 
-                        <Route path="/MyGameList" component={UserGameList} />
+                        <PrivateRoute path="/MyGameList" component={UserGameList} />
                         <PrivateRoute path="/goodbye" component={GoodbyeWorld} />
                     </Switch>
                 </Fragment>

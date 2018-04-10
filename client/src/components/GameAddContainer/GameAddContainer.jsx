@@ -79,7 +79,7 @@ class GameAddContainer extends Component {
             post(`http://localhost:3000/api/gameList/`, requestObj)
             .then((response) => {
                 // console.log(response);
-                this.props.history.push("/");
+                this.props.history.push("/MyGameList");
             })
             .catch((err) => {
                 console.log(err);

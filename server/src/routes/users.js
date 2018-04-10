@@ -43,6 +43,17 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.get("/handle/:handle", (req, res, body) => {
+    userController.getUserByHandle(req.params.handle)
+    .then((response) => {
+        res.json(response);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(403);
+    })
+})
+
 router.put('/:id', (req, res) => {
     usersTable.update(req.params.id, req.body)
     .then((results) => {

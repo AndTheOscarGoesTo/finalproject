@@ -6,6 +6,7 @@ import { isLoggedIn, me } from '../../services/user';
 import { post } from '../../services/base'
 
 import AuthButton from '../auth/authButton';
+import SearchComponent from "./ProfileSearchComponent";
 
 class LoggedBanner extends Component {
 
@@ -65,6 +66,9 @@ class LoggedBanner extends Component {
                         <Link style={{textDecoration: 'none', color: 'white'}} to="/" className={`navbar-brand ${style.logo}`}> vidya </Link>
                         </div>
                         <ul className="nav navbar-nav navbar-right">
+                            <li>
+                                <SearchComponent  />
+                            </li>
                             <li>
                             {/* <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link> */}
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link>

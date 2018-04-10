@@ -38,6 +38,17 @@ router.get("/:id", (req, res, body) => {
     }
 })
 
+router.put("/:id", (req, res, body) => {
+    forumController.updateForum(req.params.id, null, req.body.forumTitle, req.body.forumImg, req.body.forumText)
+    .then((response) => {
+        res.send(response);
+    })
+    .catch((err) => {
+        console.log(err);
+        res.sendStatus(403);
+    })
+})
+
 router.get("/forum", (req, res, body) => {
     forumController.postNewForum(req.body.commentId, req.body.forumTitle, req.body.forumImg, req.body.forumText)
     .then((response) => {

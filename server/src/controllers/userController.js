@@ -11,6 +11,10 @@ function getUser(id){
     return usersTable.getOne(id);
 }
 
+function getUserByHandle(userHandle){
+    return usersTable.putOrDeleteProcedure("spSelectUserByHandle", [userHandle]);
+}
+
 function addUser(userParms){
     return usersTable.postProcedure("spInsertUser", userParms)
 }
@@ -28,5 +32,6 @@ export {
     getUser,
     addUser,
     deleteUser,
-    getGamerTagAndPlatform
+    getGamerTagAndPlatform,
+    getUserByHandle
 }

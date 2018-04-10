@@ -1,8 +1,7 @@
 import React, { Fragment, Component } from "react";
 import GameListing from "../ListingPage/ListingPage";
 import { get } from "../../services/base";
-
-import { PacmanLoader } from "react-spinners";
+import LoadingComponent from "../LoadingViewContainer/LoadingViewContainer";
 
 class ListingComponent extends Component{
     constructor(props){
@@ -15,16 +14,13 @@ class ListingComponent extends Component{
         }
     }
 
-    loading = false;
-    working = false;
-    currentComponent = null;
-
     componentDidMount(){
 
         const alias = (this.props.location.state.alias) ? this.props.location.state.alias : null;
         const searchString = (this.props.location.state.searchString) ? this.props.location.state.searchString : null;
 
         this.setState({
+            games: [],
             loading: !this.state.loading,
             working: !this.state.working
         })
@@ -40,12 +36,20 @@ class ListingComponent extends Component{
 
                     if(item.hasOwnProperty("thumb") && item.hasOwnProperty("ReleaseDate")){
 
-                        games.push({ gameId: item.id, title: item.GameTitle, releaseDate: item.ReleaseDate, thumbnail: item.thumb});
+                        games.push({ 
+                            gameId: item.id,
+                            title: item.GameTitle, 
+                            releaseDate: item.ReleaseDate, 
+                            thumbnail: item.thumb});
                     }
                     
                 })
 
-                this.setState({ games });
+                this.setState({ 
+                    games,
+                    loading: !this.state.loading,
+                    working: !this.state.working
+                 });
             })
             .catch((err) => {
                 console.error(err);
@@ -59,7 +63,11 @@ class ListingComponent extends Component{
                 response.map((item) => {
 
                     if(item.Images && item.Images.boxart.hasOwnProperty("thumb")){
-                        games.push({ gameId: item.id, title: item.GameTitle, releaseDate: item.ReleaseDate, thumbnail: item.Images.boxart.thumb});
+                        games.push({ 
+                            gameId: item.id, 
+                            title: item.GameTitle, 
+                            releaseDate: item.ReleaseDate, 
+                            thumbnail: item.Images.boxart.thumb});
                     }
                     
                 })
@@ -84,17 +92,16 @@ class ListingComponent extends Component{
 
     render(){
 
-        console.log("--Rendering--");
-
         return(
             <Fragment>
 
-                <div className='sweet-loading'>
+                {/* <div className='sweet-loading'>
                     <PacmanLoader
                     color={'#123abc'} 
                     loading={this.state.loading} 
                     />
-                </div>
+                </div> */}
+                <LoadingComponent loading={this.state.loading} />
 
                 <GameListing currentList={this.state.games}/>
 

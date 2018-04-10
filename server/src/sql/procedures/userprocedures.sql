@@ -90,3 +90,25 @@ BEGIN
 
 END $$
 delimiter ;
+
+
+DROP PROCEDURE spSelectUserByHandle;
+
+DELIMITER $$
+
+	CREATE PROCEDURE spSelectUserByHandle(
+			u_handle VARCHAR(70)
+        )
+
+	BEGIN
+        
+        SELECT 
+			* 
+        FROM 
+			users 
+		WHERE 
+			handle LIKE CONCAT("%", u_handle, "%");
+    
+    END $$
+
+DELIMITER ;
