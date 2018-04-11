@@ -32,7 +32,8 @@ class NewUserForm extends Component {
             lastname: this.state.lastname,
             handle: this.state.handle,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            avatar: 'http://www.prospanica.org/resource/group/ce7fae39-c383-4635-b6d0-9169e72950c6/profile-placeholder.png'
             })
             .then((results) => {
                 console.log('worked maybe', results);
