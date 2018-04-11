@@ -11,12 +11,13 @@ router.get('/me', tokenMiddleware, isLoggedIn, (req, res) => {
 
 let usersTable = new Table('Status');
 
-router.post('/friends', (req, res) => {
+router.post('/friends/:id', (req, res) => {
+    let id = req.params.id;
     let ids = req.body.ids || [];
     let limit = req.query.limit || 100;
     let offset = req.query.offset || 0;
 
-    getStatuses(ids, limit, offset)
+    getStatuses(id, ids, limit, offset)
     .then((results) => {
         res.json(results);
     }).catch((err) => {
