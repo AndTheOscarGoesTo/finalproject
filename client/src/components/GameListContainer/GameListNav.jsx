@@ -60,7 +60,7 @@ const genreList = [
 
 function GameListNav(props) {
     return (
-            <nav className="navbar navbar-default" role="navigation">
+            <nav className={`navbar navbar-default ${Style.listNav}`} role="navigation" align="center">
 
                 <div className="navbar-header">
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
