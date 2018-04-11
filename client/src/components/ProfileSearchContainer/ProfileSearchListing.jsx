@@ -5,8 +5,6 @@ import Style from "./ProfileSearchContainer.module.scss";
 
 function ProfileSearchListing(props){
 
-    console.log("--props--", props.listingInfo)
-
     return(
         <div className={`jumbotron ${Style.panelContainer}`}>
 
