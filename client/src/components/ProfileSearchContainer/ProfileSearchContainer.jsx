@@ -10,17 +10,44 @@ class ProfileSearchContainer extends Component{
         
         this.state = {
             profiles: []
-        }
-
+        };
     }
 
+    userToSearch;
+
     componentDidMount(){
+        this.userToSearch = this.props.match.params.searchString;
+        this.searchUser();
+    }
 
-        let profiles = []
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log("--is state the same?--", (this.state.profiles != nextState.profiles));
+    //     return this.state.profiles != nextState.profiles;
+    //   }
 
-        get(`http://localhost:3000/api/users/handle/${this.props.match.params.searchString}`)
+    // componentWillUpdate(){
+    //     console.log("--recieving props--");
+    //     this.searchUser();
+    // }
+
+    // componentDidUpdate(){
+    //     console.log("--recieving props--");
+    //     this.searchUser();
+    // }
+
+    componentWillReceiveProps(newProps){
+        this.userToSearch = newProps.match.params.searchString;
+        this.searchUser();
+        // this.forceUpdate();
+    }
+
+    searchUser(){
+        console.log("updating");
+        let profiles = [];
+
+        get(`http://localhost:3000/api/users/handle/${this.userToSearch}`)
         .then((response) => {
-            // console.log(response);
+            
             response.forEach((item) => {
                 profiles.push({
                     avatar: item.avatar,
@@ -37,10 +64,8 @@ class ProfileSearchContainer extends Component{
     }
 
     render(){
-        // console.log("--profiles--", this.state.profiles);
         return(
             <Fragment>
-                {/* <h1>String you gave {this.props.match.params.searchString}</h1> */}
                 <MainNav />
                 <ProfileSearchListing listingInfo={this.state.profiles} />
             </Fragment>

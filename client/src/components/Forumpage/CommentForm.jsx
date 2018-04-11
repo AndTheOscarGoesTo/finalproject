@@ -57,7 +57,7 @@ class CommentForm extends Component {
                 <label>
                 <textarea className={style.text}  id="text" placeholder="forumText"  onChange={(e) => this.handleComment(e.target.value)} />
                 </label>
-                <input bsStyle="primary" type="submit" onClick= { (event) => {this.addComment(event)}} />
+                <input className={style.btnn} type="submit" onClick= { (event) => {this.addComment(event)}} />
               </form> 
               
         </div>
