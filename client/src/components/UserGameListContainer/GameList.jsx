@@ -15,6 +15,8 @@ function GameList(props) {
                     const gameCompleted = item.gameCompleted === 1 ? "yes" : "no";
                     return(
                         <div className="panel" key={`user-game-listing-${index}`}>
+                            <div className="panelMask">
+                            </div>
                             <div className={`media ${MyStyle.borderedDiv}`}>
                                 <div className="media-left">
                                     <Link to={`/GameCatalogue/Game/${item.gameId}`}>
