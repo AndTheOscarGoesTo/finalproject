@@ -1,156 +1,69 @@
 .body {
     margin: 0 auto;
     text-align: center;
-}
-
-.twitter {
-    height: 10%;
-    width: 20%;
-    text-align: center;
-    background: #1dcaff;
-    // background: linear-gradient(to right, #0084b4, #00aced, #c0deed, #1dcaff);
-    color: black;
-    padding: 2em 0 2em 0;
-    font-size: 1.5em;
-    margin: 2em 0 2em 0;
-}
-
-.instagram {
-    height: 10%;
-    width: 20%;
-    text-align: center;
-    background: #e95950;
-    // background: linear-gradient(to right, #8a3ab9, #4c68d7, #cd486b, #fbad50, #fccc63, #bc2a8d, #e95950);
-    color: white;
-    padding: 2em 0 2em 0;
-    font-size: 1.5em;
-    margin: 2em 0 2em 0;
+    padding-top: 1em;
+    text-transform: capitalize;
 }
 
 
-.twitch {
-    height: 10%;
-    width: 20%;
-    text-align: center;
-    background: #6441A4;
-    color: white;
-    padding: 2em 0 2em 0;
-    font-size: 1.5em;
-    margin: 2em 0 2em 0;
-}
-
-.youtube {
-    height: 10%;
-    width: 20%;
-    text-align: center;
-    background: #ff0000;
-    color: white;
-    padding: 2em 0 2em 0;
-    font-size: 1.5em;
-    margin: 2em 0 2em 0;
-}
-
-.bg{
-    position: absolute;
-    top: 0%;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-}
-
-.heading {
-    text-transform: uppercase;
-    font-size: 3em;
-}
-
-.button {
-    padding: 1em;
-    text-transform: uppercase;
-    background-color: gray;
-}
 
 .avatar {
-    height: 5%;
-    width: 50%;
-    text-align: center;
-    background: #1dcaff;
-    // background: linear-gradient(to right, #0084b4, #00aced, #c0deed, #1dcaff);
-    color: black;
-    padding: 2em 0 2em 0;
+    color: white;
     font-size: 1.5em;
-    margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
+    width: 35%;
+    background-color: black;
 }
 
 .handle {
-    height: 5%;
-    width: 50%;
-    text-align: center;
-    background: #1dcaff;
-    // background: linear-gradient(to right, #0084b4, #00aced, #c0deed, #1dcaff);
-    color: black;
-    padding: 2em 0 2em 0;
+    color: white;
     font-size: 1.5em;
-    margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
+    width: 35%;
+    background-color: black;
 }
 
-
-// .sm {
-//     display: inline-block;
+// .bodyTwo {
+//     overflow: hidden;
+//     text-align: center;
 // }
-
-// .user {
-//     float: right;
-// }
-
-.bodyTwo {
-    margin: 0 auto;
-    text-align: center;
-    display: inline-block;
-}
 
 .twitterTwo {
-    height: 5%;
-    width: 50%;
-    text-align: center;
-    background: #1dcaff;
-    // background: linear-gradient(to right, #0084b4, #00aced, #c0deed, #1dcaff);
-    color: black;
-    padding: 2em 0 2em 0;
+    color: white;
     font-size: 1.5em;
-    margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
+    width: 35%;
+    background-color: black;
 }
 
 .instagramTwo {
-    height: 5%;
-    width: 50%;
-    text-align: center;
-    background: #e95950;
-    // background: linear-gradient(to right, #8a3ab9, #4c68d7, #cd486b, #fbad50, #fccc63, #bc2a8d, #e95950);
     color: white;
-    padding: 2em 0 2em 0;
     font-size: 1.5em;
-    margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
+    width: 35%;
+    background-color: black;
 }
 
 
 .twitchTwo {
-    height: 5%;
-    width: 50%;
-    text-align: center;
-    background: #6441A4;
     color: white;
-    padding: 2em 0 2em 0;
     font-size: 1.5em;
-    margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
+    width: 35%;
+    background-color: black;
 }
 
 .youtubeTwo {
-    height: 5%;
-    width: 50%;
-    text-align: center;
-    background: #ff0000;
     color: white;
-    padding: 2em 0 2em 0;
     font-size: 1.5em;
-    margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
+    width: 35%;
+    background-color: black;
+}
+
+.button {
+    background-color: black;
+    color: white;
+    padding: 1em;
+    text-transform: uppercase;
 }

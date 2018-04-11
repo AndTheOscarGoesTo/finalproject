@@ -42,28 +42,19 @@ class EditSocial extends Component {
         this.setState({ handle });
     }
 
-    editUserInfo(e) {
+    makeMultiplePosts(e) {
 
         e.preventDefault();
 
-        put(
+        const promise1 = put(
             `http://localhost:3000/api/users/${this.props.match.params.id}`,
             {
                 avatar: this.state.avatar,
                 handle: this.state.handle
             }
         )
-        .then(() => {
-            this.props.history.push('/')
-        })
-    }
-
-    editSocialMedia(e) {
-
-        e.preventDefault();
-
-        put(
-            `http://localhost:3000/api/social/${this.props.match.params.id}`, 
+        const promise2 = put(
+            `http://localhost:3000/api/social/${this.props.match.params.id}`,
             {
                 twitter: this.state.twitter,
                 instagram: this.state.instagram,
@@ -71,14 +62,76 @@ class EditSocial extends Component {
                 youtube: this.state.youtube
             }
         )
-        .then(() => {
-            this.props.history.push('/');
+        Promise.all([promise1, promise2]).then((results) => {
+            console.log(results);
+            this.props.history.push('/')
+            return;
+        }).catch((err) => {
+            console.error(err);
         })
+
     }
+   
+
+    // editUserInfo(e) {
+
+    //     e.preventDefault();
+
+    //     put(
+    //         `http://localhost:3000/api/users/${this.props.match.params.id}`,
+    //         {
+    //             avatar: this.state.avatar,
+    //             handle: this.state.handle
+    //         }
+    //     )
+    //     .then(() => {
+    //         this.props.history.push('/')
+    //     })
+    // }
+
+    // editSocialMedia(e) {
+
+    //     e.preventDefault();
+
+    //     put(
+    //         `http://localhost:3000/api/social/${this.props.match.params.id}`, 
+    //         {
+    //             twitter: this.state.twitter,
+    //             instagram: this.state.instagram,
+    //             twitch: this.state.twitch,
+    //             youtube: this.state.youtube
+    //         }
+    //     )
+    //     .then(() => {
+    //         this.props.history.push('/');
+    //     })
+    // }
 
     render() {
         return (
-            <div className={ style.bodyTwo }>
+            <div className={ style.body }>
+                <h1>edit profile</h1>
+                 <div>
+                    <input 
+                        className={ style.avatar }
+                        placeholder="avatar" 
+                        value={ this.state.avatar } 
+                        onChange={ (event) => this.handleAvatarChange(event.target.value)}
+                    />
+                    <i className="ion-person"></i>
+                </div>
+                <div>
+                    <input
+                        className={ style.handle } 
+                        placeholder="handle" 
+                        value={ this.state.handle } 
+                        onChange={ (event) => this.handleNameChange(event.target.value)}
+                    />
+                    <i className="ion-at"></i>
+                </div>
+                {/* <div>
+                    <button onClick={ (e) => {this.editUserInfo(e)} }>update user info</button>
+                </div> */}
                 <div className={ style.sm }>
                     <div>
                         <input 
@@ -87,6 +140,7 @@ class EditSocial extends Component {
                             value={ this.state.twitter } 
                             onChange={ (event) => this.handleTwitterChange(event.target.value)}
                         />
+                        <i className="ion-social-twitter-outline"></i>
                     </div>
                     <div>
                         <input 
@@ -95,6 +149,7 @@ class EditSocial extends Component {
                             value={ this.state.instagram } 
                             onChange={ (event) => this.handleInstagramChange(event.target.value)}
                         />
+                        <i className="ion-social-instagram"></i>
                     </div>
                     <div>
                         <input 
@@ -103,6 +158,7 @@ class EditSocial extends Component {
                             value={ this.state.twitch } 
                             onChange={ (event) => this.handleTwitchChange(event.target.value)}
                         />
+                        <i className="ion-social-twitch-outline"></i>
                     </div>
                     <div>
                         <input 
@@ -111,23 +167,9 @@ class EditSocial extends Component {
                             value={ this.state.youtube } 
                             onChange={ (event) => this.handleYoutubeChange(event.target.value)}
                         />
+                        <i className="ion-social-youtube-outline"></i>
                     </div>
-                    <button onClick={ (e) => {this.editSocialMedia(e)} }>update social media</button>
-                </div>
-                <div>
-                    <input 
-                        className={ style.avatar }
-                        placeholder="avatar" 
-                        value={ this.state.avatar } 
-                        onChange={ (event) => this.handleAvatarChange(event.target.value)}
-                    />
-                    <input
-                        className={ style.handle } 
-                        placeholder="handle" 
-                        value={ this.state.handle } 
-                        onChange={ (event) => this.handleNameChange(event.target.value)}
-                    />
-                    <button onClick={ (e) => {this.editUserInfo(e)} }>update user info</button>
+                    <button onClick={ (e) => {this.makeMultiplePosts(e)} } className={ style.button }>update profile</button>
                 </div>
                 <Particles 
                     className={style.bg} 

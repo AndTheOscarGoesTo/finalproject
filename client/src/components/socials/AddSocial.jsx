@@ -62,35 +62,39 @@ class AddSocial extends Component {
                 <h1 className={ style.heading }>new user?<br /> thank you for signing up!<br /> add your social media so you and others can connect!</h1>
                 <div>
                     <input
-                        className={ style.twitter }
-                        placeholder="TWITTER" 
+                        className={ style.twitterTwo }
+                        placeholder="twitter" 
                         value={this.state.twitter} 
                         onChange={ (event) => {this.handleTwitterInsert(event.target.value)}}
                     />
+                    <i className="ion-social-twitter-outline"></i>
                 </div>
                 <div>
                     <input
-                        className={ style.instagram }
-                        placeholder="INSTAGRAM" 
+                        className={ style.instagramTwo }
+                        placeholder="instagram" 
                         value={this.state.instagram} 
                         onChange={ (event) => {this.handleInstagramInsert(event.target.value)}}
                     />
+                    <i className="ion-social-instagram"></i>
                 </div>
                 <div>
                     <input
-                        className={ style.twitch }
-                        placeholder="TWITCH" 
+                        className={ style.twitchTwo }
+                        placeholder="twitch" 
                         value={this.state.twitch} 
                         onChange={ (event) => {this.handleTwitchInsert(event.target.value)}}
                     />
+                    <i className="ion-social-twitch-outline"></i>
                 </div>
                 <div>
                     <input
-                        className={ style.youtube }
-                        placeholder="YOUTUBE" 
+                        className={ style.youtubeTwo }
+                        placeholder="youtube" 
                         value={this.state.youtube} 
                         onChange={ (event) => {this.handleYoutubeInsert(event.target.value)}}
                     />
+                    <i className="ion-social-youtube-outline"></i>
                 </div>
                 <button onClick={ (e) => {this.addSocialMedia(e)} } className={ style.button }>add social media</button>
                 <Particles 

@@ -63,6 +63,8 @@ router.put('/:id?', (req, res, next) => {
     })
 })
 
+
+
 router.delete('/:id?', (req, res, next) => {
     let id = req.params.id;
     smController.deleteSocialMedia(id)
