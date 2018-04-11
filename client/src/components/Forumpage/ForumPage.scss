@@ -63,7 +63,7 @@
 
 
   #comments {
-    background-color:#FFF;
+    
     padding:1rem 2rem;
   }
   .comment {
@@ -99,8 +99,41 @@
   }
 
   .text{
-    
-      margin-top: 5%;
       width: 455%;
       height: 10em;
   }
+
+  .handle{
+      color: white;
+  }
+
+  .btnn {
+    
+	border: none;
+	font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.5em;
+    width: 30%;
+    height: 3em;
+	color: #000;
+	background: #fff;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+    outline: none;
+    box-shadow: 0 6px #cecece;
+    border-radius: 5px;
+}
+
+.btnn:hover {
+	background: #fff;
+    outline: none;
+    box-shadow: 0 4px #cecece;
+	top: 2px;
+}
+
+.btnn:active {
+	background: #fff;
+    outline: none;
+    box-shadow: 0 0 #cecece;
+
+}
