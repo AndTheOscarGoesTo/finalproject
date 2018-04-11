@@ -8,15 +8,24 @@ import LoggedBanner from '../LoggedBanner/LoggedBanner'
 
 
 class CommentBox extends Component {
+    constructor(props){
+        super(props);
+    }
+    
 
     render() {
+
+        console.log("--comment props--", this.props.commentList, "--Current Forum--", this.props.currentForumId);
+
         return (
+            <div className={style.stick}>
           <div className={ style.space }>
               
          
               
-              <CommentList />
-              <CommentForm />
+              <CommentList commentz={this.props.commentList}/>
+              <CommentForm currentForumId={this.props.currentForumId}/>
+              </div>
         </div>
 
          
@@ -25,3 +34,4 @@ class CommentBox extends Component {
 }
 
 export default CommentBox;
+

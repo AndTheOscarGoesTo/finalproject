@@ -177,3 +177,11 @@
     .nameinput, .emailinput, #wpcf7-f156-p143-o1\20 formwrap > form > p > span.wpcf7-form-control-wrap.Message > textarea { width: 225px !important; }
   .btn { width: 110px; }
 }
+
+.bg{
+  position: absolute;
+  top: 0%;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}

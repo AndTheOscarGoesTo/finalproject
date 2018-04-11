@@ -99,8 +99,27 @@
   }
 
   .text{
-      width: 455%;
-      height: 10em;
+    background: rgb(0, 0, 0); 
+    width: 350%;
+    height: 10em;
+    border: none;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 2%;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box; 
+    display: block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    color: #fff;
+    padding-left: 45px;
+    padding-right: 20px;
+    padding-top: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    //   width: 455%;
+    //   height: 10em;
   }
 
   .handle{
@@ -137,3 +156,15 @@
     box-shadow: 0 0 #cecece;
 
 }
+
+.stick{
+    position: fixed;
+}
+
+.bg{
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }

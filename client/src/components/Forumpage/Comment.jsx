@@ -25,7 +25,7 @@ class Comment extends Component {
             return(
                 <section id="comments">
                 <div className="comment">
-                  <div className="username handle">{commentz.handle}</div>
+                  <div className="username">{commentz.handle}</div>
                   <img src="https://www.une.edu.au/__data/assets/image/0005/97178/blank-avatar.png" class="avatar" alt="user image" />
                     <p>{commentz.comment}</p>
                 </div>
@@ -39,6 +39,14 @@ class Comment extends Component {
 <div className="card-body">
   
   { commentz }
+
+  {/* <i onClick={(event) => {
+                            event.preventDefault()
+
+                            this.setState({
+                                edit: <EditComment />
+                            })
+                            }} className="ion-wrench"></i> */}
 </div>
 </div>
 

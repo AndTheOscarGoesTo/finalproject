@@ -13,15 +13,18 @@ class CommentForm extends Component {
     this.state = {
       commentText: '',
       userId: '',
-      forumId: ''
+      forumId: 0
     }
+
+    // console.log("--Forum Id in the comment forms--", this.props.currentForumId);
 
   }
 
   componentDidMount(){
+    console.log("--Forum Id in the comment forms--", this.props.currentForumId);
     me()
     .then((response) => {
-      this.setState({userId: response.id});
+      this.setState({userId: response.id, forumId: this.props.currentForumId});
     })
   }
 
@@ -33,10 +36,14 @@ class CommentForm extends Component {
       post('http://localhost:3000/api/forums/comment', {
           commentText: this.state.commentText,
           userId: this.state.userId,
-          forumId: this.state.forumId,
+          forumId: this.props.currentForumId,
       })
       
-      this.props.updatecomment
+      // this.props.history.push("/forum");
+      window.location.href = "http://localhost:3000/forum"
+      // this.props.history.location.push("/forum");
+
+      // this.props.updatecomment
   }
 
 
@@ -50,12 +57,13 @@ class CommentForm extends Component {
 
 
     render() {
-    
+      console.log("--rendering--", this.props.currentForumId, "--history--", this.context.location);
+      // console.log("--rendering--", this.state.forumId);
         return (
           <div>
             <form>
                 <label>
-                <textarea className={style.text}  id="text" placeholder="forumText"  onChange={(e) => this.handleComment(e.target.value)} />
+                <textarea className={style.text}  id="text" placeholder="COMMENT..."  onChange={(e) => this.handleComment(e.target.value)} />
                 </label>
                 <input className={style.btnn} type="submit" onClick= { (event) => {this.addComment(event)}} />
               </form> 
