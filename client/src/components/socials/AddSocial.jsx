@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { post } from '../../services/base';
 
+import HomeNav from "../HomeNavBar/HomeNavBar";
+
 class AddSocial extends Component {
     constructor(props) {
         super(props);
@@ -53,6 +55,8 @@ class AddSocial extends Component {
     render() {
         return (
             <Fragment>
+                <HomeNav />
+                
                 <input
                     placeholder="twitter" 
                     value={this.state.twitter} 
