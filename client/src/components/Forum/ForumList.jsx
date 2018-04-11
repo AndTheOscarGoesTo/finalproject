@@ -61,10 +61,10 @@ class ForumList extends Component {
       >
         <Panel eventKey={forumz.id}
         key={forumz.id}
-        className={style.holder}
+       
         >
           <Panel.Heading >
-            <Panel.Title toggle>{forumz.title} </Panel.Title>
+            <Panel.Title  className={style.holder} toggle>{forumz.title} </Panel.Title>
           </Panel.Heading>
           <Panel.Body collapsible>{forumz.forumText}</Panel.Body>
           
