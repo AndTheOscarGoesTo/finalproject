@@ -77,7 +77,7 @@ class Profile extends Component {
                             />
                             <div className={styles.wrapper}>
                                 <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={true} avatar={this.state.avatar}/>
-                                <UserPosts profileid={this.state.profileid}/>
+                                <UserPosts profileid={this.props.match.params.id}/>
                             </div>
                     </Fragment>
                 )
@@ -107,10 +107,9 @@ class Profile extends Component {
                                     }
                                 } } 
                             />
-                            <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
                             <div className={styles.wrapper}>
-                                <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
-                                <UserPosts profileid={this.state.profileid}/>
+                                <ProfilePanel button={<button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>} id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
+                                <UserPosts profileid={this.props.match.params.id}/>
                             </div>
                     </Fragment>
                 )
