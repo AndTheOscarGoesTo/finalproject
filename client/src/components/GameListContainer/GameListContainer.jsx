@@ -7,6 +7,8 @@ import ListingComponent from "./ListingComponent";
 import GameContainer from "../GameContainer/GameContainer";
 import GameAddContainer from "../GameAddContainer/GameAddContainer";
 import HomeNav from "../HomeNavBar/HomeNavBar";
+import Particles from 'react-particles-js';
+import style from './GameListContainer.module.scss';
 
 class GameListContainer extends Component{
     constructor(props){
@@ -42,6 +44,28 @@ class GameListContainer extends Component{
                     <Route exact path="/GameCatalogue/GameAdd/:id" component={GameAddContainer} />
 
                 </div>
+                <Particles 
+                    className={style.bg} 
+                    width="100%" height="100%" 
+                    params={ {
+                        particles: {
+                            line_linked: {
+                                shadow: {
+                                    enable: true,
+                                    color: "whitesmoke",
+                                    blur: 5,
+                                }
+                            },
+                            number: {
+                                value: 100,
+                                density: {
+                                    enable: true,
+                                    value_area: 1200
+                                }
+                            }
+                        }
+                    } } 
+                />
 
             </Fragment>
             

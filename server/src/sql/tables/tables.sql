@@ -155,3 +155,13 @@ create table GameDirectory (
 );
 
 foreign key (platformid) references Platform (id)
+
+drop table if exists Likes;
+
+create table Likes (
+	statusid int,
+    userid int,
+    primary key (statusid, userid),
+    foreign key (statusid) references status (id),
+    foreign key (userid) references users(id)
+);
