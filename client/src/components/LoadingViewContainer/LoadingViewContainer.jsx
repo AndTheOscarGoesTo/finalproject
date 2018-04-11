@@ -11,7 +11,7 @@ function LoadingViewContainer(props){
             <div className={`sweet-loading ${Styles.ringLoader}`}>
 
                 <PacmanLoader
-                color={'#123abc'} 
+                color={'#fdff00'} 
                 loading={props.loading} 
                 />
 
@@ -22,18 +22,6 @@ function LoadingViewContainer(props){
     ) : null;
 
     return(
-        // <div className="modal">
-        //     <div className='sweet-loading'>
-
-        //         <PacmanLoader
-        //         color={'#123abc'} 
-        //         loading={props.loading} 
-        //         />
-
-        //         {loadingText}
-
-        //     </div>
-        // </div>
         loadingModal
     );
 }

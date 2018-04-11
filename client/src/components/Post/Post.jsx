@@ -40,6 +40,7 @@ class Post extends Component {
             })
         })
         .then((statuses) => {
+            console.log(statuses[0]);
             this.setState({posts: statuses[0]});
         })
         .catch((err) => {
@@ -58,7 +59,6 @@ class Post extends Component {
     }
     render(){
         let posts = this.state.posts.map((posts) => {
-            console.log(posts);
             return(
                     <div className={`media ${style.postDiv}`}key={posts.id}>
                         <div className="media-left">
@@ -67,7 +67,7 @@ class Post extends Component {
                         <div className="media-body">
                             <Link to={`/profile/${posts.userid}`} className="media-heading">{posts.handle}</Link>
                             <p>{posts.status}</p>
-                            <LikeButton liked={false}/>
+                            <LikeButton liked={false} postid={posts.id} userid={this.state.loggedId}/>
                             <i className="glyphicon glyphicon-heart-empty" onMouseOver={() => this.setState({ likes: posts.likes + 1 })} onClick={ () => { this.handleLike(posts.id, this.state.loggedId) }}></i>
                         </div>
                     </div>

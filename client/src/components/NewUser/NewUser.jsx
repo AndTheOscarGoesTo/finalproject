@@ -5,6 +5,7 @@ import IndeterminateProgress from '../utilities/indeterminateProgress';
 import style from './NewUser.module.scss';
 import { post } from '../../services/base'
 
+
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import Home from '../Home/Home';
 
@@ -21,25 +22,34 @@ class NewUser extends Component {
             passwordconf: '',
             feedbackMessage: '',
         };
+
+        this.onButtonClick = this.onButtonClick.bind(this);
     }
 
 
-    onButtonClick() {
+    onButtonClick(event) {
+        event.preventDefault();
+        console.log("Clicking");
+
             if (this.state.password === this.state.passwordconf) {
-            post('http://localhost:3000/api/users', {
-            firstname: this.state.firstname,
-            lastname: this.state.lastname,
-            handle: this.state.handle,
-            email: this.state.email,
-            password: this.state.password,
-            avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png"
+                post('http://localhost:3000/api/users', {
+                firstname: this.state.firstname,
+                lastname: this.state.lastname,
+                handle: this.state.handle,
+                email: this.state.email,
+                password: this.state.password,
+                avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png"
             })
             .then((results) => {
                 console.log('worked maybe')
+                // this.props.history.location(`/`);
+                this.login(e)
             })
+            
         } else {
             alert('passwords don\'t match fam')
         }
+
     }
     handleFirstNameChange(value) {
         this.setState({ firstname: value})
@@ -62,6 +72,17 @@ class NewUser extends Component {
         this.setState({ passwordconf: value });
     }
 
+    login(e) {
+        // e.preventDefault();
+        userService.login(this.state.email, this.state.password)
+        .then(() => {
+            this.setState({ redirectToReferrer: true });
+        }).catch((err) => {
+            if (err.message) {
+                this.setState({ feedbackMessage: err.message });
+            }
+        });
+    }
     render() {
     
     //    const { from } = this.props.location.state || { from: { pathname: '/' } };
@@ -78,7 +99,7 @@ class NewUser extends Component {
                 <UnloggedBanner />
                     <div className={style.form}>
                     <h1> Create an Account</h1>
-                    <form onSubmit={(e) => this.register(e)}>
+                    <div>
                         <div className="form-group">
                             <input id="firstname" className={style.input} type="text" placeholder="First Name" onChange={(e) => this.handleFirstNameChange(e.target.value)} required /> 
                         </div>
@@ -97,8 +118,8 @@ class NewUser extends Component {
                         <div className="form-group">
                             <input id="passwordconf" className={style.input} type="password" placeholder="Confirm Password" onChange={(e) => this.handlePasswordConfChange(e.target.value)} required /> 
                         </div>
-                        <button onClick= { (event) => this.onButtonClick()} value="Login" className="btn btn-primary" >Submit</button>
-                    </form>
+                        <button onClick= { (event) => this.onButtonClick(event)} value="Login" className="btn btn-primary" >Submit</button>
+                    </div>
                 </div>
             </Fragment>
        );

@@ -8,7 +8,7 @@ const statusTable = new StatusTable("status");
 
 function getStatuses(ids, limit = 10, offset = 0){
     // dbRef.executeQuery
-    return executeQuery(`select SQL_CALC_FOUND_ROWS s.*, u.handle, u.avatar from status s join users u on s.userid = u.id where userid in (?) LIMIT ? OFFSET ?; select found_rows() as 'count';`, [ids, limit, offset]);
+    return executeQuery(`select SQL_CALC_FOUND_ROWS s.*, u.handle, u.avatar from status s join users u on s.userid = u.id where s.userid in (?) LIMIT ? OFFSET ?; select found_rows() as 'count';`, [ids, limit, offset]);
 }
 
 // getStatuses([81, 111, 121, 131, 1])

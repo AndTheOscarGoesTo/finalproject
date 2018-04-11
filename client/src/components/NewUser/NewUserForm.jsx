@@ -24,7 +24,8 @@ class NewUserForm extends Component {
     }
 
 
-    onButtonClick() {
+    onButtonClick(event) {
+        event.preventDefault(); 
             if (this.state.password === this.state.passwordconf) {
             post('http://localhost:3000/api/users', {
             firstname: this.state.firstname,
@@ -34,7 +35,10 @@ class NewUserForm extends Component {
             password: this.state.password
             })
             .then((results) => {
-                console.log('worked maybe')
+                console.log('worked maybe', results);
+                this.login(event);
+                // this.props.history.push(`/profile/:${results.id}`);
+                window.location.href = `http://localhost:3000/profile/${results.id}`
             })
         } else {
             alert('passwords don\'t match fam')
@@ -61,12 +65,24 @@ class NewUserForm extends Component {
         this.setState({ passwordconf: value });
     }
 
+    login(e) {
+        // e.preventDefault();
+        userService.login(this.state.email, this.state.password)
+        .then(() => {
+            this.setState({ redirectToReferrer: true });
+        }).catch((err) => {
+            if (err.message) {
+                this.setState({ feedbackMessage: err.message });
+            }
+        });
+    }
+
     render() {
 
        return (
             <Fragment>
                     <div className={style.form}>
-                    <form onSubmit={(e) => this.register(e)}>
+                    <form>
                         <div className="form-group">
                             <input id="firstname" className={style.inputName} style={{marginRight: "3%"}} type="text" placeholder="First Name" onChange={(e) => this.handleFirstNameChange(e.target.value)} required />
                             <input id="lastname" className={style.inputName}  type="text" placeholder="Last Name" onChange={(e) => this.handleLastNameChange(e.target.value)} required />  
@@ -83,7 +99,7 @@ class NewUserForm extends Component {
                         <div className="form-group">
                             <input id="passwordconf" className={style.input} type="password" placeholder="Confirm Password" onChange={(e) => this.handlePasswordConfChange(e.target.value)} required /> 
                         </div>
-                        <button onClick= { (event) => this.onButtonClick()} value="Login" className="btn btn-success" >Submit</button>
+                        <button onClick= { (event) => this.onButtonClick(event)} value="Login" className="btn btn-success" >Submit</button>
                     </form>
                 </div>
             </Fragment>

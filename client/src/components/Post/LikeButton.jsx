@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { get, post } from '../../services/base'
 
 class LikeButton extends Component {
     constructor(props) {
@@ -13,6 +14,10 @@ class LikeButton extends Component {
       this.setState({
         liked: !this.state.liked
       });
+      post('http://localhost:3000/api/likes', {
+                status: this.props.statusid,
+                userid: this.props.userid,
+            });
     }
     
     render() {
