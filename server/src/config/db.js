@@ -5,7 +5,7 @@ console.log(process.env.DB_HOST);
 console.log(process.env.DB_PASSWORD);
 
 let pool = mysql.createPool({
-    connectionLimit: 10,
+    connectionLimit: 100,
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
