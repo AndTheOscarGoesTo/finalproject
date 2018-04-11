@@ -3,6 +3,7 @@ import { tokenMiddleware, isLoggedIn } from '../middleware/auth.mw';
 import Table from '../table'
 let router = Router();
 import { getStatuses } from '../controllers/statusController';
+import { read } from 'fs';
 
 router.get('/me', tokenMiddleware, isLoggedIn, (req, res) => {
     console.log("routing")
@@ -25,6 +26,21 @@ router.post('/friends/:id', (req, res) => {
         res.sendStatus(500);
     });
 });
+
+router.post('/:id', (req, res) => {
+    let id = req.body.id;
+    let ids = [req.params.id];
+    let limit = req.query.limit || 100;
+    let offset = req.query.offset || 0;
+
+    getStatuses(id, ids, limit, offset)
+    .then((results) =>{
+        res.json(results[0]);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500)
+    })
+})
 
 router.post('/', (req, res) => {
     usersTable.insert(req.body)

@@ -5,7 +5,6 @@ import Style from "./ProfileSearchContainer.module.scss";
 
 function ProfileSearchListing(props){
 
-<<<<<<< HEAD
     console.log("--props--", props.listingInfo)
     let users = props.listingInfo.map((item, index) => {
         return(
@@ -23,8 +22,6 @@ function ProfileSearchListing(props){
         </div>
         );
     })
-=======
->>>>>>> 30a4ab13c2385719827549a0edd8adc139331bb3
     return(
         <div className={`${Style.panelContainer}`}>
             <div className={Style.postDiv}>
