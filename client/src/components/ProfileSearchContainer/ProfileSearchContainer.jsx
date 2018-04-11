@@ -66,7 +66,6 @@ class ProfileSearchContainer extends Component{
     render(){
         return(
             <Fragment>
-                {/* <h1>String you gave {this.props.match.params.searchString}</h1> */}
                 <MainNav />
                 <ProfileSearchListing listingInfo={this.state.profiles} />
             </Fragment>

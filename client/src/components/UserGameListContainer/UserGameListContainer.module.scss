@@ -1,13 +1,29 @@
 .mainPiece{
     .transparentBackground{
         background-color: transparent;
-        color: white;
+        color: black;
+    }
+
+    .heading{
+        font-size: 3em;
+    }
+
+    .mediaBody{
+        margin: 2em;
     }
 
     .borderedDiv{
 
         // background-color: purple;
         margin: 2em;
+    }
+
+    .hoursLogged{
+        font-size: 1.5em;
+    }
+
+    .completed{
+        margin-left: 2em;
     }
 
     // .listingContainer{
