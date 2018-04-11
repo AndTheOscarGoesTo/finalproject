@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { get, post } from '../../services/base'
 import style from './Forum.module.scss'
 import {Accordion, PanelGroup, Panel} from 'react-bootstrap';
+import CommentBox from '../Forumpage/CommentBox'
 
 class ForumList extends Component {
 
@@ -51,7 +52,7 @@ class ForumList extends Component {
   </div>
   
 </div> */
-
+<Fragment >
 <PanelGroup
         accordion
         id="accordion-controlled-example"
@@ -60,18 +61,25 @@ class ForumList extends Component {
       >
         <Panel eventKey={forumz.id}
         key={forumz.id}
+        className={style.holder}
         >
-          <Panel.Heading>
-            <Panel.Title toggle>{forumz.title}</Panel.Title>
+          <Panel.Heading >
+            <Panel.Title toggle>{forumz.title} </Panel.Title>
           </Panel.Heading>
           <Panel.Body collapsible>{forumz.forumText}</Panel.Body>
+          
         </Panel>
+        
       </PanelGroup>
+</Fragment>
+
+
+
 
         )
       })
         return (
-          <Fragment>
+          <Fragment >
               { forumz }
             </Fragment>
 

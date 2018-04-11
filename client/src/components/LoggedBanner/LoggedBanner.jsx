@@ -77,6 +77,9 @@ class LoggedBanner extends Component {
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={"/GameCatalogue"}>Game Catalogue</Link>
                             </li>
                             <li>
+                            <Link style={{textDecoration: 'none', color: 'white'}} to={"/Forum"}>Forums</Link>
+                            </li>
+                            <li>
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={"/MyGameList"}>Game List</Link>
                             </li>
                             <li>

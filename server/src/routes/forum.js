@@ -15,6 +15,10 @@ router.get("/", (req, res, body) => {
 })
 
 // query string to get forum info will be used here.
+/*
+    request example:
+        localhost:3000/api/forums/:id?getForumComments=true
+*/
 router.get("/:id", (req, res, body) => {
 
     if(req.query.getForumComments == "true"){

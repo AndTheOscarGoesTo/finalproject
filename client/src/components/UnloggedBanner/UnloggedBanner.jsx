@@ -26,6 +26,9 @@ class UnloggedBanner extends Component {
                             <li className="yeet">
                             <Link style={{textDecoration: 'none', color: 'white'}} to="/newuser" className={style.register}> Register </Link>
                             </li>
+                            <li>
+                            <Link style={{textDecoration: 'none', color: 'white'}} to="/Forum" className={style.register}> Forums </Link>
+                            </li>
                             <li className="yeet">
                             <AuthButton />
                             </li>
