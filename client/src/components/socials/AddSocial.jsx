@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { post } from '../../services/base';
+import style from './social.module.scss';
+import Particles from 'react-particles-js';
+
 
 import HomeNav from "../HomeNavBar/HomeNavBar";
 
@@ -54,31 +57,69 @@ class AddSocial extends Component {
 
     render() {
         return (
-            <Fragment>
+            <div className={ style.body }>
                 <HomeNav />
-                
-                <input
-                    placeholder="twitter" 
-                    value={this.state.twitter} 
-                    onChange={ (event) => {this.handleTwitterInsert(event.target.value)}}
+                <h1 className={ style.heading }>new user?<br /> thank you for signing up!<br /> add your social media so you and others can connect!</h1>
+                <div>
+                    <input
+                        className={ style.twitterTwo }
+                        placeholder="twitter" 
+                        value={this.state.twitter} 
+                        onChange={ (event) => {this.handleTwitterInsert(event.target.value)}}
+                    />
+                    <i className="ion-social-twitter-outline"></i>
+                </div>
+                <div>
+                    <input
+                        className={ style.instagramTwo }
+                        placeholder="instagram" 
+                        value={this.state.instagram} 
+                        onChange={ (event) => {this.handleInstagramInsert(event.target.value)}}
+                    />
+                    <i className="ion-social-instagram"></i>
+                </div>
+                <div>
+                    <input
+                        className={ style.twitchTwo }
+                        placeholder="twitch" 
+                        value={this.state.twitch} 
+                        onChange={ (event) => {this.handleTwitchInsert(event.target.value)}}
+                    />
+                    <i className="ion-social-twitch-outline"></i>
+                </div>
+                <div>
+                    <input
+                        className={ style.youtubeTwo }
+                        placeholder="youtube" 
+                        value={this.state.youtube} 
+                        onChange={ (event) => {this.handleYoutubeInsert(event.target.value)}}
+                    />
+                    <i className="ion-social-youtube-outline"></i>
+                </div>
+                <button onClick={ (e) => {this.addSocialMedia(e)} } className={ style.button }>add social media</button>
+                <Particles 
+                    className={style.bg} 
+                    width="100%" height="100%" 
+                    params={ {
+                        particles: {
+                            line_linked: {
+                                shadow: {
+                                    enable: true,
+                                    color: "whitesmoke",
+                                    blur: 5,
+                                }
+                            },
+                            number: {
+                                value: 100,
+                                density: {
+                                    enable: true,
+                                    value_area: 1200
+                                }
+                            }
+                        }
+                    } } 
                 />
-                <input
-                    placeholder="instagram" 
-                    value={this.state.instagram} 
-                    onChange={ (event) => {this.handleInstagramInsert(event.target.value)}}
-                />
-                <input
-                    placeholder="twitch" 
-                    value={this.state.twitch} 
-                    onChange={ (event) => {this.handleTwitchInsert(event.target.value)}}
-                />
-                <input
-                    placeholder="youtube" 
-                    value={this.state.youtube} 
-                    onChange={ (event) => {this.handleYoutubeInsert(event.target.value)}}
-                />
-                <button onClick={ (e) => {this.addSocialMedia(e)} }>add</button>
-            </Fragment>
+            </div>
         );
     }
 }

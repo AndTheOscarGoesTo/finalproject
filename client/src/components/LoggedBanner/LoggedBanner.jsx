@@ -48,7 +48,7 @@ class LoggedBanner extends Component {
     render() {
         let requests = this.state.requests.map((request) => {
             return(
-            <li key={request.id}>
+            <li className={style.notifications} key={request.id}>
                 <p>{request.user_one_id} wants to be your friend!</p>
                 <button onClick= { (event) => this.onAccept(request.id)}> ACCEPT </button>
                 <button onClick={ (event) => this.onBlock(request.id)}> DECLINE </button>
@@ -82,12 +82,12 @@ class LoggedBanner extends Component {
                             <li>
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={"/MyGameList"}>Game List</Link>
                             </li>
-                            <li>
-                            {/* <Link style={{textDecoration: 'none', color: 'white'}} to = "/add/social/:id">Social Media</Link> */}
-                            </li>
+                            {/* <li>
+                            <Link style={{textDecoration: 'none', color: 'white'}} to = "/add/social/:id">Add Social Media</Link>
+                            </li> */}
                             <li className='btn-group'>                            
                                 <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: this.state.notifBg, color: this.state.notifColor }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>
-                                <ul className="dropdown-menu">
+                                <ul className={`dropdown-menu ${style.notifications}`}>
                                     { requests }
                                 </ul>
                             </li>

@@ -2,6 +2,8 @@ import React from "react";
 import GameCarousel from "../CarouselContainer/CarouselContainer";
 import { Link } from "react-router-dom";
 
+import Style from "./GameContainer.module.scss";
+
 function GamePiece(props) {
     const imgBaseUrl = `http://thegamesdb.net/banners/`;
     let gameThumbnail = null;
@@ -19,12 +21,12 @@ function GamePiece(props) {
 
     return(
         // <h1>Stuff</h1>
-        <div className={`jumbotron`}>
+        <div className={`jumbotron ${Style.blurBackgroundStage1}`}>
             <div className={`container`}>
-                <section  className={`gameHeadline panel`}>
+                <section  className={`gameHeadline panel ${Style.blurBackgroundStage2}`}>
                     <img src={imgBaseUrl + gameThumbnail} alt="" className="center-block"/>
 
-                    <div className={`panel-footer`}>
+                    <div className={`panel-footer ${Style.blurBackgroundStage3}`}>
                     <h1>
                         {props.infoObj.gameTitle} 
                         <Link 

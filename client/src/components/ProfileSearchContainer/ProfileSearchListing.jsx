@@ -5,34 +5,28 @@ import Style from "./ProfileSearchContainer.module.scss";
 
 function ProfileSearchListing(props){
 
-    return(
-        <div className={`jumbotron ${Style.panelContainer}`}>
-
-            <div className="container">
-            {
-                props.listingInfo.map((item, index) => {
-                    return(
-                        <div className={`panel ${Style.panelParent}`} key={`user-search-index-${index}-user-${item.userId}`}>
-
-                            <Link to={`/profile/${item.userId}`}>
-                                <img className={`img-thumbnail ${Style.imgThumb}`} src={item.avatar} alt=""/>
-                            </Link>
-                            <h1>@{item.userHandle}</h1>
-            
-                        </div>
-                    );
-                })
-            }
-                {/* <div className="panel">
-                    <Link to={`/profile/${props.listingInfo.userId}`}>
-                        <img src={props.listingInfo.avatar} alt=""/>
-                    </Link>
-                    
-                    <h1>{props.listingInfo.userHandle}</h1>
-                </div> */}
-            
+    console.log("--props--", props.listingInfo)
+    let users = props.listingInfo.map((item, index) => {
+        return(
+        <div className={`media ${Style.postDiv}`}>
+            <div className="media-left">
+                <Link to={`/profile/${item.userId}`}>
+                    <img className={`${Style.imgThumb}`} src={item.avatar} alt=""/>
+                </Link>
             </div>
-
+            <div className="media-body">
+            <Link style={{textDecoration: 'none', color: 'white'}}to={`/profile/${item.userId}`}>
+                <h3>@{item.userHandle}</h3>
+            </Link>
+            </div>
+        </div>
+        );
+    })
+    return(
+        <div className={`${Style.panelContainer}`}>
+            <div className={Style.postDiv}>
+            { users }
+            </div>
         </div>
     );
 

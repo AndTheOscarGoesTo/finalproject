@@ -20,6 +20,7 @@ class NewUserForm extends Component {
             password: '',
             passwordconf: '',
             feedbackMessage: '',
+            newUserId: ""
         };
     }
 
@@ -39,7 +40,7 @@ class NewUserForm extends Component {
                 console.log('worked maybe', results);
                 this.login(results.id);
                 // this.props.history.push(`/profile/:${results.id}`);
-                window.location.href = `http://localhost:3000/add/social/${results.id}`
+                // window.location.href = `http://localhost:3000/add/social/${results.id}`
             })
         } else {
             alert('passwords don\'t match fam')
@@ -66,11 +67,12 @@ class NewUserForm extends Component {
         this.setState({ passwordconf: value });
     }
 
-    login(e) {
+    login(newUserId) {
         // e.preventDefault();
+        console.log('--what--');
         userService.login(this.state.email, this.state.password)
         .then(() => {
-            this.setState({ redirectToReferrer: true });
+            this.setState({ redirectToReferrer: true, newUserId });
         }).catch((err) => {
             if (err.message) {
                 this.setState({ feedbackMessage: err.message });
@@ -79,6 +81,12 @@ class NewUserForm extends Component {
     }
 
     render() {
+
+        if (this.state.redirectToReferrer) {
+            return (
+                <Redirect to={`/add/social/${this.state.newUserId}`} />
+            );
+        } 
 
        return (
             <Fragment>
