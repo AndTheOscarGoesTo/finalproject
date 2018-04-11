@@ -12,6 +12,7 @@ class Post extends Component {
         this.state = {
             posts: [],
             loggedId: this.props.loggedId,
+            ft: [false, true]
         }
 
         this.updatePosts = this.updatePosts.bind(this);
@@ -35,7 +36,7 @@ class Post extends Component {
         .then((friends) => {
             let friendIds = friends.map(friend => friend.id);
             friendIds.unshift(this.userId);
-            return post('http://localhost:3000/api/status/friends', {
+            return post(`http://localhost:3000/api/status/friends/${this.userId}`, {
                 ids: friendIds
             })
         })
@@ -47,13 +48,6 @@ class Post extends Component {
             console.error(err);
         });
     }
-
-    handleLike(id){
-        post('http://localhost:3000/api/status/like', {
-
-        })
-        .then()
-    }
     updatePosts(){
         this.gatherPosts();
     }
@@ -62,13 +56,12 @@ class Post extends Component {
             return(
                     <div className={`media ${style.postDiv}`}key={posts.id}>
                         <div className="media-left">
-                            <img src={posts.avatar} className={`media-object ${style.avatar}`} style={{width: '50px'}} />
+                            <img src={posts.avatar} className={`media-object ${style.avatar}`}/>
                         </div>
                         <div className="media-body">
                             <Link to={`/profile/${posts.userid}`} className="media-heading">{posts.handle}</Link>
                             <p>{posts.status}</p>
-                            <LikeButton liked={false} postid={posts.id} userid={this.state.loggedId}/>
-                            <i className="glyphicon glyphicon-heart-empty" onMouseOver={() => this.setState({ likes: posts.likes + 1 })} onClick={ () => { this.handleLike(posts.id, this.state.loggedId) }}></i>
+                            <LikeButton liked={this.state.ft[posts.liked]} statusid={posts.id} userid={this.userId}/>
                         </div>
                     </div>
             )

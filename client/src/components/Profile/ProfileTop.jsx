@@ -28,6 +28,7 @@ class profilePanel extends Component {
             <div className={`${styles.profileImage}`} src={this.props.avatar} alt="sample47" style={{width: '13em', height: '13em', borderRadius: '50%', backgroundImage: `url(${this.props.avatar})`}} />
             <h3>{this.props.firstname} {this.props.lastname} </h3>
             <h4> {this.props.handle} </h4>
+            {this.props.button}
           </div>
         )
       }
