@@ -9,20 +9,20 @@
 
 
 
-.space{
-    margin-top: 10%;
+// .space{
+//    float: right;
     
-    textarea{
+//     textarea{
    
-        width: 50%;
-        height: 7em;
-    }
+//         width: 50%;
+//         height: 7em;
+//     }
 
-    input{
-        margin-bottom: 3.5%;
-    }
+//     input{
+//         margin-bottom: 3.5%;
+//     }
 
-}
+// }
 
 .post{
     width: 70%;
@@ -96,4 +96,11 @@
     border-radius:1.5rem; 
     top:-1.5rem; 
     left:-1.5rem;
+  }
+
+  .text{
+    
+      margin-top: 5%;
+      width: 455%;
+      height: 10em;
   }

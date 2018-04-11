@@ -28,7 +28,7 @@ class Forumpage extends Component {
 
           <div className={ style.containment }>
               <ForumTop id={ this.state.id } title={ this.state.title } forumText={ this.state.forumText }/>
-            <CommentBox />
+            
           </div>
           </Fragment>
 

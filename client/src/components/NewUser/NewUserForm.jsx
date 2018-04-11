@@ -37,9 +37,9 @@ class NewUserForm extends Component {
             })
             .then((results) => {
                 console.log('worked maybe', results);
-                this.login(event);
+                this.login(results.id);
                 // this.props.history.push(`/profile/:${results.id}`);
-                window.location.href = `http://localhost:3000/profile/${results.id}`
+                window.location.href = `http://localhost:3000/add/social/${results.id}`
             })
         } else {
             alert('passwords don\'t match fam')

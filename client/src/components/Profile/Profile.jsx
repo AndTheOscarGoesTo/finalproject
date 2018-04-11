@@ -85,8 +85,28 @@ class Profile extends Component {
                 return(
                     <Fragment>
                         <LoggedBanner />
-                            <Particles className={styles.bg} width="100%" height="100%"/>
-                        <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
+                        <Particles 
+                                className={styles.bg} 
+                                width="100%" height="100%" 
+                                params={ {
+                                    particles: {
+                                        line_linked: {
+                                            shadow: {
+                                                enable: true,
+                                                color: "whitesmoke",
+                                                blur: 5,
+                                            }
+                                        },
+                                        number: {
+                                            value: 100,
+                                            density: {
+                                                enable: true,
+                                                value_area: 1200
+                                            }
+                                        }
+                                    }
+                                } } 
+                            />
                             <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
                             <div className={styles.wrapper}>
                                 <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
@@ -99,7 +119,28 @@ class Profile extends Component {
             return (
                 <Fragment>
                     <UnloggedBanner />
-                        <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
+                    <Particles 
+                                className={styles.bg} 
+                                width="100%" height="100%" 
+                                params={ {
+                                    particles: {
+                                        line_linked: {
+                                            shadow: {
+                                                enable: true,
+                                                color: "whitesmoke",
+                                                blur: 5,
+                                            }
+                                        },
+                                        number: {
+                                            value: 100,
+                                            density: {
+                                                enable: true,
+                                                value_area: 1200
+                                            }
+                                        }
+                                    }
+                                } } 
+                            />
                         <div className={styles.wrapper}>
                             <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
                             <UserPosts profileid={this.props.match.params.id}/>

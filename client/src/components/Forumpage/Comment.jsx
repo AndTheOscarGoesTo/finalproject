@@ -18,18 +18,14 @@ class Comment extends Component {
         .then(log => console.log(this.state.commentz))
       }
 
-      addComment(){
-          post('http://localhost:3000/api/forums/51?getForumComments=true', {
-              
-          })
-      }
+
 
     render() {
         let commentz = this.state.commentz.map((commentz) => {
             return(
                 <section id="comments">
-                <div class="comment">
-                  <div class="username">{commentz.handle}</div>
+                <div className="comment">
+                  <div className="username">{commentz.handle}</div>
                   <img src="https://www.une.edu.au/__data/assets/image/0005/97178/blank-avatar.png" class="avatar" alt="user image" />
                     <p>{commentz.comment}</p>
                 </div>

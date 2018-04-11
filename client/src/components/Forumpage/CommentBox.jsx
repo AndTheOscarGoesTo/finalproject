@@ -12,11 +12,11 @@ class CommentBox extends Component {
     render() {
         return (
           <div className={ style.space }>
-              <h2>Discuss </h2>
-              <hr />
-              <CommentForm />
-              <CommentList />
               
+         
+              
+              <CommentList />
+              <CommentForm />
         </div>
 
          
