@@ -1,14 +1,17 @@
 .paginatorContianer{
     position: relative;
-    margin: 0 auto;
-    left: 50%;
+    // margin: 0 auto;
+    left: 45%;
     span{
         font-size: 5em;
         color: blue;
-        text-shadow: 0 2px 5px grey;
+        text-shadow: 0 2px 5px rgba(grey, 0.8);
     }
 
     .arrow{
         cursor: pointer;
+        font-size: 5em;
+        color: blue;
+        text-shadow: 0 2px 5px rgba(grey, 0.8);
     }
 }

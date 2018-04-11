@@ -26,6 +26,7 @@ class Profile extends Component {
         }
     }
     componentDidMount(){
+        console.log('profile props', this.props)
         get(`http://localhost:3000/api/users/${this.props.match.params.id}`)
         .then(res => this.setState( {id: res.id, firstname: res.firstname, lastname: res.lastname, handle: res.handle, avatar: res.avatar, profileid: this.props.match.params.id} ))
         this.defaultAvi();
@@ -49,7 +50,6 @@ class Profile extends Component {
     render() {
         if(isLoggedIn()){
             if(this.state.loggedId === this.state.id) {
-                console.log('this is ur acc')
                 return (
                     <Fragment>
                         <LoggedBanner />
@@ -86,7 +86,6 @@ class Profile extends Component {
                     <Fragment>
                         <LoggedBanner />
                             <Particles className={styles.bg} width="100%" height="100%"/>
-                        <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                             <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
                             <div className={styles.wrapper}>
                                 <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
@@ -99,11 +98,9 @@ class Profile extends Component {
             return (
                 <Fragment>
                     <UnloggedBanner />
-
-                        <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                         <div className={styles.wrapper}>
                             <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
-                            <UserPosts />
+                            <UserPosts profileid={this.props.match.params.id}/>
                         </div>
                 </Fragment>
             )

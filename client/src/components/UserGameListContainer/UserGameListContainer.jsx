@@ -1,6 +1,8 @@
 import React, { Fragment, Component } from "react";
 import HomeNav from "../HomeNavBar/HomeNavBar";
 import GameListing from "./GameList";
+import Particles from 'react-particles-js';
+import style from './UserGameListContainer.module.scss';
 
 import { me } from "../../services/user";
 import { get } from "../../services/base";
@@ -59,6 +61,28 @@ class UserGameListContainer extends Component{
             <div className={`${MyStyle.mainPiece}`}>
                 <HomeNav />
                 <GameListing myGames={this.state.gameListInfo} onDeleteHandler={this.onDeleteHandler} />
+                <Particles 
+                    className={style.bg} 
+                    width="100%" height="100%" 
+                    params={ {
+                        particles: {
+                            line_linked: {
+                                shadow: {
+                                    enable: true,
+                                    color: "whitesmoke",
+                                    blur: 5,
+                                }
+                            },
+                            number: {
+                                value: 100,
+                                density: {
+                                    enable: true,
+                                    value_area: 1200
+                                }
+                            }
+                        }
+                    } } 
+                />
             </div>
         );
     }

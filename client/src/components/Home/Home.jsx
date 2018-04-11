@@ -11,6 +11,7 @@ import NewUserForm from '../NewUser/NewUserForm';
 import Post from '../Post/Post';
 import NewPost from '../NewPost/NewPost';
 import FriendsPanel from '../FriendsPanel/FriendsPanel';
+import Particles from 'react-particles-js';
 
 
 class Home extends Component {
@@ -38,6 +39,28 @@ class Home extends Component {
                 <LoggedBanner id={this.state.id} handle={this.state.handle} firstname={this.state.firstname} />
                 <Post loggedId={this.state.id}/>
                 <FriendsPanel loggedId={this.state.id} />
+                <Particles 
+                                className={style.bg} 
+                                width="100%" height="100%" 
+                                params={ {
+                                    particles: {
+                                        line_linked: {
+                                            shadow: {
+                                                enable: true,
+                                                color: "whitesmoke",
+                                                blur: 5,
+                                            }
+                                        },
+                                        number: {
+                                            value: 100,
+                                            density: {
+                                                enable: true,
+                                                value_area: 1200
+                                            }
+                                        }
+                                    }
+                                } } 
+                            />
                 </Fragment>
             )
         } 
@@ -52,6 +75,28 @@ class Home extends Component {
                         <NewUserForm />
                     </div>
                 </div>  
+                <Particles 
+                    className={style.gg} 
+                    width="100%" height="100%" 
+                    params={ {
+                        particles: {
+                            line_linked: {
+                                shadow: {
+                                    enable: true,
+                                    color: "whitesmoke",
+                                    blur: 5,
+                                }
+                            },
+                            number: {
+                                value: 100,
+                                density: {
+                                    enable: true,
+                                    value_area: 1200
+                                }
+                            }
+                        }
+                    } } 
+                />
             </Fragment>
         )
     }
