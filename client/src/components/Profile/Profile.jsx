@@ -86,7 +86,6 @@ class Profile extends Component {
                     <Fragment>
                         <LoggedBanner />
                             <Particles className={styles.bg} width="100%" height="100%"/>
-                        <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                             <button onClick={ () => { this.addFriend() } }>ADD FRIEND</button>
                             <div className={styles.wrapper}>
                                 <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
@@ -100,7 +99,6 @@ class Profile extends Component {
                 <Fragment>
                     <UnloggedBanner />
 
-                        <div className={styles.banner} style={{width: '100%', height: '30em'}}></div>
                         <div className={styles.wrapper}>
                             <ProfilePanel id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
                             <UserPosts />

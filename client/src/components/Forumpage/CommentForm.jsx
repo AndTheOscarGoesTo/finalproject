@@ -9,52 +9,44 @@ class CommentForm extends Component {
   constructor(props){
     super(props);
     this.state = {
-      updatez: [],
-      inputText: ""
+      comment: '',
+      id: ''
     }
 
   }
 
-  componentDidMount(){
-    get('http://localhost:3000/api/forums/51?getForumComments=true')
-    .then(result => this.setState({updatez: result}))
-    .then(log => console.log(this.state.updatez))
-  }
 
-  addComment(commet){
-      post('http://localhost:3000/api/forums/51?getForumComments=true', {
-          
+  addComment(event){
+    event.preventDefault();
+   
+      post('http://localhost:3000/api/forums/:id?getForumComments=true', {
+          comment: this.state.comment,
+          id: this.state.id,
+
       })
+      this.props.updatecomment
   }
 
-  textChange(event) {
-    console.log("--text--", event.target.value)
-    this.setState({ inputText: event.target.value })
-  }
+
+  handleComment(value) {
+    this.setState({ 
+      comment: value,
+});
+      console.log("yes")
+}
 
 
     render() {
-      let updatez = this.state.updatez.map((updatez) => {
-        return(
-
-              <form onClick={ () => { this.addComment(updatez.id) } }>
-                      <label>
-                        <input type="text" value={this.state.value} onChange={this.textChange} />
-                      </label>
-                      <input type="submit" value="Submit" />
-                    </form>  
-
-              )
-            })
+    
         return (
           <div>
-            {/* <form onSubmit={this.updatez}>
+            <form>
                 <label>
-                  <input type="text" value="stuff" onChange={this.addComment} />
+                <textarea id="text" placeholder="forumText"  onChange={(e) => this.handleComment(e.target.value)} />
                 </label>
-                <input type="submit" value="Submit" />
-              </form>  */}
-       { updatez }
+                <input type="submit" onClick= { (event) => {this.addComment(event)}} />
+              </form> 
+              
         </div>
 
          
