@@ -82,9 +82,9 @@ class LoggedBanner extends Component {
                             <li>
                                 <Link style={{textDecoration: 'none', color: 'white'}} to={"/MyGameList"}>Game List</Link>
                             </li>
-                            <li>
+                            {/* <li>
                             <Link style={{textDecoration: 'none', color: 'white'}} to = "/add/social/:id">Add Social Media</Link>
-                            </li>
+                            </li> */}
                             <li className='btn-group'>                            
                                 <a type="button" style={{textDecoration: 'none', color: 'white'}} className={`dropdown-toggle`} data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span style={{backgroundColor: this.state.notifBg, color: this.state.notifColor }}className="badge">{this.state.requests.length}</span><span className="caret"></span></a>
                                 <ul className={`dropdown-menu ${style.notifications}`}>
