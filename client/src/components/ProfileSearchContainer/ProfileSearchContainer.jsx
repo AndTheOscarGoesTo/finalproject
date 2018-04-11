@@ -37,7 +37,7 @@ class ProfileSearchContainer extends Component{
     }
 
     render(){
-        // console.log("--profiles--", this.state.profiles);
+        console.log("--profiles--", this.state.profiles);
         return(
             <Fragment>
                 {/* <h1>String you gave {this.props.match.params.searchString}</h1> */}
