@@ -200,13 +200,21 @@
   
 .commentStyle{
   float: right;
-  width: 50%;
-  
+  width: 43%;
+  margin-right: 2%;
 
 }
 
 .forumStyle{
   float: left;
   width: 50%;
+  margin-left: 2%;
 
+}
+
+textarea{
+  width:100%;
+}
+.holder{
+  height: 3em;
 }

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-// import style from './ForumPage.scss';
+import style from './ForumPage.scss';
 // import Post from './Post';
 // import commentBox from './commentBox';
 import { get, post } from '../../services/base'
@@ -55,9 +55,9 @@ class CommentForm extends Component {
           <div>
             <form>
                 <label>
-                <textarea  id="text" placeholder="forumText"  onChange={(e) => this.handleComment(e.target.value)} />
+                <textarea className={style.text}  id="text" placeholder="forumText"  onChange={(e) => this.handleComment(e.target.value)} />
                 </label>
-                <input  type="submit" onClick= { (event) => {this.addComment(event)}} />
+                <input bsStyle="primary" type="submit" onClick= { (event) => {this.addComment(event)}} />
               </form> 
               
         </div>

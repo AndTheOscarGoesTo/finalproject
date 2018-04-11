@@ -47,11 +47,38 @@ handleTextChangeTwo(value) {
 
   render() {
     return (
-      <form>
-        <input type="text" placeholder="title"  onChange={(e) => this.handleTextChange(e.target.value)}/>
-        <textarea id="text" placeholder="forumText"  onChange={(e) => this.handleTextChangeTwo(e.target.value)} />
-        <input type="submit" onClick= { (event) => {this.onButtonClick(event)}} />
-      </form>
+      // <form>
+      //   <input type="text" placeholder="title"  onChange={(e) => this.handleTextChange(e.target.value)}/>
+      //   <textarea id="text" placeholder="forumText"  onChange={(e) => this.handleTextChangeTwo(e.target.value)} />
+      //   <input type="submit" onClick= { (event) => {this.onButtonClick(event)}} />
+      // </form>
+
+     <Fragment>
+       <LoggedBanner />
+<div  id="formwrap">
+    <form  method="post" className={style.holdsPost} >
+      
+        <p>
+
+     
+          <span className={style.flat}>
+            
+            <input type="text" placeholder="Title" className={style.indent} onChange={(e) => this.handleTextChange(e.target.value)}  />
+      
+              
+           
+          </span>
+          <span className={ style.Message }>
+            <textarea onChange={(e) => this.handleTextChangeTwo(e.target.value)}  className={ style.posting } placeholder="..."></textarea>
+          </span>
+          <Link to={"/Forum"}><input type="submit"  className={style.btnn} onClick= { (event) => {this.onButtonClick(event)}} /></Link>
+       
+      </p>
+      <div className=" wpcf7-display-none">
+      </div>
+  </form>
+</div>
+</Fragment>
     );
   }
         
