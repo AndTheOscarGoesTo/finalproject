@@ -28,11 +28,12 @@ class CommentList extends Component {
 
     render() {
       let commentz = this.props.commentz.map((commentz) => {
+        console.log("--the comments--", commentz);
                 return(
                     <section id="comments">
                     <div className="comment">
                       <div className="username">{commentz.handle}</div>
-                      <img src="https://www.une.edu.au/__data/assets/image/0005/97178/blank-avatar.png" class="avatar" alt="user image" />
+                      <img src={commentz.avatar ? commentz.avatar : "https://www.une.edu.au/__data/assets/image/0005/97178/blank-avatar.png"} class="avatar" alt="user image" />
                         <p>{commentz.comment}</p>
                     </div>
                   </section>
