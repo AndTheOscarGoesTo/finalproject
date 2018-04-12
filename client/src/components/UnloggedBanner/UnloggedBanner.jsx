@@ -23,9 +23,9 @@ class UnloggedBanner extends Component {
                         <Link style={{textDecoration: 'none', color: 'white'}} to="/" className={`navbar-brand ${style.logo}`}> vidya </Link>
                         </div>
                         <ul className="nav navbar-nav navbar-right">
-                            <li className="yeet">
+                            {/* <li className="yeet">
                             <Link style={{textDecoration: 'none', color: 'white'}} to="/newuser" className={style.register}> Register </Link>
-                            </li>
+                            </li> */}
                             <li>
                             <Link style={{textDecoration: 'none', color: 'white'}} to="/Forum" className={style.register}> Forums </Link>
                             </li>
