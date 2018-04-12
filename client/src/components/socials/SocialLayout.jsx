@@ -1,37 +1,41 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import style from './social.module.scss';
+import Particles from 'react-particles-js';
 
 function SocialLayout(props) {
-    console.log(props.social);
     return (
-        <Table bordered condensed hover>
-        <thead>
-            <tr>
-                <th>Social Media</th>
-                <th>Handles</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Twitter</td>
-                <td>{ props.social.twitter }</td>
-            </tr>
-            <tr>
-                <td>Instagram</td>
-                <td>{ props.social.instagram }</td>
-            </tr>
-            <tr>
-                <td>Twitch</td>
-                <td>{ props.social.twitch }</td>
-            </tr>
-            <tr>
-                <td>Youtube</td>
-                <td>{ props.social.youtube }</td>
-            </tr>
-        </tbody>
-    </Table>
-    );
+        <ListGroup className={ style.socialTable }>
+        <h1 className={ style.headingSocial }>follow me</h1>
+            <ListGroupItem className={ style.spacingTwitter }><i className="ion-social-twitter"></i> { props.social.twitter }</ListGroupItem>
+            <ListGroupItem className={ style.spacingInsta }><i className="ion-social-instagram-outline"></i> { props.social.instagram }</ListGroupItem>
+            <ListGroupItem className={ style.spacingTwitch }><i className="ion-social-twitch"></i> { props.social.twitch }</ListGroupItem>
+            <ListGroupItem className={ style.spacingTube }><i className="ion-social-youtube"></i> { props.social.youtube }</ListGroupItem>
+            <Particles 
+                className={style.bgtwo} 
+                width="100%" height="100%" 
+                params={ {
+                    particles: {
+                        line_linked: {
+                            shadow: {
+                                enable: true,
+                                color: "whitesmoke",
+                                blur: 5,
+                            }
+                        },
+                        number: {
+                            value: 100,
+                            density: {
+                                enable: true,
+                                value_area: 1200
+                            }
+                        }
+                    }
+                } } 
+            />
+        </ListGroup>
+        );
 }
+
 
 export default SocialLayout;
