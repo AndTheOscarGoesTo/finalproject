@@ -59,7 +59,7 @@ class Post extends Component {
                             <img src={posts.avatar} className={`media-object ${style.avatar}`}/>
                         </div>
                         <div className="media-body">
-                            <Link to={`/profile/${posts.userid}`} className="media-heading">{posts.handle}</Link>
+                            <Link to={`/profile/${posts.userid}`} className="media-heading">@{posts.handle}</Link>
                             <p>{posts.status}</p>
                             <LikeButton liked={this.state.ft[posts.liked]} statusid={posts.id} userid={this.userId}/>
                         </div>
