@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import Style from "./GameAddContainer.module.scss";
 
 function GameAddPiece(props) {
 
@@ -16,7 +17,7 @@ function GameAddPiece(props) {
                         </div>
                     </div>
                     <div className="panel-footer">
-                        <h4>{props.infoObj.gamePlatform}</h4>
+                        <h4 className={Style.darkText}>{props.infoObj.gamePlatform}</h4>
                     </div>
                 </section>
 

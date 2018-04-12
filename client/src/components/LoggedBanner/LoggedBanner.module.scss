@@ -110,4 +110,12 @@
 }
 .notifications{
     background-color: #181818;
+    padding: 7px;
+    min-height: 8em;
+    min-width: 15em;
+    overflow: scroll;
+}
+.notificationsitem{
+    background-color: #181818;
+    padding: 7px;
 }

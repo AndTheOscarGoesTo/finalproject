@@ -50,7 +50,7 @@ class LoggedBanner extends Component {
     render() {
         let requests = this.state.requests.map((request) => {
             return(
-            <li className={style.notifications} key={request.id}>
+            <li className={style.notificationsitem} key={request.id}>
                 <p>{request.user_one_id} wants to be your friend!</p>
                 <button onClick= { (event) => this.onAccept(request.id)}> ACCEPT </button>
                 <button onClick={ (event) => this.onBlock(request.id)}> DECLINE </button>
