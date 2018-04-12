@@ -26,6 +26,7 @@ class NewUserForm extends Component {
         })
         .then(() => {
             this.props.updatePosts();
+            this.setState({status: ''})
         });
     }
 
@@ -42,7 +43,7 @@ class NewUserForm extends Component {
                         </div>
                         <div className="media-body">
                         <div className="form-group">
-                            <textarea id="text" className={style.input} type="text" placeholder="What's up?" onChange={(e) => this.handleTextChange(e.target.value)} required /> 
+                            <textarea id="text" className={style.input} value={this.state.status} type="text" placeholder="What's up?" onChange={(e) => this.handleTextChange(e.target.value)} required /> 
                             </div>
                             <button onClick= { (event) => {this.onButtonClick()}} className="btn btn-primary" >Submit</button>
                         </div>
