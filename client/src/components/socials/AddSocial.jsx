@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { post } from '../../services/base';
 import style from './social.module.scss';
-import Particles from 'react-particles-js';
 
 
 import HomeNav from "../HomeNavBar/HomeNavBar";
@@ -97,28 +96,6 @@ class AddSocial extends Component {
                     <i className="ion-social-youtube-outline"></i>
                 </div>
                 <button onClick={ (e) => {this.addSocialMedia(e)} } className={ style.button }>add social media</button>
-                <Particles 
-                    className={style.bg} 
-                    width="100%" height="100%" 
-                    params={ {
-                        particles: {
-                            line_linked: {
-                                shadow: {
-                                    enable: true,
-                                    color: "whitesmoke",
-                                    blur: 5,
-                                }
-                            },
-                            number: {
-                                value: 100,
-                                density: {
-                                    enable: true,
-                                    value_area: 1200
-                                }
-                            }
-                        }
-                    } } 
-                />
             </div>
         );
     }

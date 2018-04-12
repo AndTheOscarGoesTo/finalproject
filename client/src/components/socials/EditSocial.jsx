@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { put } from '../../services/base';
 import style from './social.module.scss';
-import Particles from 'react-particles-js';
 
 class EditSocial extends Component {
     constructor(props) {
@@ -171,28 +170,6 @@ class EditSocial extends Component {
                     </div>
                     <button onClick={ (e) => {this.makeMultiplePosts(e)} } className={ style.button }>update profile</button>
                 </div>
-                <Particles 
-                    className={style.bg} 
-                    width="100%" height="100%" 
-                    params={ {
-                        particles: {
-                            line_linked: {
-                                shadow: {
-                                    enable: true,
-                                    color: "whitesmoke",
-                                    blur: 5,
-                                }
-                            },
-                            number: {
-                                value: 100,
-                                density: {
-                                    enable: true,
-                                    value_area: 1200
-                                }
-                            }
-                        }
-                    } } 
-                />
             </div>
         );
     }
