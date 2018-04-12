@@ -9,6 +9,7 @@ import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 import { isLoggedIn, me } from '../../services/user';
 import { get, post } from '../../services/base';
 import Particles from 'react-particles-js';
+import Social from '../socials/Social';
 
 
 

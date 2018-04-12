@@ -17,6 +17,7 @@ class profilePanel extends Component {
         return (
           <div className={`${styles.profilePanel}`}>
             <Link to={ `/edit/${ this.props.id }` }><i className="ion-edit"></i></Link>
+            <Link to={ `/social/${ this.props.id }`}><i className="ion-android-share-alt"></i></Link>
             <div className={`${styles.profileImage} ${styles.clickable}`} src={this.props.avatar} alt="sample47" style={{width: '13em', height: '13em', borderRadius: '50%', backgroundImage: `url(${this.props.avatar})`}} />
             <h3>{this.props.firstname} {this.props.lastname} </h3>
             <h4> @{this.props.handle} </h4>
