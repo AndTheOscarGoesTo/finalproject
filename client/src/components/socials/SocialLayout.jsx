@@ -7,10 +7,10 @@ function SocialLayout(props) {
     return (
         <ListGroup className={ style.socialTable }>
         <h1 className={ style.headingSocial }>follow me</h1>
-            <ListGroupItem className={ style.spacingTwitter }><i className="ion-social-twitter"></i> { props.social.twitter }</ListGroupItem>
-            <ListGroupItem className={ style.spacingInsta }><i className="ion-social-instagram-outline"></i> { props.social.instagram }</ListGroupItem>
-            <ListGroupItem className={ style.spacingTwitch }><i className="ion-social-twitch"></i> { props.social.twitch }</ListGroupItem>
-            <ListGroupItem className={ style.spacingTube }><i className="ion-social-youtube"></i> { props.social.youtube }</ListGroupItem>
+            <ListGroupItem><i className="ion-social-twitter"></i> <span className={style.spacingTwitter}>{ props.social.twitter }</span></ListGroupItem>
+            <ListGroupItem ><i className="ion-social-instagram-outline"></i> <span className={ style.spacingInsta }> { props.social.instagram }</span></ListGroupItem>
+            <ListGroupItem><i className="ion-social-twitch"></i> <span className={ style.spacingTwitch }> { props.social.twitch }</span></ListGroupItem>
+            <ListGroupItem><i className="ion-social-youtube"></i> <span className={ style.spacingTube }> { props.social.youtube }</span></ListGroupItem>
             <Particles 
                 className={style.bgtwo} 
                 width="100%" height="100%" 
