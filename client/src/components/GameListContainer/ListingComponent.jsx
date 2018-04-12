@@ -26,9 +26,23 @@ class ListingComponent extends Component{
 
     }
 
+    gameToSearch;
+
     componentDidMount(){
+        if(this.props.location.state.searchString){
+            this.gameToSearch = this.props.location.state.searchString;
+        }
         console.log("--mounting--");
         this.requestGames(this.state.offset, 1);
+    }
+
+    componentWillReceiveProps(newProps){
+        // console.log("--updating props--", this.props.location.state.alias);
+        if(!this.props.location.state.alias){
+            console.log("--Updating again--");
+            this.gameToSearch = newProps.location.state.searchString;
+            this.requestGames(1, 1)
+        }
     }
 
     requestGames(offset, pageNumber){
@@ -78,7 +92,7 @@ class ListingComponent extends Component{
                 })
             })
         } else {
-            get(`http://localhost:3000/api/games?byGameName=${searchString}&limit=${this.state.limit}&offset=${offset}`)
+            get(`http://localhost:3000/api/games?byGameName=${this.gameToSearch}&limit=${this.state.limit}&offset=${offset}`)
             .then((response) => {
 
                 let games = [];
