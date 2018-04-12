@@ -7,6 +7,8 @@ import { get, post } from '../../services/base';
 import CommentBox from './CommentBox';
 import ForumTop from './ForumTop';
 import LoggedBanner from '../LoggedBanner/LoggedBanner';
+
+
 class Forumpage extends Component {
     constructor(props){
         super(props)

@@ -3,6 +3,7 @@ import * as userService from '../../services/user';
 import { Redirect } from 'react-router-dom';
 import IndeterminateProgress from '../utilities/indeterminateProgress';
 import style from './login.module.scss';
+import Particles from 'react-particles-js';
 
 import UnloggedBanner from '../UnloggedBanner/UnloggedBanner';
 
@@ -83,6 +84,28 @@ class Login extends Component {
                     <input type="submit" value="Login" className="btn btn-primary" />
                 </form>
                 </div>
+                <Particles 
+                    className={style.bg} 
+                    width="100%" height="100%" 
+                    params={ {
+                        particles: {
+                            line_linked: {
+                                shadow: {
+                                    enable: true,
+                                    color: "whitesmoke",
+                                    blur: 5,
+                                }
+                            },
+                            number: {
+                                value: 100,
+                                density: {
+                                    enable: true,
+                                    value_area: 1200
+                                }
+                            }
+                        }
+                    } } 
+                />
             </Fragment>
        );
     }

@@ -47,7 +47,7 @@ class Forum extends Component {
         return (
           <Fragment>
             <LoggedBanner />
-            {/* <Particles 
+            <Particles 
                                 className={styles.bg} 
                                 width="100%" height="100%" 
                                 params={ {
@@ -68,7 +68,7 @@ class Forum extends Component {
                                         }
                                     }
                                 } } 
-                            />  */}
+                            /> 
             <div className={style.commentStyle}>
             <CommentBox commentList={this.state.commentList} currentForumId={this.state.currentForumId} />
             </div>
