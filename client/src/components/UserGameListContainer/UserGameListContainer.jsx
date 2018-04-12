@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import HomeNav from "../HomeNavBar/HomeNavBar";
 import GameListing from "./GameList";
 import Particles from 'react-particles-js';
+import { Redirect } from "react-router-dom";
 import style from './UserGameListContainer.module.scss';
 
 import { me } from "../../services/user";
@@ -16,7 +17,8 @@ class UserGameListContainer extends Component{
 
         this.state = {
             currentUserId: null,
-            gameListInfo: []
+            gameListInfo: [],
+            redirect: false
         }
 
         this.onDeleteHandler = this.onDeleteHandler.bind(this);
@@ -28,7 +30,7 @@ class UserGameListContainer extends Component{
 
             get(`http://localhost:3000/api/gameList/${response.id}`)
             .then((gameListInfo) => {
-                this.setState({ currentUserId: response.id ,gameListInfo })
+                this.setState({ currentUserId: response.id ,gameListInfo, redirect: false })
             })
             .catch((err) => {
                 console.log(err);
@@ -46,8 +48,11 @@ class UserGameListContainer extends Component{
         destroy("http://localhost:3000/api/gameList/", {userId: this.state.currentUserId, gameId})
         .then((response) => {
             console.log(response);
+            this.setState({redirect: true})
 
-            this.props.history.push("/MyGameList");
+            // this.props.history.push("/MyGameList");
+            // this.forceUpdate();
+            window.location.reload();
 
         })
         .catch((err) => {
@@ -56,6 +61,13 @@ class UserGameListContainer extends Component{
     }
 
     render(){
+
+        console.log("--redirect--", this.state.redirect);
+        // if (this.state.redirect) {
+        //     return (
+        //         <Redirect to={`/MyGameList`} />
+        //     );
+        // } 
 
         return(
             <div className={`${MyStyle.mainPiece}`}>

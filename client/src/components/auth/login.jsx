@@ -67,14 +67,14 @@ class Login extends Component {
            <Fragment>
             <UnloggedBanner />
                 <div className={style.loginBody}> 
-                <h1> Welcome Back! </h1>
+                <h1 style={{color: 'white'}}> Welcome Back! </h1>
                 <form onSubmit={(e) => this.login(e)}>
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label style={{color: 'whitesmoke'}}htmlFor="email">Email</label>
                         <input id="email" className="form-control" type="email" onChange={(e) => this.handleEmailChange(e.target.value)} required /> 
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password</label>
+                        <label style={{color: 'whitesmoke'}}htmlFor="password">Password</label>
                         <input id="password" className="form-control" type="password" onChange={(e) => this.handlePasswordChange(e.target.value)} required /> 
                     </div>
                     {this.state.feedbackMessage ? (
