@@ -4,7 +4,7 @@ import { get, post } from '../../services/base'
 import style from './Forum.module.scss'
 import {Accordion, PanelGroup, Panel} from 'react-bootstrap';
 import CommentBox from '../Forumpage/CommentBox'
-
+import comment from '../Forumpage/Comment'
 class ForumList extends Component {
 
   constructor(props, context) {
@@ -15,6 +15,9 @@ class ForumList extends Component {
     this.state = {
       activeKey: '',
       forumz: [],
+      id: '',
+      newcomment:'',
+      commentid: '',
     };
   }
 
@@ -25,53 +28,63 @@ class ForumList extends Component {
 
     componentDidMount(){
       get('http://localhost:3000/api/forums')
-      .then(result => this.setState({forumz: result}))
+      .then(result => 
+        {
+          console.log("--result--", result);
+          this.setState({forumz: result})
+        }
+      )
       .then(log => console.log(this.state.forumz))
     }
 
-    
+// getComment(event, forumId){
+//   event.preventDefault();
+//   get(`http://localhost:3000/api/forums/${forumId}?getForumComments=true`)
+//   .then((response) =>{
+//     console.log("--response--", response);
+//     this.setState( {
+//           id:response.id, 
+//           newcomment: response.newcomment, 
+//           commentid: response.commentid
+//         })
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   })
+//   // .then( res => this.setState( {
+//   //     id:res.id, newcomment: res.newcomment, commentid: res.commentid
+//   //   }))
+//   //   .catch((err) => {
+//   //     console.log(err);
+//   //   })
+
+// }    
 
     render() {
       let forumz = this.state.forumz.map((forumz) => {
         return(
-/* <div id="accordion">
-<div class="card" onClick= { (event) => {this.handleselect(event)}}>
-    <div class="card-header" >
-      <h5 class="mb-0">
-        <h1 class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
-        {forumz.title}
-        </h1>
-      </h5>
-    </div>
-    <div id="collapse" class="collapse" aria-labelledby="heading" data-parent="#accordion">
-      <div class="card-body">
-      { forumz.forumText }
-      </div>
-    </div>
-  
-  </div>
-  
-</div> */
-<Fragment >
-<PanelGroup
-        accordion
-        id="accordion-controlled-example"
-        activeKey={this.state.activeKey}
-        onSelect={this.handleSelect}
-      >
-        <Panel eventKey={forumz.id}
-        key={forumz.id}
-       
-        >
-          <Panel.Heading >
-            <Panel.Title  className={style.holder} toggle>{forumz.title} </Panel.Title>
-          </Panel.Heading>
-          <Panel.Body collapsible>{forumz.forumText}</Panel.Body>
-          
-        </Panel>
-        
-      </PanelGroup>
-</Fragment>
+
+            <Fragment >
+              <PanelGroup
+                      accordion
+                      id="accordion-controlled-example"
+                      activeKey={this.state.activeKey}
+                      onSelect={this.handleSelect}
+                    >
+                    <Panel eventKey={forumz.id}
+                    key={forumz.id}
+                  
+                    >
+                    {/* this.getComment(event, forumz.id) */}
+                      <Panel.Heading >
+                        <Panel.Title  onClick= { (event) => {this.props.handleClick(event, forumz.id)}} toggle>{forumz.title}  </Panel.Title>
+                      </Panel.Heading>
+                      <Panel.Body collapsible>{forumz.forumText}</Panel.Body>
+                      
+                    </Panel>
+                    
+                  </PanelGroup>
+            </Fragment>
 
 
 

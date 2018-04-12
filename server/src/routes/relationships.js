@@ -54,6 +54,15 @@ router.post('/friends', (req, res) => {
         res.sendStatus(500);
     });
 });
+router.post('/friends/:id', (req, res) => {
+    relationshipsController.checkFriendship(req.body.userone, req.params.id)
+    .then((results) => {
+        res.json(results);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
 
 router.post('/requests/accept', (req, res) => {
     relationshipsController.acceptRequest(req.body.id)

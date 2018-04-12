@@ -53,7 +53,6 @@ class Post extends Component {
     }
     render(){
         let posts = this.state.posts.map((posts) => {
-            console.log(this.userId)
             return(
                     <div className={`media ${style.postDiv}`}key={posts.id}>
                         <div className="media-left">

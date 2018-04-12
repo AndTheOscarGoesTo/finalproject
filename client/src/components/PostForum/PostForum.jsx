@@ -4,6 +4,8 @@ import style from './PostForum.module.scss'
 import imageUploader from './imageUploaderBox'
 import LoggedBanner from '../LoggedBanner/LoggedBanner';
 import { get, post } from '../../services/base';
+import Particles from 'react-particles-js';
+import styles from './postForum.module.scss'
 class PostForum extends Component {
 
   constructor(props) {
@@ -54,7 +56,31 @@ handleTextChangeTwo(value) {
       // </form>
 
      <Fragment>
+   
        <LoggedBanner />
+
+           <Particles 
+                                className={styles.bg} 
+                                width="100%" height="100%" 
+                                params={ {
+                                    particles: {
+                                        line_linked: {
+                                            shadow: {
+                                                enable: true,
+                                                color: "whitesmoke",
+                                                blur: 5,
+                                            }
+                                        },
+                                        number: {
+                                            value: 100,
+                                            density: {
+                                                enable: true,
+                                                value_area: 1200
+                                            }
+                                        }
+                                    }
+                                } } 
+                            /> 
 <div  id="formwrap">
     <form  method="post" className={style.holdsPost} >
       

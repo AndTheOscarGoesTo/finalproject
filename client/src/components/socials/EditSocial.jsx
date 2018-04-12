@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { put } from '../../services/base';
+import style from './social.module.scss';
+import Particles from 'react-particles-js';
 
 class EditSocial extends Component {
     constructor(props) {
@@ -40,28 +42,19 @@ class EditSocial extends Component {
         this.setState({ handle });
     }
 
-    editUserInfo(e) {
+    makeMultiplePosts(e) {
 
         e.preventDefault();
 
-        put(
+        const promise1 = put(
             `http://localhost:3000/api/users/${this.props.match.params.id}`,
             {
                 avatar: this.state.avatar,
                 handle: this.state.handle
             }
         )
-        .then(() => {
-            this.props.history.push('/')
-        })
-    }
-
-    editSocialMedia(e) {
-
-        e.preventDefault();
-
-        put(
-            `http://localhost:3000/api/social/${this.props.match.params.id}`, 
+        const promise2 = put(
+            `http://localhost:3000/api/social/${this.props.match.params.id}`,
             {
                 twitter: this.state.twitter,
                 instagram: this.state.instagram,
@@ -69,50 +62,137 @@ class EditSocial extends Component {
                 youtube: this.state.youtube
             }
         )
-        .then(() => {
-            this.props.history.push('/');
+        Promise.all([promise1, promise2]).then((results) => {
+            console.log(results);
+            this.props.history.push('/')
+            return;
+        }).catch((err) => {
+            console.error(err);
         })
+
     }
+   
+
+    // editUserInfo(e) {
+
+    //     e.preventDefault();
+
+    //     put(
+    //         `http://localhost:3000/api/users/${this.props.match.params.id}`,
+    //         {
+    //             avatar: this.state.avatar,
+    //             handle: this.state.handle
+    //         }
+    //     )
+    //     .then(() => {
+    //         this.props.history.push('/')
+    //     })
+    // }
+
+    // editSocialMedia(e) {
+
+    //     e.preventDefault();
+
+    //     put(
+    //         `http://localhost:3000/api/social/${this.props.match.params.id}`, 
+    //         {
+    //             twitter: this.state.twitter,
+    //             instagram: this.state.instagram,
+    //             twitch: this.state.twitch,
+    //             youtube: this.state.youtube
+    //         }
+    //     )
+    //     .then(() => {
+    //         this.props.history.push('/');
+    //     })
+    // }
 
     render() {
         return (
-            <div>
-                <div>
+            <div className={ style.body }>
+                <h1>edit profile</h1>
+                 <div>
                     <input 
-                        placeholder="twitter"
-                        value={ this.state.twitter } 
-                        onChange={ (event) => this.handleTwitterChange(event.target.value)}
-                    />
-                    <input 
-                        placeholder="instagram"
-                        value={ this.state.instagram } 
-                        onChange={ (event) => this.handleInstagramChange(event.target.value)}
-                    />
-                    <input 
-                        placeholder="twitch" 
-                        value={ this.state.twitch } 
-                        onChange={ (event) => this.handleTwitchChange(event.target.value)}
-                    />
-                    <input 
-                        placeholder="youtube"
-                        value={ this.state.youtube } 
-                        onChange={ (event) => this.handleYoutubeChange(event.target.value)}
-                    />
-                    <button onClick={ (e) => {this.editSocialMedia(e)} }>submit</button>
-                </div>
-                <div>
-                    <input 
+                        className={ style.avatar }
                         placeholder="avatar" 
                         value={ this.state.avatar } 
                         onChange={ (event) => this.handleAvatarChange(event.target.value)}
                     />
-                    <input 
+                    <i className="ion-person"></i>
+                </div>
+                <div>
+                    <input
+                        className={ style.handle } 
                         placeholder="handle" 
                         value={ this.state.handle } 
                         onChange={ (event) => this.handleNameChange(event.target.value)}
                     />
-                    <button onClick={ (e) => {this.editUserInfo(e)} }>update user</button>
+                    <i className="ion-at"></i>
                 </div>
+                {/* <div>
+                    <button onClick={ (e) => {this.editUserInfo(e)} }>update user info</button>
+                </div> */}
+                <div className={ style.sm }>
+                    <div>
+                        <input 
+                            className={ style.twitterTwo }
+                            placeholder="twitter"
+                            value={ this.state.twitter } 
+                            onChange={ (event) => this.handleTwitterChange(event.target.value)}
+                        />
+                        <i className="ion-social-twitter-outline"></i>
+                    </div>
+                    <div>
+                        <input 
+                            className={ style.instagramTwo }
+                            placeholder="instagram"
+                            value={ this.state.instagram } 
+                            onChange={ (event) => this.handleInstagramChange(event.target.value)}
+                        />
+                        <i className="ion-social-instagram"></i>
+                    </div>
+                    <div>
+                        <input 
+                            className={ style.twitchTwo }
+                            placeholder="twitch" 
+                            value={ this.state.twitch } 
+                            onChange={ (event) => this.handleTwitchChange(event.target.value)}
+                        />
+                        <i className="ion-social-twitch-outline"></i>
+                    </div>
+                    <div>
+                        <input 
+                            className={ style.youtubeTwo }
+                            placeholder="youtube"
+                            value={ this.state.youtube } 
+                            onChange={ (event) => this.handleYoutubeChange(event.target.value)}
+                        />
+                        <i className="ion-social-youtube-outline"></i>
+                    </div>
+                    <button onClick={ (e) => {this.makeMultiplePosts(e)} } className={ style.button }>update profile</button>
+                </div>
+                <Particles 
+                    className={style.bg} 
+                    width="100%" height="100%" 
+                    params={ {
+                        particles: {
+                            line_linked: {
+                                shadow: {
+                                    enable: true,
+                                    color: "whitesmoke",
+                                    blur: 5,
+                                }
+                            },
+                            number: {
+                                value: 100,
+                                density: {
+                                    enable: true,
+                                    value_area: 1200
+                                }
+                            }
+                        }
+                    } } 
+                />
             </div>
         );
     }

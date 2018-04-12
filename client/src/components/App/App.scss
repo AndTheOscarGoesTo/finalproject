@@ -11,7 +11,7 @@ a{
 
 body {
     background: url(http://andstud.io/wp-content/uploads/2014/03/blurrrr2.jpg)no-repeat center center fixed;
-   background-size: cover;
+    background-size: cover;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -28,6 +28,48 @@ html {
     display: none;
 }
 
+.ion-social-twitter-outline {
+    font-size: 2em;
+    margin-left: 0.5em;
+    color: white;
+}
+
+.ion-social-instagram {
+    font-size: 2em;
+    margin-left: 0.5em;
+    color: white;
+}
+
+.ion-social-twitch-outline {
+    font-size: 2em;
+    margin-left: 0.5em;
+    color: white;
+}
+
+.ion-social-youtube-outline {
+    font-size: 2em;
+    margin-left: 0.5em;
+    color: white;
+}
+
+.ion-person {
+    font-size: 2em;
+    margin-left: 0.5em;
+    color: white;
+}
+
+.ion-at {
+    font-size: 2em;
+    margin-left: 0.5em;
+    color: white;
+}
+
+.ion-edit {
+    font-size: 2em;
+    margin-left: 0.5em;
+    color: yellow;
+    float: right;
+}
 .panel{
     // background-color: rgba(0, 0, 0, 0.5);
     // background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(46,46,47,0.5) 35%);
