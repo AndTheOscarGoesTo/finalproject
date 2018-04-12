@@ -113,9 +113,13 @@
     padding: 7px;
     min-height: 8em;
     min-width: 15em;
-    overflow: scroll;
 }
 .notificationsitem{
     background-color: #181818;
-    padding: 7px;
+    padding: 13px;
+}
+.notifbutton{
+    background: #9c129e;
+    border: none;
+    margin: 5px;
 }

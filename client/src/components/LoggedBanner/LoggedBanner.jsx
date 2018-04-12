@@ -52,8 +52,8 @@ class LoggedBanner extends Component {
             return(
             <li className={style.notificationsitem} key={request.id}>
                 <p>{request.user_one_id} wants to be your friend!</p>
-                <button onClick= { (event) => this.onAccept(request.id)}> ACCEPT </button>
-                <button onClick={ (event) => this.onBlock(request.id)}> DECLINE </button>
+                <button className={style.notifbutton} onClick= { (event) => this.onAccept(request.id)}> ACCEPT </button>
+                <button className={style.notifbutton} onClick={ (event) => this.onBlock(request.id)}> DECLINE </button>
             </li>
             )
         })
