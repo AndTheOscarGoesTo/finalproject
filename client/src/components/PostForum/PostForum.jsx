@@ -32,6 +32,7 @@ onButtonClick(event) {
     })
     this.props.updateforums;
     console.log("yes")
+    window.location.href = `http://localhost:3000/forum`
 }
 
 handleTextChange(value) {
@@ -97,7 +98,7 @@ handleTextChangeTwo(value) {
           <span className={ style.Message }>
             <textarea onChange={(e) => this.handleTextChangeTwo(e.target.value)}  className={ style.posting } placeholder="..."></textarea>
           </span>
-          <Link to={"/Forum"}><input type="submit"  className={style.btnn} onClick= { (event) => {this.onButtonClick(event)}} /></Link>
+          <input type="submit"  className={style.btnn} onClick= { (event) => {this.onButtonClick(event)}} />
        
       </p>
       <div className=" wpcf7-display-none">

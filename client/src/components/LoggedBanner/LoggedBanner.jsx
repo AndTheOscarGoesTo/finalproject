@@ -69,7 +69,7 @@ class LoggedBanner extends Component {
                                 <SearchComponent  />
                             </li>
                             <li>
-                            <Link style={{textDecoration: 'none', color: 'white'}} to={"/postForum"}>Opinionate</Link>
+                            <Link style={{textDecoration: 'none', color: 'white'}} to={"/postForum"}>Post</Link>
                             </li>
                             <li>
                             {/* <Link style={{textDecoration: 'none', color: 'white'}} to={`/profile/${this.state.id}`} className={style.register}> My Profile </Link> */}
