@@ -22,13 +22,14 @@ class Home extends Component {
             id: '',
             handle: '',
             firstname: '',
+            avatar: '',
         }
     }
     componentDidMount(){
         if(isLoggedIn()){
             me()
             .then((res) => {
-                this.setState({id: res.id, handle: res.handle, firstname: res.firstname});
+                this.setState({id: res.id, handle: res.handle, firstname: res.firstname, avatar: res.avatar});
             })
         }
     }
@@ -38,7 +39,6 @@ class Home extends Component {
                 <Fragment>
                 <LoggedBanner id={this.state.id} handle={this.state.handle} firstname={this.state.firstname} />
                 <Post loggedId={this.state.id}/>
-                <FriendsPanel loggedId={this.state.id} />
                 <Particles 
                                 className={style.bg} 
                                 width="100%" height="100%" 

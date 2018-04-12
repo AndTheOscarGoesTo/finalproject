@@ -38,7 +38,7 @@ class NewUserForm extends Component {
             <Fragment>
                 <div className={`media ${style.form}`}>
                         <div className="media-left">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Circle-icons-profle.svg/1024px-Circle-icons-profle.svg.png" className="media-object" style={{width: '50px'}} />
+                            <img src={this.props.avatar} className={`media-object ${style.avatar}`} style={{width: '50px'}} />
                         </div>
                         <div className="media-body">
                         <div className="form-group">
