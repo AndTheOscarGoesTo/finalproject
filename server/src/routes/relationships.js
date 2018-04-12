@@ -27,6 +27,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     RelationshipsTable.insert(req.body)
     .then((results) => {
+        console.log('/', results)
         res.json(results);
     }).catch((err) => {
         console.log(err);

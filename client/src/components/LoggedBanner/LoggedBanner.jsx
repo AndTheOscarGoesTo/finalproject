@@ -39,11 +39,13 @@ class LoggedBanner extends Component {
         post('http://localhost:3000/api/relationships/requests/accept', {
             id: requestid,
         })
+        this.setState({requests: [], notifBg: 'white', notifColor: '#9c129e'})
     }
     onBlock(requestid){
         post('http://localhost:3000/api/relationships/requests/block', {
             id: requestid,
         })
+        this.setState({requests: []})
     }
     render() {
         let requests = this.state.requests.map((request) => {
