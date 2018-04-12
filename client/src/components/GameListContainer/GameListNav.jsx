@@ -69,7 +69,7 @@ function GameListNav(props) {
                         <span className="icon-bar"></span>
                         <span className="icon-bar"></span>
                     </button>
-                    <span className={`navbar-brand ${Style.maskedTextLogo}`} href="#">Vidya</span>
+                    <span className={`navbar-brand ${Style.maskedTextLogo}`} href="#">vidya</span>
                 </div>
 
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
