@@ -12,7 +12,8 @@ class Post extends Component {
         this.state = {
             posts: [],
             loggedId: this.props.loggedId,
-            ft: [false, true]
+            ft: [false, true],
+            avatar: '',
         }
 
         this.updatePosts = this.updatePosts.bind(this);
@@ -28,7 +29,7 @@ class Post extends Component {
         me()
         .then(res => { 
             this.userId = res.id;
-
+            this.setState({avatar: res.avatar})
             return post('http://localhost:3000/api/relationships/friends', {
                 id: res.id
             });
@@ -68,7 +69,7 @@ class Post extends Component {
         }).reverse()
         return(
             <Fragment>
-            <NewPost id={this.props.loggedId} updatePosts={this.updatePosts}/>
+            <NewPost id={this.props.loggedId} avatar={this.state.avatar} updatePosts={this.updatePosts}/>
             <div className={style.allpost}>
                 { posts }
             </div>
