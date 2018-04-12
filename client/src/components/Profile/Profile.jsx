@@ -24,6 +24,7 @@ class Profile extends Component {
             avatar: '',
             profileid: '',
             friendcheck: [],
+            button: 'Add Friend',
         }
     }
     componentDidMount(){
@@ -41,6 +42,7 @@ class Profile extends Component {
             user_two_id: this.state.id,
             status_interaction: 0,
         })
+        this.setState({button: 'Requested'})
     }
     defaultAvi(){
         if(this.state.avatar === null) {
@@ -150,7 +152,7 @@ class Profile extends Component {
                                     } } 
                                 />
                                 <div className={styles.wrapper}>
-                                    <ProfilePanel button={<button className={styles.button} onClick={ () => { this.addFriend() } }>ADD FRIEND</button>} id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
+                                    <ProfilePanel button={<button className={styles.button} onClick={ () => { this.addFriend() } }>{this.state.button}</button>} id={this.state.id} firstname={this.state.firstname} lastname={this.state.lastname} handle={this.state.handle} loggedAccount={false} avatar={this.state.avatar}/>
                                     <UserPosts profileid={this.props.match.params.id}/>
                                 </div>
                         </Fragment>
