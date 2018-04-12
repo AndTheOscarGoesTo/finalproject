@@ -1,28 +1,32 @@
 .body {
     margin: 0 auto;
     text-align: center;
-    padding-top: 1em;
     text-transform: capitalize;
 }
 
+.heading {
+    color: white;
+}
 
 
 .avatar {
-    color: white;
-    font-size: 1.5em;
-    margin: 1em 0 1em 0;
-    width: 35%;
-    background-color: black;
-    padding: 0.25em;
+    color: black;
+    margin: 1em;
+    border-radius: 5px;
+    width: 40%;
+    height: 2.5em;
+    padding: 0 0.5em;
+    font-size: 24px;
 }
 
 .handle {
-    color: white;
-    font-size: 1.5em;
-    margin: 1em 0 1em 0;
-    width: 35%;
-    background-color: black;
-    padding: 0.25em;
+    color: black;
+    margin: 1em;
+    border-radius: 5px;
+    width: 40%;
+    height: 2.5em;
+    padding: 0 0.5em;
+    font-size: 24px;
 }
 
 // .bodyTwo {
@@ -31,47 +35,53 @@
 // }
 
 .twitterTwo {
-    color: white;
-    font-size: 1.5em;
-    margin: 1em 0 1em 0;
-    width: 35%;
-    background-color: black;
-    padding: 0.25em;
+    color: black;
+    margin: 1em;
+    border-radius: 5px;
+    width: 40%;
+    height: 2.5em;
+    padding: 0 0.5em;
+    font-size: 24px;
 }
 
 .instagramTwo {
-    color: white;
-    font-size: 1.5em;
-    margin: 1em 0 1em 0;
-    width: 35%;
-    background-color: black;
-    padding: 0.25em;
+    color: black;
+    margin: 1em;
+    border-radius: 5px;
+    width: 40%;
+    height: 2.5em;
+    padding: 0 0.5em;
+    font-size: 24px;
 }
 
 
 .twitchTwo {
-    color: white;
-    font-size: 1.5em;
-    margin: 1em 0 1em 0;
-    width: 35%;
-    background-color: black;
-    padding: 0.25em;
+    color: black;
+    margin: 1em;
+    border-radius: 5px;
+    width: 40%;
+    height: 2.5em;
+    padding: 0 0.5em;
+    font-size: 24px;
 }
 
 .youtubeTwo {
-    color: white;
-    font-size: 1.5em;
-    margin: 1em 0 1em 0;
-    width: 35%;
-    background-color: black;
-    padding: 0.25em;
+    color: black;
+    margin: 1em;
+    border-radius: 5px;
+    width: 40%;
+    height: 2.5em;
+    padding: 0 0.5em;
+    font-size: 24px;
 }
 
 .button {
-    background-color: black;
+    background-color: purple;
     color: white;
     padding: 1em;
     text-transform: uppercase;
+    border-radius: 8px;
+    border: none;
 }
 
 .bg{
@@ -80,4 +90,8 @@
     height: 100%;
     width: 100%;
     z-index: -1;
+}
+
+.move {
+    padding-top: 4em;
 }

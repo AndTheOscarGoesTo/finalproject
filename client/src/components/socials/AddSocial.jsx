@@ -58,7 +58,7 @@ class AddSocial extends Component {
         return (
             <div className={ style.body }>
                 <HomeNav />
-                <h1 className={ style.heading }>new user?<br /> thank you for signing up!<br /> add your social media so you and others can connect!</h1>
+                <h1 className={ style.heading }>thank you for signing up!<br /> add your social media so you and others can connect!</h1>
                 <div>
                     <input
                         className={ style.twitterTwo }
