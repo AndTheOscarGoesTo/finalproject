@@ -40,7 +40,7 @@ class Profile extends Component {
     addFriend(){
         post('http://localhost:3000/api/relationships', {
             user_one_id: this.state.loggedId,
-            user_two_id: this.state.id,
+            user_two_id: this.state.profileid,
             status_interaction: 0,
         })
         this.setState({button: 'Requested'})

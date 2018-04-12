@@ -35,14 +35,18 @@ class Post extends Component {
             });
         })
         .then((friends) => {
-            let friendIds = friends.map(friend => friend.id);
+            let friendIds = friends.map(friend => friend.user_two_id && friend.user_one_id);
+            console.log('pre unshift friend id', friendIds)
             friendIds.unshift(this.userId);
+            console.log('friends asgasgagag', friendIds)
+            
             return post(`http://localhost:3000/api/status/friends/${this.userId}`, {
                 ids: friendIds
             })
+            
         })
         .then((statuses) => {
-            console.log(statuses[0]);
+            console.log("--Statuses--", statuses[0]);
             this.setState({posts: statuses[0]});
         })
         .catch((err) => {
