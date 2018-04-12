@@ -77,10 +77,7 @@ class ForumList extends Component {
                     >
                     {/* this.getComment(event, forumz.id) */}
                       <Panel.Heading >
-                        <Panel.Title  onClick= { (event) => {this.props.handleClick(event, forumz.id)}} toggle> 
-                        <img className={`img-rounded ${style.imgPlaceholder}`} src={forumz.forumImg ? forumz.forumImg : "https://www.une.edu.au/__data/assets/image/0005/97178/blank-avatar.png"} alt="" srcset=""/>
-                         <span className={`${style.styleText}`}>{forumz.title}</span> 
-                         </Panel.Title>
+                        <Panel.Title  onClick= { (event) => {this.props.handleClick(event, forumz.id)}} toggle> <img className={`img-rounded ${style.imgPlaceholder}`} src={forumz.forumImg ? forumz.forumImg : "https://www.une.edu.au/__data/assets/image/0005/97178/blank-avatar.png"} alt="" srcset=""/> <span className={`${style.styleText}`}>{forumz.title}</span> </Panel.Title>
                       </Panel.Heading>
                       <Panel.Body collapsible>{forumz.forumText}</Panel.Body>
                       
