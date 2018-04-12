@@ -1,6 +1,8 @@
 import React from "react";
 import Style from "./Paginator.module.scss";
 
+import { animateScroll as scroll } from "react-scroll";
+
 function Paginator(props) {
     return (
         <div className={`${Style.paginatorContianer}`}>
@@ -16,6 +18,7 @@ function Paginator(props) {
                 className={`glyphicon glyphicon-hand-right ${Style.arrow}`}
                 onClick={ (event) => props.getNextGames(event) }
             ></span>
+            <span className={`glyphicon glyphicon-chevron-up ${Style.chevron}`} onClick={scroll.scrollToTop}></span>
         </div>
     );
 }

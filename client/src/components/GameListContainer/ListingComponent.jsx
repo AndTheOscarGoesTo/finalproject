@@ -5,6 +5,7 @@ import { get } from "../../services/base";
 import LoadingComponent from "../LoadingViewContainer/LoadingViewContainer";
 import Paginator from "../Paginator/Paginator";
 import Style from "./GameListContainer.module.scss";
+import { animateScroll as scroll } from "react-scroll";
 
 class ListingComponent extends Component{
     constructor(props){
@@ -26,7 +27,7 @@ class ListingComponent extends Component{
     }
 
     componentDidMount(){
-
+        console.log("--mounting--");
         this.requestGames(this.state.offset, 1);
     }
 
@@ -141,12 +142,17 @@ class ListingComponent extends Component{
     render(){
 
         console.log("--rendering--", this.state.pageNumber);
+        window.scrollTo(0, 0);
 
         let pageNumberComponent = this.state.loading ? null : <Fragment>
             <h1 className={`${Style.pageNumber}`}>{this.state.pageNumber}</h1>
         </Fragment>;
 
-        let gamePaginationComponent = this.state.loading ? null : <Paginator getNextGames={this.onGetNextGames} getPreviosGames={this.onGetPreviosGames} />;
+        let gamePaginationComponent = this.state.loading ? null : 
+        <Fragment>
+            <Paginator getNextGames={this.onGetNextGames} getPreviosGames={this.onGetPreviosGames} />
+            {/* <button className="btn" onClick={scroll.scrollToTop}>Go Back!</button>  */}
+        </Fragment>;
 
 
 

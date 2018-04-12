@@ -18,4 +18,11 @@
         // color: $ternaryTextTheme;
         // text-shadow: 0 2px 5px rgba(grey, 0.8);
     }
+
+    .chevron{
+        position: fixed;
+        cursor: pointer;
+        left: 90%;
+        top: 90%;
+    }
 }

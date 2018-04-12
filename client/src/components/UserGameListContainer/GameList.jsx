@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import MyStyle from "./UserGameListContainer.module.scss";
 
+import { animateScroll as scroll } from "react-scroll";
+
 function GameList(props) {
 
     // console.log("--myGames--", props.myGames);
@@ -39,6 +41,8 @@ function GameList(props) {
                     );
                 })}
             </div>
+
+                <span className={`glyphicon glyphicon-chevron-up ${MyStyle.chevron}`} onClick={scroll.scrollToTop}></span>
 
         </div>
 
